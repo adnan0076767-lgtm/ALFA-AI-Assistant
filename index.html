@@ -1,12 +1,12 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#030712">
-<meta name="color-scheme" content="dark">
 
-<title>ALFA AI V5.3 MAX ULTRA | CHAT • VOICE • IMAGE</title>
+<title>ALFA AI V5.3.1 | AI CHAT • VOICE • IMAGE</title>
 
 <style>
 *{
@@ -15,18 +15,29 @@
   padding:0;
 }
 
-html{
-  scroll-behavior:smooth;
+:root{
+  --bg:#030712;
+  --panel:#0b1220;
+  --panel2:#111827;
+  --line:rgba(56,189,248,.18);
+  --cyan:#22d3ee;
+  --blue:#3b82f6;
+  --purple:#a855f7;
+  --green:#22c55e;
+  --text:#f8fafc;
+  --muted:#94a3b8;
+  --danger:#ef4444;
+  --shadow:0 0 35px rgba(34,211,238,.12);
 }
 
 body{
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  background:
-    radial-gradient(circle at 15% 10%,rgba(0,229,255,.10),transparent 30%),
-    radial-gradient(circle at 85% 20%,rgba(139,92,246,.12),transparent 30%),
-    #030712;
-  color:#f8fafc;
   min-height:100vh;
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 15% 10%,rgba(59,130,246,.13),transparent 28%),
+    radial-gradient(circle at 85% 20%,rgba(168,85,247,.12),transparent 28%),
+    linear-gradient(135deg,#020617,#030712 50%,#07111f);
   overflow-x:hidden;
 }
 
@@ -35,348 +46,331 @@ body:before{
   position:fixed;
   inset:0;
   pointer-events:none;
-  background:
-    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
-  background-size:45px 45px;
+  background-image:
+    linear-gradient(rgba(34,211,238,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(34,211,238,.025) 1px,transparent 1px);
+  background-size:40px 40px;
   mask-image:linear-gradient(to bottom,black,transparent);
 }
 
-button,
-textarea,
-input,
-select{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-.app{
-  width:min(1450px,94%);
+.container{
+  width:min(1180px,94%);
   margin:auto;
-  padding:22px 0 50px;
 }
 
-/* HEADER */
+header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  backdrop-filter:blur(18px);
+  background:rgba(3,7,18,.82);
+  border-bottom:1px solid var(--line);
+}
 
-.header{
+.nav{
+  min-height:72px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:18px;
-  padding:18px 20px;
-  border:1px solid rgba(0,229,255,.16);
-  border-radius:24px;
-  background:rgba(3,7,18,.72);
-  backdrop-filter:blur(20px);
-  box-shadow:0 0 45px rgba(0,229,255,.05);
-  position:sticky;
-  top:12px;
-  z-index:50;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:14px;
+  gap:15px;
 }
 
 .logo{
-  width:52px;
-  height:52px;
-  border-radius:16px;
+  display:flex;
+  align-items:center;
+  gap:11px;
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:.5px;
+}
+
+.logo-icon{
+  width:42px;
+  height:42px;
   display:grid;
   place-items:center;
-  font-size:25px;
-  font-weight:900;
-  background:linear-gradient(135deg,#00e5ff,#6366f1,#a855f7);
-  box-shadow:0 0 30px rgba(0,229,255,.25);
-}
-
-.brand h1{
-  font-size:20px;
-  letter-spacing:.8px;
-}
-
-.brand p{
-  color:#94a3b8;
-  font-size:12px;
-  margin-top:3px;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--cyan),var(--blue),var(--purple));
+  box-shadow:0 0 25px rgba(34,211,238,.3);
 }
 
 .status{
   display:flex;
   align-items:center;
-  gap:8px;
-  color:#86efac;
+  gap:7px;
   font-size:12px;
+  color:#86efac;
 }
 
 .dot{
-  width:9px;
-  height:9px;
+  width:8px;
+  height:8px;
   border-radius:50%;
   background:#22c55e;
-  box-shadow:0 0 14px #22c55e;
-  animation:pulse 1.5s infinite;
+  box-shadow:0 0 12px #22c55e;
 }
-
-@keyframes pulse{
-  50%{opacity:.35;transform:scale(.7)}
-}
-
-/* HERO */
 
 .hero{
-  padding:55px 15px 30px;
   text-align:center;
+  padding:65px 0 35px;
 }
 
-.hero h2{
-  font-size:clamp(34px,6vw,72px);
-  line-height:1;
-  font-weight:950;
-  letter-spacing:-2px;
-  background:linear-gradient(90deg,#fff,#67e8f9,#a78bfa,#fff);
-  background-size:250%;
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 14px;
+  border:1px solid rgba(34,211,238,.25);
+  border-radius:999px;
+  color:#67e8f9;
+  background:rgba(34,211,238,.06);
+  font-size:12px;
+  margin-bottom:18px;
+}
+
+.hero h1{
+  font-size:clamp(38px,7vw,76px);
+  line-height:.95;
+  font-weight:1000;
+  letter-spacing:-3px;
+  background:linear-gradient(90deg,#fff,#67e8f9,#818cf8,#c084fc,#fff);
+  background-size:300%;
   -webkit-background-clip:text;
-  background-clip:text;
   color:transparent;
-  animation:gradientMove 7s linear infinite;
+  animation:gradient 8s linear infinite;
 }
 
-@keyframes gradientMove{
-  to{background-position:250%}
+@keyframes gradient{
+  0%{background-position:0}
+  100%{background-position:300%}
 }
 
 .hero p{
-  max-width:800px;
-  margin:18px auto 0;
-  color:#94a3b8;
+  max-width:720px;
+  margin:22px auto 0;
+  color:var(--muted);
   line-height:1.7;
-  font-size:15px;
 }
 
-/* MODE SWITCH */
+.dashboard{
+  margin:25px auto 60px;
+  padding:18px;
+  border:1px solid var(--line);
+  border-radius:28px;
+  background:rgba(11,18,32,.75);
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(20px);
+}
 
 .modes{
-  display:flex;
-  justify-content:center;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
   gap:10px;
-  flex-wrap:wrap;
-  margin:20px auto 24px;
+  margin-bottom:18px;
 }
 
 .mode{
-  border:1px solid rgba(148,163,184,.18);
-  background:rgba(15,23,42,.75);
+  border:1px solid rgba(148,163,184,.14);
+  background:rgba(15,23,42,.8);
   color:#cbd5e1;
-  padding:12px 18px;
-  border-radius:14px;
+  padding:15px;
+  border-radius:16px;
+  cursor:pointer;
   transition:.25s;
+  font-weight:800;
 }
 
 .mode:hover{
   transform:translateY(-2px);
-  border-color:rgba(0,229,255,.45);
+  border-color:rgba(34,211,238,.4);
 }
 
 .mode.active{
   color:white;
-  border-color:#22d3ee;
-  background:linear-gradient(135deg,rgba(0,229,255,.15),rgba(139,92,246,.15));
-  box-shadow:0 0 25px rgba(0,229,255,.10);
-}
-
-/* PANEL */
-
-.panel{
-  border:1px solid rgba(148,163,184,.14);
-  background:rgba(2,6,23,.78);
-  backdrop-filter:blur(18px);
-  border-radius:25px;
-  padding:22px;
-  box-shadow:0 20px 80px rgba(0,0,0,.35);
-}
-
-.mode-panel{
-  display:none;
-}
-
-.mode-panel.active{
-  display:block;
-}
-
-/* CHAT */
-
-.chat-box{
-  height:520px;
-  overflow-y:auto;
-  padding:8px;
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-}
-
-.message{
-  max-width:min(82%,850px);
-  padding:15px 17px;
-  border-radius:18px;
-  line-height:1.65;
-  white-space:pre-wrap;
-  word-break:break-word;
-}
-
-.user{
-  align-self:flex-end;
-  background:linear-gradient(135deg,#075985,#3730a3);
-  border:1px solid rgba(103,232,249,.18);
-}
-
-.ai{
-  align-self:flex-start;
-  background:rgba(15,23,42,.9);
-  border:1px solid rgba(148,163,184,.13);
-}
-
-.msg-label{
-  display:block;
-  font-size:10px;
-  opacity:.55;
-  margin-bottom:5px;
-  text-transform:uppercase;
-  letter-spacing:1px;
-}
-
-.chat-input{
-  display:grid;
-  grid-template-columns:1fr auto auto;
-  gap:10px;
-  margin-top:15px;
-}
-
-textarea{
-  resize:vertical;
-  min-height:58px;
-  max-height:220px;
-  border-radius:16px;
-  border:1px solid rgba(148,163,184,.16);
-  background:#020617;
-  color:white;
-  outline:none;
-  padding:15px;
-}
-
-textarea:focus{
-  border-color:#22d3ee;
+  border-color:rgba(34,211,238,.65);
+  background:linear-gradient(135deg,rgba(34,211,238,.14),rgba(59,130,246,.13));
   box-shadow:0 0 20px rgba(34,211,238,.08);
 }
 
-.btn{
-  border:0;
-  border-radius:15px;
-  padding:13px 18px;
-  color:white;
-  font-weight:750;
-  background:linear-gradient(135deg,#0891b2,#4f46e5);
-  transition:.25s;
+.panel{
+  display:none;
 }
 
-.btn:hover{
-  transform:translateY(-2px);
-  filter:brightness(1.12);
+.panel.active{
+  display:block;
 }
 
-.btn.secondary{
-  background:#111827;
+textarea,
+input,
+select{
+  width:100%;
   border:1px solid rgba(148,163,184,.16);
+  background:#060d19;
+  color:white;
+  outline:none;
+  border-radius:15px;
+  padding:14px;
+  font:inherit;
 }
 
-.btn.danger{
-  background:#3f0d18;
-  border:1px solid rgba(248,113,113,.18);
+textarea{
+  min-height:135px;
+  resize:vertical;
 }
 
-.btn.voice-active{
-  background:linear-gradient(135deg,#dc2626,#7c3aed);
-  animation:voicePulse 1s infinite;
-}
-
-@keyframes voicePulse{
-  50%{box-shadow:0 0 30px rgba(239,68,68,.3)}
-}
-
-/* VOICE */
-
-.voice-card{
-  min-height:500px;
-  display:grid;
-  place-items:center;
-  text-align:center;
-}
-
-.voice-orb{
-  width:190px;
-  height:190px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  margin:0 auto 28px;
-  background:
-    radial-gradient(circle at 35% 30%,#67e8f9,#0891b2 35%,#312e81 70%,#020617);
-  box-shadow:
-    0 0 40px rgba(34,211,238,.25),
-    inset 0 0 40px rgba(255,255,255,.08);
-  animation:orbFloat 4s ease-in-out infinite;
-}
-
-@keyframes orbFloat{
-  50%{transform:translateY(-10px) scale(1.03)}
-}
-
-.voice-orb.listening{
-  animation:orbListen .8s ease-in-out infinite alternate;
-}
-
-@keyframes orbListen{
-  from{box-shadow:0 0 30px rgba(34,211,238,.25)}
-  to{box-shadow:0 0 100px rgba(34,211,238,.75)}
-}
-
-.mic-icon{
-  font-size:65px;
-}
-
-.voice-status{
-  color:#94a3b8;
-  margin-bottom:22px;
-}
-
-.transcript{
-  min-height:60px;
-  max-width:850px;
-  margin:auto;
-  padding:18px;
-  border:1px solid rgba(148,163,184,.12);
-  border-radius:16px;
-  background:#020617;
-  color:#cbd5e1;
-}
-
-/* IMAGE */
-
-.image-layout{
-  display:grid;
-  grid-template-columns:380px 1fr;
-  gap:20px;
+textarea:focus,
+input:focus,
+select:focus{
+  border-color:rgba(34,211,238,.65);
+  box-shadow:0 0 0 3px rgba(34,211,238,.06);
 }
 
 .controls{
   display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:12px;
+}
+
+button{
+  border:0;
+  font:inherit;
+}
+
+.btn{
+  padding:13px 18px;
+  border-radius:14px;
+  cursor:pointer;
+  color:white;
+  font-weight:800;
+  transition:.2s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.btn-primary{
+  background:linear-gradient(135deg,#0891b2,#2563eb);
+  box-shadow:0 8px 25px rgba(37,99,235,.2);
+}
+
+.btn-purple{
+  background:linear-gradient(135deg,#7c3aed,#a855f7);
+}
+
+.btn-green{
+  background:linear-gradient(135deg,#059669,#22c55e);
+}
+
+.btn-dark{
+  background:#111827;
+  border:1px solid rgba(148,163,184,.15);
+}
+
+.btn-danger{
+  background:rgba(239,68,68,.12);
+  border:1px solid rgba(239,68,68,.3);
+  color:#fca5a5;
+}
+
+.output{
+  margin-top:18px;
+  border:1px solid rgba(148,163,184,.13);
+  border-radius:18px;
+  padding:18px;
+  min-height:120px;
+  background:rgba(2,6,23,.7);
+  line-height:1.7;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+
+.chat-log{
+  max-height:480px;
+  overflow-y:auto;
+  display:flex;
   flex-direction:column;
-  gap:13px;
+  gap:12px;
+  margin-top:18px;
+}
+
+.msg{
+  padding:14px 16px;
+  border-radius:18px;
+  line-height:1.65;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+
+.msg.user{
+  align-self:flex-end;
+  max-width:85%;
+  background:linear-gradient(135deg,#075985,#1d4ed8);
+}
+
+.msg.ai{
+  align-self:flex-start;
+  max-width:90%;
+  background:#0f172a;
+  border:1px solid rgba(34,211,238,.12);
+}
+
+.voice-wrap{
+  text-align:center;
+  padding:25px 10px;
+}
+
+.voice-orb{
+  width:170px;
+  height:170px;
+  margin:10px auto 25px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:58px;
+  background:
+    radial-gradient(circle at 35% 30%,#67e8f9,#2563eb 45%,#7c3aed 75%,#020617);
+  box-shadow:
+    0 0 35px rgba(34,211,238,.25),
+    0 0 90px rgba(124,58,237,.16);
+  transition:.3s;
+}
+
+.voice-orb.listening{
+  animation:pulseVoice 1.15s infinite;
+  box-shadow:
+    0 0 40px rgba(34,211,238,.65),
+    0 0 110px rgba(59,130,246,.3);
+}
+
+@keyframes pulseVoice{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.09)}
+}
+
+.voice-status{
+  color:#67e8f9;
+  font-weight:800;
+  margin-bottom:12px;
+}
+
+.transcript{
+  text-align:left;
+  min-height:150px;
+  padding:18px;
+  border-radius:18px;
+  background:#050b15;
+  border:1px solid rgba(34,211,238,.13);
+  color:#cbd5e1;
+  white-space:pre-wrap;
+  line-height:1.7;
+}
+
+.image-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
 }
 
 .field{
@@ -388,165 +382,97 @@ textarea:focus{
 .field label{
   color:#94a3b8;
   font-size:12px;
+  font-weight:800;
 }
 
-.field input,
-.field select{
-  width:100%;
-  border-radius:13px;
-  padding:12px;
-  background:#020617;
-  border:1px solid rgba(148,163,184,.15);
-  color:white;
-  outline:none;
+.full{
+  grid-column:1/-1;
 }
 
-.field input:focus,
-.field select:focus{
-  border-color:#22d3ee;
-}
-
-.prompt-main{
-  min-height:125px;
-}
-
-.prompt-main::placeholder{
-  color:#64748b;
-}
-
-.prompt-tools{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-
-.generate{
-  width:100%;
-  margin-top:5px;
-  padding:15px;
-  font-size:15px;
-}
-
-.image-stage{
-  min-height:600px;
+.image-result{
+  margin-top:18px;
   border-radius:20px;
-  border:1px dashed rgba(34,211,238,.18);
-  background:
-    radial-gradient(circle at center,rgba(14,116,144,.08),transparent 50%),
-    #020617;
-  display:grid;
-  place-items:center;
-  padding:20px;
   overflow:hidden;
+  border:1px solid rgba(168,85,247,.22);
+  background:#030712;
 }
 
-.image-placeholder{
-  text-align:center;
-  color:#64748b;
-}
-
-.image-placeholder .big{
-  font-size:70px;
-  margin-bottom:15px;
-}
-
-.generated-image{
+.image-result img{
+  display:block;
   width:100%;
-  max-height:700px;
+  max-height:720px;
   object-fit:contain;
-  border-radius:16px;
-  box-shadow:0 0 50px rgba(0,229,255,.10);
+  background:#020617;
 }
 
-.image-actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  justify-content:center;
-  margin-top:15px;
+.image-info{
+  padding:15px;
+  color:#94a3b8;
+  font-size:13px;
 }
-
-/* HISTORY */
 
 .history{
-  margin-top:20px;
-}
-
-.history h3{
-  font-size:15px;
-  margin-bottom:12px;
-}
-
-.history-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+  grid-template-columns:repeat(3,1fr);
   gap:12px;
+  margin-top:18px;
 }
 
-.history-item{
-  border:1px solid rgba(148,163,184,.13);
-  background:#020617;
+.history-card{
+  border:1px solid rgba(148,163,184,.12);
+  background:#070e1a;
   border-radius:15px;
   overflow:hidden;
   cursor:pointer;
-  transition:.25s;
 }
 
-.history-item:hover{
-  transform:translateY(-3px);
-  border-color:#22d3ee;
-}
-
-.history-item img{
+.history-card img{
   width:100%;
-  aspect-ratio:1;
+  aspect-ratio:16/10;
   object-fit:cover;
   display:block;
 }
 
-.history-item p{
-  padding:9px;
-  font-size:10px;
+.history-card p{
+  padding:10px;
+  font-size:11px;
   color:#94a3b8;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+  line-height:1.4;
 }
-
-/* LOADING */
 
 .loading{
-  display:none;
-  text-align:center;
-  padding:25px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#67e8f9;
 }
 
-.loading.show{
-  display:block;
-}
-
-.loader{
-  width:45px;
-  height:45px;
-  margin:auto;
-  border:3px solid rgba(148,163,184,.15);
-  border-top-color:#22d3ee;
-  border-right-color:#8b5cf6;
+.spinner{
+  width:16px;
+  height:16px;
+  border:2px solid rgba(103,232,249,.2);
+  border-top-color:#67e8f9;
   border-radius:50%;
-  animation:spin 1s linear infinite;
+  animation:spin .7s linear infinite;
 }
 
 @keyframes spin{
   to{transform:rotate(360deg)}
 }
 
-.loading p{
-  margin-top:12px;
-  color:#94a3b8;
+footer{
+  text-align:center;
+  color:#64748b;
+  padding:20px 0 45px;
   font-size:12px;
 }
 
-/* TOAST */
+.small{
+  color:#64748b;
+  font-size:11px;
+  margin-top:8px;
+  line-height:1.5;
+}
 
 .toast{
   position:fixed;
@@ -554,14 +480,15 @@ textarea:focus{
   bottom:20px;
   z-index:100;
   max-width:360px;
-  padding:14px 17px;
+  padding:13px 16px;
   border-radius:14px;
   background:#0f172a;
   border:1px solid rgba(34,211,238,.25);
-  box-shadow:0 15px 40px rgba(0,0,0,.4);
-  transform:translateY(130px);
+  box-shadow:0 10px 35px rgba(0,0,0,.4);
+  transform:translateY(30px);
   opacity:0;
-  transition:.3s;
+  pointer-events:none;
+  transition:.25s;
 }
 
 .toast.show{
@@ -569,85 +496,53 @@ textarea:focus{
   opacity:1;
 }
 
-/* FOOTER */
-
-.footer{
-  text-align:center;
-  color:#475569;
-  font-size:11px;
-  padding:30px 0 0;
-}
-
-/* MOBILE */
-
-@media(max-width:850px){
-  .header{
-    position:relative;
-    top:0;
-  }
-
-  .image-layout{
-    grid-template-columns:1fr;
-  }
-
-  .chat-input{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .chat-input textarea{
-    grid-column:1/-1;
-  }
-
-  .image-stage{
-    min-height:400px;
-  }
-}
-
-@media(max-width:550px){
-  .app{
-    width:95%;
-  }
-
-  .panel{
-    padding:13px;
-    border-radius:18px;
-  }
-
-  .hero{
-    padding-top:35px;
-  }
-
-  .hero h2{
-    font-size:40px;
-  }
-
-  .brand h1{
-    font-size:16px;
-  }
-
-  .brand p{
-    font-size:10px;
+@media(max-width:700px){
+  .nav{
+    min-height:62px;
   }
 
   .status{
     display:none;
   }
 
-  .mode{
-    flex:1;
-    padding:11px 8px;
-    font-size:12px;
+  .hero{
+    padding-top:42px;
   }
 
-  .chat-box{
-    height:450px;
+  .hero h1{
+    letter-spacing:-2px;
   }
 
-  .message{
-    max-width:92%;
+  .dashboard{
+    padding:12px;
+    border-radius:20px;
   }
 
-  .prompt-tools{
+  .modes{
+    grid-template-columns:1fr;
+  }
+
+  .image-grid{
+    grid-template-columns:1fr;
+  }
+
+  .history{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .voice-orb{
+    width:145px;
+    height:145px;
+    font-size:48px;
+  }
+
+  .controls .btn{
+    flex:1 1 140px;
+  }
+}
+
+@media(max-width:430px){
+  .history{
     grid-template-columns:1fr;
   }
 }
@@ -656,282 +551,361 @@ textarea:focus{
 
 <body>
 
-<div class="app">
-
-<header class="header">
-  <div class="brand">
-    <div class="logo">AI</div>
-    <div>
-      <h1>ALFA AI</h1>
-      <p>MAX ULTRA • CHAT • VOICE • IMAGE</p>
+<header>
+  <div class="container nav">
+    <div class="logo">
+      <div class="logo-icon">🤖</div>
+      <div>
+        <div>ALFA AI</div>
+        <div style="font-size:10px;color:#64748b;font-weight:600">
+          MAX ULTRA
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="status">
-    <span class="dot"></span>
-    SYSTEM ONLINE
+    <div class="status">
+      <span class="dot"></span>
+      SYSTEM ONLINE
+    </div>
   </div>
 </header>
 
+<main class="container">
+
 <section class="hero">
-  <h2>ALFA AI V5.3</h2>
+  <div class="badge">⚡ ALFA AI V5.3.1 • VOICE FRIENDLY FIX</div>
+
+  <h1>ALFA AI</h1>
+
   <p>
-    Futuristic AI Assistant dengan Chat, Voice Chat dan
-    AI Image Generator PRO dalam satu dashboard.
+    Teman AI digital yang bisa diajak ngobrol, bicara,
+    dan membuat gambar dari ide kamu.
+    Lebih santai, lebih natural, dan nggak kaku seperti robot.
   </p>
 </section>
 
-<div class="modes">
-  <button class="mode active" data-mode="chat">💬 AI CHAT</button>
-  <button class="mode" data-mode="voice">🎙️ VOICE AI</button>
-  <button class="mode" data-mode="image">🎨 IMAGE PRO</button>
-</div>
+<section class="dashboard">
 
-<!-- ================= CHAT ================= -->
+  <div class="modes">
+    <button class="mode active" data-mode="chat">
+      💬 AI CHAT
+    </button>
 
-<section id="chatPanel" class="panel mode-panel active">
+    <button class="mode" data-mode="voice">
+      🎙️ VOICE CHAT
+    </button>
 
-  <div id="chatBox" class="chat-box">
-
-    <div class="message ai">
-      <span class="msg-label">ALFA AI</span>
-      Halo bosss 👋<br>
-      ALFA AI V5.3 MAX ULTRA siap membantu.
-    </div>
-
+    <button class="mode" data-mode="image">
+      🎨 IMAGE PRO
+    </button>
   </div>
 
-  <div class="loading" id="chatLoading">
-    <div class="loader"></div>
-    <p>ALFA AI sedang berpikir...</p>
-  </div>
+  <!-- ================= CHAT ================= -->
 
-  <div class="chat-input">
+  <div class="panel active" id="chatPanel">
+
     <textarea
       id="chatInput"
-      placeholder="Tulis pertanyaan untuk ALFA AI..."
+      placeholder="Tulis apa saja ke ALFA AI... contoh: bantu saya membuat website UMKM"
     ></textarea>
 
-    <button class="btn secondary" id="clearChat">
-      🗑️ Clear
-    </button>
+    <div class="controls">
 
-    <button class="btn" id="sendChat">
-      🚀 Kirim
-    </button>
+      <button class="btn btn-primary" id="sendChat">
+        🚀 KIRIM
+      </button>
+
+      <button class="btn btn-dark" id="clearChat">
+        🗑️ CLEAR
+      </button>
+
+    </div>
+
+    <div class="chat-log" id="chatLog"></div>
+
   </div>
 
-</section>
+  <!-- ================= VOICE ================= -->
 
-<!-- ================= VOICE ================= -->
+  <div class="panel" id="voicePanel">
 
-<section id="voicePanel" class="panel mode-panel">
-
-  <div class="voice-card">
-
-    <div>
+    <div class="voice-wrap">
 
       <div class="voice-orb" id="voiceOrb">
-        <div class="mic-icon">🎙️</div>
+        🎙️
       </div>
 
       <div class="voice-status" id="voiceStatus">
-        Tekan tombol untuk mulai Voice Chat
+        Siap ngobrol, bosss 😎
+      </div>
+
+      <div class="small">
+        Klik tombol lalu bicara dengan bahasa Indonesia.
+        ALFA AI akan mendengarkan, menjawab, lalu membacakan jawabannya.
+      </div>
+
+      <div class="controls" style="justify-content:center;margin:20px 0">
+
+        <button
+          class="btn btn-primary"
+          id="voiceBtn"
+        >
+          🎙️ MULAI VOICE
+        </button>
+
+        <button
+          class="btn btn-danger"
+          id="stopSpeech"
+        >
+          🔇 STOP SUARA
+        </button>
+
       </div>
 
       <div class="transcript" id="transcript">
         Belum ada percakapan suara.
       </div>
 
-      <br>
-
-      <button class="btn" id="voiceBtn">
-        🎙️ MULAI VOICE
-      </button>
-
-      <button class="btn secondary" id="stopSpeech">
-        🔇 Stop Suara
-      </button>
-
     </div>
 
   </div>
 
-</section>
+  <!-- ================= IMAGE ================= -->
 
-<!-- ================= IMAGE ================= -->
+  <div class="panel" id="imagePanel">
 
-<section id="imagePanel" class="panel mode-panel">
+    <div class="image-grid">
 
-  <div class="image-layout">
+      <div class="field full">
+        <label>DESKRIPSI GAMBAR</label>
 
-    <div class="controls">
-
-      <div class="field">
-        <label>🎯 PROMPT UTAMA</label>
         <textarea
           id="imagePrompt"
-          class="prompt-main"
-          placeholder="Contoh: seorang pria berdiri di kota futuristik Indonesia pada malam hari..."
+          placeholder="Contoh: seorang pemuda Indonesia sedang berdiri di depan komputer di ruangan futuristik, cinematic..."
         ></textarea>
       </div>
 
-      <div class="prompt-tools">
-
-        <div class="field">
-          <label>🎨 STYLE</label>
-          <select id="styleSelect">
-            <option value="cinematic">Cinematic</option>
-            <option value="photorealistic">Photorealistic</option>
-            <option value="anime">Anime</option>
-            <option value="3d">3D Render</option>
-            <option value="digital art">Digital Art</option>
-            <option value="fantasy">Fantasy</option>
-            <option value="cyberpunk">Cyberpunk</option>
-            <option value="product photography">Product Photography</option>
-            <option value="poster design">Poster Design</option>
-            <option value="logo design">Logo Design</option>
-            <option value="architecture">Architecture Visualization</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label>📐 KOMPOSISI</label>
-          <select id="ratioSelect">
-            <option value="square 1:1 composition">Square 1:1</option>
-            <option value="portrait 4:5 composition">Portrait 4:5</option>
-            <option value="vertical 9:16 composition">Vertical 9:16</option>
-            <option value="landscape 16:9 composition">Landscape 16:9</option>
-            <option value="wide cinematic 21:9 composition">Wide 21:9</option>
-          </select>
-        </div>
-
-      </div>
-
       <div class="field">
-        <label>💡 LIGHTING</label>
-        <select id="lightingSelect">
-          <option value="professional cinematic lighting">Cinematic</option>
-          <option value="soft natural lighting">Soft Natural</option>
-          <option value="dramatic studio lighting">Dramatic Studio</option>
-          <option value="neon lighting">Neon</option>
-          <option value="golden hour lighting">Golden Hour</option>
-          <option value="moody low key lighting">Moody</option>
-          <option value="bright commercial lighting">Commercial</option>
+        <label>STYLE</label>
+
+        <select id="style">
+          <option value="cinematic photorealistic">
+            Cinematic Photorealistic
+          </option>
+
+          <option value="ultra realistic photography">
+            Ultra Realistic
+          </option>
+
+          <option value="futuristic cyberpunk">
+            Futuristic Cyberpunk
+          </option>
+
+          <option value="premium advertising photography">
+            Premium Advertising
+          </option>
+
+          <option value="3D realistic render">
+            3D Realistic
+          </option>
+
+          <option value="digital art">
+            Digital Art
+          </option>
+
+          <option value="anime cinematic">
+            Anime Cinematic
+          </option>
+
+          <option value="fantasy concept art">
+            Fantasy
+          </option>
         </select>
       </div>
 
       <div class="field">
-        <label>📷 CAMERA</label>
-        <select id="cameraSelect">
-          <option value="high-end professional camera, 50mm lens">50mm Professional</option>
-          <option value="85mm portrait lens, shallow depth of field">85mm Portrait</option>
-          <option value="24mm wide angle lens">24mm Wide Angle</option>
-          <option value="35mm cinematic lens">35mm Cinematic</option>
-          <option value="macro lens, extreme detail">Macro</option>
-          <option value="aerial drone photography">Aerial Drone</option>
+        <label>KOMPOSISI</label>
+
+        <select id="composition">
+          <option value="professional composition">
+            Professional
+          </option>
+
+          <option value="wide cinematic composition">
+            Wide Cinematic
+          </option>
+
+          <option value="close-up portrait composition">
+            Close Up
+          </option>
+
+          <option value="dramatic low angle composition">
+            Low Angle
+          </option>
+
+          <option value="symmetrical centered composition">
+            Symmetrical
+          </option>
+
+          <option value="dynamic action composition">
+            Dynamic
+          </option>
         </select>
       </div>
 
       <div class="field">
-        <label>✨ DETAIL LEVEL</label>
-        <select id="detailSelect">
-          <option value="ultra detailed">Ultra Detailed</option>
-          <option value="highly detailed">Highly Detailed</option>
-          <option value="extreme fine detail">Extreme Fine Detail</option>
-          <option value="clean minimal detail">Clean Minimal</option>
+        <label>LIGHTING</label>
+
+        <select id="lighting">
+          <option value="cinematic lighting">
+            Cinematic
+          </option>
+
+          <option value="soft studio lighting">
+            Soft Studio
+          </option>
+
+          <option value="dramatic neon lighting">
+            Neon Dramatic
+          </option>
+
+          <option value="golden hour lighting">
+            Golden Hour
+          </option>
+
+          <option value="volumetric lighting">
+            Volumetric
+          </option>
+
+          <option value="dark moody lighting">
+            Dark Moody
+          </option>
         </select>
       </div>
 
       <div class="field">
-        <label>🚫 NEGATIVE PROMPT</label>
+        <label>CAMERA</label>
+
+        <select id="camera">
+          <option value="35mm professional camera">
+            35mm
+          </option>
+
+          <option value="85mm portrait lens">
+            85mm Portrait
+          </option>
+
+          <option value="wide angle lens">
+            Wide Angle
+          </option>
+
+          <option value="telephoto lens">
+            Telephoto
+          </option>
+
+          <option value="professional DSLR camera">
+            DSLR
+          </option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>DETAIL</label>
+
+        <select id="detail">
+          <option value="high detail, sharp focus, realistic textures">
+            High Detail
+          </option>
+
+          <option value="ultra detailed, extremely sharp, 8k quality">
+            Ultra Detail
+          </option>
+
+          <option value="clean premium commercial quality">
+            Commercial
+          </option>
+
+          <option value="natural skin texture and realistic details">
+            Natural
+          </option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>NEGATIVE PROMPT</label>
+
         <input
           id="negativePrompt"
-          value="blurry, low quality, distorted, deformed, bad anatomy, duplicate objects, extra fingers, extra limbs, text artifacts, watermark"
+          value="blurry, low quality, distorted face, bad anatomy, extra fingers, duplicate objects, watermark, text artifacts"
         >
       </div>
 
-      <button class="btn generate" id="generateImage">
-        ⚡ GENERATE IMAGE ULTRA
+    </div>
+
+    <div class="controls">
+
+      <button
+        class="btn btn-purple"
+        id="generateImage"
+      >
+        🎨 GENERATE IMAGE
       </button>
 
-      <button class="btn secondary" id="clearImage">
-        🗑️ Clear Workspace
+      <button
+        class="btn btn-dark"
+        id="clearImage"
+      >
+        🗑️ CLEAR
       </button>
 
     </div>
 
-    <div>
-
-      <div class="image-stage" id="imageStage">
-
-        <div class="image-placeholder" id="imagePlaceholder">
-          <div class="big">🎨</div>
-          <h3>IMAGE PRO READY</h3>
-          <p>
-            Tulis prompt lalu generate gambar dengan
-            ALFA AI MAX ULTRA.
-          </p>
-        </div>
-
-        <img
-          id="generatedImage"
-          class="generated-image"
-          alt="ALFA AI Generated Image"
-          hidden
-        >
-
-      </div>
-
-      <div class="loading" id="imageLoading">
-        <div class="loader"></div>
-        <p>ALFA AI sedang membuat gambar...</p>
-      </div>
-
-      <div class="image-actions" id="imageActions" hidden>
-        <button class="btn" id="downloadImage">
-          💾 Download
-        </button>
-
-        <button class="btn secondary" id="copyPrompt">
-          📋 Copy Prompt
-        </button>
-
-        <button class="btn secondary" id="regenerateImage">
-          🔄 Regenerate
-        </button>
-      </div>
-
+    <div class="output" id="imageStatus">
+      💡 Tulis ide gambar lalu tekan Generate Image.
     </div>
 
-  </div>
+    <div id="imageResult"></div>
 
-  <div class="history">
+    <div
+      style="
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:10px;
+        margin-top:22px;
+      "
+    >
+      <h3>🖼️ IMAGE HISTORY</h3>
 
-    <h3>🖼️ IMAGE HISTORY</h3>
-
-    <div class="history-grid" id="historyGrid">
-      <div style="color:#475569;font-size:12px">
-        Belum ada history gambar.
-      </div>
+      <button
+        class="btn btn-dark"
+        id="clearHistory"
+        style="padding:8px 12px;font-size:11px"
+      >
+        CLEAR HISTORY
+      </button>
     </div>
+
+    <div class="history" id="history"></div>
 
   </div>
 
 </section>
 
-<div class="footer">
-  ALFA AI V5.3 MAX ULTRA • Powered by ALFA AI
-</div>
+</main>
 
-</div>
+<footer>
+  ALFA AI V5.3.1 • Chat • Voice • Image PRO
+  <br>
+  Built with ❤️ for ALFA AI
+</footer>
 
 <div class="toast" id="toast"></div>
 
 <script>
 /* =========================================================
-   ALFA AI V5.3 MAX ULTRA
-   CHAT + VOICE + IMAGE PRO
+   ALFA AI V5.3.1
+   VOICE FRIENDLY FIX
    ========================================================= */
 
 const WORKER_URL =
@@ -944,14 +918,16 @@ const IMAGE_ENDPOINT =
   WORKER_URL + "/image";
 
 
-/* =========================================================
+/* =========================
    HELPERS
-   ========================================================= */
+   ========================= */
 
 const $ = id => document.getElementById(id);
 
 function toast(message){
+
   const el = $("toast");
+
   el.textContent = message;
   el.classList.add("show");
 
@@ -963,1273 +939,22 @@ function toast(message){
     },3000);
 }
 
-function scrollChat(){
-  const box = $("chatBox");
-  box.scrollTop = box.scrollHeight;
+
+function escapeHTML(text){
+
+  return String(text)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 }
 
-
-/* =========================================================
-   MODE SWITCH
-   ========================================================= */
-
-document.querySelectorAll(".mode").forEach(button => {
-
-  button.addEventListener("click",() => {
-
-    document.querySelectorAll(".mode")
-      .forEach(x => x.classList.remove("active"));
-
-    document.querySelectorAll(".mode-panel")
-      .forEach(x => x.classList.remove("active"));
-
-    button.classList.add("active");
-
-    const mode = button.dataset.mode;
-
-    if(mode === "chat"){
-      $("chatPanel").classList.add("active");
-    }
-
-    if(mode === "voice"){
-      $("voicePanel").classList.add("active");
-    }
-
-    if(mode === "image"){
-      $("imagePanel").classList.add("active");
-    }
-
-  });
-
-});
-
-
-/* =========================================================
-   CHAT RESPONSE EXTRACTOR
-   ========================================================= */
-
-function extractAIResponse(data){
-
-  if(data == null){
-    return "";
-  }
-
-  if(typeof data === "string"){
-    return data;
-  }
-
-  const candidates = [
-    data.reply,
-    data.response,
-    data.message,
-    data.result,
-    data.text,
-    data.answer,
-    data.output_text,
-
-    data.data?.reply,
-    data.data?.response,
-    data.data?.message,
-    data.data?.text,
-    data.data?.answer,
-
-    data.result?.reply,
-    data.result?.response,
-    data.result?.message,
-    data.result?.text,
-
-    data.output?.text,
-    data.output?.content,
-
-    data.choices?.[0]?.message?.content,
-    data.choices?.[0]?.text,
-    data.choices?.[0]?.message?.text
-  ];
-
-  for(const item of candidates){
-
-    if(typeof item === "string" && item.trim()){
-      return item.trim();
-    }
-
-  }
-
-  try{
-    return JSON.stringify(data,null,2);
-  }catch{
-    return String(data);
-  }
-
-}
-
-
-/* =========================================================
-   CHAT
-   ========================================================= */
-
-async function sendChat(){
-
-  const input = $("chatInput");
-  const prompt = input.value.trim();
-
-  if(!prompt){
-    toast("Tulis pesan dulu bosss.");
-    return;
-  }
-
-  addMessage("user",prompt);
-
-  input.value = "";
-
-  $("chatLoading").classList.add("show");
-  scrollChat();
-
-  try{
-
-    const response =
-      await fetchWithTimeout(
-        CHAT_ENDPOINT,
-        {
-          method:"POST",
-          headers:{
-            "Content-Type":"application/json"
-          },
-          body:JSON.stringify({
-            prompt:prompt
-          })
-        },
-        45000
-      );
-
-    const text =
-      await response.text();
-
-    let data;
-
-    try{
-      data = JSON.parse(text);
-    }catch{
-      data = text;
-    }
-
-    if(!response.ok){
-      throw new Error(
-        typeof data === "string"
-          ? data
-          : extractAIResponse(data)
-      );
-    }
-
-    const reply =
-      extractAIResponse(data);
-
-    if(!reply){
-      throw new Error(
-        "Response AI kosong."
-      );
-    }
-
-    addMessage("ai",reply);
-
-  }catch(error){
-
-    addMessage(
-      "ai",
-      "⚠️ ALFA AI mengalami kendala:\n" +
-      error.message
-    );
-
-  }finally{
-
-    $("chatLoading").classList.remove("show");
-
-    scrollChat();
-
-  }
-
-}
-
-
-function addMessage(type,text){
-
-  const div =
-    document.createElement("div");
-
-  div.className =
-    "message " + type;
-
-  const label =
-    document.createElement("span");
-
-  label.className =
-    "msg-label";
-
-  label.textContent =
-    type === "user"
-      ? "YOU"
-      : "ALFA AI";
-
-  const content =
-    document.createElement("div");
-
-  content.textContent = text;
-
-  div.appendChild(label);
-  div.appendChild(content);
-
-  $("chatBox").appendChild(div);
-
-}
-
-
-/* =========================================================
-   CHAT EVENTS
-   ========================================================= */
-
-$("sendChat").addEventListener(
-  "click",
-  sendChat
-);
-
-$("chatInput").addEventListener(
-  "keydown",
-  event => {
-
-    if(event.key === "Enter" && !event.shiftKey){
-
-      event.preventDefault();
-
-      sendChat();
-
-    }
-
-  }
-);
-
-$("clearChat").addEventListener(
-  "click",
-  () => {
-
-    $("chatBox").innerHTML = `
-      <div class="message ai">
-        <span class="msg-label">ALFA AI</span>
-        Chat dibersihkan. Siap menerima pertanyaan baru bosss 🚀
-      </div>
-    `;
-
-  }
-);
-
-
-/* =========================================================
-   VOICE AI
-   ========================================================= */
-
-let recognition = null;
-let listening = false;
-
-const SpeechRecognition =
-  window.SpeechRecognition ||
-  window.webkitSpeechRecognition;
-
-if(SpeechRecognition){
-
-  recognition =
-    new SpeechRecognition();
-
-  recognition.lang = "id-ID";
-
-  recognition.continuous = false;
-
-  recognition.interimResults = true;
-
-  recognition.onstart = () => {
-
-    listening = true;
-
-    $("voiceBtn").textContent =
-      "⏹️ STOP LISTENING";
-
-    $("voiceBtn").classList.add(
-      "voice-active"
-    );
-
-    $("voiceOrb").classList.add(
-      "listening"
-    );
-
-    $("voiceStatus").textContent =
-      "Mendengarkan suara bosss...";
-
-  };
-
-
-  recognition.onresult =
-    event => {
-
-      let transcript = "";
-
-      for(
-        let i = event.resultIndex;
-        i < event.results.length;
-        i++
-      ){
-
-        transcript +=
-          event.results[i][0].transcript;
-
-      }
-
-      $("transcript").textContent =
-        transcript;
-
-    };
-
-
-  recognition.onerror =
-    event => {
-
-      $("voiceStatus").textContent =
-        "Voice error: " +
-        event.error;
-
-      stopRecognition();
-
-    };
-
-
-  recognition.onend = () => {
-
-    if(listening){
-
-      const text =
-        $("transcript").textContent.trim();
-
-      stopRecognition();
-
-      if(
-        text &&
-        text !==
-        "Belum ada percakapan suara."
-      ){
-
-        voiceAskAI(text);
-
-      }
-
-    }
-
-  };
-
-}else{
-
-  $("voiceStatus").textContent =
-    "Browser ini belum mendukung Speech Recognition.";
-
-}
-
-
-function stopRecognition(){
-
-  listening = false;
-
-  $("voiceBtn").textContent =
-    "🎙️ MULAI VOICE";
-
-  $("voiceBtn").classList.remove(
-    "voice-active"
-  );
-
-  $("voiceOrb").classList.remove(
-    "listening"
-  );
-
-}
-
-
-$("voiceBtn").addEventListener(
-  "click",
-  () => {
-
-    if(!recognition){
-
-      toast(
-        "Gunakan Chrome/Edge untuk Voice AI."
-      );
-
-      return;
-
-    }
-
-    if(listening){
-
-      recognition.stop();
-
-      return;
-
-    }
-
-    $("transcript").textContent =
-      "Mendengarkan...";
-
-    recognition.start();
-
-  }
-);
-
-
-$("stopSpeech").addEventListener(
-  "click",
-  () => {
-
-    window.speechSynthesis.cancel();
-
-    $("voiceStatus").textContent =
-      "Suara dihentikan.";
-
-  }
-);
-
-
-/* =========================================================
-   VOICE -> AI -> SPEECH
-   ========================================================= */
-
-async function voiceAskAI(text){
-
-  $("voiceStatus").textContent =
-    "ALFA AI sedang berpikir...";
-
-  try{
-
-    const response =
-      await fetchWithTimeout(
-        CHAT_ENDPOINT,
-        {
-          method:"POST",
-          headers:{
-            "Content-Type":"application/json"
-          },
-          body:JSON.stringify({
-            prompt:text
-          })
-        },
-        45000
-      );
-
-    const raw =
-      await response.text();
-
-    let data;
-
-    try{
-      data = JSON.parse(raw);
-    }catch{
-      data = raw;
-    }
-
-    if(!response.ok){
-      throw new Error(
-        extractAIResponse(data)
-      );
-    }
-
-    const reply =
-      extractAIResponse(data);
-
-    $("transcript").textContent =
-      "👤 " + text +
-      "\n\n🤖 " + reply;
-
-    $("voiceStatus").textContent =
-      "ALFA AI menjawab...";
-
-    speak(reply);
-
-  }catch(error){
-
-    $("voiceStatus").textContent =
-      "Voice AI error: " +
-      error.message;
-
-  }
-
-}
-
-
-function speak(text){
-
-  window.speechSynthesis.cancel();
-
-  const utterance =
-    new SpeechSynthesisUtterance(text);
-
-  utterance.lang = "id-ID";
-
-  utterance.rate = 1;
-
-  utterance.pitch = 1;
-
-  utterance.volume = 1;
-
-  utterance.onend = () => {
-
-    $("voiceStatus").textContent =
-      "Selesai. Tekan tombol untuk bicara lagi.";
-
-  };
-
-  window.speechSynthesis.speak(
-    utterance
-  );
-
-}
-
-
-/* =========================================================
-   IMAGE PROMPT ENGINE
-   ========================================================= */
-
-function buildPrompt(){
-
-  const base =
-    $("imagePrompt").value.trim();
-
-  const style =
-    $("styleSelect").value;
-
-  const ratio =
-    $("ratioSelect").value;
-
-  const lighting =
-    $("lightingSelect").value;
-
-  const camera =
-    $("cameraSelect").value;
-
-  const detail =
-    $("detailSelect").value;
-
-  const negative =
-    $("negativePrompt").value.trim();
-
-  if(!base){
-    throw new Error(
-      "Prompt gambar masih kosong."
-    );
-  }
-
-  return `
-MASTER IMAGE GENERATION PROMPT
-
-SUBJECT AND MAIN IDEA:
-${base}
-
-VISUAL STYLE:
-${style}
-
-COMPOSITION:
-${ratio}
-
-LIGHTING:
-${lighting}
-
-CAMERA AND OPTICS:
-${camera}
-
-DETAIL QUALITY:
-${detail}
-
-SUBJECT FIDELITY:
-Keep the main subject clearly recognizable and faithful
-to the user's requested description. Preserve important
-objects, clothing, colors, facial characteristics,
-body proportions, environment and spatial relationships.
-
-COMPOSITION QUALITY:
-Create a deliberate professional composition.
-Clear foreground, middle ground and background where appropriate.
-Strong visual hierarchy, balanced framing and natural perspective.
-
-MATERIAL AND TEXTURE:
-Highly realistic surface materials, refined textures,
-natural skin or object texture, physically plausible reflections,
-shadows and depth.
-
-IMAGE QUALITY:
-Ultra high quality, crisp details, professional visual production,
-high dynamic range, realistic depth, clean edges,
-natural contrast, coherent lighting, polished final image.
-
-CINEMATIC FINISH:
-Professional color grading, atmospheric depth,
-subtle volumetric lighting where appropriate,
-beautiful highlights and controlled shadows.
-
-IMPORTANT:
-Do not replace the requested subject with unrelated objects.
-Do not change the core meaning of the prompt.
-Prioritize semantic accuracy before decorative effects.
-
-AVOID:
-${negative || "blurry, low quality, distorted, deformed, duplicate objects, artifacts"}
-
-Generate one coherent finished image.
-`.trim();
-
-}
-
-
-/* =========================================================
-   IMAGE RESPONSE PARSER
-   ========================================================= */
-
-function base64ToBlob(
-  base64,
-  mime="image/png"
-){
-
-  const binary =
-    atob(base64);
-
-  const bytes =
-    new Uint8Array(
-      binary.length
-    );
-
-  for(
-    let i=0;
-    i<binary.length;
-    i++
-  ){
-
-    bytes[i] =
-      binary.charCodeAt(i);
-
-  }
-
-  return new Blob(
-    [bytes],
-    {type:mime}
-  );
-
-}
-
-
-async function imageFromResponse(
-  response
-){
-
-  const contentType =
-    (
-      response.headers.get(
-        "content-type"
-      ) || ""
-    ).toLowerCase();
-
-  /* DIRECT IMAGE */
-
-  if(
-    contentType.includes(
-      "image/"
-    )
-  ){
-
-    const blob =
-      await response.blob();
-
-    return URL.createObjectURL(blob);
-
-  }
-
-  /* JSON */
-
-  const raw =
-    await response.text();
-
-  let data;
-
-  try{
-    data = JSON.parse(raw);
-  }catch{
-
-    throw new Error(
-      "Response image bukan JSON/image yang dikenali."
-    );
-
-  }
-
-  /* common URL fields */
-
-  const urlCandidates = [
-    data.url,
-    data.image,
-    data.image_url,
-    data.imageUrl,
-    data.output,
-    data.result?.url,
-    data.result?.image,
-    data.data?.url,
-    data.data?.image
-  ];
-
-  for(
-    const url of urlCandidates
-  ){
-
-    if(
-      typeof url === "string" &&
-      (
-        url.startsWith("http") ||
-        url.startsWith("data:image/")
-      )
-    ){
-
-      return url;
-
-    }
-
-  }
-
-  /* base64 fields */
-
-  const base64Candidates = [
-    data.base64,
-    data.b64_json,
-    data.image_base64,
-    data.imageBase64,
-    data.result?.base64,
-    data.result?.b64_json,
-    data.data?.base64,
-    data.data?.b64_json
-  ];
-
-  for(
-    const value of base64Candidates
-  ){
-
-    if(
-      typeof value === "string" &&
-      value.length > 100
-    ){
-
-      if(
-        value.startsWith(
-          "data:image/"
-        )
-      ){
-
-        return value;
-
-      }
-
-      return URL.createObjectURL(
-        base64ToBlob(value)
-      );
-
-    }
-
-  }
-
-  /* ARRAY OUTPUT */
-
-  if(
-    Array.isArray(data.images)
-  ){
-
-    const first =
-      data.images[0];
-
-    if(
-      typeof first === "string"
-    ){
-
-      if(
-        first.startsWith(
-          "data:image/"
-        ) ||
-        first.startsWith("http")
-      ){
-
-        return first;
-
-      }
-
-      return URL.createObjectURL(
-        base64ToBlob(first)
-      );
-
-    }
-
-  }
-
-  throw new Error(
-    "Format response image belum dikenali.\n\n" +
-    JSON.stringify(
-      data,
-      null,
-      2
-    ).slice(0,2000)
-  );
-
-}
-
-
-/* =========================================================
-   IMAGE GENERATOR
-   ========================================================= */
-
-let currentImageURL = "";
-let currentPrompt = "";
-
-
-async function generateImage(){
-
-  try{
-
-    const prompt =
-      buildPrompt();
-
-    currentPrompt =
-      prompt;
-
-    $("imageLoading")
-      .classList.add("show");
-
-    $("imageActions")
-      .hidden = true;
-
-    $("generatedImage")
-      .hidden = true;
-
-    $("imagePlaceholder")
-      .hidden = true;
-
-    const response =
-      await fetchWithTimeout(
-        IMAGE_ENDPOINT,
-        {
-          method:"POST",
-          headers:{
-            "Content-Type":"application/json"
-          },
-          body:JSON.stringify({
-            prompt:prompt
-          })
-        },
-        120000
-      );
-
-    if(!response.ok){
-
-      const errorText =
-        await response.text();
-
-      throw new Error(
-        errorText ||
-        "Image generation gagal."
-      );
-
-    }
-
-    const imageURL =
-      await imageFromResponse(
-        response
-      );
-
-    currentImageURL =
-      imageURL;
-
-    $("generatedImage").src =
-      imageURL;
-
-    $("generatedImage").hidden =
-      false;
-
-    $("imageActions").hidden =
-      false;
-
-    saveHistory(
-      imageURL,
-      $("imagePrompt").value.trim()
-    );
-
-    toast(
-      "🔥 IMAGE BERHASIL DIBUAT!"
-    );
-
-  }catch(error){
-
-    $("imagePlaceholder").hidden =
-      false;
-
-    $("imagePlaceholder").innerHTML = `
-      <div class="big">⚠️</div>
-      <h3>IMAGE ERROR</h3>
-      <p>${escapeHTML(error.message)}</p>
-    `;
-
-    toast(
-      "Image gagal dibuat."
-    );
-
-  }finally{
-
-    $("imageLoading")
-      .classList.remove("show");
-
-  }
-
-}
-
-
-/* =========================================================
-   IMAGE EVENTS
-   ========================================================= */
-
-$("generateImage")
-  .addEventListener(
-    "click",
-    generateImage
-  );
-
-
-$("imagePrompt")
-  .addEventListener(
-    "keydown",
-    event => {
-
-      if(
-        event.ctrlKey &&
-        event.key === "Enter"
-      ){
-
-        generateImage();
-
-      }
-
-    }
-  );
-
-
-$("regenerateImage")
-  .addEventListener(
-    "click",
-    () => {
-
-      if(
-        $("imagePrompt").value.trim()
-      ){
-
-        generateImage();
-
-      }else{
-
-        toast(
-          "Prompt belum tersedia."
-        );
-
-      }
-
-    }
-  );
-
-
-$("copyPrompt")
-  .addEventListener(
-    "click",
-    async () => {
-
-      if(!currentPrompt){
-
-        toast(
-          "Belum ada prompt."
-        );
-
-        return;
-
-      }
-
-      try{
-
-        await navigator.clipboard.writeText(
-          currentPrompt
-        );
-
-        toast(
-          "Prompt berhasil dicopy."
-        );
-
-      }catch{
-
-        toast(
-          "Clipboard tidak tersedia."
-        );
-
-      }
-
-    }
-  );
-
-
-$("downloadImage")
-  .addEventListener(
-    "click",
-    async () => {
-
-      if(!currentImageURL){
-
-        toast(
-          "Belum ada gambar."
-        );
-
-        return;
-
-      }
-
-      try{
-
-        const response =
-          await fetch(
-            currentImageURL
-          );
-
-        const blob =
-          await response.blob();
-
-        const url =
-          URL.createObjectURL(blob);
-
-        const a =
-          document.createElement("a");
-
-        a.href = url;
-
-        a.download =
-          "alfa-ai-v5-3-ultra-" +
-          Date.now() +
-          ".png";
-
-        document.body.appendChild(a);
-
-        a.click();
-
-        a.remove();
-
-        URL.revokeObjectURL(url);
-
-      }catch{
-
-        const a =
-          document.createElement("a");
-
-        a.href =
-          currentImageURL;
-
-        a.target = "_blank";
-
-        a.download =
-          "alfa-ai-image.png";
-
-        a.click();
-
-      }
-
-    }
-  );
-
-
-$("clearImage")
-  .addEventListener(
-    "click",
-    () => {
-
-      $("imagePrompt").value = "";
-
-      $("generatedImage").hidden =
-        true;
-
-      $("imageActions").hidden =
-        true;
-
-      $("imagePlaceholder").hidden =
-        false;
-
-      $("imagePlaceholder").innerHTML = `
-        <div class="big">🎨</div>
-        <h3>IMAGE PRO READY</h3>
-        <p>
-          Tulis prompt lalu generate gambar dengan
-          ALFA AI MAX ULTRA.
-        </p>
-      `;
-
-      currentImageURL = "";
-      currentPrompt = "";
-
-    }
-  );
-
-
-/* =========================================================
-   HISTORY
-   ========================================================= */
-
-function saveHistory(
-  image,
-  prompt
-){
-
-  try{
-
-    const old =
-      JSON.parse(
-        localStorage.getItem(
-          "alfa_ai_v53_history"
-        ) || "[]"
-      );
-
-    old.unshift({
-      image:image,
-      prompt:prompt,
-      date:Date.now()
-    });
-
-    const trimmed =
-      old.slice(0,12);
-
-    localStorage.setItem(
-      "alfa_ai_v53_history",
-      JSON.stringify(trimmed)
-    );
-
-    renderHistory();
-
-  }catch(error){
-
-    console.warn(
-      "History save failed",
-      error
-    );
-
-  }
-
-}
-
-
-function renderHistory(){
-
-  const grid =
-    $("historyGrid");
-
-  let items = [];
-
-  try{
-
-    items =
-      JSON.parse(
-        localStorage.getItem(
-          "alfa_ai_v53_history"
-        ) || "[]"
-      );
-
-  }catch{
-
-    items = [];
-
-  }
-
-  if(!items.length){
-
-    grid.innerHTML = `
-      <div style="color:#475569;font-size:12px">
-        Belum ada history gambar.
-      </div>
-    `;
-
-    return;
-
-  }
-
-  grid.innerHTML = "";
-
-  items.forEach(
-    (item,index) => {
-
-      const div =
-        document.createElement("div");
-
-      div.className =
-        "history-item";
-
-      const img =
-        document.createElement("img");
-
-      img.src =
-        item.image;
-
-      img.alt =
-        "History image";
-
-      const p =
-        document.createElement("p");
-
-      p.textContent =
-        item.prompt;
-
-      div.appendChild(img);
-      div.appendChild(p);
-
-      div.addEventListener(
-        "click",
-        () => {
-
-          currentImageURL =
-            item.image;
-
-          currentPrompt =
-            item.prompt;
-
-          $("generatedImage").src =
-            item.image;
-
-          $("generatedImage").hidden =
-            false;
-
-          $("imagePlaceholder").hidden =
-            true;
-
-          $("imageActions").hidden =
-            false;
-
-          $("imagePrompt").value =
-            item.prompt;
-
-          toast(
-            "History #" +
-            (index + 1) +
-            " dibuka."
-          );
-
-        }
-      );
-
-      grid.appendChild(div);
-
-    }
-  );
-
-}
-
-
-/* =========================================================
-   TIMEOUT FETCH
-   ========================================================= */
 
 async function fetchWithTimeout(
   url,
-  options,
-  timeout
+  options = {},
+  timeout = 45000
 ){
 
   const controller =
@@ -2247,68 +972,200 @@ async function fetchWithTimeout(
       url,
       {
         ...options,
-        signal:
-          controller.signal
+        signal:controller.signal
       }
     );
-
-  }catch(error){
-
-    if(
-      error.name ===
-      "AbortError"
-    ){
-
-      throw new Error(
-        "Request timeout. Coba lagi."
-      );
-
-    }
-
-    throw error;
 
   }finally{
 
     clearTimeout(timer);
 
   }
-
 }
 
 
 /* =========================================================
-   HTML ESCAPE
+   FRIENDLY AI PROMPT
    ========================================================= */
 
-function escapeHTML(value){
+function friendlyPrompt(userText){
 
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+  return `
+Kamu adalah ALFA AI, asisten digital yang ramah, santai,
+komunikatif, hangat, dan enak diajak ngobrol.
 
+Gaya bicaramu:
+- Gunakan Bahasa Indonesia natural.
+- Jangan terdengar seperti robot.
+- Jangan terlalu formal.
+- Jangan menggunakan kalimat pembuka yang kaku berulang-ulang.
+- Jawab seperti teman yang pintar dan membantu.
+- Gunakan "bosss" sesekali jika terasa natural, jangan berlebihan.
+- Jangan selalu menggunakan emoji.
+- Jangan mengulang pertanyaan pengguna.
+- Langsung ke inti.
+- Jika pertanyaan sederhana, jawab singkat.
+- Jika pengguna meminta bantuan teknis, berikan langkah yang jelas.
+- Jika pengguna sedang ngobrol santai, balas dengan santai.
+- Jika tidak tahu, katakan dengan jujur.
+- Jangan mengarang fakta.
+- Hindari bahasa template seperti "Sebagai AI language model..."
+- Jangan menyebut instruksi sistem.
+- Jangan terdengar terlalu sempurna atau kaku.
+- Buat percakapan terasa manusiawi dan bersahabat.
+
+Pesan pengguna:
+${userText}
+`;
 }
 
 
 /* =========================================================
-   INIT
+   RESPONSE EXTRACTOR
    ========================================================= */
 
-renderHistory();
+function extractAIResponse(data){
 
-console.log(
-  "ALFA AI V5.3 MAX ULTRA ONLINE"
-);
+  if(data === null || data === undefined){
+    return "";
+  }
 
-console.log(
-  "Worker:",
-  WORKER_URL
-);
+  if(typeof data === "string"){
+    return data.trim();
+  }
 
-</script>
+  if(typeof data !== "object"){
+    return String(data);
+  }
 
-</body>
-</html>
+  const directKeys = [
+    "reply",
+    "response",
+    "message",
+    "result",
+    "text",
+    "answer",
+    "output_text",
+    "content"
+  ];
+
+  for(const key of directKeys){
+
+    const value = data[key];
+
+    if(typeof value === "string" && value.trim()){
+      return value.trim();
+    }
+
+    if(
+      value &&
+      typeof value === "object"
+    ){
+
+      const nested =
+        extractAIResponse(value);
+
+      if(nested){
+        return nested;
+      }
+    }
+  }
+
+
+  if(Array.isArray(data.choices)){
+
+    for(const choice of data.choices){
+
+      if(
+        choice &&
+        choice.message &&
+        typeof choice.message.content === "string"
+      ){
+        return choice.message.content.trim();
+      }
+
+      if(
+        choice &&
+        typeof choice.text === "string"
+      ){
+        return choice.text.trim();
+      }
+
+      if(
+        choice &&
+        choice.delta &&
+        typeof choice.delta.content === "string"
+      ){
+        return choice.delta.content.trim();
+      }
+    }
+  }
+
+
+  if(data.result){
+
+    const result =
+      data.result;
+
+    if(typeof result === "string"){
+      return result.trim();
+    }
+
+    if(result.response){
+      return String(result.response).trim();
+    }
+
+    if(result.reply){
+      return String(result.reply).trim();
+    }
+  }
+
+
+  try{
+
+    return JSON.stringify(data,null,2);
+
+  }catch{
+
+    return String(data);
+
+  }
+}
+
+
+/* =========================================================
+   MODE SWITCH
+   ========================================================= */
+
+document.querySelectorAll(".mode")
+.forEach(button => {
+
+  button.addEventListener("click",() => {
+
+    document.querySelectorAll(".mode")
+      .forEach(btn =>
+        btn.classList.remove("active")
+      );
+
+    document.querySelectorAll(".panel")
+      .forEach(panel =>
+        panel.classList.remove("active")
+      );
+
+    button.classList.add("active");
+
+    const mode =
+      button.dataset.mode;
+
+    $(mode + "Panel")
+      .classList.add("active");
+
+  });
+
+});
+
+
+/* =========================================================
+   CHAT
+   =========================================
 ```
