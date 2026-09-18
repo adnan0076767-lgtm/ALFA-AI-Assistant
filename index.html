@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#030712">
 <meta name="color-scheme" content="dark">
 
-<title>ALFA AI V6.2 | HUMAN CONVERSATION MODE</title>
+<title>ALFA AI V7 | HUMAN CONVERSATION PRO</title>
 
 <style>
 *{
@@ -526,7 +526,7 @@ button:disabled{
 
     <div>
       <h1>ALFA AI</h1>
-      <p>HUMAN CONVERSATION MODE</p>
+      <p>HUMAN CONVERSATION PRO</p>
     </div>
 
     <div class="status">
@@ -537,7 +537,6 @@ button:disabled{
   </div>
 </header>
 
-
 <main class="dashboard">
 
 <section class="card chat-card">
@@ -547,14 +546,9 @@ button:disabled{
     <span class="state" id="stateText">Siap</span>
   </div>
 
-  <div
-    class="messages"
-    id="messages">
-  </div>
+  <div class="messages" id="messages"></div>
 
-  <div
-    class="typing"
-    id="typing">
+  <div class="typing" id="typing">
     ALFA AI sedang berpikir
     <span>●</span>
     <span>●</span>
@@ -583,22 +577,17 @@ button:disabled{
 
 </section>
 
-
 <aside class="controls">
 
   <div class="card control-box">
 
-    <div
-      class="orb"
-      id="voiceOrb">
+    <div class="orb" id="voiceOrb">
       🎙️
     </div>
 
-    <h3>HUMAN VOICE</h3>
+    <h3>HUMAN VOICE PRO</h3>
 
-    <div
-      class="voice-status"
-      id="voiceState">
+    <div class="voice-status" id="voiceState">
       Voice Chat siap digunakan.
     </div>
 
@@ -617,7 +606,6 @@ button:disabled{
     </button>
 
   </div>
-
 
   <div class="card control-box">
 
@@ -640,7 +628,6 @@ button:disabled{
     </select>
 
   </div>
-
 
   <div class="card control-box">
 
@@ -683,13 +670,12 @@ button:disabled{
 
   </div>
 
-
   <div class="card control-box">
 
     <h3>AUTO CONVERSATION</h3>
 
     <p>
-      Setelah ALFA AI selesai berbicara,
+      Setelah ALFA selesai bicara,
       microphone otomatis aktif kembali.
     </p>
 
@@ -714,15 +700,14 @@ button:disabled{
 
   </div>
 
-
   <div class="card control-box">
 
-    <h3>GAYA RESPONS</h3>
+    <h3>HUMAN MODE</h3>
 
     <p>
-      ALFA AI akan mencoba membuat jawaban
-      lebih pendek dan mudah didengar,
-      terutama saat percakapan suara.
+      ALFA diarahkan untuk menjawab seperti
+      teman ngobrol: singkat, santai, natural,
+      dan tidak membaca jawaban seperti artikel.
     </p>
 
   </div>
@@ -731,22 +716,22 @@ button:disabled{
 
 </main>
 
-
 <div class="footer">
-  ALFA AI V6.2 • Human Conversation Mode • Free
+  ALFA AI V7 • Human Conversation Pro • Free
 </div>
 
 </div>
-
 
 <script>
 
 /* =========================================================
-   ALFA AI V6.2
-   HUMAN CONVERSATION MODE
+   ALFA AI V7
+   HUMAN CONVERSATION PRO
 
    WORKER TETAP
    VOICE ENGINE = BROWSER
+
+   TIDAK ADA PERUBAHAN WORKER
 ========================================================= */
 
 
@@ -829,13 +814,15 @@ let voiceMode = "natural";
 
 let speechSession = 0;
 
+let recognitionSession = 0;
+
 
 /* =========================================================
    STORAGE
 ========================================================= */
 
 const STORAGE_KEY =
-  "alfa_ai_v62_conversation";
+  "alfa_ai_v7_conversation";
 
 
 function saveConversation(){
@@ -881,7 +868,8 @@ function loadConversation(){
       Array.isArray(parsed)
     ){
 
-      conversation = parsed;
+      conversation =
+        parsed;
 
     }
 
@@ -955,7 +943,6 @@ function addMessage(
         : "ai"
     );
 
-
   const bubble =
     document.createElement(
       "div"
@@ -967,7 +954,6 @@ function addMessage(
   bubble.textContent =
     text;
 
-
   wrapper.appendChild(
     bubble
   );
@@ -975,7 +961,6 @@ function addMessage(
   messagesEl.appendChild(
     wrapper
   );
-
 
   messagesEl.scrollTop =
     messagesEl.scrollHeight;
@@ -1040,14 +1025,11 @@ function showWelcome(){
     return;
   }
 
-
   const welcome =
     "Halo Bosss 😄\n\n" +
-    "Saya ALFA AI. Kita bisa ngobrol " +
-    "pakai teks atau suara. " +
-    "Klik \"Mulai Ngobrol\" kalau mau " +
-    "langsung bicara.";
-
+    "Saya ALFA AI. Santai aja, kita ngobrol " +
+    "seperti biasa. Bos bisa ketik atau langsung " +
+    "tekan Mulai Ngobrol.";
 
   addConversation(
     "assistant",
@@ -1072,7 +1054,6 @@ function initRecognition(){
     window.SpeechRecognition ||
     window.webkitSpeechRecognition;
 
-
   if(!SpeechRecognition){
 
     micBtn.disabled =
@@ -1086,10 +1067,8 @@ function initRecognition(){
 
   }
 
-
   recognition =
     new SpeechRecognition();
-
 
   recognition.continuous =
     false;
@@ -1104,7 +1083,10 @@ function initRecognition(){
   recognition.onstart =
     () => {
 
-      listening = true;
+      listening =
+        true;
+
+      recognitionSession++;
 
       micBtn.classList.add(
         "active"
@@ -1141,7 +1123,6 @@ function initRecognition(){
       let interimText =
         "";
 
-
       for(
         let i =
           event.resultIndex;
@@ -1150,35 +1131,37 @@ function initRecognition(){
         i++
       ){
 
-        const transcript =
-          event.results[i][0]
-            .transcript;
+        const result =
+          event.results[i];
 
+        const transcript =
+          result[0]
+            .transcript
+            .trim();
 
         if(
-          event.results[i]
-            .isFinal
+          result.isFinal
         ){
 
           finalText +=
+            " " +
             transcript;
 
         }else{
 
           interimText +=
+            " " +
             transcript;
 
         }
 
       }
 
-
       const displayText =
         (
           finalText ||
           interimText
         ).trim();
-
 
       if(displayText){
 
@@ -1187,13 +1170,17 @@ function initRecognition(){
 
       }
 
-
       if(
         finalText.trim()
       ){
 
         const message =
-          finalText.trim();
+          finalText
+            .replace(
+              /\s+/g,
+              " "
+            )
+            .trim();
 
         inputEl.value =
           "";
@@ -1216,8 +1203,8 @@ function initRecognition(){
         event.error
       );
 
-
-      listening = false;
+      listening =
+        false;
 
       micBtn.classList.remove(
         "active"
@@ -1261,18 +1248,10 @@ function initRecognition(){
       ){
 
         updateVoiceState(
-          "Tidak terdengar suara..."
+          "Belum terdengar suara..."
         );
 
-        if(
-          autoListen &&
-          !processing &&
-          !speaking
-        ){
-
-          restartListening();
-
-        }
+        restartListening();
 
         return;
 
@@ -1283,6 +1262,22 @@ function initRecognition(){
         event.error ===
         "aborted"
       ){
+
+        return;
+
+      }
+
+
+      if(
+        event.error ===
+        "network"
+      ){
+
+        updateVoiceState(
+          "Speech Recognition mengalami masalah jaringan."
+        );
+
+        restartListening();
 
         return;
 
@@ -1344,9 +1339,9 @@ function getSpeechLanguage(){
   const selected =
     languageSelect.value;
 
-
   if(
-    selected !== "auto"
+    selected !==
+    "auto"
   ){
 
     return selected;
@@ -1363,7 +1358,6 @@ function getSpeechLanguage(){
           "user"
       );
 
-
   const text =
     lastUser
       ? String(
@@ -1371,10 +1365,8 @@ function getSpeechLanguage(){
         ).toLowerCase()
       : "";
 
-
   const englishPattern =
-    /\b(the|this|that|what|how|why|where|when|can|could|would|please|hello|thanks|thank|you|your|are|is)\b/i;
-
+    /\b(the|this|that|what|how|why|where|when|can|could|would|please|hello|thanks|thank|you|your|are|is|do|does|have|with)\b/i;
 
   return englishPattern.test(
     text
@@ -1386,7 +1378,7 @@ function getSpeechLanguage(){
 
 
 /* =========================================================
-   VOICE ENGINE
+   VOICE SCORING
 ========================================================= */
 
 function voiceScore(
@@ -1397,18 +1389,15 @@ function voiceScore(
   let score =
     0;
 
-
   const name =
     String(
       voice.name || ""
     ).toLowerCase();
 
-
   const lang =
     String(
       voice.lang || ""
     ).toLowerCase();
-
 
   const shortLang =
     wanted
@@ -1417,6 +1406,14 @@ function voiceScore(
 
 
   if(
+    lang ===
+    wanted.toLowerCase()
+  ){
+
+    score +=
+      180;
+
+  }else if(
     lang.startsWith(
       shortLang
     )
@@ -1430,6 +1427,39 @@ function voiceScore(
 
   if(
     name.includes(
+      "natural"
+    )
+  ){
+
+    score +=
+      70;
+
+  }
+
+  if(
+    name.includes(
+      "neural"
+    )
+  ){
+
+    score +=
+      65;
+
+  }
+
+  if(
+    name.includes(
+      "premium"
+    )
+  ){
+
+    score +=
+      30;
+
+  }
+
+  if(
+    name.includes(
       "microsoft"
     )
   ){
@@ -1438,7 +1468,6 @@ function voiceScore(
       35;
 
   }
-
 
   if(
     name.includes(
@@ -1451,39 +1480,25 @@ function voiceScore(
 
   }
 
-
   if(
     name.includes(
-      "natural"
+      "enhanced"
     )
   ){
 
     score +=
-      45;
+      25;
 
   }
 
-
   if(
     name.includes(
-      "neural"
+      "online"
     )
   ){
 
     score +=
-      45;
-
-  }
-
-
-  if(
-    name.includes(
-      "premium"
-    )
-  ){
-
-    score +=
-      20;
+      10;
 
   }
 
@@ -1492,6 +1507,10 @@ function voiceScore(
 
 }
 
+
+/* =========================================================
+   LOAD VOICES
+========================================================= */
 
 function loadVoices(){
 
@@ -1506,19 +1525,17 @@ function loadVoices(){
 
   }
 
-
   const voices =
     speechSynthesis.getVoices();
 
-
   if(!voices.length){
-    return;
-  }
 
+    return;
+
+  }
 
   const wanted =
     getSpeechLanguage();
-
 
   const ranked =
     voices
@@ -1539,10 +1556,8 @@ function loadVoices(){
           a.score
       );
 
-
   voiceSelect.innerHTML =
     "";
-
 
   ranked.forEach(
     item => {
@@ -1552,18 +1567,15 @@ function loadVoices(){
           "option"
         );
 
-
       option.value =
         String(
           item.index
         );
 
-
       option.textContent =
         item.voice.name +
         " — " +
         item.voice.lang;
-
 
       voiceSelect.appendChild(
         option
@@ -1586,11 +1598,7 @@ function loadVoices(){
     voiceSelect.value =
       selectedVoiceIndex;
 
-  }
-
-
-  if(
-    !voiceSelect.value &&
+  }else if(
     ranked.length
   ){
 
@@ -1598,6 +1606,9 @@ function loadVoices(){
       String(
         ranked[0].index
       );
+
+    selectedVoiceIndex =
+      voiceSelect.value;
 
   }
 
@@ -1617,7 +1628,7 @@ if(
 
 
 /* =========================================================
-   SELECT VOICE
+   GET SELECTED VOICE
 ========================================================= */
 
 function getSelectedVoice(){
@@ -1630,25 +1641,24 @@ function getSelectedVoice(){
 
   }
 
-
   const voices =
     speechSynthesis.getVoices();
 
-
   if(!voices.length){
+
     return null;
+
   }
 
-
   if(
-    voiceSelect.value !== ""
+    voiceSelect.value !==
+    ""
   ){
 
     const index =
       Number(
         voiceSelect.value
       );
-
 
     if(
       voices[index]
@@ -1660,10 +1670,8 @@ function getSelectedVoice(){
 
   }
 
-
   const wanted =
     getSpeechLanguage();
-
 
   return voices
     .slice()
@@ -1686,7 +1694,7 @@ function getSelectedVoice(){
 
 
 /* =========================================================
-   CLEAN TEXT
+   CLEAN SPEECH
 ========================================================= */
 
 function cleanSpeech(text){
@@ -1711,6 +1719,11 @@ function cleanSpeech(text){
   )
 
   .replace(
+    /__(.*?)__/g,
+    "$1"
+  )
+
+  .replace(
     /\*(.*?)\*/g,
     "$1"
   )
@@ -1726,6 +1739,21 @@ function cleanSpeech(text){
   )
 
   .replace(
+    /^\s*[-•*]\s+/gm,
+    ""
+  )
+
+  .replace(
+    /^\s*\d+\.\s+/gm,
+    ""
+  )
+
+  .replace(
+    /https?:\/\/\S+/gi,
+    ""
+  )
+
+  .replace(
     /\s+/g,
     " "
   )
@@ -1736,14 +1764,70 @@ function cleanSpeech(text){
 
 
 /* =========================================================
-   HUMAN SPEECH CHUNKS
+   NATURAL TEXT PREPROCESSOR
+========================================================= */
+
+function humanizeSpeechText(text){
+
+  let value =
+    cleanSpeech(
+      text
+    );
+
+  if(!value){
+    return "";
+  }
+
+
+  /*
+     Tambahkan sedikit ruang natural
+     setelah beberapa tanda baca.
+  */
+
+  value =
+    value
+      .replace(
+        /,\s*/g,
+        ", "
+      )
+      .replace(
+        /;\s*/g,
+        "; "
+      )
+      .replace(
+        /:\s*/g,
+        ": "
+      );
+
+
+  /*
+     Jangan biarkan terlalu banyak
+     tanda baca beruntun.
+  */
+
+  value =
+    value
+      .replace(
+        /([.!?]){2,}/g,
+        "$1"
+      );
+
+
+  return value.trim();
+
+}
+
+
+/* =========================================================
+   SPLIT NATURAL SPEECH
 ========================================================= */
 
 function splitForSpeech(text){
 
   const cleaned =
-    cleanSpeech(text);
-
+    humanizeSpeechText(
+      text
+    );
 
   if(!cleaned){
     return [];
@@ -1770,15 +1854,17 @@ function splitForSpeech(text){
       const s =
         sentence.trim();
 
-
       if(!s){
         return;
       }
 
 
-      if(
-        !buffer
-      ){
+      /*
+         Kalau kalimat pendek,
+         gabungkan secukupnya.
+      */
+
+      if(!buffer){
 
         buffer =
           s;
@@ -1793,7 +1879,8 @@ function splitForSpeech(text){
           buffer +
           " " +
           s
-        ).length <= 105
+        ).length <=
+        95
       ){
 
         buffer =
@@ -1831,7 +1918,7 @@ function splitForSpeech(text){
 
 
 /* =========================================================
-   HUMAN PAUSE
+   NATURAL PAUSE
 ========================================================= */
 
 function getNaturalPause(
@@ -1839,7 +1926,181 @@ function getNaturalPause(
 ){
 
   const value =
-    String(text || "");
+    String(
+      text || ""
+    );
+
+
+  /*
+     Pertanyaan / ekspresi.
+  */
+
+  if(
+    /[!?！？]$/.test(
+      value
+    )
+  ){
+
+    return 520;
+
+  }
+
+
+  /*
+     Kalimat normal.
+  */
+
+  if(
+    /[.!。]$/.test(
+      value
+    )
+  ){
+
+    return 360;
+
+  }
+
+
+  /*
+     Kalimat dengan koma.
+  */
+
+  if(
+    /[,，]$/.test(
+      value
+    )
+  ){
+
+    return 220;
+
+  }
+
+
+  /*
+     Kalimat panjang.
+  */
+
+  if(
+    value.length >
+    80
+  ){
+
+    return 290;
+
+  }
+
+
+  return 180;
+
+}
+
+
+/* =========================================================
+   NATURAL RATE
+========================================================= */
+
+function getSpeechRate(
+  text
+){
+
+  const value =
+    String(
+      text || ""
+    );
+
+
+  let rate;
+
+
+  if(
+    voiceMode ===
+    "slow"
+  ){
+
+    rate =
+      .84;
+
+  }else if(
+    voiceMode ===
+    "normal"
+  ){
+
+    rate =
+      .94;
+
+  }else{
+
+    /*
+       Natural dibuat sedikit
+       lebih santai daripada normal.
+    */
+
+    rate =
+      .91;
+
+  }
+
+
+  /*
+     Pertanyaan sedikit lebih
+     lambat agar terdengar jelas.
+  */
+
+  if(
+    /[!?！？]/.test(
+      value
+    )
+  ){
+
+    rate -=
+      .025;
+
+  }
+
+
+  /*
+     Kalimat panjang sedikit
+     diperlambat.
+  */
+
+  if(
+    value.length >
+    100
+  ){
+
+    rate -=
+      .035;
+
+  }
+
+
+  /*
+     Batasi agar tidak ekstrem.
+  */
+
+  return Math.max(
+    .75,
+    Math.min(
+      1.08,
+      rate
+    )
+  );
+
+}
+
+
+/* =========================================================
+   NATURAL PITCH
+========================================================= */
+
+function getSpeechPitch(
+  text
+){
+
+  const value =
+    String(
+      text || ""
+    );
 
 
   if(
@@ -1848,81 +2109,7 @@ function getNaturalPause(
     )
   ){
 
-    return 450;
-
-  }
-
-
-  if(
-    /[.!。]$/.test(
-      value
-    )
-  ){
-
-    return 330;
-
-  }
-
-
-  if(
-    /[,，]$/.test(
-      value
-    )
-  ){
-
-    return 190;
-
-  }
-
-
-  if(
-    value.length > 85
-  ){
-
-    return 250;
-
-  }
-
-
-  return 150;
-
-}
-
-
-/* =========================================================
-   ADAPTIVE SPEECH RATE
-========================================================= */
-
-function getSpeechRate(
-  text
-){
-
-  const value =
-    String(text || "");
-
-
-  if(
-    /[!?！？]/.test(
-      value
-    )
-  ){
-
-    return voiceMode ===
-      "slow"
-      ? .86
-      : .92;
-
-  }
-
-
-  if(
-    value.length > 90
-  ){
-
-    return voiceMode ===
-      "slow"
-      ? .84
-      : .89;
+    return 1.05;
 
   }
 
@@ -1932,55 +2119,7 @@ function getSpeechRate(
     "slow"
   ){
 
-    return .87;
-
-  }
-
-
-  if(
-    voiceMode ===
-    "normal"
-  ){
-
-    return .96;
-
-  }
-
-
-  return .92;
-
-}
-
-
-/* =========================================================
-   ADAPTIVE PITCH
-========================================================= */
-
-function getSpeechPitch(
-  text
-){
-
-  const value =
-    String(text || "");
-
-
-  if(
-    /[!?！？]/.test(
-      value
-    )
-  ){
-
-    return 1.04;
-
-  }
-
-
-  if(
-    voiceMode ===
-    "slow"
-  ){
-
-    return 1.01;
+    return 1.00;
 
   }
 
@@ -1991,7 +2130,42 @@ function getSpeechPitch(
 
 
 /* =========================================================
-   SPEAK
+   SPEECH VOLUME
+========================================================= */
+
+function getSpeechVolume(
+  text
+){
+
+  const value =
+    String(
+      text || ""
+    );
+
+
+  /*
+     Sedikit variasi volume.
+     Tidak terlalu agresif.
+  */
+
+  if(
+    /[!?！？]/.test(
+      value
+    )
+  ){
+
+    return .98;
+
+  }
+
+
+  return 1;
+
+}
+
+
+/* =========================================================
+   SPEAK NATURAL
 ========================================================= */
 
 function speakNatural(
@@ -2018,9 +2192,18 @@ function speakNatural(
 
 
   if(!chunks.length){
+
+    speaking =
+      false;
+
     return;
+
   }
 
+
+  /*
+     Hentikan voice lama.
+  */
 
   stopSpeaking();
 
@@ -2073,7 +2256,8 @@ function speakChunks(
 
   if(
     !speaking ||
-    session !== speechSession
+    session !==
+    speechSession
   ){
 
     return;
@@ -2082,38 +2266,13 @@ function speakChunks(
 
 
   if(
-    index >= chunks.length
+    index >=
+    chunks.length
   ){
 
-    speaking =
-      false;
-
-
-    voiceOrb.classList.remove(
-      "speaking"
+    finishSpeaking(
+      session
     );
-
-
-    updateState(
-      "Selesai"
-    );
-
-
-    updateVoiceState(
-      autoListen
-        ? "Silakan lanjut bicara..."
-        : "Voice Chat siap."
-    );
-
-
-    if(
-      autoListen
-    ){
-
-      restartListening();
-
-    }
-
 
     return;
 
@@ -2159,7 +2318,9 @@ function speakChunks(
 
 
   utterance.volume =
-    1;
+    getSpeechVolume(
+      text
+    );
 
 
   utterance.onstart =
@@ -2176,6 +2337,10 @@ function speakChunks(
 
       speaking =
         true;
+
+      voiceOrb.classList.add(
+        "speaking"
+      );
 
     };
 
@@ -2202,6 +2367,17 @@ function speakChunks(
 
       setTimeout(
         () => {
+
+          if(
+            session !==
+            speechSession ||
+            !speaking
+          ){
+
+            return;
+
+          }
+
 
           speakChunks(
             chunks,
@@ -2235,34 +2411,98 @@ function speakChunks(
       }
 
 
-      speaking =
-        false;
-
-
-      voiceOrb.classList.remove(
-        "speaking"
+      finishSpeaking(
+        session,
+        true
       );
-
-
-      updateState(
-        "Voice siap"
-      );
-
-
-      if(
-        autoListen
-      ){
-
-        restartListening();
-
-      }
 
     };
 
 
-  speechSynthesis.speak(
-    utterance
+  try{
+
+    speechSynthesis.speak(
+      utterance
+    );
+
+  }catch(error){
+
+    console.error(
+      "Speech synthesis:",
+      error
+    );
+
+    finishSpeaking(
+      session,
+      true
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   FINISH SPEAKING
+========================================================= */
+
+function finishSpeaking(
+  session,
+  error = false
+){
+
+  if(
+    session !==
+    speechSession
+  ){
+
+    return;
+
+  }
+
+
+  speaking =
+    false;
+
+
+  voiceOrb.classList.remove(
+    "speaking"
   );
+
+
+  if(error){
+
+    updateState(
+      "Voice siap"
+    );
+
+    updateVoiceState(
+      "Voice selesai dengan gangguan."
+    );
+
+  }else{
+
+    updateState(
+      "Selesai"
+    );
+
+    updateVoiceState(
+      autoListen
+        ? "Silakan lanjut bicara..."
+        : "Voice Chat siap."
+    );
+
+  }
+
+
+  if(
+    autoListen &&
+    !processing
+  ){
+
+    restartListening();
+
+  }
 
 }
 
@@ -2280,7 +2520,18 @@ function stopSpeaking(){
     "speechSynthesis" in window
   ){
 
-    speechSynthesis.cancel();
+    try{
+
+      speechSynthesis.cancel();
+
+    }catch(error){
+
+      console.log(
+        "Cancel speech:",
+        error
+      );
+
+    }
 
   }
 
@@ -2328,7 +2579,18 @@ function startListening(){
   );
 
 
-  stopSpeaking();
+  /*
+     Barge-in:
+     kalau ALFA sedang bicara dan
+     user menekan microphone,
+     suara langsung dihentikan.
+  */
+
+  if(speaking){
+
+    stopSpeaking();
+
+  }
 
 
   recognition.lang =
@@ -2346,7 +2608,41 @@ function startListening(){
       error
     );
 
-    restartListening();
+
+    /*
+       Chrome kadang melempar
+       InvalidStateError kalau start
+       terlalu cepat.
+    */
+
+    restartTimer =
+      setTimeout(
+        () => {
+
+          if(
+            !listening &&
+            !processing &&
+            autoListen
+          ){
+
+            try{
+
+              recognition.start();
+
+            }catch(e){
+
+              console.log(
+                "Retry recognition:",
+                e
+              );
+
+            }
+
+          }
+
+        },
+        700
+      );
 
   }
 
@@ -2365,8 +2661,7 @@ function stopListening(){
 
 
   if(
-    recognition &&
-    listening
+    recognition
   ){
 
     try{
@@ -2405,7 +2700,7 @@ function stopListening(){
 
 
 /* =========================================================
-   RESTART
+   RESTART LISTENING
 ========================================================= */
 
 function restartListening(){
@@ -2419,7 +2714,8 @@ function restartListening(){
     !autoListen ||
     processing ||
     speaking ||
-    listening
+    listening ||
+    !recognition
   ){
 
     return;
@@ -2443,7 +2739,7 @@ function restartListening(){
         }
 
       },
-      800
+      850
     );
 
 }
@@ -2538,32 +2834,56 @@ function extractReply(
 
 
 /* =========================================================
-   AI INSTRUCTION
+   HUMAN AI INSTRUCTION
 ========================================================= */
 
 function getAIInstruction(){
 
   return [
 
-    "Kamu adalah ALFA AI.",
+    "Kamu adalah ALFA AI, teman ngobrol digital yang ramah dan natural.",
 
-    "Berbicara seperti teman ngobrol yang ramah dan natural.",
+    "Tujuan utama kamu adalah membuat percakapan terasa seperti ngobrol sungguhan, bukan membaca artikel.",
 
-    "Gunakan Bahasa Indonesia jika pengguna memakai Bahasa Indonesia.",
+    "Gunakan Bahasa Indonesia jika pengguna menggunakan Bahasa Indonesia.",
 
-    "Jangan terlalu formal.",
+    "Ikuti bahasa pengguna secara natural.",
 
-    "Jangan selalu membuat jawaban panjang.",
+    "Gunakan gaya santai, hangat, dan manusiawi.",
 
-    "Untuk percakapan suara, prioritaskan jawaban singkat dan mudah diucapkan.",
+    "Jangan terlalu formal kecuali pengguna meminta gaya formal.",
 
-    "Gunakan jeda alami melalui tanda baca.",
+    "Untuk voice chat, gunakan kalimat yang pendek sampai sedang dan mudah diucapkan.",
 
-    "Ikuti gaya santai pengguna tanpa berlebihan.",
+    "Hindari paragraf panjang ketika percakapan sedang menggunakan suara.",
 
-    "Jika pengguna bercanda, boleh merespons dengan santai.",
+    "Jangan membuat daftar panjang jika tidak diperlukan.",
 
-    "Jangan mengulang pertanyaan pengguna tanpa alasan."
+    "Jangan selalu menggunakan pembukaan seperti 'tentu', 'baik', atau 'berikut adalah'.",
+
+    "Variasikan respons agar tidak terdengar seperti template.",
+
+    "Gunakan kata penghubung alami seperti 'nah', 'oke', 'iya', 'jadi', atau 'gini' hanya jika memang cocok dengan konteks.",
+
+    "Jika pengguna menggunakan kata santai seperti bosss, gass, hehee, atau bercanda, kamu boleh membalas dengan nuansa santai yang sesuai tanpa berlebihan.",
+
+    "Jangan meniru setiap kata pengguna secara berlebihan.",
+
+    "Jika pengguna bertanya singkat, jawab singkat.",
+
+    "Jika pengguna meminta penjelasan detail, barulah jelaskan lebih lengkap.",
+
+    "Untuk percakapan suara, prioritaskan satu ide utama dalam satu respons.",
+
+    "Gunakan tanda baca yang membantu ritme bicara.",
+
+    "Jangan membaca simbol Markdown sebagai bagian dari percakapan.",
+
+    "Jangan mengulang pertanyaan pengguna kecuali diperlukan untuk memperjelas.",
+
+    "Jangan mengatakan bahwa kamu sedang membaca teks.",
+
+    "Buat respons terasa spontan, ramah, dan enak didengar."
 
   ].join(" ");
 
@@ -2582,7 +2902,12 @@ async function sendMessage(
   const message =
     String(
       text || ""
-    ).trim();
+    )
+    .replace(
+      /\s+/g,
+      " "
+    )
+    .trim();
 
 
   if(
@@ -2647,7 +2972,7 @@ async function sendMessage(
       getAIInstruction(),
 
     conversation:
-      conversation.slice(-14)
+      conversation.slice(-16)
 
   };
 
@@ -2725,6 +3050,12 @@ async function sendMessage(
     processing =
       false;
 
+
+    /*
+       Voice otomatis jika:
+       - pesan berasal dari microphone
+       - Auto Listen aktif
+    */
 
     if(
       fromVoice ||
@@ -2809,15 +3140,19 @@ micBtn.addEventListener(
   "click",
   () => {
 
-    if(
-      listening
-    ){
+    /*
+       Kalau sedang mendengarkan:
+       hentikan microphone.
+    */
+
+    if(listening){
 
       autoListen =
         false;
 
       autoListenToggle.checked =
         false;
+
 
       stopListening();
 
@@ -2829,6 +3164,49 @@ micBtn.addEventListener(
 
       updateVoiceState(
         "Voice Chat dihentikan."
+      );
+
+
+      return;
+
+    }
+
+
+    /*
+       Kalau sedang berbicara:
+       tombol microphone menjadi
+       BARGE-IN.
+    */
+
+    if(speaking){
+
+      autoListen =
+        true;
+
+      autoListenToggle.checked =
+        true;
+
+
+      stopSpeaking();
+
+
+      updateState(
+        "Silakan bicara..."
+      );
+
+
+      updateVoiceState(
+        "ALFA berhenti. Silakan bicara, Bosss..."
+      );
+
+
+      setTimeout(
+        () => {
+
+          startListening();
+
+        },
+        180
       );
 
 
@@ -2896,7 +3274,11 @@ sendBtn.addEventListener(
 
 
     if(!text){
+
+      inputEl.focus();
+
       return;
+
     }
 
 
@@ -2941,7 +3323,7 @@ inputEl.addEventListener(
 
 
 /* =========================================================
-   AUTO LISTEN TOGGLE
+   AUTO LISTEN
 ========================================================= */
 
 autoListenToggle.addEventListener(
@@ -2952,24 +3334,27 @@ autoListenToggle.addEventListener(
       autoListenToggle.checked;
 
 
-    if(
-      autoListen &&
-      !processing &&
-      !speaking &&
-      !listening
-    ){
+    if(autoListen){
 
       updateVoiceState(
         "Auto Conversation aktif."
       );
 
-      restartListening();
 
-    }else if(
-      !autoListen
-    ){
+      if(
+        !processing &&
+        !speaking &&
+        !listening
+      ){
+
+        restartListening();
+
+      }
+
+    }else{
 
       stopListening();
+
 
       updateVoiceState(
         "Auto Conversation dimatikan."
@@ -3018,6 +3403,7 @@ voiceSelect.addEventListener(
 
     selectedVoiceIndex =
       voiceSelect.value;
+
 
     updateVoiceState(
       "Voice engine dipilih."
@@ -3094,11 +3480,23 @@ testVoiceBtn.addEventListener(
 
 
     speakNatural(
+
       "Halo Bosss... 😄 " +
-      "Saya ALFA AI. " +
-      "Kita sedang mencoba mode percakapan yang lebih natural. " +
-      "Kalau suaranya masih kaku, itu karena mesin suara browser. " +
-      "Tapi kita bisa terus tingkatkan gaya dan jedanya."
+
+      "Nah, sekarang kita sedang mencoba " +
+
+      "ALFA AI Human Conversation Pro. " +
+
+      "Saya akan mencoba berbicara lebih santai, " +
+
+      "dengan jeda yang lebih natural, " +
+
+      "dan tidak terlalu cepat. " +
+
+      "Kalau Bosss mulai bicara saat saya sedang ngomong, " +
+
+      "suara saya juga bisa langsung dihentikan."
+
     );
 
   }
@@ -3117,7 +3515,8 @@ async function checkWorker(){
       await fetch(
         WORKER_URL,
         {
-          method:"GET"
+          method:
+            "GET"
         }
       );
 
@@ -3160,6 +3559,22 @@ document.addEventListener(
 
 
 /* =========================================================
+   PAGE UNLOAD
+========================================================= */
+
+window.addEventListener(
+  "beforeunload",
+  () => {
+
+    stopSpeaking();
+
+    stopListening();
+
+  }
+);
+
+
+/* =========================================================
    START
 ========================================================= */
 
@@ -3175,12 +3590,28 @@ loadVoices();
 
 checkWorker();
 
+
 updateState(
   "Siap"
 );
 
+
 updateVoiceState(
   "Voice Chat siap digunakan."
+);
+
+
+/* =========================================================
+   FIRST VOICE LOAD RETRY
+========================================================= */
+
+setTimeout(
+  () => {
+
+    loadVoices();
+
+  },
+  1000
 );
 
 </script>
