@@ -2,11 +2,12 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#030712">
-<meta name="color-scheme" content="dark">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>ALFA AI V5.7 | NATURAL VOICE</title>
+<title>ALFA AI V5.8 | Natural Buddy Voice</title>
+
+<meta name="theme-color" content="#030712">
+<meta name="description" content="ALFA AI Natural Buddy - AI Chat, Voice Indonesia & English">
 
 <style>
 *{
@@ -20,97 +21,67 @@ html{
 }
 
 body{
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   min-height:100vh;
+  color:#e5faff;
   background:
-    radial-gradient(circle at 15% 10%,rgba(0,229,255,.11),transparent 30%),
-    radial-gradient(circle at 85% 90%,rgba(139,92,246,.13),transparent 35%),
-    #030712;
-  color:#e5f7ff;
-  font-family:Inter,Segoe UI,Arial,sans-serif;
+    radial-gradient(circle at 20% 10%,rgba(0,229,255,.12),transparent 30%),
+    radial-gradient(circle at 80% 20%,rgba(123,97,255,.14),transparent 30%),
+    linear-gradient(135deg,#020617,#030712 45%,#050816);
+  overflow-x:hidden;
 }
 
-body:before{
+body::before{
   content:"";
   position:fixed;
   inset:0;
   pointer-events:none;
-  background:
+  background-image:
     linear-gradient(rgba(0,229,255,.025) 1px,transparent 1px),
     linear-gradient(90deg,rgba(0,229,255,.025) 1px,transparent 1px);
-  background-size:40px 40px;
+  background-size:45px 45px;
   mask-image:linear-gradient(to bottom,black,transparent);
 }
 
-button,
-textarea{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-.app{
+.container{
   width:min(1100px,94%);
   margin:auto;
-  padding:18px 0 35px;
 }
 
-/* HEADER */
-
-.header{
+header{
   position:sticky;
-  top:8px;
-  z-index:20;
+  top:0;
+  z-index:50;
+  backdrop-filter:blur(18px);
+  background:rgba(2,6,23,.78);
+  border-bottom:1px solid rgba(0,229,255,.12);
+}
+
+.header-inner{
+  min-height:72px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:13px 17px;
-  margin-bottom:15px;
-  border:1px solid rgba(0,229,255,.18);
-  border-radius:20px;
-  background:rgba(3,7,18,.84);
-  backdrop-filter:blur(18px);
-  box-shadow:0 0 35px rgba(0,229,255,.07);
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:11px;
+  gap:15px;
 }
 
 .logo{
-  width:42px;
-  height:42px;
-  border-radius:13px;
-  display:grid;
-  place-items:center;
-  font-size:20px;
   font-weight:900;
-  color:#001018;
-  background:linear-gradient(135deg,#00e5ff,#8b5cf6);
-  box-shadow:0 0 22px rgba(0,229,255,.3);
-}
-
-.brand h1{
-  font-size:17px;
-  letter-spacing:.8px;
-}
-
-.brand small{
-  display:block;
-  margin-top:2px;
+  letter-spacing:2px;
   color:#67e8f9;
-  font-size:10px;
+  text-shadow:0 0 20px rgba(34,211,238,.45);
+}
+
+.logo span{
+  color:#a78bfa;
 }
 
 .status{
   display:flex;
   align-items:center;
   gap:7px;
-  color:#86efac;
-  font-size:10px;
+  font-size:12px;
+  color:#94a3b8;
 }
 
 .dot{
@@ -121,118 +92,131 @@ button{
   box-shadow:0 0 12px #22c55e;
 }
 
-/* HERO */
-
 .hero{
+  padding:45px 0 25px;
   text-align:center;
-  padding:15px 7px 16px;
 }
 
-.hero h2{
-  font-size:clamp(28px,5vw,46px);
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 14px;
+  border:1px solid rgba(34,211,238,.25);
+  border-radius:999px;
+  background:rgba(8,47,73,.35);
+  color:#67e8f9;
+  font-size:12px;
+  margin-bottom:18px;
+}
+
+h1{
+  font-size:clamp(30px,6vw,58px);
   line-height:1.05;
-  background:linear-gradient(90deg,#fff,#67e8f9,#a78bfa);
+  font-weight:900;
+  letter-spacing:-2px;
+}
+
+.gradient{
+  background:linear-gradient(90deg,#67e8f9,#60a5fa,#a78bfa);
   -webkit-background-clip:text;
+  background-clip:text;
   color:transparent;
-  margin-bottom:10px;
 }
 
 .hero p{
   max-width:720px;
-  margin:auto;
+  margin:18px auto 0;
   color:#94a3b8;
-  font-size:14px;
-  line-height:1.6;
+  line-height:1.7;
 }
 
-/* CHAT */
-
-.chat-card{
-  overflow:hidden;
-  border:1px solid rgba(0,229,255,.18);
-  border-radius:25px;
-  background:rgba(5,10,25,.78);
+.panel{
+  margin:25px auto 50px;
+  padding:18px;
+  border:1px solid rgba(103,232,249,.16);
+  border-radius:24px;
+  background:rgba(15,23,42,.62);
+  backdrop-filter:blur(20px);
   box-shadow:
     0 20px 70px rgba(0,0,0,.35),
-    inset 0 0 40px rgba(0,229,255,.025);
+    inset 0 1px rgba(255,255,255,.035);
 }
 
-.chat-top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  padding:13px 15px;
-  border-bottom:1px solid rgba(148,163,184,.10);
-}
-
-.ai-info{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.ai-avatar{
-  width:38px;
-  height:38px;
-  border-radius:12px;
+.controls{
   display:grid;
-  place-items:center;
-  background:linear-gradient(135deg,#06b6d4,#7c3aed);
-  box-shadow:0 0 18px rgba(34,211,238,.2);
+  grid-template-columns:1fr auto;
+  gap:12px;
+  margin-bottom:15px;
 }
 
-.ai-info strong{
-  font-size:14px;
-}
-
-.ai-info span{
-  display:block;
-  color:#64748b;
-  font-size:10px;
-  margin-top:2px;
-}
-
-.top-actions{
+.language-box{
   display:flex;
-  gap:7px;
+  gap:8px;
+  flex-wrap:wrap;
 }
 
+.lang-btn,
 .small-btn{
-  border:1px solid rgba(148,163,184,.15);
-  background:rgba(15,23,42,.8);
+  border:1px solid rgba(148,163,184,.18);
+  background:rgba(15,23,42,.75);
   color:#cbd5e1;
-  border-radius:10px;
-  padding:8px 10px;
-  font-size:11px;
+  border-radius:12px;
+  padding:10px 13px;
+  cursor:pointer;
+  transition:.2s;
+  font-weight:700;
+  font-size:12px;
 }
 
+.lang-btn:hover,
 .small-btn:hover{
-  border-color:#22d3ee;
-  color:#67e8f9;
+  border-color:#38bdf8;
+  transform:translateY(-1px);
 }
 
-/* MESSAGES */
+.lang-btn.active{
+  color:#001018;
+  background:linear-gradient(135deg,#67e8f9,#38bdf8);
+  border-color:#67e8f9;
+  box-shadow:0 0 18px rgba(56,189,248,.25);
+}
 
-.messages{
-  height:clamp(420px,60vh,600px);
+.voice-tools{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.chat{
+  min-height:420px;
+  max-height:620px;
   overflow-y:auto;
-  padding:18px;
+  padding:8px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
   scroll-behavior:smooth;
 }
 
-.messages::-webkit-scrollbar{
-  width:5px;
+.chat::-webkit-scrollbar{
+  width:7px;
 }
 
-.messages::-webkit-scrollbar-thumb{
-  background:#164e63;
-  border-radius:20px;
+.chat::-webkit-scrollbar-thumb{
+  background:rgba(56,189,248,.25);
+  border-radius:10px;
 }
 
-.message{
-  display:flex;
-  margin-bottom:15px;
+.msg{
+  max-width:85%;
+  padding:13px 15px;
+  border-radius:18px;
+  line-height:1.65;
+  white-space:pre-wrap;
+  word-wrap:break-word;
   animation:messageIn .25s ease;
 }
 
@@ -247,322 +231,204 @@ button{
   }
 }
 
-.message.user{
-  justify-content:flex-end;
+.user{
+  align-self:flex-end;
+  background:linear-gradient(135deg,rgba(8,145,178,.38),rgba(37,99,235,.30));
+  border:1px solid rgba(56,189,248,.25);
 }
 
-.bubble{
-  max-width:min(82%,720px);
-  padding:12px 14px;
-  border-radius:17px;
-  line-height:1.6;
-  font-size:14px;
-  white-space:pre-wrap;
-  word-break:break-word;
+.ai{
+  align-self:flex-start;
+  background:rgba(30,41,59,.72);
+  border:1px solid rgba(167,139,250,.14);
 }
 
-.message.ai .bubble{
-  background:rgba(15,23,42,.9);
-  border:1px solid rgba(34,211,238,.12);
-  color:#dbeafe;
-  border-bottom-left-radius:5px;
-}
-
-.message.user .bubble{
-  background:linear-gradient(135deg,#075985,#312e81);
-  border:1px solid rgba(103,232,249,.15);
-  color:#fff;
-  border-bottom-right-radius:5px;
-}
-
-.message-label{
-  font-size:9px;
-  color:#64748b;
+.label{
+  display:block;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1px;
+  color:#67e8f9;
   margin-bottom:5px;
   text-transform:uppercase;
-  letter-spacing:1px;
 }
 
-.user .message-label{
-  text-align:right;
+.ai .label{
+  color:#c4b5fd;
 }
-
-/* TYPING */
 
 .typing{
-  display:none;
-  padding:0 18px 13px;
-}
-
-.typing.show{
-  display:block;
-}
-
-.typing-box{
   display:inline-flex;
+  gap:4px;
   align-items:center;
-  gap:5px;
-  padding:9px 12px;
-  border-radius:13px;
-  background:#0f172a;
-  color:#64748b;
-  font-size:11px;
 }
 
-.typing-box i{
-  width:5px;
-  height:5px;
+.typing i{
+  width:6px;
+  height:6px;
   border-radius:50%;
-  background:#22d3ee;
-  animation:typing 1s infinite;
+  background:#67e8f9;
+  animation:blink 1s infinite;
 }
 
-.typing-box i:nth-child(2){
+.typing i:nth-child(2){
   animation-delay:.15s;
 }
 
-.typing-box i:nth-child(3){
+.typing i:nth-child(3){
   animation-delay:.3s;
 }
 
-@keyframes typing{
-  0%,60%,100%{
-    opacity:.25;
-    transform:translateY(0);
-  }
-  30%{
-    opacity:1;
-    transform:translateY(-3px);
-  }
+@keyframes blink{
+  0%,80%,100%{opacity:.25}
+  40%{opacity:1}
 }
-
-/* QUICK */
-
-.quick{
-  display:flex;
-  gap:7px;
-  overflow-x:auto;
-  padding:0 15px 12px;
-}
-
-.quick button{
-  flex:0 0 auto;
-  border:1px solid rgba(34,211,238,.13);
-  background:rgba(8,47,73,.35);
-  color:#7dd3fc;
-  border-radius:999px;
-  padding:7px 11px;
-  font-size:10px;
-}
-
-/* INPUT */
 
 .input-area{
-  padding:12px;
-  border-top:1px solid rgba(148,163,184,.10);
-  background:rgba(2,6,23,.75);
-}
-
-.input-row{
   display:flex;
-  align-items:flex-end;
-  gap:8px;
+  gap:10px;
+  margin-top:15px;
 }
 
-#messageInput{
-  width:100%;
-  min-height:48px;
+.input{
+  flex:1;
+  min-height:54px;
   max-height:150px;
   resize:none;
-  border:1px solid rgba(148,163,184,.15);
+  padding:15px;
+  color:#e2f8ff;
+  background:rgba(2,6,23,.72);
+  border:1px solid rgba(56,189,248,.18);
+  border-radius:16px;
   outline:none;
-  border-radius:15px;
-  padding:13px 14px;
-  color:#e2e8f0;
-  background:#020617;
-  line-height:1.45;
+  font:inherit;
 }
 
-#messageInput:focus{
-  border-color:rgba(34,211,238,.45);
-  box-shadow:0 0 0 3px rgba(34,211,238,.05);
+.input:focus{
+  border-color:rgba(56,189,248,.6);
+  box-shadow:0 0 0 3px rgba(56,189,248,.08);
 }
 
-.icon-btn{
-  flex:0 0 48px;
-  width:48px;
-  height:48px;
-  border-radius:15px;
-  border:1px solid rgba(148,163,184,.15);
-  background:#0f172a;
-  color:#cbd5e1;
+.send{
+  width:58px;
+  border:0;
+  border-radius:16px;
+  cursor:pointer;
+  color:#001018;
+  background:linear-gradient(135deg,#67e8f9,#38bdf8);
   font-size:20px;
-  transition:.2s;
+  font-weight:900;
+  box-shadow:0 0 20px rgba(34,211,238,.22);
 }
 
-.icon-btn:hover{
-  transform:translateY(-1px);
-  border-color:#22d3ee;
+.send:disabled{
+  opacity:.5;
+  cursor:not-allowed;
 }
 
-#voiceBtn.listening{
-  color:#fff;
-  border-color:#ef4444;
-  background:rgba(127,29,29,.55);
-  box-shadow:0 0 25px rgba(239,68,68,.25);
-  animation:pulseVoice 1.2s infinite;
+.mic{
+  width:58px;
+  height:58px;
+  border-radius:16px;
+  border:1px solid rgba(167,139,250,.25);
+  background:rgba(76,29,149,.22);
+  color:#ddd6fe;
+  cursor:pointer;
+  font-size:22px;
 }
 
-@keyframes pulseVoice{
+.mic.active{
+  background:rgba(220,38,38,.25);
+  border-color:rgba(248,113,113,.55);
+  box-shadow:0 0 25px rgba(248,113,113,.18);
+  animation:pulseMic 1.2s infinite;
+}
+
+@keyframes pulseMic{
   50%{
-    box-shadow:0 0 35px rgba(239,68,68,.45);
+    transform:scale(1.04);
   }
-}
-
-#sendBtn{
-  background:linear-gradient(135deg,#0891b2,#6d28d9);
-  border-color:transparent;
-  color:#fff;
-}
-
-/* VOICE PANEL */
-
-.voice-panel{
-  display:none;
-  margin-top:10px;
-  padding:11px 13px;
-  border-radius:14px;
-  border:1px solid rgba(34,211,238,.15);
-  background:rgba(8,47,73,.22);
-}
-
-.voice-panel.show{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
 }
 
 .voice-status{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  font-size:11px;
+  min-height:23px;
+  margin-top:9px;
+  text-align:center;
+  color:#64748b;
+  font-size:12px;
+}
+
+.voice-status.live{
   color:#67e8f9;
 }
 
-.voice-wave{
-  display:flex;
-  align-items:center;
-  gap:3px;
-  height:20px;
+.mode-info{
+  margin:12px 0 0;
+  padding:10px 12px;
+  border-radius:12px;
+  background:rgba(8,47,73,.18);
+  border:1px solid rgba(56,189,248,.08);
+  color:#94a3b8;
+  font-size:11px;
+  line-height:1.5;
 }
 
-.voice-wave span{
-  width:3px;
-  height:7px;
-  border-radius:4px;
-  background:#22d3ee;
-  animation:wave .7s infinite alternate;
-}
-
-.voice-wave span:nth-child(2){animation-delay:.1s}
-.voice-wave span:nth-child(3){animation-delay:.2s}
-.voice-wave span:nth-child(4){animation-delay:.3s}
-.voice-wave span:nth-child(5){animation-delay:.4s}
-
-@keyframes wave{
-  to{
-    height:18px;
-  }
-}
-
-.voice-stop{
-  border:1px solid rgba(248,113,113,.25);
-  color:#fca5a5;
-  background:rgba(127,29,29,.2);
-  border-radius:9px;
-  padding:6px 9px;
-  font-size:10px;
-}
-
-/* FOOTER */
-
-.footer{
+footer{
   text-align:center;
   color:#475569;
-  font-size:10px;
-  padding-top:15px;
+  font-size:11px;
+  padding:10px 0 35px;
 }
 
-/* MOBILE */
+@media(max-width:720px){
 
-@media(max-width:650px){
-
-  .app{
-    width:96%;
-    padding-top:8px;
-  }
-
-  .header{
-    top:5px;
-    padding:11px 12px;
-    border-radius:17px;
-  }
-
-  .brand h1{
-    font-size:14px;
+  .header-inner{
+    min-height:62px;
   }
 
   .status{
-    font-size:9px;
+    display:none;
   }
 
   .hero{
-    padding:12px 5px;
+    padding-top:30px;
   }
 
-  .hero h2{
-    font-size:28px;
+  .panel{
+    padding:12px;
+    border-radius:19px;
   }
 
-  .hero p{
-    font-size:12px;
+  .controls{
+    grid-template-columns:1fr;
   }
 
-  .chat-card{
-    border-radius:20px;
+  .voice-tools{
+    justify-content:flex-start;
   }
 
-  .messages{
-    height:55vh;
-    min-height:390px;
-    padding:14px 11px;
-  }
-
-  .bubble{
-    max-width:90%;
-    font-size:13px;
-  }
-
-  .chat-top{
-    padding:11px;
-  }
-
-  .small-btn{
-    padding:7px 8px;
-    font-size:10px;
+  .msg{
+    max-width:92%;
   }
 
   .input-area{
-    padding:9px;
+    gap:7px;
   }
 
-  .icon-btn{
-    width:44px;
-    height:44px;
-    flex-basis:44px;
-    border-radius:13px;
+  .send,
+  .mic{
+    width:52px;
+    height:52px;
+  }
+
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    animation-duration:.001ms!important;
+    scroll-behavior:auto!important;
   }
 }
 </style>
@@ -570,412 +436,302 @@ button{
 
 <body>
 
-<div class="app">
-
-<header class="header">
-
-  <div class="brand">
-
-    <div class="logo">AI</div>
-
-    <div>
-      <h1>ALFA AI</h1>
-      <small>NATURAL VOICE • V5.7</small>
+<header>
+  <div class="container header-inner">
+    <div class="logo">
+      ALFA <span>AI</span> V5.8
     </div>
 
+    <div class="status">
+      <span class="dot"></span>
+      NATURAL BUDDY ONLINE
+    </div>
   </div>
-
-  <div class="status">
-    <span class="dot"></span>
-    ONLINE
-  </div>
-
 </header>
 
+<main class="container">
 
 <section class="hero">
+  <div class="badge">🤝 NATURAL AI CONVERSATION</div>
 
-  <h2>Talk Naturally With AI.</h2>
+  <h1>
+    Ngobrol Santai dengan
+    <span class="gradient">ALFA AI</span>
+  </h1>
 
   <p>
-    Ngobrol dengan ALFA AI menggunakan bahasa Indonesia
-    atau English secara natural.
+    Bicara seperti ngobrol dengan teman. Indonesia, English,
+    atau Auto. Tidak perlu bahasa formal.
   </p>
-
 </section>
 
+<section class="panel">
 
-<main class="chat-card">
+  <div class="controls">
 
-  <div class="chat-top">
+    <div class="language-box">
 
-    <div class="ai-info">
+      <button
+        class="lang-btn active"
+        id="idBtn"
+        onclick="setLanguage('id')">
+        🇮🇩 INDONESIA
+      </button>
 
-      <div class="ai-avatar">✦</div>
+      <button
+        class="lang-btn"
+        id="enBtn"
+        onclick="setLanguage('en')">
+        🇺🇸 ENGLISH
+      </button>
 
-      <div>
-        <strong>ALFA AI Assistant</strong>
-        <span>Natural Text + Voice Conversation</span>
-      </div>
+      <button
+        class="lang-btn"
+        id="autoBtn"
+        onclick="setLanguage('auto')">
+        🔄 AUTO
+      </button>
 
     </div>
 
-    <div class="top-actions">
+    <div class="voice-tools">
+
+      <button
+        class="small-btn"
+        id="voiceToggle"
+        onclick="toggleVoice()">
+        🔊 Voice ON
+      </button>
+
+      <button
+        class="small-btn"
+        onclick="stopSpeaking()">
+        ⏹️ Stop
+      </button>
 
       <button
         class="small-btn"
         onclick="clearChat()">
-        Hapus Chat
+        🗑️ Clear
       </button>
 
     </div>
 
   </div>
 
-
-  <div id="messages" class="messages"></div>
-
-
-  <div id="typing" class="typing">
-
-    <div class="typing-box">
-
-      ALFA AI sedang berpikir
-
-      <i></i>
-      <i></i>
-      <i></i>
-
-    </div>
-
+  <div class="mode-info" id="modeInfo">
+    🇮🇩 Mode Indonesia aktif — ALFA AI akan ngobrol santai dalam Bahasa Indonesia.
   </div>
 
+  <div class="chat" id="chat"></div>
 
-  <div class="quick">
-
-    <button onclick="quickAsk('Jelaskan sesuatu dengan bahasa yang mudah dipahami.')">
-      💡 Jelaskan
-    </button>
-
-    <button onclick="quickAsk('Help me come up with a creative idea.')">
-      🚀 English
-    </button>
-
-    <button onclick="quickAsk('Bantu saya membuat sesuatu yang profesional.')">
-      ✨ Buatkan
-    </button>
-
-    <button onclick="quickAsk('Mari ngobrol santai.')">
-      💬 Ngobrol
-    </button>
-
+  <div class="voice-status" id="voiceStatus">
+    Tekan 🎙️ untuk mulai bicara
   </div>
-
 
   <div class="input-area">
 
-    <div class="input-row">
+    <textarea
+      id="input"
+      class="input"
+      placeholder="Ngobrol sama ALFA AI..."
+      autocomplete="off"></textarea>
 
-      <textarea
-        id="messageInput"
-        placeholder="Ketik pesan atau tekan 🎙️ untuk bicara..."
-        rows="1"></textarea>
+    <button
+      class="mic"
+      id="micBtn"
+      onclick="toggleVoiceInput()"
+      title="Voice Chat">
+      🎙️
+    </button>
 
-      <button
-        id="voiceBtn"
-        class="icon-btn"
-        title="Voice Chat"
-        onclick="toggleVoice()">
-        🎙️
-      </button>
-
-      <button
-        id="sendBtn"
-        class="icon-btn"
-        title="Kirim"
-        onclick="sendChat()">
-        ➤
-      </button>
-
-    </div>
-
-
-    <div id="voicePanel" class="voice-panel">
-
-      <div class="voice-status">
-
-        <div class="voice-wave">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
-        <span id="voiceStatusText">
-          Mendengarkan...
-        </span>
-
-      </div>
-
-      <button
-        class="voice-stop"
-        onclick="stopVoice()">
-        Berhenti
-      </button>
-
-    </div>
+    <button
+      class="send"
+      id="sendBtn"
+      onclick="sendMessage()"
+      title="Kirim">
+      ➤
+    </button>
 
   </div>
 
+</section>
+
 </main>
 
-
-<div class="footer">
-  ALFA AI V5.7 • Natural Voice Conversation
-</div>
-
-</div>
-
+<footer>
+  ALFA AI V5.8 • Natural Buddy Voice
+</footer>
 
 <script>
 
 /* =========================================================
-   ALFA AI V5.7
-   WORKER TETAP
+   ALFA AI V5.8
+   WORKER TIDAK DIUBAH
 ========================================================= */
 
-const CHAT_URL =
-"https://shrill-haze-a236.adnan0076767.workers.dev/chat";
-
-
-/* =========================================================
-   NATURAL AI PERSONALITY
-========================================================= */
-
-const SYSTEM_PROMPT = `
-
-Kamu adalah ALFA AI.
-
-Kamu adalah asisten percakapan yang:
-- ramah
-- natural
-- komunikatif
-- responsif
-- punya wawasan luas
-- tidak kaku
-- tidak terdengar seperti robot
-
-ATURAN UTAMA:
-
-1. Bahasa harus terasa seperti manusia sedang berbicara.
-
-2. Jangan menggunakan pembukaan yang sama berulang-ulang.
-
-3. Jangan mengatakan:
-   "Sebagai AI..."
-   kecuali memang sangat diperlukan.
-
-4. Jangan menjawab seperti artikel ensiklopedia
-   jika pengguna hanya sedang ngobrol.
-
-5. Jika pengguna santai, balas santai.
-
-6. Jika pengguna serius, balas serius.
-
-7. Jika pengguna bercanda, boleh ikut bercanda
-   secara wajar.
-
-8. Jika pengguna meminta bantuan teknis,
-   berikan solusi yang jelas dan praktis.
-
-9. Jangan terlalu banyak bullet point
-   jika jawaban percakapan biasa.
-
-10. Jangan mengulang pertanyaan pengguna.
-
-11. Jangan membuat jawaban terasa template.
-
-12. Jangan menggunakan bahasa yang terlalu formal
-    kecuali pengguna memintanya.
-
-BAHASA:
-
-- Jika pengguna berbicara Bahasa Indonesia,
-  jawab Bahasa Indonesia natural.
-
-- Jika pengguna berbicara English,
-  jawab English yang natural dan conversational.
-
-- Jika pengguna mencampur Indonesia dan English,
-  ikuti gaya campuran tersebut secara natural.
-
-- Jangan menerjemahkan secara kaku.
-
-VOICE:
-
-Ketika jawaban akan dibacakan:
-
-- gunakan kalimat yang mudah diucapkan
-- jangan menggunakan tabel
-- jangan menggunakan markdown berlebihan
-- jangan menggunakan simbol yang aneh
-- jangan membuat jawaban terlalu panjang
-- gunakan gaya bicara yang hangat
-- variasikan panjang kalimat
-- terdengar seperti teman yang pintar sedang membantu
-
-ENGLISH:
-
-Jika pengguna berbicara English,
-gunakan conversational English.
-
-Jangan menerjemahkan struktur Bahasa Indonesia
-secara literal ke English.
-
-Gunakan idiom English yang wajar jika sesuai konteks.
-
-INDONESIAN:
-
-Gunakan Bahasa Indonesia sehari-hari yang natural.
-
-Hindari gaya:
-"Adapun..."
-"Selanjutnya..."
-"Demikian..."
-"Berdasarkan uraian tersebut..."
-
-kecuali konteks memang membutuhkan bahasa formal.
-
-KONTEKS:
-
-Selalu perhatikan percakapan sebelumnya.
-
-Jika pengguna melanjutkan topik sebelumnya,
-jangan meminta mereka mengulang semuanya.
-
-PENGETAHUAN:
-
-Gunakan seluruh pengetahuan yang tersedia
-untuk membantu pengguna dalam:
-teknologi, AI, programming, website, bisnis,
-desain, pendidikan, produktivitas, dan pengetahuan umum.
-
-Jika tidak mengetahui sesuatu,
-katakan dengan jujur.
-
-Jangan mengarang fakta.
-
-TUJUAN:
-
-Pengguna harus merasa sedang berbicara
-dengan asisten yang memahami konteks,
-bukan dengan mesin yang membaca template.
-
-`;
-
+const WORKER_URL =
+  "https://shrill-haze-a236.adnan0076767.workers.dev/chat";
 
 /* =========================================================
    STATE
 ========================================================= */
 
-let conversation=[];
+let messages = [];
 
-let isSending=false;
+let selectedLanguage = "id";
 
-let isListening=false;
+let voiceEnabled = true;
 
-let currentUtterance=null;
+let recognition = null;
 
-let lastDetectedLanguage="id-ID";
+let isListening = false;
 
+let speechQueue = [];
 
-const messagesEl=
-document.getElementById("messages");
+let speaking = false;
 
-const inputEl=
-document.getElementById("messageInput");
-
-const typingEl=
-document.getElementById("typing");
-
-const voiceBtn=
-document.getElementById("voiceBtn");
-
-const voicePanel=
-document.getElementById("voicePanel");
-
-const voiceStatusText=
-document.getElementById("voiceStatusText");
-
+let detectedLanguage = "id";
 
 /* =========================================================
-   LOAD
+   SYSTEM PROMPT
+========================================================= */
+
+const BASE_SYSTEM_PROMPT = `
+Kamu adalah ALFA AI, teman ngobrol digital yang santai, hangat,
+natural, ramah, dan responsif.
+
+PRINSIP UTAMA:
+- Jangan berbicara seperti customer service.
+- Jangan selalu mengatakan "Ada yang bisa saya bantu?"
+- Jangan memakai bahasa terlalu formal kecuali pengguna meminta.
+- Jangan mengulang template jawaban.
+- Dengarkan konteks percakapan sebelumnya.
+- Jawab seperti teman yang benar-benar mengikuti obrolan.
+- Boleh menggunakan humor ringan jika konteks cocok.
+- Boleh menggunakan emoji secukupnya.
+- Jangan memanggil pengguna "bos" di setiap kalimat.
+- "Bos" hanya digunakan sesekali jika terasa natural.
+- Kalau pengguna sedang bercerita, tanggapi ceritanya terlebih dahulu.
+- Kalau cocok, berikan pertanyaan balik agar percakapan berlanjut.
+- Jangan selalu membuat jawaban panjang.
+- Untuk percakapan santai, jawaban 1-4 kalimat biasanya cukup.
+- Jika pengguna meminta penjelasan detail, berikan penjelasan lengkap.
+
+BAHASA:
+- Jika mode Indonesia aktif, balas dalam Bahasa Indonesia natural.
+- Jika mode English aktif, balas FULL dalam English.
+- Jika pengguna memulai percakapan dalam English, jangan otomatis
+  menerjemahkan jawabannya ke Indonesia.
+- Jika pengguna berbicara English, lanjutkan percakapan dalam English.
+- Jika pengguna meminta English, gunakan English sampai pengguna
+  berpindah bahasa.
+- Jangan mencampur bahasa secara tidak perlu.
+- Gunakan English percakapan yang natural, bukan terjemahan kata-per-kata.
+
+GAYA ENGLISH:
+- conversational
+- friendly
+- natural
+- relaxed
+- clear
+- not robotic
+- not textbook-like
+
+GAYA INDONESIA:
+- santai
+- natural
+- jelas
+- ramah
+- tidak kaku
+- seperti teman ngobrol
+
+Jangan menjelaskan aturan ini kepada pengguna.
+`;
+
+/* =========================================================
+   DOM
+========================================================= */
+
+const chat =
+  document.getElementById("chat");
+
+const input =
+  document.getElementById("input");
+
+const sendBtn =
+  document.getElementById("sendBtn");
+
+const micBtn =
+  document.getElementById("micBtn");
+
+const voiceStatus =
+  document.getElementById("voiceStatus");
+
+const voiceToggle =
+  document.getElementById("voiceToggle");
+
+const modeInfo =
+  document.getElementById("modeInfo");
+
+/* =========================================================
+   LOAD CHAT
 ========================================================= */
 
 function loadChat(){
 
   try{
 
-    const saved=
-    localStorage.getItem(
-      "alfa_ai_v57_chat"
-    );
+    const saved =
+      localStorage.getItem("alfa_ai_v58_chat");
 
     if(saved){
 
-      conversation=
-      JSON.parse(saved);
+      messages =
+        JSON.parse(saved);
+
+      messages.forEach(m =>
+        renderMessage(
+          m.role,
+          m.content,
+          false
+        )
+      );
 
     }
 
   }catch(e){
 
-    conversation=[];
+    messages = [];
 
   }
 
+  if(!messages.length){
 
-  if(!conversation.length){
+    const welcome =
+      "Halo bosss 😎 Gue ALFA AI. Santai aja, kita ngobrol seperti teman. Mau cerita, tanya sesuatu, atau ngobrol pakai English juga boleh.";
 
-    addMessage(
-      "ai",
-      "Halo bosss 👋 Saya ALFA AI. Mau ngobrol santai, pakai Bahasa Indonesia, atau English juga bisa."
-    );
-
-  }else{
-
-    conversation.forEach(item=>{
-
-      if(item.role==="user"){
-
-        renderMessage(
-          "user",
-          item.content
-        );
-
-      }
-
-      if(item.role==="assistant"){
-
-        renderMessage(
-          "ai",
-          item.content
-        );
-
-      }
-
+    messages.push({
+      role:"assistant",
+      content:welcome
     });
 
+    renderMessage(
+      "assistant",
+      welcome,
+      false
+    );
+
+    saveChat();
+
   }
 
-  scrollBottom();
+  scrollChat();
 
 }
 
-
 /* =========================================================
-   SAVE
+   SAVE CHAT
 ========================================================= */
 
 function saveChat(){
@@ -983,195 +739,359 @@ function saveChat(){
   try{
 
     localStorage.setItem(
-      "alfa_ai_v57_chat",
-      JSON.stringify(
-        conversation.slice(-30)
-      )
+      "alfa_ai_v58_chat",
+      JSON.stringify(messages)
     );
 
   }catch(e){}
 
 }
 
-
 /* =========================================================
    RENDER
 ========================================================= */
 
-function renderMessage(role,text){
+function renderMessage(
+  role,
+  text,
+  animate=true
+){
 
-  const wrapper=
-  document.createElement("div");
+  const div =
+    document.createElement("div");
 
-  wrapper.className=
-  "message "+role;
+  div.className =
+    "msg " +
+    (role === "user" ? "user" : "ai");
 
+  const label =
+    document.createElement("span");
 
-  const box=
-  document.createElement("div");
+  label.className = "label";
 
+  label.textContent =
+    role === "user"
+      ? "YOU"
+      : "ALFA AI";
 
-  const label=
-  document.createElement("div");
+  const content =
+    document.createElement("span");
 
-  label.className=
-  "message-label";
+  content.textContent = text;
 
-  label.textContent=
-  role==="user"
-  ?"Kamu"
-  :"ALFA AI";
+  div.appendChild(label);
+  div.appendChild(content);
 
+  if(!animate){
+    div.style.animation = "none";
+  }
 
-  const bubble=
-  document.createElement("div");
-
-  bubble.className=
-  "bubble";
-
-  bubble.textContent=
-  text;
-
-
-  box.appendChild(label);
-
-  box.appendChild(bubble);
-
-  wrapper.appendChild(box);
-
-  messagesEl.appendChild(wrapper);
+  chat.appendChild(div);
 
 }
 
-
 /* =========================================================
-   ADD
+   TYPING
 ========================================================= */
 
-function addMessage(role,text){
+function showTyping(){
 
-  renderMessage(
-    role,
-    text
-  );
+  const div =
+    document.createElement("div");
 
-  scrollBottom();
+  div.className = "msg ai";
+  div.id = "typing";
+
+  div.innerHTML = `
+    <span class="label">ALFA AI</span>
+    <span class="typing">
+      <i></i><i></i><i></i>
+    </span>
+  `;
+
+  chat.appendChild(div);
+
+  scrollChat();
 
 }
 
+function hideTyping(){
 
-/* =========================================================
-   SCROLL
-========================================================= */
+  const el =
+    document.getElementById("typing");
 
-function scrollBottom(){
-
-  requestAnimationFrame(()=>{
-
-    messagesEl.scrollTop=
-    messagesEl.scrollHeight;
-
-  });
+  if(el) el.remove();
 
 }
 
-
 /* =========================================================
-   SEND
+   LANGUAGE
 ========================================================= */
 
-async function sendChat(){
+function setLanguage(lang){
 
-  if(isSending)return;
+  selectedLanguage = lang;
 
+  document
+    .querySelectorAll(".lang-btn")
+    .forEach(btn =>
+      btn.classList.remove("active")
+    );
 
-  const message=
-  inputEl.value.trim();
+  if(lang === "id"){
 
+    document
+      .getElementById("idBtn")
+      .classList.add("active");
 
-  if(!message)return;
+    modeInfo.textContent =
+      "🇮🇩 Mode Indonesia aktif — ALFA AI akan ngobrol santai dalam Bahasa Indonesia.";
 
+    input.placeholder =
+      "Ngobrol sama ALFA AI...";
+
+  }
+
+  else if(lang === "en"){
+
+    document
+      .getElementById("enBtn")
+      .classList.add("active");
+
+    modeInfo.textContent =
+      "🇺🇸 English mode active — ALFA AI will continue the conversation in natural English.";
+
+    input.placeholder =
+      "Talk with ALFA AI...";
+
+  }
+
+  else{
+
+    document
+      .getElementById("autoBtn")
+      .classList.add("active");
+
+    modeInfo.textContent =
+      "🔄 Auto mode — ALFA AI akan mencoba mengikuti bahasa percakapan.";
+
+    input.placeholder =
+      "Ngobrol / talk with ALFA AI...";
+
+  }
 
   stopSpeaking();
 
+}
 
-  inputEl.value="";
+/* =========================================================
+   LANGUAGE DETECTION
+========================================================= */
 
-  inputEl.style.height="48px";
+function detectLanguage(text){
 
+  const t =
+    text
+      .toLowerCase()
+      .replace(/[^\w\s]/g," ");
 
-  lastDetectedLanguage=
-  detectLanguage(message);
+  const words =
+    t.split(/\s+/).filter(Boolean);
 
+  const englishWords = [
 
-  addMessage(
-    "user",
-    message
-  );
+    "i","you","we","they","he","she",
+    "it","my","your","our","their",
+    "what","why","when","where","who",
+    "how","can","could","would","should",
+    "do","does","did","is","are","am",
+    "was","were","have","has","had",
+    "will","hello","hi","hey",
+    "thanks","thank","please",
+    "good","great","nice","today",
+    "tomorrow","yesterday",
+    "help","want","need","think",
+    "feel","know","tell","talk",
+    "speak","english","friend",
+    "really","very","just","because",
+    "about","with","from","for",
+    "and","but","or","not"
 
+  ];
 
-  conversation.push({
+  const indonesianWords = [
 
-    role:"user",
+    "saya","aku","kamu","anda","kita",
+    "kami","mereka","dia",
+    "apa","kenapa","mengapa","kapan",
+    "dimana","di mana","siapa","bagaimana",
+    "bisa","boleh","mau","ingin",
+    "butuh","tolong","terima","kasih",
+    "hari","sekarang","besok","kemarin",
+    "ngobrol","bicara","bahasa",
+    "indonesia","teman","bos",
+    "banget","nggak","gak","ga",
+    "iya","tidak","sudah","belum",
+    "lagi","karena","dengan","untuk",
+    "yang","dan","atau","tapi",
+    "kalau","kalau","saja","aja"
 
-    content:message
+  ];
+
+  let en = 0;
+  let id = 0;
+
+  words.forEach(w => {
+
+    if(englishWords.includes(w))
+      en++;
+
+    if(indonesianWords.includes(w))
+      id++;
 
   });
 
+  if(en > id && en >= 1)
+    return "en";
+
+  return "id";
+
+}
+
+/* =========================================================
+   ACTIVE RESPONSE LANGUAGE
+========================================================= */
+
+function getResponseLanguage(text){
+
+  if(selectedLanguage === "en")
+    return "en";
+
+  if(selectedLanguage === "id")
+    return "id";
+
+  return detectLanguage(text);
+
+}
+
+/* =========================================================
+   BUILD PROMPT
+========================================================= */
+
+function buildPrompt(language){
+
+  if(language === "en"){
+
+    return BASE_SYSTEM_PROMPT + `
+
+CURRENT CONVERSATION LANGUAGE: ENGLISH
+
+IMPORTANT:
+Reply ONLY in natural English.
+Continue the conversation in English.
+Do not translate the answer into Indonesian.
+If the user is casually talking, respond casually.
+If appropriate, ask a natural follow-up question.
+`;
+
+  }
+
+  return BASE_SYSTEM_PROMPT + `
+
+CURRENT CONVERSATION LANGUAGE: INDONESIAN
+
+IMPORTANT:
+Balas hanya dalam Bahasa Indonesia yang natural.
+Jangan menerjemahkan ke English kecuali diminta.
+Kalau pengguna sedang ngobrol santai, balas santai.
+Kalau cocok, lanjutkan obrolan dengan pertanyaan ringan.
+`;
+
+}
+
+/* =========================================================
+   SEND MESSAGE
+========================================================= */
+
+async function sendMessage(){
+
+  const text =
+    input.value.trim();
+
+  if(!text)
+    return;
+
+  const language =
+    getResponseLanguage(text);
+
+  detectedLanguage =
+    language;
+
+  input.value = "";
+
+  stopSpeaking();
+
+  messages.push({
+    role:"user",
+    content:text
+  });
+
+  renderMessage(
+    "user",
+    text
+  );
 
   saveChat();
 
+  scrollChat();
 
-  isSending=true;
+  sendBtn.disabled = true;
 
-  typingEl.classList.add("show");
-
+  showTyping();
 
   try{
 
-    const response=
-    await fetch(
-      CHAT_URL,
-      {
-        method:"POST",
+    const response =
+      await fetch(
+        WORKER_URL,
+        {
+          method:"POST",
 
-        headers:{
-          "Content-Type":
-          "application/json"
-        },
+          headers:{
+            "Content-Type":
+              "application/json"
+          },
 
-        body:JSON.stringify({
+          body:JSON.stringify({
 
-          action:"chat",
+            prompt:
+              buildPrompt(language),
 
-          message:message,
+            messages:
+              messages.slice(-20)
 
-          prompt:
-          SYSTEM_PROMPT+
+          })
 
-          "\n\nBahasa percakapan saat ini: "+
-          lastDetectedLanguage,
+        }
+      );
 
-          messages:
-          conversation.slice(-20)
+    if(!response.ok){
 
-        })
+      throw new Error(
+        "HTTP " + response.status
+      );
 
-      }
-    );
+    }
 
-
-    const raw=
-    await response.text();
-
+    const raw =
+      await response.text();
 
     let data;
 
-
     try{
 
-      data=
-      JSON.parse(raw);
+      data =
+        JSON.parse(raw);
 
     }catch(e){
 
@@ -1181,578 +1101,359 @@ async function sendChat(){
 
     }
 
-
-    if(!response.ok){
-
-      throw new Error(
-        data.error||
-        data.message||
-        "Worker HTTP "+
-        response.status
-      );
-
-    }
-
-
-    let reply=
-      data.reply??
-      data.response??
-      data.message??
-      data.result??
-      data.text??
-      data.content;
-
-
-    if(
-      typeof reply==="object" &&
-      reply!==null
-    ){
-
-      reply=
-        reply.text??
-        reply.content??
-        reply.reply??
-        JSON.stringify(reply);
-
-    }
-
+    let reply =
+      extractReply(data);
 
     if(!reply){
 
-      throw new Error(
-        "Response AI tidak ditemukan."
-      );
+      reply =
+        "Hmm, gue belum berhasil nangkep jawabannya. Coba ngomong lagi ya bos 😅";
 
     }
 
+    hideTyping();
 
-    reply=
-    String(reply).trim();
-
-
-    conversation.push({
-
+    messages.push({
       role:"assistant",
-
       content:reply
-
     });
 
-
-    saveChat();
-
-
-    addMessage(
-      "ai",
+    renderMessage(
+      "assistant",
       reply
     );
 
+    saveChat();
 
-    /* =========================
-       VOICE RESPONSE
-    ========================= */
+    scrollChat();
 
-    speakReply(
-      reply,
-      lastDetectedLanguage
-    );
+    if(voiceEnabled){
 
+      speakReply(
+        reply,
+        language
+      );
+
+    }
 
   }catch(error){
 
     console.error(error);
 
+    hideTyping();
 
-    addMessage(
-      "ai",
-      "Maaf bosss, ALFA AI sedang mengalami kendala koneksi.\n\nDetail: "+
-      error.message
+    const errorText =
+      language === "en"
+        ? "Oops, I hit a connection problem. Give me another try in a second."
+        : "Waduh, koneksinya lagi bermasalah. Coba kirim lagi sebentar ya bos 😅";
+
+    messages.push({
+      role:"assistant",
+      content:errorText
+    });
+
+    renderMessage(
+      "assistant",
+      errorText
     );
 
-
-  }finally{
-
-    isSending=false;
-
-    typingEl.classList.remove(
-      "show"
-    );
+    saveChat();
 
   }
 
+  sendBtn.disabled = false;
+
+  input.focus();
+
 }
 
-
 /* =========================================================
-   ENTER
+   EXTRACT WORKER RESPONSE
 ========================================================= */
 
-inputEl.addEventListener(
+function extractReply(data){
+
+  if(!data)
+    return "";
+
+  if(typeof data === "string")
+    return data.trim();
+
+  if(typeof data.reply === "string")
+    return data.reply.trim();
+
+  if(typeof data.response === "string")
+    return data.response.trim();
+
+  if(typeof data.message === "string")
+    return data.message.trim();
+
+  if(
+    data.result &&
+    typeof data.result.response === "string"
+  ){
+
+    return data.result.response.trim();
+
+  }
+
+  if(
+    data.result &&
+    typeof data.result.reply === "string"
+  ){
+
+    return data.result.reply.trim();
+
+  }
+
+  if(
+    data.output &&
+    typeof data.output === "string"
+  ){
+
+    return data.output.trim();
+
+  }
+
+  return "";
+
+}
+
+/* =========================================================
+   ENTER SEND
+========================================================= */
+
+input.addEventListener(
   "keydown",
   function(e){
 
     if(
-      e.key==="Enter" &&
+      e.key === "Enter" &&
       !e.shiftKey
     ){
 
       e.preventDefault();
 
-      sendChat();
+      sendMessage();
 
     }
 
   }
 );
 
-
 /* =========================================================
-   TEXTAREA
+   VOICE RECOGNITION
 ========================================================= */
 
-inputEl.addEventListener(
-  "input",
-  function(){
-
-    this.style.height=
-    "auto";
-
-    this.style.height=
-    Math.min(
-      this.scrollHeight,
-      150
-    )+"px";
-
-  }
-);
-
-
-/* =========================================================
-   QUICK
-========================================================= */
-
-function quickAsk(text){
-
-  inputEl.value=text;
-
-  inputEl.focus();
-
-  sendChat();
-
-}
-
-
-/* =========================================================
-   CLEAR
-========================================================= */
-
-function clearChat(){
-
-  stopSpeaking();
-
-  if(
-    !confirm(
-      "Hapus seluruh percakapan?"
-    )
-  )return;
-
-
-  conversation=[];
-
-
-  localStorage.removeItem(
-    "alfa_ai_v57_chat"
-  );
-
-
-  messagesEl.innerHTML="";
-
-
-  addMessage(
-    "ai",
-    "Oke bosss. Chat kita sudah dibersihkan. Mau mulai dari mana?"
-  );
-
-}
-
-
-/* =========================================================
-   LANGUAGE DETECTION
-========================================================= */
-
-function detectLanguage(text){
-
-  const t=
-  text.toLowerCase();
-
-
-  const englishScore=
-    countMatches(
-      t,
-      [
-        "the",
-        "is",
-        "are",
-        "am",
-        "you",
-        "your",
-        "what",
-        "why",
-        "how",
-        "can",
-        "could",
-        "would",
-        "should",
-        "please",
-        "help",
-        "tell",
-        "explain",
-        "make",
-        "create",
-        "build",
-        "website",
-        "code",
-        "hello",
-        "thanks",
-        "thank",
-        "today",
-        "tomorrow",
-        "where",
-        "when",
-        "which"
-      ]
-    );
-
-
-  const indonesiaScore=
-    countMatches(
-      t,
-      [
-        "yang",
-        "dan",
-        "atau",
-        "saya",
-        "aku",
-        "kamu",
-        "anda",
-        "ini",
-        "itu",
-        "apa",
-        "kenapa",
-        "mengapa",
-        "bagaimana",
-        "bisa",
-        "tolong",
-        "jelaskan",
-        "buat",
-        "membuat",
-        "website",
-        "kode",
-        "hari",
-        "sekarang",
-        "besok",
-        "dimana",
-        "kapan"
-      ]
-    );
-
-
-  if(
-    englishScore >
-    indonesiaScore
-  ){
-
-    return "en-US";
-
-  }
-
-
-  return "id-ID";
-
-}
-
-
-/* =========================================================
-   COUNT WORDS
-========================================================= */
-
-function countMatches(
-  text,
-  words
-){
-
-  let score=0;
-
-
-  words.forEach(word=>{
-
-    const regex=
-    new RegExp(
-      "\\b"+
-      word.replace(
-        /[.*+?^${}()|[\]\\]/g,
-        "\\$&"
-      )+
-      "\\b",
-      "g"
-    );
-
-
-    const matches=
-    text.match(regex);
-
-
-    if(matches){
-
-      score+=
-      matches.length;
-
-    }
-
-  });
-
-
-  return score;
-
-}
-
-
-/* =========================================================
-   SPEECH RECOGNITION
-========================================================= */
-
-const SpeechRecognition=
-window.SpeechRecognition||
-window.webkitSpeechRecognition;
-
-
-let recognition=null;
-
-
-if(SpeechRecognition){
-
-  recognition=
-  new SpeechRecognition();
-
-
-  recognition.continuous=false;
-
-  recognition.interimResults=true;
-
-  recognition.maxAlternatives=3;
-
-
-  recognition.onstart=
-  function(){
-
-    isListening=true;
-
-    voiceBtn.classList.add(
-      "listening"
-    );
-
-    voicePanel.classList.add(
-      "show"
-    );
-
-    voiceStatusText.textContent=
-      "Mendengarkan...";
-
-  };
-
-
-  recognition.onresult=
-  function(event){
-
-    let finalText="";
-
-    let interimText="";
-
-
-    for(
-      let i=event.resultIndex;
-      i<event.results.length;
-      i++
-    ){
-
-      const transcript=
-      event.results[i][0]
-      .transcript;
-
-
-      if(
-        event.results[i].isFinal
-      ){
-
-        finalText+=
-        transcript;
-
-      }else{
-
-        interimText+=
-        transcript;
-
-      }
-
-    }
-
-
-    if(finalText){
-
-      const clean=
-      finalText.trim();
-
-
-      inputEl.value=
-      clean;
-
-
-      lastDetectedLanguage=
-      detectLanguage(clean);
-
-
-      voiceStatusText.textContent=
-        lastDetectedLanguage==="en-US"
-        ?"English detected"
-        :"Bahasa Indonesia detected";
-
-
-      inputEl.dispatchEvent(
-        new Event("input")
-      );
-
-    }else if(interimText){
-
-      voiceStatusText.textContent=
-        "Mendengar: "+
-        interimText;
-
-    }
-
-  };
-
-
-  recognition.onerror=
-  function(event){
-
-    console.warn(
-      "Speech recognition:",
-      event.error
-    );
-
-
-    isListening=false;
-
-    voiceBtn.classList.remove(
-      "listening"
-    );
-
-    voicePanel.classList.remove(
-      "show"
-    );
-
-
-    if(
-      event.error==="not-allowed"
-    ){
-
-      addMessage(
-        "ai",
-        "Microphone belum mendapat izin. Pilih Allow pada izin microphone Chrome."
-      );
-
-    }
-
-  };
-
-
-  recognition.onend=
-  function(){
-
-    isListening=false;
-
-    voiceBtn.classList.remove(
-      "listening"
-    );
-
-    voicePanel.classList.remove(
-      "show"
-    );
-
-
-    const text=
-    inputEl.value.trim();
-
-
-    if(
-      text &&
-      !isSending
-    ){
-
-      sendChat();
-
-    }
-
-  };
-
-}
-
-
-/* =========================================================
-   START VOICE
-========================================================= */
-
-function toggleVoice(){
-
-  stopSpeaking();
-
+function initRecognition(){
+
+  const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
 
   if(!SpeechRecognition){
 
-    addMessage(
-      "ai",
-      "Browser ini belum mendukung Voice Chat. Gunakan Google Chrome."
-    );
+    voiceStatus.textContent =
+      "Browser ini belum mendukung Voice Recognition.";
+
+    micBtn.style.opacity = ".45";
 
     return;
 
   }
 
+  recognition =
+    new SpeechRecognition();
 
-  if(isListening){
+  recognition.continuous = false;
 
-    stopVoice();
+  recognition.interimResults = false;
 
-  }else{
+  recognition.maxAlternatives = 1;
 
-    startVoice();
+  recognition.onstart = function(){
 
-  }
+    isListening = true;
+
+    micBtn.classList.add("active");
+
+    micBtn.textContent = "⏹️";
+
+    voiceStatus.classList.add("live");
+
+    voiceStatus.textContent =
+      getRecognitionStatus();
+
+  };
+
+  recognition.onresult =
+    function(event){
+
+      const transcript =
+        event.results[0][0].transcript
+          .trim();
+
+      if(!transcript)
+        return;
+
+      input.value =
+        transcript;
+
+      voiceStatus.textContent =
+        "✓ Terdengar: " +
+        transcript;
+
+      setTimeout(() => {
+
+        sendMessage();
+
+      },120);
+
+    };
+
+  recognition.onerror =
+    function(event){
+
+      console.warn(
+        "SpeechRecognition:",
+        event.error
+      );
+
+      if(event.error === "not-allowed"){
+
+        voiceStatus.textContent =
+          "🎙️ Izin mikrofon ditolak browser.";
+
+      }
+
+      else if(
+        event.error === "no-speech"
+      ){
+
+        voiceStatus.textContent =
+          "Tidak terdengar suara. Coba lagi.";
+
+      }
+
+      else{
+
+        voiceStatus.textContent =
+          "Voice error: " +
+          event.error;
+
+      }
+
+  };
+
+  recognition.onend =
+    function(){
+
+      isListening = false;
+
+      micBtn.classList.remove("active");
+
+      micBtn.textContent = "🎙️";
+
+      setTimeout(() => {
+
+        if(!isListening){
+
+          voiceStatus.classList.remove(
+            "live"
+          );
+
+          voiceStatus.textContent =
+            "Tekan 🎙️ untuk mulai bicara";
+
+        }
+
+      },1800);
+
+    };
 
 }
 
+/* =========================================================
+   RECOGNITION LANGUAGE
+========================================================= */
 
-function startVoice(){
+function getRecognitionLanguage(){
 
-  if(!recognition)return;
+  if(selectedLanguage === "en")
+    return "en-US";
 
-  if(isSending)return;
+  if(selectedLanguage === "id")
+    return "id-ID";
 
+  /*
+    Browser SpeechRecognition tidak benar-benar
+    bisa mendengarkan dua bahasa sekaligus.
+    Untuk AUTO kita gunakan bahasa browser
+    terlebih dahulu.
+  */
+
+  const browserLang =
+    (
+      navigator.language ||
+      "id-ID"
+    ).toLowerCase();
+
+  if(browserLang.startsWith("en"))
+    return "en-US";
+
+  return "id-ID";
+
+}
+
+function getRecognitionStatus(){
+
+  if(selectedLanguage === "en"){
+
+    return "🎙️ Listening... Speak English.";
+
+  }
+
+  if(selectedLanguage === "id"){
+
+    return "🎙️ Mendengarkan... Silakan bicara.";
+
+  }
+
+  return "🎙️ Listening... / Mendengarkan...";
+
+}
+
+/* =========================================================
+   TOGGLE VOICE INPUT
+========================================================= */
+
+function toggleVoiceInput(){
+
+  if(!recognition){
+
+    initRecognition();
+
+  }
+
+  if(!recognition)
+    return;
+
+  if(isListening){
+
+    try{
+      recognition.stop();
+    }catch(e){}
+
+    return;
+
+  }
+
+  stopSpeaking();
+
+  recognition.lang =
+    getRecognitionLanguage();
 
   try{
-
-    inputEl.value="";
-
-
-    /*
-      Default Indonesia.
-      Chrome akan menggunakan hasil recognition
-      lalu kita deteksi bahasanya dari hasil final.
-    */
-
-    recognition.lang=
-    "id-ID";
-
 
     recognition.start();
 
@@ -1764,359 +1465,120 @@ function startVoice(){
 
 }
 
+/* =========================================================
+   VOICE OUTPUT
+========================================================= */
 
-function stopVoice(){
+function toggleVoice(){
 
-  if(recognition){
+  voiceEnabled =
+    !voiceEnabled;
 
-    try{
+  if(!voiceEnabled){
 
-      recognition.stop();
+    stopSpeaking();
 
-    }catch(e){}
+    voiceToggle.textContent =
+      "🔇 Voice OFF";
+
+  }else{
+
+    voiceToggle.textContent =
+      "🔊 Voice ON";
 
   }
-
-
-  isListening=false;
-
-  voiceBtn.classList.remove(
-    "listening"
-  );
-
-  voicePanel.classList.remove(
-    "show"
-  );
 
 }
 
-
 /* =========================================================
-   SPEECH SYNTHESIS
+   GET AVAILABLE VOICES
 ========================================================= */
 
-function speakReply(
-  text,
-  language
-){
+function getVoices(){
 
-  if(
-    !("speechSynthesis" in window)
-  ){
-
-    return;
-
-  }
-
-
-  stopSpeaking();
-
-
-  const speechText=
-  cleanForSpeech(text);
-
-
-  if(!speechText)return;
-
-
-  const parts=
-  splitSpeech(
-    speechText
-  );
-
-
-  let index=0;
-
-
-  function next(){
-
-    if(
-      index>=parts.length
-    ){
-
-      currentUtterance=null;
-
-      return;
-
-    }
-
-
-    const part=
-    parts[index++].trim();
-
-
-    if(!part){
-
-      next();
-
-      return;
-
-    }
-
-
-    const utterance=
-    new SpeechSynthesisUtterance(
-      part
-    );
-
-
-    utterance.lang=
-      language==="en-US"
-      ?"en-US"
-      :"id-ID";
-
-
-    utterance.rate=
-      language==="en-US"
-      ?0.96
-      :0.94;
-
-
-    utterance.pitch=
-      language==="en-US"
-      ?1.02
-      :1.03;
-
-
-    utterance.volume=1;
-
-
-    const voice=
-      chooseBestVoice(
-        utterance.lang
-      );
-
-
-    if(voice){
-
-      utterance.voice=voice;
-
-    }
-
-
-    utterance.onend=
-    function(){
-
-      next();
-
-    };
-
-
-    utterance.onerror=
-    function(){
-
-      currentUtterance=null;
-
-    };
-
-
-    currentUtterance=
-    utterance;
-
-
-    window.speechSynthesis.speak(
-      utterance
-    );
-
-  }
-
-
-  next();
+  return window.speechSynthesis
+    ? speechSynthesis.getVoices()
+    : [];
 
 }
 
-
 /* =========================================================
-   CHOOSE BEST NATIVE VOICE
+   PICK BEST VOICE
 ========================================================= */
 
-function chooseBestVoice(
-  lang
-){
+function chooseVoice(language){
 
-  const voices=
-  window.speechSynthesis
-  .getVoices();
+  const voices =
+    getVoices();
 
-
-  if(!voices.length){
-
+  if(!voices.length)
     return null;
 
-  }
+  const target =
+    language === "en"
+      ? "en"
+      : "id";
 
-
-  const wanted=
-  lang.toLowerCase();
-
-
-  const exact=
-  voices.filter(
-    voice=>
-      voice.lang &&
-      voice.lang.toLowerCase()===wanted
-  );
-
-
-  if(exact.length){
-
-    return rankVoices(
-      exact,
-      lang
-    )[0];
-
-  }
-
-
-  const base=
-  wanted.split("-")[0];
-
-
-  const regional=
-  voices.filter(
-    voice=>
-      voice.lang &&
-      voice.lang
-      .toLowerCase()
-      .startsWith(base+"-")
-  );
-
-
-  if(regional.length){
-
-    return rankVoices(
-      regional,
-      lang
-    )[0];
-
-  }
-
-
-  return null;
-
-}
-
-
-/* =========================================================
-   VOICE RANKING
-========================================================= */
-
-function rankVoices(
-  voices,
-  lang
-){
-
-  return voices
-    .map(
-      voice=>({
-
-        voice,
-
-        score:
-          voiceScore(
-            voice,
-            lang
-          )
-
-      })
-    )
-    .sort(
-      (a,b)=>
-      b.score-a.score
-    )
-    .map(
-      item=>item.voice
+  const matching =
+    voices.filter(
+      v =>
+        (
+          v.lang ||
+          ""
+        ).toLowerCase()
+        .startsWith(target)
     );
 
-}
+  if(!matching.length)
+    return null;
 
+  const preferred =
+    [
+      "natural",
+      "neural",
+      "premium",
+      "enhanced",
+      "google",
+      "microsoft",
+      "samantha",
+      "alex"
+    ];
 
-function voiceScore(
-  voice,
-  lang
-){
-
-  let score=0;
-
-
-  const name=
-  (voice.name||"")
-  .toLowerCase();
-
-
-  const vlang=
-  (voice.lang||"")
-  .toLowerCase();
-
-
-  if(
-    vlang===
-    lang.toLowerCase()
+  for(
+    const keyword of preferred
   ){
 
-    score+=100;
+    const found =
+      matching.find(
+        v =>
+          (
+            v.name ||
+            ""
+          )
+          .toLowerCase()
+          .includes(keyword)
+      );
+
+    if(found)
+      return found;
 
   }
 
-
-  if(
-    voice.localService
-  ){
-
-    score+=20;
-
-  }
-
-
-  /*
-    Prioritaskan voice yang biasanya
-    terdengar lebih natural pada sistem.
-  */
-
-  const preferred=
-  [
-    "natural",
-    "neural",
-    "premium",
-    "enhanced",
-    "google",
-    "microsoft"
-  ];
-
-
-  preferred.forEach(
-    word=>{
-
-      if(
-        name.includes(word)
-      ){
-
-        score+=10;
-
-      }
-
-    }
-  );
-
-
-  return score;
+  return matching[0];
 
 }
-
 
 /* =========================================================
-   CLEAN TEXT FOR SPEECH
+   CLEAN TTS TEXT
 ========================================================= */
 
-function cleanForSpeech(
-  text
-){
+function cleanForSpeech(text){
 
-  return String(text)
+  return text
 
     .replace(
       /```[\s\S]*?```/g,
-      " Saya akan jelaskan bagian kodenya di chat. "
+      " "
     )
 
     .replace(
@@ -2125,43 +1587,18 @@ function cleanForSpeech(
     )
 
     .replace(
-      /\*\*(.*?)\*\*/g,
-      "$1"
-    )
-
-    .replace(
-      /\*(.*?)\*/g,
-      "$1"
-    )
-
-    .replace(
-      /#{1,6}\s*/g,
-      ""
-    )
-
-    .replace(
-      /^\s*[-*+]\s+/gm,
-      ""
-    )
-
-    .replace(
       /\[([^\]]+)\]\([^)]+\)/g,
       "$1"
     )
 
     .replace(
-      /https?:\/\/\S+/gi,
+      /[*_#>]/g,
       ""
     )
 
     .replace(
-      /[•▪◾▶►]/g,
+      /https?:\/\/\S+/g,
       ""
-    )
-
-    .replace(
-      /\n+/g,
-      ". "
     )
 
     .replace(
@@ -2173,74 +1610,195 @@ function cleanForSpeech(
 
 }
 
-
 /* =========================================================
-   SPLIT NATURAL SENTENCES
+   SENTENCE SPLITTER
 ========================================================= */
 
-function splitSpeech(
-  text
-){
+function splitForSpeech(text){
 
-  const sentences=
-  text.match(
-    /[^.!?]+[.!?]+|[^.!?]+$/g
-  )||[text];
+  const clean =
+    cleanForSpeech(text);
 
+  if(!clean)
+    return [];
 
-  const result=[];
+  /*
+    Jangan memotong setiap koma.
+    Cukup berdasarkan kalimat supaya
+    voice tetap natural.
+  */
 
+  const parts =
+    clean.match(
+      /[^.!?]+[.!?]+|[^.!?]+$/g
+    ) || [clean];
 
-  let buffer="";
-
-
-  sentences.forEach(
-    sentence=>{
-
-      const clean=
-      sentence.trim();
-
-
-      if(!clean)return;
-
-
-      if(
-        (buffer+" "+clean)
-        .trim()
-        .length<220
-      ){
-
-        buffer=
-        (buffer+" "+clean)
-        .trim();
-
-      }else{
-
-        if(buffer){
-
-          result.push(buffer);
-
-        }
-
-        buffer=clean;
-
-      }
-
-    }
-  );
-
-
-  if(buffer){
-
-    result.push(buffer);
-
-  }
-
-
-  return result;
+  return parts
+    .map(x => x.trim())
+    .filter(Boolean);
 
 }
 
+/* =========================================================
+   SPEAK
+========================================================= */
+
+function speakReply(
+  text,
+  language
+){
+
+  if(!voiceEnabled)
+    return;
+
+  if(
+    !window.speechSynthesis
+  ){
+
+    return;
+
+  }
+
+  stopSpeaking();
+
+  const parts =
+    splitForSpeech(text);
+
+  if(!parts.length)
+    return;
+
+  speechQueue =
+    parts.slice();
+
+  speaking = true;
+
+  speakNext(
+    language
+  );
+
+}
+
+/* =========================================================
+   SPEAK NEXT
+========================================================= */
+
+function speakNext(language){
+
+  if(!speechQueue.length){
+
+    speaking = false;
+
+    return;
+
+  }
+
+  const text =
+    speechQueue.shift();
+
+  const utterance =
+    new SpeechSynthesisUtterance(
+      text
+    );
+
+  utterance.lang =
+    language === "en"
+      ? "en-US"
+      : "id-ID";
+
+  const voice =
+    chooseVoice(language);
+
+  if(voice){
+
+    utterance.voice =
+      voice;
+
+    utterance.lang =
+      voice.lang || utterance.lang;
+
+  }
+
+  if(language === "en"){
+
+    utterance.rate = 0.94;
+    utterance.pitch = 1.00;
+    utterance.volume = 1;
+
+  }else{
+
+    utterance.rate = 0.93;
+    utterance.pitch = 1.02;
+    utterance.volume = 1;
+
+  }
+
+  utterance.onstart =
+    function(){
+
+      voiceStatus.classList.add(
+        "live"
+      );
+
+      voiceStatus.textContent =
+        language === "en"
+          ? "🔊 ALFA AI is speaking..."
+          : "🔊 ALFA AI sedang bicara...";
+
+    };
+
+  utterance.onend =
+    function(){
+
+      if(!speechQueue.length){
+
+        speaking = false;
+
+        voiceStatus.classList.remove(
+          "live"
+        );
+
+        voiceStatus.textContent =
+          "Tekan 🎙️ untuk mulai bicara";
+
+        return;
+
+      }
+
+      /*
+        Jeda kecil antar kalimat.
+        Membantu voice terdengar lebih
+        seperti percakapan daripada
+        satu blok suara panjang.
+      */
+
+      setTimeout(
+        () => speakNext(language),
+        110
+      );
+
+    };
+
+  utterance.onerror =
+    function(){
+
+      speaking = false;
+
+      speechQueue = [];
+
+      voiceStatus.classList.remove(
+        "live"
+      );
+
+      voiceStatus.textContent =
+        "Voice selesai.";
+
+    };
+
+  speechSynthesis.speak(
+    utterance
+  );
+
+}
 
 /* =========================================================
    STOP SPEAKING
@@ -2248,59 +1806,108 @@ function splitSpeech(
 
 function stopSpeaking(){
 
+  speechQueue = [];
+
+  speaking = false;
+
   if(
-    "speechSynthesis" in window
+    window.speechSynthesis
   ){
 
-    window.speechSynthesis.cancel();
+    speechSynthesis.cancel();
 
   }
 
-
-  currentUtterance=null;
-
 }
 
-
 /* =========================================================
-   LOAD AVAILABLE VOICES
+   CLEAR CHAT
 ========================================================= */
 
-function refreshVoices(){
+function clearChat(){
 
   if(
-    !("speechSynthesis" in window)
+    !confirm(
+      "Hapus semua percakapan ALFA AI?"
+    )
   ){
 
     return;
 
   }
 
+  stopSpeaking();
 
-  window.speechSynthesis
-  .getVoices();
+  messages = [];
+
+  chat.innerHTML = "";
+
+  const welcome =
+    selectedLanguage === "en"
+      ? "Hey! 😎 I'm ALFA AI. Let's just chill and talk. What's on your mind?"
+      : "Halo bosss 😎 Gue ALFA AI. Santai aja, kita ngobrol. Lagi kepikiran apa nih?";
+
+  messages.push({
+    role:"assistant",
+    content:welcome
+  });
+
+  renderMessage(
+    "assistant",
+    welcome
+  );
+
+  saveChat();
 
 }
 
+/* =========================================================
+   SCROLL
+========================================================= */
+
+function scrollChat(){
+
+  setTimeout(() => {
+
+    chat.scrollTop =
+      chat.scrollHeight;
+
+  },40);
+
+}
+
+/* =========================================================
+   SPEECH VOICES READY
+========================================================= */
 
 if(
   "speechSynthesis" in window
 ){
 
-  window.speechSynthesis
-  .onvoiceschanged=
-  refreshVoices;
+  speechSynthesis.onvoiceschanged =
+    function(){
+
+      /*
+        Browser kadang baru memuat
+        daftar voice setelah halaman
+        selesai loading.
+      */
+
+      getVoices();
+
+    };
 
 }
 
-
 /* =========================================================
-   INIT
+   START
 ========================================================= */
+
+initRecognition();
 
 loadChat();
 
-refreshVoices();
+input.focus();
 
 </script>
 
