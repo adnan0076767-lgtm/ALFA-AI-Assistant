@@ -4,699 +4,1021 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#030712">
-<title>ALFA AI V5.6.3 | Conversation Intelligence</title>
+<meta name="color-scheme" content="dark">
+
+<title>ALFA AI V5.6 | AI ASSISTANT</title>
 
 <style>
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:#030712;color:#e5f4ff}
-body{overflow-x:hidden}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-body:before{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-2;
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  font-family:Inter,Segoe UI,Arial,sans-serif;
   background:
-    radial-gradient(circle at 15% 15%,rgba(0,200,255,.12),transparent 30%),
-    radial-gradient(circle at 85% 80%,rgba(130,70,255,.12),transparent 30%),
-    linear-gradient(135deg,#030712,#07111f 50%,#030712);
+    radial-gradient(circle at 20% 10%,rgba(0,200,255,.13),transparent 30%),
+    radial-gradient(circle at 80% 20%,rgba(130,70,255,.13),transparent 30%),
+    #030712;
+  color:#eef6ff;
+  overflow-x:hidden;
 }
 
-body:after{
-  content:"";
+button,
+textarea,
+input{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+button:disabled{
+  cursor:not-allowed;
+  opacity:.55;
+}
+
+/* BACKGROUND */
+
+.bg{
   position:fixed;
   inset:0;
-  z-index:-1;
-  opacity:.08;
-  background-image:
-    linear-gradient(rgba(0,220,255,.5) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,220,255,.5) 1px,transparent 1px);
-  background-size:40px 40px;
   pointer-events:none;
+  overflow:hidden;
+  z-index:-1;
 }
 
-.container{
-  width:min(1100px,94%);
-  margin:auto;
+.grid{
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(0,210,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,210,255,.035) 1px,transparent 1px);
+  background-size:45px 45px;
+  mask-image:linear-gradient(to bottom,black,transparent);
 }
+
+.orb{
+  position:absolute;
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:.22;
+  animation:float 8s ease-in-out infinite alternate;
+}
+
+.orb.one{
+  background:#00d9ff;
+  left:-100px;
+  top:120px;
+}
+
+.orb.two{
+  background:#7c3cff;
+  right:-100px;
+  top:300px;
+  animation-delay:2s;
+}
+
+@keyframes float{
+  from{transform:translateY(-20px)}
+  to{transform:translateY(35px)}
+}
+
+/* HEADER */
 
 header{
-  padding:28px 0 18px;
-  text-align:center;
+  position:sticky;
+  top:0;
+  z-index:50;
+  backdrop-filter:blur(18px);
+  background:rgba(3,7,18,.72);
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.nav{
+  width:min(1180px,94%);
+  margin:auto;
+  min-height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
 }
 
 .logo{
-  display:inline-flex;
+  display:flex;
   align-items:center;
   gap:10px;
-  font-size:28px;
   font-weight:900;
   letter-spacing:1px;
-  color:#fff;
-  text-shadow:0 0 18px rgba(0,220,255,.45);
 }
 
-.logo span{
-  color:#00d9ff;
+.logo-icon{
+  width:42px;
+  height:42px;
+  border-radius:13px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,#00d9ff,#7146ff);
+  box-shadow:0 0 28px rgba(0,217,255,.3);
 }
 
-.subtitle{
-  margin:8px 0 0;
-  color:#8ea9bb;
-  font-size:14px;
+.logo small{
+  display:block;
+  color:#8ea4b9;
+  font-size:10px;
+  letter-spacing:2px;
+  margin-top:2px;
 }
 
-.statusbar{
-  margin:20px 0;
+.status{
   display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:8px;
+  align-items:center;
+  gap:7px;
+  font-size:12px;
+  color:#9eb2c7;
+}
+
+.dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#35ff9a;
+  box-shadow:0 0 12px #35ff9a;
+}
+
+/* MAIN */
+
+main{
+  width:min(1180px,94%);
+  margin:auto;
+  padding:55px 0 120px;
+}
+
+.hero{
+  text-align:center;
+  max-width:850px;
+  margin:0 auto 35px;
 }
 
 .badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
   padding:8px 13px;
-  border:1px solid rgba(0,220,255,.22);
+  border:1px solid rgba(0,217,255,.22);
   border-radius:999px;
-  background:rgba(3,12,25,.75);
-  color:#9edff0;
+  background:rgba(0,217,255,.055);
+  color:#7deaff;
   font-size:12px;
+  margin-bottom:18px;
 }
 
-.badge.active{
-  color:#70ffbf;
-  border-color:rgba(70,255,170,.3);
+h1{
+  font-size:clamp(35px,7vw,70px);
+  line-height:1;
+  letter-spacing:-2px;
+  margin-bottom:18px;
+}
+
+.gradient{
+  background:linear-gradient(90deg,#fff,#64e9ff,#9d7cff,#fff);
+  background-size:250%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  animation:shine 7s linear infinite;
+}
+
+@keyframes shine{
+  to{background-position:250%}
+}
+
+.hero p{
+  color:#9cafc3;
+  line-height:1.7;
+  font-size:15px;
+}
+
+/* ASSISTANT */
+
+.app{
+  display:grid;
+  grid-template-columns:1fr 300px;
+  gap:18px;
 }
 
 .panel{
-  background:rgba(5,15,28,.86);
-  border:1px solid rgba(0,210,255,.18);
-  border-radius:20px;
-  box-shadow:0 15px 60px rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.09);
+  background:rgba(8,14,29,.74);
+  backdrop-filter:blur(20px);
+  border-radius:24px;
+  box-shadow:0 25px 80px rgba(0,0,0,.28);
   overflow:hidden;
 }
 
-.panel-head{
-  padding:16px 18px;
-  border-bottom:1px solid rgba(255,255,255,.06);
+.chat-panel{
+  min-height:650px;
+  display:flex;
+  flex-direction:column;
+}
+
+.chat-top{
+  padding:18px 20px;
+  border-bottom:1px solid rgba(255,255,255,.07);
   display:flex;
   justify-content:space-between;
   align-items:center;
   gap:10px;
 }
 
-.panel-title{
-  font-weight:800;
-  color:#fff;
+.ai-title{
+  display:flex;
+  align-items:center;
+  gap:11px;
 }
 
-.context-info{
-  color:#6fdff5;
-  font-size:12px;
+.ai-avatar{
+  width:43px;
+  height:43px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,rgba(0,217,255,.2),rgba(124,58,237,.25));
+  border:1px solid rgba(0,217,255,.25);
 }
 
-.chat{
-  height:520px;
+.ai-title strong{
+  display:block;
+}
+
+.ai-title span{
+  display:block;
+  color:#8195aa;
+  font-size:11px;
+  margin-top:3px;
+}
+
+.top-actions{
+  display:flex;
+  gap:7px;
+}
+
+.icon-btn{
+  width:39px;
+  height:39px;
+  border-radius:11px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.035);
+  color:#d9eaff;
+  transition:.2s;
+}
+
+.icon-btn:hover{
+  border-color:rgba(0,217,255,.45);
+  background:rgba(0,217,255,.08);
+  transform:translateY(-1px);
+}
+
+/* MESSAGES */
+
+.messages{
+  flex:1;
+  min-height:0;
   overflow-y:auto;
-  padding:20px;
-  scroll-behavior:smooth;
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
 }
 
 .message{
-  max-width:85%;
-  margin:0 0 15px;
-  padding:13px 15px;
-  border-radius:15px;
-  line-height:1.55;
-  white-space:pre-wrap;
-  word-wrap:break-word;
+  display:flex;
+  gap:10px;
+  max-width:86%;
+  animation:messageIn .25s ease;
+}
+
+@keyframes messageIn{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 .message.user{
-  margin-left:auto;
-  background:linear-gradient(135deg,#075b79,#063b56);
-  border:1px solid rgba(0,220,255,.25);
-  color:#eaffff;
-  border-bottom-right-radius:4px;
+  align-self:flex-end;
+  flex-direction:row-reverse;
 }
 
-.message.ai{
-  margin-right:auto;
-  background:rgba(13,27,43,.95);
-  border:1px solid rgba(125,150,180,.14);
-  color:#dcecf5;
-  border-bottom-left-radius:4px;
+.msg-avatar{
+  flex:0 0 34px;
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  display:grid;
+  place-items:center;
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.07);
 }
 
-.message.system{
-  margin:10px auto;
-  max-width:95%;
-  text-align:center;
-  color:#7291a4;
-  font-size:12px;
-  background:transparent;
+.user .msg-avatar{
+  background:rgba(0,217,255,.1);
+  border-color:rgba(0,217,255,.18);
 }
 
-.message small{
-  display:block;
-  opacity:.55;
-  font-size:10px;
-  margin-bottom:5px;
+.bubble{
+  padding:12px 15px;
+  border-radius:17px;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.065);
+  color:#dce8f5;
+  line-height:1.6;
+  font-size:14px;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
 }
+
+.user .bubble{
+  background:linear-gradient(135deg,rgba(0,180,255,.14),rgba(105,70,255,.14));
+  border-color:rgba(0,217,255,.18);
+}
+
+/* TYPING */
+
+.typing{
+  display:inline-flex;
+  gap:4px;
+  align-items:center;
+}
+
+.typing i{
+  width:6px;
+  height:6px;
+  background:#75eaff;
+  border-radius:50%;
+  animation:typing 1s infinite;
+}
+
+.typing i:nth-child(2){animation-delay:.15s}
+.typing i:nth-child(3){animation-delay:.3s}
+
+@keyframes typing{
+  0%,60%,100%{opacity:.25;transform:translateY(0)}
+  30%{opacity:1;transform:translateY(-4px)}
+}
+
+/* COMPOSER */
 
 .composer{
-  padding:16px;
-  border-top:1px solid rgba(255,255,255,.06);
-  background:rgba(2,9,18,.7);
+  padding:15px;
+  border-top:1px solid rgba(255,255,255,.07);
+  background:rgba(3,7,18,.4);
 }
 
-textarea{
+.input-wrap{
+  display:flex;
+  align-items:flex-end;
+  gap:8px;
+  padding:8px;
+  border-radius:17px;
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.035);
+  transition:.2s;
+}
+
+.input-wrap:focus-within{
+  border-color:rgba(0,217,255,.45);
+  box-shadow:0 0 0 3px rgba(0,217,255,.055);
+}
+
+#messageInput{
   width:100%;
-  min-height:90px;
-  resize:vertical;
-  border:1px solid rgba(0,220,255,.2);
-  border-radius:14px;
-  outline:none;
-  padding:14px;
-  color:#eaffff;
-  background:#071321;
-  font-size:15px;
+  min-height:43px;
+  max-height:150px;
+  resize:none;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:#f1f7ff;
+  padding:10px;
   line-height:1.5;
 }
 
-textarea:focus{
-  border-color:rgba(0,220,255,.65);
-  box-shadow:0 0 0 3px rgba(0,220,255,.07);
+#messageInput::placeholder{
+  color:#62758a;
 }
 
-.controls{
+.send-btn{
+  flex:0 0 48px;
+  width:48px;
+  height:48px;
+  border:0;
+  border-radius:14px;
+  color:white;
+  background:linear-gradient(135deg,#00bde8,#7655ff);
+  box-shadow:0 7px 22px rgba(0,190,255,.17);
+  font-size:18px;
+  transition:.2s;
+}
+
+.send-btn:hover{
+  transform:translateY(-2px) scale(1.02);
+}
+
+.send-btn:active{
+  transform:scale(.96);
+}
+
+.composer-tools{
   display:flex;
-  flex-wrap:wrap;
-  gap:9px;
-  margin-top:10px;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:8px;
+  padding:0 4px;
+  color:#62758a;
+  font-size:10px;
 }
 
-button,select{
-  border:1px solid rgba(0,220,255,.25);
-  border-radius:11px;
-  background:#081827;
-  color:#dffaff;
-  padding:11px 14px;
-  font-weight:700;
-  cursor:pointer;
+.voice-btn{
+  border:0;
+  background:transparent;
+  color:#76eaff;
+  font-size:12px;
+  padding:5px;
 }
 
-button:hover{
-  background:#0b2639;
-  border-color:rgba(0,220,255,.55);
-}
+/* SIDE */
 
-button:active{
-  transform:scale(.98);
-}
-
-button.primary{
-  background:linear-gradient(135deg,#087b9e,#075b78);
-  border-color:rgba(0,220,255,.5);
-}
-
-button.danger{
-  border-color:rgba(255,90,90,.3);
-}
-
-.tools{
-  margin-top:18px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
-}
-
-.tool{
-  background:rgba(5,15,28,.86);
-  border:1px solid rgba(0,210,255,.15);
-  border-radius:18px;
+.side{
   padding:18px;
 }
 
-.tool h3{
-  margin:0 0 7px;
-  color:#fff;
+.side h3{
+  font-size:14px;
+  margin-bottom:13px;
 }
 
-.tool p{
-  margin:0 0 13px;
-  color:#829bab;
-  font-size:13px;
-}
-
-.image-result{
-  margin-top:14px;
-  display:none;
-}
-
-.image-result img{
-  display:block;
-  width:100%;
-  max-height:600px;
-  object-fit:contain;
-  border-radius:14px;
-  border:1px solid rgba(0,220,255,.18);
-  background:#000;
-}
-
-.log{
-  margin-top:16px;
-  padding:12px;
-  background:#02060c;
-  border:1px solid rgba(255,255,255,.06);
-  border-radius:12px;
-  color:#668294;
-  font:11px/1.5 monospace;
-  max-height:130px;
-  overflow:auto;
-  white-space:pre-wrap;
-}
-
-footer{
-  padding:24px 0 35px;
-  text-align:center;
-  color:#587083;
+.side p{
+  color:#8296aa;
   font-size:12px;
+  line-height:1.65;
 }
 
-@media(max-width:700px){
-  .tools{grid-template-columns:1fr}
-  .chat{height:470px}
-  .message{max-width:94%}
-  .controls button,.controls select{flex:1 1 auto}
+.quick-list{
+  margin-top:18px;
+  display:grid;
+  gap:8px;
+}
+
+.quick{
+  text-align:left;
+  width:100%;
+  padding:11px 12px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.07);
+  background:rgba(255,255,255,.025);
+  color:#c8d7e7;
+  transition:.2s;
+}
+
+.quick:hover{
+  background:rgba(0,217,255,.07);
+  border-color:rgba(0,217,255,.22);
+}
+
+.feature{
+  margin-top:22px;
+  padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.07);
+}
+
+.feature-item{
+  display:flex;
+  gap:9px;
+  margin:11px 0;
+  color:#8296aa;
+  font-size:11px;
+}
+
+.feature-item b{
+  color:#dce9f7;
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:25px;
+  transform:translate(-50%,20px);
+  padding:11px 16px;
+  border-radius:12px;
+  background:#111b2c;
+  border:1px solid rgba(0,217,255,.22);
+  color:#dceeff;
+  font-size:12px;
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+  z-index:100;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+  .app{
+    grid-template-columns:1fr;
+  }
+
+  .side{
+    display:none;
+  }
+
+  .chat-panel{
+    min-height:calc(100vh - 210px);
+  }
+
+  main{
+    padding-top:35px;
+  }
+}
+
+@media(max-width:560px){
+  .nav{
+    min-height:62px;
+  }
+
+  .status{
+    display:none;
+  }
+
+  .logo-icon{
+    width:37px;
+    height:37px;
+  }
+
+  h1{
+    font-size:39px;
+  }
+
+  .message{
+    max-width:94%;
+  }
+
+  .messages{
+    padding:15px;
+  }
+
+  .chat-panel{
+    border-radius:18px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="bg">
+  <div class="grid"></div>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+</div>
 
 <header>
-  <div class="logo">⚡ ALFA <span>AI</span></div>
-  <div class="subtitle">Conversation Intelligence • Voice • Image</div>
+  <div class="nav">
+    <div class="logo">
+      <div class="logo-icon">✦</div>
+      <div>
+        ALFA AI
+        <small>ASSISTANT PRO</small>
+      </div>
+    </div>
 
-  <div class="statusbar">
-    <div class="badge active">● AI ONLINE</div>
-    <div class="badge">🧠 CONTEXT ACTIVE</div>
-    <div class="badge" id="memoryBadge">MEMORY 0</div>
-    <div class="badge" id="voiceBadge">VOICE READY</div>
+    <div class="status">
+      <span class="dot"></span>
+      AI SYSTEM ONLINE
+    </div>
   </div>
 </header>
 
-<section class="panel">
+<main>
 
-  <div class="panel-head">
-    <div class="panel-title">💬 ALFA AI CHAT</div>
-    <div class="context-info" id="topicInfo">Topik: belum ada</div>
-  </div>
+  <section class="hero">
+    <div class="badge">⚡ ALFA AI V5.6 COMMUNICATIVE PRO</div>
 
-  <div class="chat" id="chatBox">
-    <div class="message ai">
-      <small>ALFA AI</small>
-      Halo bosss 👋<br><br>
-      Saya siap ngobrol dan menjaga konteks percakapan.
-      Coba tanya sesuatu, lalu lanjutkan dengan “yang tadi”, “itu”, atau “lanjut”.
-    </div>
-  </div>
+    <h1>
+      <span class="gradient">Ngobrol.</span>
+      <br>
+      Tanya. Bangun Ide.
+    </h1>
 
-  <div class="composer">
-
-    <textarea
-      id="messageInput"
-      placeholder="Tulis pesan untuk ALFA AI..."
-      onkeydown="handleInputKey(event)"
-    ></textarea>
-
-    <div class="controls">
-
-      <button class="primary" type="button" onclick="sendChat()">
-        🚀 KIRIM
-      </button>
-
-      <button type="button" onclick="startVoice()">
-        🎙️ VOICE
-      </button>
-
-      <button type="button" onclick="stopVoice()">
-        ⏹ STOP
-      </button>
-
-      <button type="button" onclick="speakLastAnswer()">
-        🔊 BACA
-      </button>
-
-      <button type="button" onclick="resetConversation()">
-        ♻️ RESET
-      </button>
-
-      <select id="languageSelect">
-        <option value="auto">🌐 AUTO</option>
-        <option value="id">🇮🇩 INDONESIA</option>
-        <option value="en">🇺🇸 ENGLISH</option>
-        <option value="su">🟢 SUNDA</option>
-      </select>
-
-    </div>
-
-    <div class="log" id="debugLog">ALFA AI V5.6.3 READY...</div>
-
-  </div>
-
-</section>
-
-<div class="tools">
-
-  <section class="tool">
-    <h3>🎨 AI IMAGE</h3>
-    <p>Buat gambar dari prompt menggunakan Worker ALFA AI.</p>
-
-    <textarea
-      id="imagePrompt"
-      style="min-height:110px"
-      placeholder="Contoh: kota futuristik Indonesia pada malam hari, cinematic, detail tinggi..."
-    ></textarea>
-
-    <div class="controls">
-      <button class="primary" type="button" onclick="generateImage()">
-        🎨 GENERATE IMAGE
-      </button>
-    </div>
-
-    <div class="image-result" id="imageResult">
-      <img id="generatedImage" alt="ALFA AI Generated Image">
-    </div>
-  </section>
-
-  <section class="tool">
-    <h3>🧠 CONVERSATION MEMORY</h3>
     <p>
-      ALFA AI menyimpan konteks percakapan selama halaman ini terbuka,
-      sehingga pertanyaan lanjutan dapat tetap nyambung.
+      Asisten AI futuristik untuk percakapan, ide, coding,
+      bisnis, belajar, dan berbagai kebutuhan sehari-hari.
     </p>
-
-    <div class="badge active" id="contextStatus">
-      CONTEXT ENGINE: ACTIVE
-    </div>
-
-    <div style="margin-top:14px;color:#7893a3;font-size:13px;line-height:1.6">
-      Memahami referensi seperti:
-      <br>• “yang tadi”
-      <br>• “lanjutkan”
-      <br>• “maksud saya...”
-      <br>• “kalau yang kedua?”
-      <br>• “buat lebih bagus”
-    </div>
   </section>
 
-</div>
+  <section class="app">
 
-<footer>
-  ALFA AI V5.6.3 • HARD RESTORE + CONVERSATION INTELLIGENCE
-</footer>
+    <div class="panel chat-panel">
 
-</div>
+      <div class="chat-top">
+        <div class="ai-title">
+          <div class="ai-avatar">🤖</div>
+          <div>
+            <strong>ALFA AI</strong>
+            <span>Ready to communicate</span>
+          </div>
+        </div>
+
+        <div class="top-actions">
+          <button
+            type="button"
+            class="icon-btn"
+            id="clearBtn"
+            title="Hapus percakapan"
+            aria-label="Hapus percakapan"
+          >↻</button>
+
+          <button
+            type="button"
+            class="icon-btn"
+            id="chatBtn"
+            title="Fokus ke chat"
+            aria-label="Fokus ke chat"
+          >💬</button>
+        </div>
+      </div>
+
+      <div class="messages" id="messages">
+
+        <div class="message ai">
+          <div class="msg-avatar">🤖</div>
+          <div class="bubble">
+            Halo! Saya <b>ALFA AI</b> 👋<br><br>
+            Kita bisa ngobrol santai, membahas ide,
+            coding, website, bisnis, belajar, atau
+            apa pun yang ingin kamu diskusikan.
+            <br><br>
+            Silakan mulai ngobrol. Saya akan mencoba
+            mempertahankan konteks percakapan kita.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="composer">
+
+        <div class="input-wrap">
+
+          <textarea
+            id="messageInput"
+            rows="1"
+            autocomplete="off"
+            spellcheck="true"
+            placeholder="Tulis pesan untuk ALFA AI..."
+            aria-label="Pesan untuk ALFA AI"
+          ></textarea>
+
+          <button
+            type="button"
+            class="send-btn"
+            id="sendBtn"
+            title="Kirim pesan"
+            aria-label="Kirim pesan"
+          >➤</button>
+
+        </div>
+
+        <div class="composer-tools">
+          <span>Enter = kirim • Shift + Enter = baris baru</span>
+
+          <button
+            type="button"
+            class="voice-btn"
+            id="voiceBtn"
+          >🎤 Voice</button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <aside class="panel side">
+
+      <h3>💡 Coba ngobrol</h3>
+
+      <p>
+        Pilih salah satu contoh atau tulis pertanyaan
+        sendiri.
+      </p>
+
+      <div class="quick-list">
+
+        <button type="button" class="quick">
+          Bantu saya membuat ide website UMKM
+        </button>
+
+        <button type="button" class="quick">
+          Jelaskan coding dengan bahasa sederhana
+        </button>
+
+        <button type="button" class="quick">
+          Ayo ngobrol santai
+        </button>
+
+        <button type="button" class="quick">
+          Bantu saya membuat strategi bisnis
+        </button>
+
+      </div>
+
+      <div class="feature">
+
+        <div class="feature-item">
+          <span>💬</span>
+          <div><b>Context Chat</b><br>Mempertahankan percakapan.</div>
+        </div>
+
+        <div class="feature-item">
+          <span>🎤</span>
+          <div><b>Voice</b><br>Voice tetap tersedia.</div>
+        </div>
+
+        <div class="feature-item">
+          <span>🧠</span>
+          <div><b>Communicative</b><br>Dirancang untuk dialog natural.</div>
+        </div>
+
+        <div class="feature-item">
+          <span>🌐</span>
+          <div><b>Reference Ready</b><br>Siap dikembangkan dengan web search.</div>
+        </div>
+
+      </div>
+
+    </aside>
+
+  </section>
+
+</main>
+
+<div class="toast" id="toast"></div>
 
 <script>
 /* =========================================================
-   ALFA AI V5.6.3
-   HARD RESTORE
-   GLOBAL FUNCTIONS
-   WORKER TIDAK DIUBAH
+   ALFA AI V5.6
+   IMPORTANT:
+   Worker tidak diubah.
+   Masukkan URL Worker LAMA yang sudah terbukti bekerja.
    ========================================================= */
 
-var WORKER_URL = "https://shrill-haze-a236.adnan0076767.workers.dev";
-var CHAT_URL = WORKER_URL + "/chat";
-var IMAGE_URL = WORKER_URL + "/image";
+const WORKER_URL = "PASTE_URL_WORKER_LAMA_DI_SINI";
 
-var conversation = [];
-var lastAnswer = "";
-var isSending = false;
-var recognition = null;
-var voiceActive = false;
-var currentTopic = "";
+/* SYSTEM PERSONA */
 
-var conversationInstruction =
-  "Kamu adalah ALFA AI, asisten percakapan yang komunikatif, natural, membantu, " +
-  "dan mampu menjaga konteks percakapan. " +
-  "Pahami rujukan seperti 'itu', 'yang tadi', 'lanjut', 'yang kedua', " +
-  "'maksud saya', dan pertanyaan lanjutan berdasarkan percakapan sebelumnya. " +
-  "Jangan meminta pengguna mengulang informasi yang sudah jelas dari konteks. " +
-  "Jika pertanyaan sederhana, jawab ringkas. Jika kompleks, gunakan struktur yang jelas. " +
-  "Gunakan bahasa yang mengikuti bahasa pengguna. Jika pengguna memakai Bahasa Indonesia, " +
-  "jawab Bahasa Indonesia. Jika English, jawab English. Jika Sunda, jawab Sunda sejauh mampu. " +
-  "Jika campuran bahasa, pahami maksudnya dan jawab dengan bahasa yang paling sesuai. " +
-  "Jangan mengarang bahwa kamu memiliki akses internet real-time jika memang tidak diberikan.";
+const SYSTEM_PROMPT = `
+Kamu adalah ALFA AI, asisten AI yang komunikatif, ramah,
+natural, membantu, dan mudah diajak berdiskusi.
 
-function logMessage(text){
-  try{
-    var box = document.getElementById("debugLog");
-    if(!box) return;
+Gunakan bahasa Indonesia jika pengguna menggunakan bahasa
+Indonesia.
 
-    var now = new Date();
-    var time =
-      String(now.getHours()).padStart(2,"0") + ":" +
-      String(now.getMinutes()).padStart(2,"0") + ":" +
-      String(now.getSeconds()).padStart(2,"0");
+Jangan menjawab seperti robot yang kaku.
+Pertahankan konteks percakapan sebelumnya.
+Jika pengguna sedang membahas suatu proyek, pahami konteks
+proyek tersebut dari percakapan yang tersedia.
 
-    box.textContent = "[" + time + "] " + text + "\n" + box.textContent;
-  }catch(e){}
+Kamu dapat membantu:
+- percakapan umum
+- brainstorming
+- coding
+- website
+- bisnis
+- desain
+- belajar
+- penulisan
+- pemecahan masalah
+- penjelasan teknologi
+
+Jika pertanyaan membutuhkan informasi terbaru atau sumber
+internet yang belum tersedia dalam konteks, katakan bahwa
+informasi realtime membutuhkan akses web/reference engine.
+Jangan mengarang sumber atau fakta.
+
+Jawaban harus jelas, natural, dan relevan.
+`;
+
+const STORAGE_KEY = "alfa_ai_v56_history";
+
+const messagesEl = document.getElementById("messages");
+const inputEl = document.getElementById("messageInput");
+const sendBtn = document.getElementById("sendBtn");
+const clearBtn = document.getElementById("clearBtn");
+const chatBtn = document.getElementById("chatBtn");
+const voiceBtn = document.getElementById("voiceBtn");
+const toastEl = document.getElementById("toast");
+
+let history = [];
+let busy = false;
+
+/* =========================================================
+   UTILITY
+   ========================================================= */
+
+function toast(message){
+  toastEl.textContent = message;
+  toastEl.classList.add("show");
+
+  clearTimeout(window.__alfaToast);
+
+  window.__alfaToast = setTimeout(()=>{
+    toastEl.classList.remove("show");
+  },2200);
 }
 
-function escapeText(text){
-  return String(text || "");
+function escapeHTML(value){
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 }
 
-function addMessage(type,text){
-  var box = document.getElementById("chatBox");
+function addMessage(role,text,save=true){
 
-  if(!box) return;
+  const wrap = document.createElement("div");
+  wrap.className = "message " + (role === "user" ? "user" : "ai");
 
-  var div = document.createElement("div");
-  div.className = "message " + type;
+  const avatar = document.createElement("div");
+  avatar.className = "msg-avatar";
+  avatar.textContent = role === "user" ? "👤" : "🤖";
 
-  var label = document.createElement("small");
+  const bubble = document.createElement("div");
+  bubble.className = "bubble";
+  bubble.innerHTML = escapeHTML(text);
 
-  if(type === "user"){
-    label.textContent = "BOSSS";
-  }else if(type === "ai"){
-    label.textContent = "ALFA AI";
-  }else{
-    label.textContent = "SYSTEM";
+  wrap.appendChild(avatar);
+  wrap.appendChild(bubble);
+
+  messagesEl.appendChild(wrap);
+
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+
+  if(save){
+    history.push({
+      role,
+      content:text
+    });
+
+    saveHistory();
   }
 
-  div.appendChild(label);
-
-  var content = document.createElement("div");
-  content.textContent = String(text || "");
-  div.appendChild(content);
-
-  box.appendChild(div);
-  box.scrollTop = box.scrollHeight;
-
-  return div;
+  return wrap;
 }
 
 function addTyping(){
-  var box = document.getElementById("chatBox");
 
-  if(!box) return null;
+  const wrap = document.createElement("div");
 
-  var div = document.createElement("div");
-  div.className = "message ai";
-  div.id = "typingMessage";
+  wrap.className = "message ai";
+  wrap.id = "typingMessage";
 
-  var label = document.createElement("small");
-  label.textContent = "ALFA AI";
+  wrap.innerHTML = `
+    <div class="msg-avatar">🤖</div>
+    <div class="bubble">
+      <span class="typing">
+        <i></i><i></i><i></i>
+      </span>
+    </div>
+  `;
 
-  var content = document.createElement("div");
-  content.textContent = "⚡ Sedang berpikir...";
+  messagesEl.appendChild(wrap);
 
-  div.appendChild(label);
-  div.appendChild(content);
-  box.appendChild(div);
-  box.scrollTop = box.scrollHeight;
-
-  return div;
+  messagesEl.scrollTop = messagesEl.scrollHeight;
 }
 
 function removeTyping(){
-  var el = document.getElementById("typingMessage");
-  if(el && el.parentNode){
-    el.parentNode.removeChild(el);
+  document.getElementById("typingMessage")?.remove();
+}
+
+function saveHistory(){
+
+  try{
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(history.slice(-30))
+    );
+  }catch(error){
+    console.warn("History tidak dapat disimpan.",error);
   }
 }
 
-function updateMemoryBadge(){
-  var badge = document.getElementById("memoryBadge");
+function loadHistory(){
 
-  if(badge){
-    badge.textContent = "MEMORY " + conversation.length;
-  }
-}
+  try{
 
-function updateTopic(text){
-  var clean = String(text || "").trim();
+    const raw = localStorage.getItem(STORAGE_KEY);
 
-  if(!clean){
-    return;
-  }
+    if(!raw) return;
 
-  /*
-    Topic sederhana.
-    Tidak memblokir chat jika analisis topic gagal.
-  */
-  var words = clean
-    .toLowerCase()
-    .replace(/[^\w\s]/g," ")
-    .split(/\s+/)
-    .filter(function(w){
-      return w.length >= 5;
+    const saved = JSON.parse(raw);
+
+    if(!Array.isArray(saved)) return;
+
+    history = saved.slice(-30);
+
+    messagesEl.innerHTML = "";
+
+    history.forEach(item=>{
+      if(item && (item.role === "user" || item.role === "assistant")){
+        addMessage(
+          item.role === "assistant" ? "ai" : "user",
+          item.content,
+          false
+        );
+      }
     });
 
-  if(words.length){
-    currentTopic = words.slice(0,3).join(" ");
-  }else{
-    currentTopic = clean.substring(0,30);
-  }
-
-  var topic = document.getElementById("topicInfo");
-
-  if(topic){
-    topic.textContent = "Topik: " + currentTopic;
+  }catch(error){
+    console.warn("History rusak, memulai chat baru.",error);
+    history = [];
   }
 }
 
-function getLanguageInstruction(){
-  var select = document.getElementById("languageSelect");
+/* =========================================================
+   WORKER RESPONSE NORMALIZER
+   Menangani beberapa bentuk response umum.
+   ========================================================= */
 
-  if(!select){
-    return "";
-  }
-
-  var value = select.value;
-
-  if(value === "id"){
-    return "Jawab dalam Bahasa Indonesia.";
-  }
-
-  if(value === "en"){
-    return "Answer in English.";
-  }
-
-  if(value === "su"){
-    return "Jawab dalam Bahasa Sunda jika memungkinkan.";
-  }
-
-  return "Ikuti bahasa utama yang digunakan pengguna.";
-}
-
-function buildMessages(userText){
-
-  var messages = [];
-
-  /*
-    System instruction ditempatkan sebagai system message.
-    Pesan user asli tetap dikirim pada field message/prompt
-    untuk menjaga kompatibilitas Worker lama.
-  */
-  messages.push({
-    role:"system",
-    content:
-      conversationInstruction +
-      "\n" +
-      getLanguageInstruction()
-  });
-
-  /*
-    Simpan maksimal 20 pesan terakhir.
-  */
-  var start = Math.max(0,conversation.length - 20);
-
-  for(var i=start;i<conversation.length;i++){
-    messages.push({
-      role:conversation[i].role,
-      content:conversation[i].content
-    });
-  }
-
-  messages.push({
-    role:"user",
-    content:userText
-  });
-
-  return messages;
-}
-
-function saveConversation(userText,assistantText){
-
-  conversation.push({
-    role:"user",
-    content:userText
-  });
-
-  conversation.push({
-    role:"assistant",
-    content:assistantText
-  });
-
-  if(conversation.length > 24){
-    conversation = conversation.slice(conversation.length - 24);
-  }
-
-  updateMemoryBadge();
-}
-
-function parseChatResponse(data){
-
-  if(!data){
-    return "";
-  }
+function extractReply(data){
 
   if(typeof data === "string"){
-    var raw = data.trim();
-
-    if(!raw){
-      return "";
-    }
-
-    try{
-      var parsed = JSON.parse(raw);
-      return parseChatResponse(parsed);
-    }catch(e){
-      return raw;
-    }
+    return data;
   }
 
-  if(data.reply){
-    return String(data.reply);
+  if(!data || typeof data !== "object"){
+    return "";
   }
 
-  if(data.response){
-    return String(data.response);
+  if(typeof data.reply === "string"){
+    return data.reply;
   }
 
-  if(data.message){
-    return String(data.message);
+  if(typeof data.response === "string"){
+    return data.response;
   }
 
-  if(data.result){
+  if(typeof data.answer === "string"){
+    return data.answer;
+  }
 
-    if(typeof data.result === "string"){
-      return data.result;
+  if(typeof data.message === "string"){
+    return data.message;
+  }
+
+  if(typeof data.text === "string"){
+    return data.text;
+  }
+
+  if(typeof data.content === "string"){
+    return data.content;
+  }
+
+  if(
+    data.choices &&
+    Array.isArray(data.choices) &&
+    data.choices[0]
+  ){
+
+    const choice = data.choices[0];
+
+    if(choice.message && typeof choice.message.content === "string"){
+      return choice.message.content;
     }
 
-    if(data.result.reply){
-      return String(data.result.reply);
-    }
-
-    if(data.result.response){
-      return String(data.result.response);
+    if(typeof choice.text === "string"){
+      return choice.text;
     }
   }
 
@@ -704,168 +1026,335 @@ function parseChatResponse(data){
 }
 
 /* =========================================================
-   CHAT
+   WORKER CALL
    ========================================================= */
 
-function sendChat(){
+async function callWorker(userText){
 
-  if(isSending){
-    logMessage("Chat masih diproses...");
-    return;
+  if(
+    !WORKER_URL ||
+    WORKER_URL.includes("PASTE_URL_WORKER")
+  ){
+    throw new Error(
+      "URL Worker belum dipasang. Gunakan URL Worker ALFA AI yang lama."
+    );
   }
 
-  var input = document.getElementById("messageInput");
+  /*
+    Mengirim konteks percakapan.
 
-  if(!input){
-    alert("Input chat tidak ditemukan.");
-    return;
-  }
+    Format dibuat fleksibel supaya Worker lama dapat
+    menerima struktur request yang umum.
+  */
 
-  var text = input.value.trim();
+  const conversation = [
+    {
+      role:"system",
+      content:SYSTEM_PROMPT
+    },
+    ...history.slice(-20).map(item=>({
+      role:item.role === "ai" ? "assistant" : item.role,
+      content:item.content
+    })),
+    {
+      role:"user",
+      content:userText
+    }
+  ];
 
-  if(!text){
-    input.focus();
-    return;
-  }
+  const payload = {
+    message:userText,
+    prompt:userText,
+    messages:conversation,
+    history:conversation,
+    system:SYSTEM_PROMPT
+  };
 
-  isSending = true;
-
-  addMessage("user",text);
-  input.value = "";
-
-  updateTopic(text);
-  addTyping();
-
-  logMessage("Mengirim chat ke Worker...");
-
-  var messages = buildMessages(text);
-
-  fetch(CHAT_URL,{
+  const response = await fetch(WORKER_URL,{
     method:"POST",
     headers:{
       "Content-Type":"application/json"
     },
-    body:JSON.stringify({
-      action:"chat",
-      message:text,
-      prompt:text,
-      messages:messages
-    })
-  })
-  .then(function(response){
-
-    logMessage("HTTP Chat: " + response.status);
-
-    return response.text().then(function(raw){
-
-      if(!response.ok){
-        throw new Error(
-          "HTTP " + response.status + " - " + raw.substring(0,300)
-        );
-      }
-
-      return raw;
-    });
-  })
-  .then(function(raw){
-
-    removeTyping();
-
-    var answer = parseChatResponse(raw);
-
-    if(!answer){
-      throw new Error(
-        "Response Worker tidak berisi reply yang dikenali."
-      );
-    }
-
-    lastAnswer = answer;
-
-    addMessage("ai",answer);
-
-    saveConversation(text,answer);
-
-    logMessage("Chat berhasil.");
-
-    /*
-      Voice TTS hanya jika voice mode sedang aktif.
-    */
-    if(voiceActive){
-      speakText(answer);
-    }
-  })
-  .catch(function(error){
-
-    removeTyping();
-
-    var message =
-      "⚠️ Chat gagal dikirim.\n\n" +
-      "Detail: " +
-      (error && error.message ? error.message : String(error));
-
-    addMessage("system",message);
-
-    logMessage("ERROR: " + message);
-
-    /*
-      Kembalikan teks ke input supaya tidak hilang.
-    */
-    input.value = text;
-  })
-  .finally(function(){
-
-    isSending = false;
-
-    if(input){
-      input.focus();
-    }
+    body:JSON.stringify(payload)
   });
+
+  const rawText = await response.text();
+
+  let data;
+
+  try{
+    data = JSON.parse(rawText);
+  }catch{
+    data = rawText;
+  }
+
+  if(!response.ok){
+
+    let detail = "";
+
+    if(typeof data === "object"){
+      detail =
+        data.error ||
+        data.message ||
+        data.reply ||
+        "";
+    }else{
+      detail = data;
+    }
+
+    throw new Error(
+      detail || `Worker HTTP ${response.status}`
+    );
+  }
+
+  const reply = extractReply(data);
+
+  if(!reply){
+
+    console.warn("Raw Worker response:",data);
+
+    throw new Error(
+      "Response Worker diterima tetapi format jawabannya belum dikenali."
+    );
+  }
+
+  return reply;
 }
 
 /* =========================================================
-   ENTER
+   SEND
    ========================================================= */
 
-function handleInputKey(event){
+async function sendMessage(){
+
+  if(busy) return;
+
+  const text = inputEl.value.trim();
+
+  if(!text){
+    inputEl.focus();
+    return;
+  }
+
+  busy = true;
+  sendBtn.disabled = true;
+  inputEl.disabled = true;
+
+  addMessage("user",text,true);
+
+  inputEl.value = "";
+  autoResize();
+
+  addTyping();
+
+  try{
+
+    const reply = await callWorker(text);
+
+    removeTyping();
+
+    addMessage("ai",reply,true);
+
+  }catch(error){
+
+    removeTyping();
+
+    console.error("ALFA AI ERROR:",error);
+
+    addMessage(
+      "ai",
+      "Maaf, ALFA AI mengalami kendala saat menghubungi AI.\n\n" +
+      "Detail: " +
+      (error?.message || "Unknown error"),
+      true
+    );
+
+    toast("ALFA AI gagal menghubungi Worker");
+
+  }finally{
+
+    busy = false;
+
+    sendBtn.disabled = false;
+    inputEl.disabled = false;
+
+    inputEl.focus();
+  }
+}
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+function autoResize(){
+
+  inputEl.style.height = "auto";
+
+  inputEl.style.height =
+    Math.min(inputEl.scrollHeight,150) + "px";
+}
+
+inputEl.addEventListener("input",autoResize);
+
+inputEl.addEventListener("keydown",event=>{
 
   if(event.key === "Enter" && !event.shiftKey){
 
     event.preventDefault();
 
-    sendChat();
+    sendMessage();
   }
-}
+});
 
 /* =========================================================
-   VOICE
+   BUTTONS
    ========================================================= */
 
-function startVoice(){
+sendBtn.addEventListener("click",event=>{
+  event.preventDefault();
+  sendMessage();
+});
 
-  var SpeechRecognition =
-    window.SpeechRecognition ||
-    window.webkitSpeechRecognition;
+chatBtn.addEventListener("click",event=>{
 
-  if(!SpeechRecognition){
+  event.preventDefault();
 
-    addMessage(
-      "system",
-      "⚠️ Browser ini belum mendukung Speech Recognition. Coba Chrome/Edge."
-    );
+  inputEl.focus();
 
-    logMessage("SpeechRecognition tidak tersedia.");
-    return;
-  }
+  messagesEl.scrollTop = messagesEl.scrollHeight;
 
-  if(voiceActive && recognition){
-    logMessage("Voice sudah aktif.");
-    return;
-  }
+  toast("Chat siap digunakan");
+});
+
+clearBtn.addEventListener("click",event=>{
+
+  event.preventDefault();
+
+  const ok = confirm(
+    "Hapus seluruh riwayat percakapan ALFA AI?"
+  );
+
+  if(!ok) return;
+
+  history = [];
+
+  localStorage.removeItem(STORAGE_KEY);
+
+  messagesEl.innerHTML = "";
+
+  addMessage(
+    "ai",
+    "Percakapan baru dimulai. 👋\n\n" +
+    "Silakan ajak saya ngobrol.",
+    false
+  );
+
+  toast("Riwayat chat dihapus");
+
+  inputEl.focus();
+});
+
+/* =========================================================
+   QUICK PROMPTS
+   ========================================================= */
+
+document.querySelectorAll(".quick").forEach(button=>{
+
+  button.addEventListener("click",()=>{
+
+    inputEl.value = button.textContent.trim();
+
+    autoResize();
+
+    inputEl.focus();
+
+    sendMessage();
+  });
+
+});
+
+/* =========================================================
+   VOICE INPUT
+   Tetap aman: jika browser mendukung SpeechRecognition,
+   fitur voice dapat digunakan tanpa mengubah Worker.
+   ========================================================= */
+
+let recognition = null;
+
+const SpeechRecognition =
+  window.SpeechRecognition ||
+  window.webkitSpeechRecognition;
+
+if(SpeechRecognition){
 
   recognition = new SpeechRecognition();
 
+  recognition.lang = "id-ID";
   recognition.continuous = false;
   recognition.interimResults = false;
 
-  var langua
+  recognition.onstart = ()=>{
+    voiceBtn.textContent = "🔴 Mendengarkan...";
+    toast("Silakan bicara...");
+  };
+
+  recognition.onresult = event=>{
+
+    const transcript =
+      event.results?.[0]?.[0]?.transcript || "";
+
+    if(transcript){
+
+      inputEl.value = transcript;
+
+      autoResize();
+
+      inputEl.focus();
+    }
+  };
+
+  recognition.onerror = event=>{
+
+    console.warn("Voice error:",event.error);
+
+    toast("Voice tidak dapat digunakan saat ini");
+  };
+
+  recognition.onend = ()=>{
+    voiceBtn.textContent = "🎤 Voice";
+  };
+
+  voiceBtn.addEventListener("click",()=>{
+
+    if(busy) return;
+
+    try{
+      recognition.start();
+    }catch(error){
+      console.warn(error);
+    }
+
+  });
+
+}else{
+
+  voiceBtn.addEventListener("click",()=>{
+    toast("Browser ini belum mendukung Voice Input");
+  });
+
+}
+
+/* =========================================================
+   STARTUP
+   ========================================================= */
+
+loadHistory();
+
+inputEl.focus();
+
+console.log("ALFA AI V5.6 COMMUNICATIVE PRO READY");
+</script>
+
+</body>
+</html>
 ```
