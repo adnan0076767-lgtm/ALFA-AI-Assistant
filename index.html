@@ -4,15 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ALFA AI V3 ULTRA | Text • Voice • Image</title>
+<title>ALFA AI V4 | Design Studio</title>
 
-<meta name="description"
-content="ALFA AI V3 ULTRA — AI Assistant dengan Text Chat, Voice Chat dan AI Image Generator dalam satu dashboard futuristik.">
-
-<meta name="theme-color" content="#050816">
+<meta name="theme-color" content="#030712">
+<meta name="description" content="ALFA AI Design Studio - Text, Voice, Image, Logo, Poster, T-Shirt, Banner dan Creative Generator">
 
 <style>
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -24,1094 +21,1348 @@ html{
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
+    font-family:Inter,Segoe UI,Arial,sans-serif;
     background:
-        radial-gradient(circle at top left,#111d55 0%,transparent 35%),
-        radial-gradient(circle at bottom right,#3a075b 0%,transparent 35%),
-        #03050d;
-    color:#fff;
+        radial-gradient(circle at 20% 10%,rgba(0,229,255,.12),transparent 30%),
+        radial-gradient(circle at 80% 20%,rgba(139,92,246,.13),transparent 30%),
+        #030712;
+    color:#f8fafc;
     min-height:100vh;
     overflow-x:hidden;
 }
 
-/* BACKGROUND */
-
-.bg{
+body::before{
+    content:"";
     position:fixed;
     inset:0;
     pointer-events:none;
-    overflow:hidden;
+    background-image:
+        linear-gradient(rgba(0,229,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,229,255,.025) 1px,transparent 1px);
+    background-size:45px 45px;
     z-index:-2;
 }
 
-.grid{
-    position:absolute;
-    inset:0;
-    background-image:
-        linear-gradient(rgba(0,255,255,.045) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(0,255,255,.045) 1px,transparent 1px);
-    background-size:45px 45px;
-    mask-image:linear-gradient(to bottom,black,transparent);
-}
-
-.orb{
-    position:absolute;
-    width:260px;
-    height:260px;
+body::after{
+    content:"";
+    position:fixed;
+    width:450px;
+    height:450px;
     border-radius:50%;
-    filter:blur(70px);
-    opacity:.18;
-    animation:float 8s ease-in-out infinite;
+    background:rgba(0,229,255,.07);
+    filter:blur(100px);
+    top:-180px;
+    left:-180px;
+    pointer-events:none;
+    z-index:-1;
 }
 
-.orb.one{
-    background:#00eaff;
-    left:-80px;
-    top:100px;
+button,
+textarea,
+input,
+select{
+    font:inherit;
 }
 
-.orb.two{
-    background:#8b00ff;
-    right:-80px;
-    bottom:100px;
-    animation-delay:2s;
+button{
+    cursor:pointer;
 }
 
-@keyframes float{
-    0%,100%{transform:translateY(0) scale(1)}
-    50%{transform:translateY(-35px) scale(1.12)}
+.header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    backdrop-filter:blur(18px);
+    background:rgba(3,7,18,.78);
+    border-bottom:1px solid rgba(148,163,184,.12);
 }
 
-/* APP */
-
-.app{
-    width:min(1450px,96%);
+.header-inner{
+    width:min(1400px,94%);
     margin:auto;
-    padding:18px 0 30px;
-}
-
-/* HEADER */
-
-header{
+    min-height:76px;
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    gap:15px;
-    padding:16px 20px;
-    margin-bottom:18px;
-
-    background:rgba(8,12,30,.72);
-    border:1px solid rgba(0,238,255,.2);
-    border-radius:22px;
-
-    backdrop-filter:blur(20px);
-    box-shadow:
-        0 0 30px rgba(0,234,255,.07),
-        inset 0 0 25px rgba(255,255,255,.02);
+    justify-content:space-between;
+    gap:20px;
 }
 
 .brand{
     display:flex;
     align-items:center;
-    gap:13px;
+    gap:12px;
 }
 
 .logo{
-    width:48px;
-    height:48px;
+    width:45px;
+    height:45px;
     display:grid;
     place-items:center;
-
-    border-radius:15px;
-
-    background:
-        linear-gradient(135deg,#00eaff,#6a00ff);
-
-    box-shadow:
-        0 0 20px rgba(0,234,255,.5);
-
-    font-size:23px;
-    font-weight:bold;
+    border-radius:14px;
+    background:linear-gradient(135deg,#00e5ff,#7c3aed);
+    color:white;
+    font-size:22px;
+    font-weight:900;
+    box-shadow:0 0 30px rgba(0,229,255,.25);
 }
 
-.brand h1{
-    font-size:19px;
+.brand-text h1{
+    font-size:20px;
     letter-spacing:1px;
 }
 
-.brand p{
-    color:#8fa2c9;
-    font-size:12px;
-    margin-top:3px;
+.brand-text p{
+    color:#94a3b8;
+    font-size:11px;
+    margin-top:2px;
 }
 
 .status{
     display:flex;
     align-items:center;
     gap:8px;
+    padding:9px 14px;
+    border:1px solid rgba(0,229,255,.2);
+    border-radius:999px;
+    background:rgba(15,23,42,.65);
+    color:#a5f3fc;
     font-size:12px;
-    color:#9db0d8;
 }
 
-.dot{
-    width:9px;
-    height:9px;
+.status-dot{
+    width:8px;
+    height:8px;
     border-radius:50%;
-    background:#20ff9a;
-    box-shadow:0 0 12px #20ff9a;
+    background:#22c55e;
+    box-shadow:0 0 12px #22c55e;
+    animation:pulse 1.5s infinite;
 }
 
-/* DASHBOARD */
-
-.dashboard{
-    display:grid;
-    grid-template-columns:270px 1fr;
-    gap:18px;
+@keyframes pulse{
+    50%{opacity:.35;transform:scale(.75)}
 }
 
-/* SIDEBAR */
-
-.sidebar{
-    background:rgba(7,11,28,.76);
-    border:1px solid rgba(0,238,255,.18);
-    border-radius:22px;
-    padding:16px;
-
-    backdrop-filter:blur(20px);
-
-    box-shadow:
-        0 0 30px rgba(0,0,0,.25);
+.container{
+    width:min(1400px,94%);
+    margin:30px auto 70px;
 }
-
-.sidebar-title{
-    font-size:11px;
-    color:#6f83ae;
-    letter-spacing:2px;
-    margin:5px 8px 12px;
-}
-
-.mode{
-    width:100%;
-    border:1px solid transparent;
-    background:rgba(255,255,255,.035);
-    color:#cbd7f2;
-
-    padding:14px;
-    border-radius:15px;
-    margin-bottom:9px;
-
-    cursor:pointer;
-    text-align:left;
-
-    transition:.25s;
-}
-
-.mode:hover{
-    transform:translateX(4px);
-    border-color:rgba(0,234,255,.25);
-}
-
-.mode.active{
-    background:
-        linear-gradient(
-            135deg,
-            rgba(0,234,255,.16),
-            rgba(125,0,255,.14)
-        );
-
-    border-color:rgba(0,234,255,.45);
-    box-shadow:0 0 20px rgba(0,234,255,.08);
-}
-
-.mode-icon{
-    font-size:21px;
-    margin-bottom:6px;
-}
-
-.mode strong{
-    display:block;
-    font-size:14px;
-}
-
-.mode small{
-    color:#7084ad;
-    display:block;
-    margin-top:4px;
-    font-size:11px;
-}
-
-/* QUICK */
-
-.quick{
-    margin-top:20px;
-}
-
-.quick button{
-    width:100%;
-    border:none;
-    background:rgba(255,255,255,.035);
-    color:#9fb0d2;
-    padding:9px;
-    margin-top:7px;
-    border-radius:10px;
-    cursor:pointer;
-    text-align:left;
-    font-size:11px;
-}
-
-.quick button:hover{
-    background:rgba(0,234,255,.08);
-    color:#fff;
-}
-
-/* MAIN */
-
-.main{
-    min-width:0;
-}
-
-/* HERO */
 
 .hero{
-    padding:25px;
-    border-radius:22px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(0,234,255,.06),
-            rgba(120,0,255,.08)
-        );
-
-    border:1px solid rgba(0,238,255,.17);
-    margin-bottom:18px;
+    text-align:center;
+    padding:28px 15px 35px;
 }
 
 .hero h2{
-    font-size:clamp(24px,4vw,42px);
-    line-height:1.05;
-
-    background:
-        linear-gradient(
-            90deg,
-            #fff,
-            #00eaff,
-            #a970ff
-        );
-
+    font-size:clamp(30px,5vw,62px);
+    line-height:1;
+    background:linear-gradient(90deg,#fff,#67e8f9,#a78bfa,#fff);
+    background-size:250% auto;
     -webkit-background-clip:text;
     background-clip:text;
     color:transparent;
+    animation:shine 6s linear infinite;
+}
+
+@keyframes shine{
+    to{background-position:250% center}
 }
 
 .hero p{
-    margin-top:9px;
-    color:#91a2c8;
-    font-size:13px;
+    max-width:800px;
+    margin:18px auto 0;
+    color:#94a3b8;
+    line-height:1.7;
 }
 
-/* PANELS */
-
-.panel{
-    display:none;
-}
-
-.panel.active{
-    display:block;
-}
-
-/* CHAT */
-
-.chat{
-    height:580px;
+.mode-bar{
     display:flex;
-    flex-direction:column;
-
-    border-radius:22px;
-
-    background:rgba(6,10,25,.82);
-    border:1px solid rgba(0,238,255,.17);
-
-    overflow:hidden;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    margin:0 auto 25px;
 }
 
-.chat-head{
-    padding:15px 18px;
-    border-bottom:1px solid rgba(255,255,255,.06);
+.mode-btn{
+    border:1px solid rgba(148,163,184,.15);
+    background:rgba(15,23,42,.7);
+    color:#cbd5e1;
+    padding:12px 17px;
+    border-radius:14px;
+    transition:.25s;
+}
 
+.mode-btn:hover{
+    transform:translateY(-2px);
+    border-color:rgba(0,229,255,.45);
+}
+
+.mode-btn.active{
+    background:linear-gradient(135deg,rgba(0,229,255,.16),rgba(124,58,237,.2));
+    border-color:rgba(0,229,255,.6);
+    color:#fff;
+    box-shadow:0 0 25px rgba(0,229,255,.1);
+}
+
+.dashboard{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.card{
+    border:1px solid rgba(148,163,184,.13);
+    background:rgba(15,23,42,.64);
+    backdrop-filter:blur(18px);
+    border-radius:24px;
+    padding:22px;
+    box-shadow:0 20px 70px rgba(0,0,0,.2);
+}
+
+.card-title{
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:16px;
 }
 
-.chat-head strong{
-    font-size:13px;
+.card-title h3{
+    font-size:17px;
 }
 
-.chat-head span{
-    color:#6e83ae;
+.card-title span{
     font-size:11px;
+    color:#64748b;
 }
 
-.messages{
-    flex:1;
+.chat-box{
+    height:470px;
     overflow-y:auto;
-    padding:20px;
+    padding:8px 5px 15px;
+    scroll-behavior:smooth;
 }
 
-.messages::-webkit-scrollbar{
+.chat-box::-webkit-scrollbar,
+.gallery::-webkit-scrollbar{
     width:5px;
 }
 
-.messages::-webkit-scrollbar-thumb{
-    background:rgba(0,234,255,.25);
-    border-radius:10px;
+.chat-box::-webkit-scrollbar-thumb,
+.gallery::-webkit-scrollbar-thumb{
+    background:#334155;
+    border-radius:99px;
 }
 
-.msg{
-    max-width:82%;
-    margin-bottom:14px;
+.message{
+    max-width:88%;
     padding:13px 15px;
     border-radius:17px;
-    font-size:13px;
-    line-height:1.6;
+    margin:10px 0;
+    line-height:1.55;
     white-space:pre-wrap;
+    word-break:break-word;
 }
 
-.msg.ai{
-    background:
-        linear-gradient(
-            135deg,
-            rgba(0,234,255,.08),
-            rgba(125,0,255,.08)
-        );
-
-    border:1px solid rgba(0,234,255,.13);
-}
-
-.msg.user{
+.message.user{
     margin-left:auto;
-    background:linear-gradient(
-        135deg,
-        rgba(0,234,255,.18),
-        rgba(93,0,255,.17)
-    );
-
-    border:1px solid rgba(0,234,255,.2);
+    background:linear-gradient(135deg,rgba(0,229,255,.17),rgba(37,99,235,.2));
+    border:1px solid rgba(0,229,255,.18);
 }
 
-.msg-label{
+.message.ai{
+    margin-right:auto;
+    background:rgba(30,41,59,.7);
+    border:1px solid rgba(148,163,184,.1);
+}
+
+.message small{
+    display:block;
+    color:#64748b;
     font-size:9px;
-    color:#6d85b4;
     margin-bottom:5px;
+    text-transform:uppercase;
     letter-spacing:1px;
 }
 
-/* INPUT */
-
-.input-area{
-    padding:13px;
-    border-top:1px solid rgba(255,255,255,.06);
-    background:rgba(0,0,0,.12);
-}
-
-.input-row{
-    display:flex;
-    gap:8px;
-}
-
-textarea{
-    flex:1;
-    resize:none;
-    min-height:50px;
-    max-height:140px;
-
-    background:#070c1d;
-    color:#fff;
-
-    border:1px solid rgba(0,234,255,.18);
-    border-radius:14px;
-
-    padding:14px;
-
-    outline:none;
-    font-family:inherit;
-}
-
-textarea:focus{
-    border-color:rgba(0,234,255,.55);
-    box-shadow:0 0 18px rgba(0,234,255,.08);
-}
-
-.btn{
-    border:none;
-    border-radius:13px;
-    padding:0 17px;
-    cursor:pointer;
-    color:#fff;
-    font-weight:bold;
-
-    background:
-        linear-gradient(
-            135deg,
-            #00bcd4,
-            #713cff
-        );
-
-    box-shadow:0 0 18px rgba(0,234,255,.18);
-}
-
-.btn:hover{
-    transform:translateY(-1px);
-    filter:brightness(1.12);
-}
-
-.btn:disabled{
-    opacity:.5;
-    cursor:not-allowed;
-}
-
-/* VOICE */
-
-.voice-box{
-    display:grid;
-    place-items:center;
-    min-height:580px;
-
-    border-radius:22px;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(0,234,255,.08),
-            rgba(7,11,28,.92) 45%
-        );
-
-    border:1px solid rgba(0,238,255,.17);
-}
-
-.voice-orb{
-    width:190px;
-    height:190px;
-    border-radius:50%;
-
-    display:grid;
-    place-items:center;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(0,234,255,.35),
-            rgba(87,0,255,.2) 45%,
-            rgba(0,0,0,.1) 70%
-        );
-
-    border:1px solid rgba(0,234,255,.5);
-
-    box-shadow:
-        0 0 40px rgba(0,234,255,.18),
-        inset 0 0 40px rgba(0,234,255,.12);
-
-    transition:.3s;
-}
-
-.voice-orb.listening{
-    animation:pulseVoice 1.2s infinite;
-    box-shadow:
-        0 0 80px rgba(0,234,255,.45),
-        inset 0 0 50px rgba(0,234,255,.2);
-}
-
-@keyframes pulseVoice{
-    0%{transform:scale(1)}
-    50%{transform:scale(1.08)}
-    100%{transform:scale(1)}
-}
-
-.mic{
-    font-size:65px;
-}
-
-.voice-status{
-    margin-top:25px;
-    text-align:center;
-}
-
-.voice-status h3{
-    font-size:19px;
-}
-
-.voice-status p{
-    margin-top:7px;
-    color:#8093bb;
-    font-size:12px;
-}
-
-.voice-actions{
-    display:flex;
-    gap:9px;
-    justify-content:center;
-    margin-top:20px;
-    flex-wrap:wrap;
-}
-
-.voice-btn{
-    border:1px solid rgba(0,234,255,.25);
-    background:rgba(0,234,255,.07);
-    color:#fff;
-    padding:12px 18px;
-    border-radius:12px;
-    cursor:pointer;
-}
-
-/* IMAGE */
-
-.image-panel{
-    min-height:580px;
-    border-radius:22px;
-    padding:25px;
-
-    background:rgba(7,11,28,.82);
-    border:1px solid rgba(0,238,255,.17);
-}
-
-.image-title{
-    margin-bottom:17px;
-}
-
-.image-title h3{
-    font-size:20px;
-}
-
-.image-title p{
-    color:#8093bb;
-    font-size:12px;
-    margin-top:5px;
-}
-
-.image-form{
-    display:flex;
-    gap:8px;
-}
-
-.image-form input{
-    flex:1;
-    background:#070c1d;
-    color:#fff;
-
-    border:1px solid rgba(0,234,255,.18);
-    border-radius:13px;
-
-    padding:14px;
-    outline:none;
-}
-
-.image-form input:focus{
-    border-color:#00eaff;
-}
-
-.image-result{
-    margin-top:20px;
-    min-height:400px;
-
-    border-radius:18px;
-    border:1px dashed rgba(0,234,255,.16);
-
-    display:grid;
-    place-items:center;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(0,234,255,.04),
-            rgba(0,0,0,.15)
-        );
-
-    overflow:hidden;
-}
-
-.image-placeholder{
-    text-align:center;
-    color:#64779f;
-    padding:25px;
-}
-
-.image-placeholder .big{
-    font-size:60px;
-    margin-bottom:12px;
-}
-
-.generated-image{
-    width:100%;
-    height:auto;
-    display:block;
-    border-radius:16px;
-}
-
-/* FOOTER */
-
-footer{
-    text-align:center;
-    color:#53678f;
-    font-size:10px;
-    padding:18px 0 0;
-}
-
-/* LOADING */
-
-.loading{
+.typing{
     display:inline-flex;
     gap:4px;
     align-items:center;
 }
 
-.loading i{
-    width:6px;
-    height:6px;
+.typing i{
+    width:5px;
+    height:5px;
+    background:#67e8f9;
     border-radius:50%;
-    background:#00eaff;
-    animation:load .8s infinite;
+    animation:typing 1s infinite;
 }
 
-.loading i:nth-child(2){
-    animation-delay:.15s;
+.typing i:nth-child(2){animation-delay:.15s}
+.typing i:nth-child(3){animation-delay:.3s}
+
+@keyframes typing{
+    50%{transform:translateY(-4px);opacity:.35}
 }
 
-.loading i:nth-child(3){
-    animation-delay:.3s;
+.chat-input-area{
+    margin-top:12px;
 }
 
-@keyframes load{
-    0%,100%{opacity:.2;transform:translateY(0)}
-    50%{opacity:1;transform:translateY(-4px)}
+textarea{
+    width:100%;
+    min-height:90px;
+    resize:vertical;
+    color:#f8fafc;
+    background:rgba(2,6,23,.8);
+    border:1px solid rgba(148,163,184,.15);
+    border-radius:17px;
+    padding:15px;
+    outline:none;
+    transition:.2s;
 }
 
-/* MOBILE */
+textarea:focus{
+    border-color:rgba(0,229,255,.55);
+    box-shadow:0 0 25px rgba(0,229,255,.08);
+}
 
-@media(max-width:850px){
+.controls{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    margin-top:10px;
+}
 
+.btn{
+    border:1px solid rgba(148,163,184,.16);
+    background:rgba(15,23,42,.85);
+    color:#e2e8f0;
+    padding:11px 14px;
+    border-radius:13px;
+    transition:.2s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    border-color:rgba(0,229,255,.45);
+}
+
+.btn.primary{
+    background:linear-gradient(135deg,#0891b2,#2563eb);
+    border-color:transparent;
+    color:white;
+    font-weight:700;
+}
+
+.btn.voice{
+    background:linear-gradient(135deg,rgba(124,58,237,.35),rgba(59,130,246,.2));
+}
+
+.btn.danger{
+    background:rgba(127,29,29,.25);
+}
+
+.voice-status{
+    margin-top:10px;
+    color:#67e8f9;
+    font-size:12px;
+    min-height:18px;
+}
+
+.design-panel{
+    display:none;
+}
+
+.design-panel.active{
+    display:block;
+}
+
+.prompt-box{
+    position:relative;
+}
+
+.prompt-box textarea{
+    min-height:145px;
+}
+
+.enhanced-preview{
+    margin-top:10px;
+    padding:12px;
+    border-radius:13px;
+    background:rgba(2,6,23,.65);
+    border:1px dashed rgba(0,229,255,.18);
+    color:#94a3b8;
+    font-size:12px;
+    line-height:1.55;
+    max-height:150px;
+    overflow:auto;
+    display:none;
+}
+
+.options-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:12px;
+}
+
+.field{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.field label{
+    color:#94a3b8;
+    font-size:11px;
+}
+
+select,
+input[type="number"]{
+    width:100%;
+    background:rgba(2,6,23,.8);
+    border:1px solid rgba(148,163,184,.14);
+    color:#e2e8f0;
+    border-radius:12px;
+    padding:11px;
+    outline:none;
+}
+
+.checkbox{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:#94a3b8;
+    font-size:12px;
+    margin-top:12px;
+}
+
+.checkbox input{
+    accent-color:#06b6d4;
+}
+
+.quick-prompts{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:12px;
+}
+
+.quick{
+    padding:8px 10px;
+    border-radius:10px;
+    border:1px solid rgba(148,163,184,.12);
+    background:rgba(15,23,42,.6);
+    color:#94a3b8;
+    font-size:11px;
+    cursor:pointer;
+}
+
+.quick:hover{
+    color:#fff;
+    border-color:rgba(0,229,255,.35);
+}
+
+.generate-row{
+    display:flex;
+    gap:9px;
+    margin-top:14px;
+}
+
+.generate-row .btn{
+    flex:1;
+}
+
+.image-stage{
+    min-height:470px;
+    border-radius:18px;
+    border:1px dashed rgba(148,163,184,.16);
+    background:
+        radial-gradient(circle at center,rgba(0,229,255,.06),transparent 45%),
+        rgba(2,6,23,.55);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+    overflow:hidden;
+}
+
+.empty-state{
+    text-align:center;
+    color:#64748b;
+    max-width:360px;
+}
+
+.empty-icon{
+    font-size:54px;
+    margin-bottom:12px;
+    filter:drop-shadow(0 0 20px rgba(0,229,255,.2));
+}
+
+.empty-state h4{
+    color:#cbd5e1;
+    margin-bottom:7px;
+}
+
+.empty-state p{
+    font-size:12px;
+    line-height:1.6;
+}
+
+.result-grid{
+    width:100%;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.result-card{
+    position:relative;
+    border-radius:15px;
+    overflow:hidden;
+    background:#020617;
+    border:1px solid rgba(148,163,184,.13);
+}
+
+.result-card img{
+    width:100%;
+    display:block;
+    aspect-ratio:1/1;
+    object-fit:cover;
+}
+
+.result-actions{
+    display:flex;
+    gap:5px;
+    padding:8px;
+    background:rgba(2,6,23,.9);
+}
+
+.result-actions button{
+    flex:1;
+    border:1px solid rgba(148,163,184,.13);
+    background:#0f172a;
+    color:#cbd5e1;
+    padding:7px;
+    border-radius:8px;
+    font-size:10px;
+}
+
+.result-actions button:hover{
+    color:#fff;
+    border-color:rgba(0,229,255,.4);
+}
+
+.loading{
+    text-align:center;
+    color:#67e8f9;
+}
+
+.spinner{
+    width:45px;
+    height:45px;
+    margin:0 auto 14px;
+    border:3px solid rgba(103,232,249,.15);
+    border-top-color:#67e8f9;
+    border-radius:50%;
+    animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
+
+.history-section{
+    margin-top:20px;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+    max-height:330px;
+    overflow-y:auto;
+}
+
+.gallery-item{
+    border-radius:14px;
+    overflow:hidden;
+    border:1px solid rgba(148,163,184,.12);
+    background:#020617;
+}
+
+.gallery-item img{
+    width:100%;
+    display:block;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    cursor:pointer;
+}
+
+.gallery-info{
+    padding:8px;
+}
+
+.gallery-info small{
+    color:#64748b;
+    font-size:9px;
+}
+
+.section-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-bottom:13px;
+}
+
+.section-heading h3{
+    font-size:16px;
+}
+
+.section-heading button{
+    border:0;
+    background:none;
+    color:#64748b;
+    font-size:11px;
+}
+
+.section-heading button:hover{
+    color:#f87171;
+}
+
+.footer{
+    text-align:center;
+    color:#475569;
+    font-size:11px;
+    padding:25px 0;
+}
+
+.toast{
+    position:fixed;
+    left:50%;
+    bottom:25px;
+    transform:translate(-50%,20px);
+    opacity:0;
+    pointer-events:none;
+    z-index:999;
+    padding:12px 18px;
+    border-radius:13px;
+    background:rgba(15,23,42,.95);
+    border:1px solid rgba(0,229,255,.25);
+    color:#e2e8f0;
+    font-size:12px;
+    transition:.25s;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translate(-50%,0);
+}
+
+@media(max-width:950px){
     .dashboard{
         grid-template-columns:1fr;
     }
 
-    .sidebar{
-        display:flex;
-        gap:8px;
-        overflow-x:auto;
-        padding:10px;
+    .gallery{
+        grid-template-columns:repeat(4,1fr);
     }
-
-    .sidebar-title,
-    .quick{
-        display:none;
-    }
-
-    .mode{
-        min-width:130px;
-        margin:0;
-    }
-
-    .chat{
-        height:65vh;
-        min-height:480px;
-    }
-
-    .voice-box,
-    .image-panel{
-        min-height:500px;
-    }
-
 }
 
 @media(max-width:600px){
-
-    .app{
-        width:94%;
-        padding-top:10px;
-    }
-
-    header{
-        padding:12px;
-        border-radius:17px;
-    }
-
-    .logo{
-        width:42px;
-        height:42px;
-    }
-
-    .brand h1{
-        font-size:15px;
+    .header-inner{
+        min-height:65px;
     }
 
     .status{
-        font-size:9px;
+        display:none;
+    }
+
+    .container{
+        width:94%;
+        margin-top:15px;
     }
 
     .hero{
-        padding:19px;
-        border-radius:18px;
+        padding:18px 5px 25px;
     }
 
     .hero h2{
-        font-size:27px;
+        font-size:34px;
     }
 
-    .messages{
-        padding:13px;
+    .card{
+        padding:15px;
+        border-radius:19px;
     }
 
-    .msg{
-        max-width:92%;
-        font-size:12px;
+    .chat-box,
+    .image-stage{
+        height:auto;
+        min-height:420px;
     }
 
-    .input-row{
-        flex-wrap:wrap;
+    .options-grid{
+        grid-template-columns:1fr;
     }
 
-    textarea{
-        width:100%;
-        flex-basis:100%;
+    .result-grid{
+        grid-template-columns:1fr;
     }
 
-    .btn{
-        height:46px;
-        flex:1;
+    .gallery{
+        grid-template-columns:repeat(3,1fr);
     }
 
-    .image-form{
+    .mode-btn{
+        flex:1 1 30%;
+        padding:10px 8px;
+        font-size:11px;
+    }
+
+    .generate-row{
         flex-direction:column;
     }
-
-    .image-form .btn{
-        height:46px;
-    }
-
 }
-
 </style>
 </head>
 
 <body>
 
-<div class="bg">
-    <div class="grid"></div>
-    <div class="orb one"></div>
-    <div class="orb two"></div>
-</div>
+<header class="header">
+    <div class="header-inner">
 
-<div class="app">
+        <div class="brand">
+            <div class="logo">AI</div>
 
-<header>
+            <div class="brand-text">
+                <h1>ALFA AI</h1>
+                <p>V4 DESIGN STUDIO</p>
+            </div>
+        </div>
 
-    <div class="brand">
-
-        <div class="logo">AI</div>
-
-        <div>
-            <h1>ALFA AI V3 ULTRA</h1>
-            <p>TEXT • VOICE • IMAGE</p>
+        <div class="status">
+            <span class="status-dot"></span>
+            SYSTEM ONLINE
         </div>
 
     </div>
-
-    <div class="status">
-        <span class="dot"></span>
-        <span id="systemStatus">SYSTEM ONLINE</span>
-    </div>
-
 </header>
 
 
-<div class="dashboard">
+<main class="container">
 
-    <!-- SIDEBAR -->
+    <section class="hero">
+        <h2>ALFA AI DESIGN STUDIO</h2>
 
-    <aside class="sidebar">
+        <p>
+            Chat dengan AI, gunakan Voice Chat, lalu ubah ide menjadi
+            logo, poster, desain kaos, banner, icon, mascot dan berbagai
+            konsep visual dari prompt.
+        </p>
+    </section>
 
-        <div class="sidebar-title">
-            AI MODES
-        </div>
 
-        <button class="mode active" data-mode="text">
+    <!-- MODE -->
+    <div class="mode-bar">
 
-            <div class="mode-icon">💬</div>
-
-            <strong>Text AI</strong>
-
-            <small>Chat dengan ALFA AI</small>
-
+        <button class="mode-btn active" data-mode="chat">
+            💬 CHAT
         </button>
 
-
-        <button class="mode" data-mode="voice">
-
-            <div class="mode-icon">🎙️</div>
-
-            <strong>Voice AI</strong>
-
-            <small>Bicara langsung</small>
-
+        <button class="mode-btn" data-mode="logo">
+            ✦ LOGO
         </button>
 
-
-        <button class="mode" data-mode="image">
-
-            <div class="mode-icon">🎨</div>
-
-            <strong>AI Image</strong>
-
-            <small>Generate gambar</small>
-
+        <button class="mode-btn" data-mode="poster">
+            🖼️ POSTER
         </button>
 
+        <button class="mode-btn" data-mode="shirt">
+            👕 T-SHIRT
+        </button>
 
-        <div class="quick">
+        <button class="mode-btn" data-mode="banner">
+            🌐 BANNER
+        </button>
 
-            <div class="sidebar-title">
-                QUICK PROMPT
+        <button class="mode-btn" data-mode="creative">
+            🚀 FREE DESIGN
+        </button>
+
+    </div>
+
+
+    <div class="dashboard">
+
+
+        <!-- ================= CHAT ================= -->
+
+        <section class="card">
+
+            <div class="card-title">
+                <h3>🧠 ALFA AI CHAT</h3>
+                <span>TEXT + VOICE</span>
             </div>
 
-            <button data-prompt="Jelaskan apa yang bisa kamu lakukan sebagai ALFA AI.">
-                ⚡ Apa yang bisa kamu lakukan?
-            </button>
+            <div id="chatBox" class="chat-box">
 
-            <button data-prompt="Bantu saya membuat website profesional.">
-                🌐 Buat website
-            </button>
-
-            <button data-prompt="Bantu saya membuat ide bisnis online.">
-                💡 Ide bisnis
-            </button>
-
-            <button data-prompt="Buatkan saya sebuah rencana proyek AI.">
-                🤖 Proyek AI
-            </button>
-
-        </div>
-
-    </aside>
-
-
-    <!-- MAIN -->
-
-    <main class="main">
-
-        <section class="hero">
-
-            <h2>
-                ALFA AI<br>
-                V3 ULTRA
-            </h2>
-
-            <p>
-                Satu dashboard untuk Text Chat, Voice Chat dan AI Image.
-            </p>
-
-        </section>
-
-
-        <!-- TEXT PANEL -->
-
-        <section class="panel active" id="textPanel">
-
-            <div class="chat">
-
-                <div class="chat-head">
-
-                    <strong>
-                        💬 ALFA AI CHAT
-                    </strong>
-
-                    <span>
-                        Cloud AI Worker
-                    </span>
-
-                </div>
-
-
-                <div class="messages" id="messages">
-
-                    <div class="msg ai">
-
-                        <div class="msg-label">
-                            ALFA AI
-                        </div>
-
-                        Halo Bosss! 🔥
-
-                        <br><br>
-
-                        Saya ALFA AI V3 ULTRA.
-
-                        <br>
-
-                        Sekarang saya siap membantu melalui
-                        <b>Text</b>, <b>Voice</b>, dan <b>Image</b>.
-
-                    </div>
-
-                </div>
-
-
-                <div class="input-area">
-
-                    <div class="input-row">
-
-                        <textarea
-                            id="chatInput"
-                            placeholder="Ketik pesan untuk ALFA AI..."
-                        ></textarea>
-
-                        <button
-                            class="btn"
-                            id="sendBtn"
-                        >
-                            KIRIM 🚀
-                        </button>
-
-                    </div>
-
+                <div class="message ai">
+                    <small>ALFA AI</small>
+                    Halo! Saya ALFA AI. Mau ngobrol, bertanya,
+                    atau langsung membuat desain?
                 </div>
 
             </div>
 
-        </section>
 
+            <div class="chat-input-area">
 
-        <!-- VOICE PANEL -->
+                <textarea
+                    id="chatInput"
+                    placeholder="Tulis pesan untuk ALFA AI..."
+                ></textarea>
 
-        <section class="panel" id="voicePanel">
+                <div class="controls">
 
-            <div class="voice-box">
+                    <button
+                        class="btn primary"
+                        id="sendBtn">
+                        🚀 Kirim
+                    </button>
 
-                <div>
-
-                    <div
-                        class="voice-orb"
-                        id="voiceOrb"
-                    >
-
-                        <div class="mic">
-                            🎙️
-                        </div>
-
-                    </div>
-
-
-                    <div class="voice-status">
-
-                        <h3 id="voiceStatus">
-                            Voice Chat ALFA AI
-                        </h3>
-
-                        <p id="voiceText">
-                            Tekan tombol untuk mulai berbicara.
-                        </p>
-
-                    </div>
-
-
-                    <div class="voice-actions">
-
-                        <button
-                            class="voice-btn"
-                            id="startVoice"
-                        >
-                            🎙️ MULAI BICARA
-                        </button>
-
-                        <button
-                            class="voice-btn"
-                            id="stopVoice"
-                        >
-                            ⏹️ STOP
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- IMAGE PANEL -->
-
-        <section class="panel" id="imagePanel">
-
-            <div class="image-panel">
-
-                <div class="image-title">
-
-                    <h3>
-                        🎨 AI IMAGE GENERATOR
-                    </h3>
-
-                    <p>
-                        Masukkan prompt dan ALFA AI akan membuat visual.
-                    </p>
-
-                </div>
-
-
-                <div class="image-form">
-
-                    <input
-                        type="text"
-                        id="imagePrompt"
-                        placeholder="Contoh: futuristic cyber city at night..."
-                    >
+                    <button
+                        class="btn voice"
+                        id="voiceBtn">
+                        🎙️ Voice Chat
+                    </button>
 
                     <button
                         class="btn"
-                        id="generateImage"
-                    >
-                        GENERATE 🎨
+                        id="speakLastBtn">
+                        🔊 Bacakan
+                    </button>
+
+                    <button
+                        class="btn danger"
+                        id="clearChatBtn">
+                        🗑️ Clear
                     </button>
 
                 </div>
 
-
-                <div class="image-result" id="imageResult">
-
-                    <div class="image-placeholder">
-
-                        <div class="big">
-                            🖼️
-                        </div>
-
-                        <div>
-                            Hasil gambar akan muncul di sini.
-                        </div>
-
-                    </div>
-
+                <div
+                    id="voiceStatus"
+                    class="voice-status">
                 </div>
 
             </div>
 
         </section>
 
-    </main>
-
-</div>
 
 
-<footer>
-    ALFA AI V3 ULTRA • Text + Voice + Image • Powered by ALFA AI
+        <!-- ================= DESIGN STUDIO ================= -->
+
+        <section class="card">
+
+            <div class="card-title">
+                <h3>🎨 DESIGN GENERATOR</h3>
+                <span id="designModeLabel">CHAT MODE</span>
+            </div>
+
+
+            <!-- LOGO -->
+
+            <div
+                class="design-panel active"
+                data-panel="chat"
+                id="panel-chat">
+
+                <div class="empty-state" style="margin:auto;padding:70px 10px">
+
+                    <div class="empty-icon">🤖</div>
+
+                    <h4>ALFA AI siap bekerja</h4>
+
+                    <p>
+                        Pilih mode desain di bagian atas untuk membuka
+                        Design Generator.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- DESIGN PANELS -->
+
+            <div
+                class="design-panel"
+                data-panel="logo"
+                id="panel-logo">
+
+                <div class="prompt-box">
+
+                    <textarea
+                        id="logoPrompt"
+                        placeholder="Contoh: Logo modern untuk ALFA DESIGN, huruf A futuristik, cyan dan ungu, elegan, profesional, cocok untuk perusahaan teknologi..."></textarea>
+
+                    <div
+                        id="logoEnhanced"
+                        class="enhanced-preview">
+                    </div>
+
+                </div>
+
+                <div class="quick-prompts">
+
+                    <button class="quick" data-target="logoPrompt">
+                        Logo Tech
+                    </button>
+
+                    <button class="quick" data-target="logoPrompt">
+                        Logo Gaming
+                    </button>
+
+                    <button class="quick" data-target="logoPrompt">
+                        Logo UMKM
+                    </button>
+
+                    <button class="quick" data-target="logoPrompt">
+                        Logo Clothing
+                    </button>
+
+                    <button class="quick" data-target="logoPrompt">
+                        Logo Futuristic
+                    </button>
+
+                </div>
+
+                <div class="options-grid">
+
+                    <div class="field">
+                        <label>Style Logo</label>
+
+                        <select id="logoStyle">
+                            <option>Modern Minimalist</option>
+                            <option>Futuristic Technology</option>
+                            <option>Luxury Premium</option>
+                            <option>Gaming Esports</option>
+                            <option>Bold Professional</option>
+                            <option>Streetwear</option>
+                            <option>Elegant</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Konsep</label>
+
+                        <select id="logoConcept">
+                            <option>Symbol + Wordmark</option>
+                            <option>Symbol Only</option>
+                            <option>Lettermark</option>
+                            <option>Monogram</option>
+                            <option>Mascot Logo</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <label class="checkbox">
+                    <input
+                        type="checkbox"
+                        id="logoEnhance"
+                        checked>
+                    Auto Enhance Prompt
+                </label>
+
+                <div class="generate-row">
+
+                    <button
+                        class="btn"
+                        onclick="enhanceCurrent('logo')">
+                        ✨ Enhance
+                    </button>
+
+                    <button
+                        class="btn primary"
+                        onclick="generateDesign('logo')">
+                        🎨 Generate Logo
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- POSTER -->
+
+            <div
+                class="design-panel"
+                data-panel="poster"
+                id="panel-poster">
+
+                <textarea
+                    id="posterPrompt"
+                    placeholder="Contoh: Poster promo minuman kopi modern, suasana malam, premium, ruang untuk headline dan harga..."></textarea>
+
+                <div class="quick-prompts">
+
+                    <button class="quick" data-target="posterPrompt">
+                        Promo Produk
+                    </button>
+
+                    <button class="quick" data-target="posterPrompt">
+                        Event
+                    </button>
+
+                    <button class="quick" data-target="posterPrompt">
+                        Musik
+                    </button>
+
+                    <button class="quick" data-target="posterPrompt">
+                        Food
+                    </button>
+
+                    <button class="quick" data-target="posterPrompt">
+                        Gaming
+                    </button>
+
+                </div>
+
+                <div class="options-grid">
+
+                    <div class="field">
+                        <label>Style</label>
+
+                        <select id="posterStyle">
+                            <option>Modern Professional</option>
+                            <option>Cinematic</option>
+                            <option>Luxury</option>
+                            <option>Neon Cyberpunk</option>
+                            <option>Minimalist</option>
+                            <option>Bold Commercial</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Format</label>
+
+                        <select id="posterFormat">
+                            <option>Portrait</option>
+                            <option>Square</option>
+                            <option>Landscape</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="generate-row">
+
+                    <button
+                        class="btn primary"
+                        onclick="generateDesign('poster')">
+                        🖼️ Generate Poster
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- T SHIRT -->
+
+            <div
+                class="design-panel"
+                data-panel="shirt"
+                id="panel-shirt">
+
+                <textarea
+                    id="shirtPrompt"
+                    placeholder="Contoh: desain kaos streetwear bertema naga cyber, komposisi tengah, bold, cocok untuk sablon..."></textarea>
+
+                <div class="quick-prompts">
+
+                    <button class="quick" data-target="shirtPrompt">
+                        Streetwear
+                    </button>
+
+                    <button class="quick" data-target="shirtPrompt">
+                        Racing
+                    </button>
+
+                    <button class="quick" data-target="shirtPrompt">
+                        Gaming
+                    </button>
+
+                    <button class="quick" data-target="shirtPrompt">
+                        Anime Style
+                    </button>
+
+                    <button class="quick" data-target="shirtPrompt">
+                        Motorcycle
+                    </button>
+
+                </div>
+
+                <div class="options-grid">
+
+                    <div class="field">
+                        <label>Style</label>
+
+                        <select id="shirtStyle">
+                            <option>Streetwear</option>
+                            <option>Vintage</option>
+                            <option>Graffiti</option>
+                            <option>Esports</option>
+                            <option>Minimalist</option>
+                            <option>Illustration</option>
+                            <option>Heavy Metal</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Komposisi</label>
+
+                        <select id="shirtComposition">
+                            <option>Centered Chest Graphic</option>
+                            <option>Large Front Graphic</option>
+                            <option>Small Chest Logo</option>
+                            <option>Back Print</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="generate-row">
+
+                    <button
+                        class="btn primary"
+                        onclick="generateDesign('shirt')">
+                        👕 Generate T-Shirt
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- BANNER -->
+
+            <div
+                class="design-panel"
+                data-panel="banner"
+                id="panel-banner">
+
+                <textarea
+                    id="bannerPrompt"
+                    placeholder="Contoh: website hero banner ALFA DESIGN, teknologi AI futuristik, city lights, cyan purple, ruang kosong untuk headline..."></textarea>
+
+                <div class="quick-prompts">
+
+                    <button class="quick" data-target="bannerPrompt">
+                        Website
+                    </button>
+
+                    <button class="quick" data-target="bannerPrompt">
+                        Business
+                    </button>
+
+                    <button class="quick" data-target="bannerPrompt">
+                        Technology
+                    </button>
+
+                    <button class="quick" data-target="bannerPrompt">
+                        Gaming
+                    </button>
+
+                </div>
+
+                <div class="options-grid">
+
+                    <div class="field">
+                        <label>Style</label>
+
+                        <select id="bannerStyle">
+                            <option>Futuristic Technology</option>
+                            <option>Corporate Premium</option>
+                            <option>Gaming</option>
+                            <option>Luxury</option>
+                            <option>Minimalist</option>
+                            <option>Cyberpunk</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Layout</label>
+
+                        <select id="bannerLayout">
+                            <option>Wide Hero</option>
+                            <option>Centered</option>
+                            <option>Left Text Space</option>
+                            <option>Right Text Space</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="generate-row">
+
+                    <button
+                        class="btn primary"
+                        onclick="generateDesign('banner')">
+                        🌐 Generate Banner
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- FREE -->
+
+            <div
+                class="design-panel"
+                data-panel="creative"
+                id="panel-creative">
+
+                <textarea
+                    id="creativePrompt"
+                    placeholder="Tulis ide apa saja. Contoh: buat artwork futuristik bertema Indonesia 2050 dengan kota cyber dan Garuda mekanik..."></textarea>
+
+                <div class="options-grid">
+
+                    <div class="field">
+                        <label>Visual Style</label>
+
+                        <select id="creativeStyle">
+                            <option>Ultra Detailed</option>
+                            <option>Cinematic</option>
+                            <option>Futuristic</option>
+                            <option>Fantasy</option>
+                            <option>Realistic</option>
+                            <option>3D Render</option>
+                            <option>Digital Art</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Aspect</label>
+
+                        <select id="creativeAspect">
+                            <option>Square</option>
+                            <option>Portrait</option>
+                            <option>Landscape</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="generate-row">
+
+                    <button
+                        class="btn primary"
+                        onclick="generateDesign('creative')">
+                        🚀 Generate Design
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+    </div>
+
+
+
+    <!-- IMAGE RESULT -->
+
+    <section class="card history-section">
+
+        <div class="section-heading">
+
+            <h3>🖼️ GENERATION RESULT</h3>
+
+            <button onclick="clearResults()">
+                Clear Result
+            </button>
+
+        </div>
+
+        <div
+            id="imageStage"
+            class="image-stage">
+
+            <div class="empty-state">
+
+                <div class="empty-icon">🎨</div>
+
+                <h4>Canvas siap</h4>
+
+                <p>
+                    Hasil desain akan muncul di sini.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- HISTORY -->
+
+    <section class="card history-section">
+
+        <div class="section-heading">
+
+            <h3>🗂️ DESIGN HISTORY</h3>
+
+            <button onclick="clearHistory()">
+                Hapus History
+            </button>
+
+        </div>
+
+        <div
+            id="gallery"
+            class="gallery">
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<footer class="footer">
+    ALFA AI V4 DESIGN STUDIO • Text • Voice • Image • Creative AI
 </footer>
 
+
+<div
+    id="toast"
+    class="toast">
 </div>
 
 
 <script>
 
 /* =========================================================
-   ALFA AI V3 ULTRA
-   EXISTING CLOUDFLARE WORKER
+   ALFA AI V4 DESIGN STUDIO
+   TEXT + VOICE + IMAGE
+   ========================================================= */
+
+
+/* =========================================================
+   WORKER CONFIG
    ========================================================= */
 
 const WORKER_URL =
@@ -1122,11 +1373,11 @@ const CHAT_ENDPOINT =
 
 
 /* =========================================================
-   ELEMENTS
+   DOM
    ========================================================= */
 
-const messages =
-    document.getElementById("messages");
+const chatBox =
+    document.getElementById("chatBox");
 
 const chatInput =
     document.getElementById("chatInput");
@@ -1134,173 +1385,164 @@ const chatInput =
 const sendBtn =
     document.getElementById("sendBtn");
 
-const systemStatus =
-    document.getElementById("systemStatus");
+const voiceBtn =
+    document.getElementById("voiceBtn");
 
-const voiceOrb =
-    document.getElementById("voiceOrb");
+const speakLastBtn =
+    document.getElementById("speakLastBtn");
+
+const clearChatBtn =
+    document.getElementById("clearChatBtn");
 
 const voiceStatus =
     document.getElementById("voiceStatus");
 
-const voiceText =
-    document.getElementById("voiceText");
+const imageStage =
+    document.getElementById("imageStage");
 
-const imagePrompt =
-    document.getElementById("imagePrompt");
+const gallery =
+    document.getElementById("gallery");
 
-const imageResult =
-    document.getElementById("imageResult");
-
-const generateImage =
-    document.getElementById("generateImage");
+const toast =
+    document.getElementById("toast");
 
 
 /* =========================================================
-   MODE SWITCH
+   STATE
    ========================================================= */
 
-const modes =
-    document.querySelectorAll(".mode");
+let lastAIResponse = "";
 
-const panels = {
-    text: document.getElementById("textPanel"),
-    voice: document.getElementById("voicePanel"),
-    image: document.getElementById("imagePanel")
-};
+let currentMode = "chat";
 
-modes.forEach(button => {
+let recognition = null;
 
-    button.addEventListener("click", () => {
-
-        const mode =
-            button.dataset.mode;
-
-        modes.forEach(x =>
-            x.classList.remove("active")
-        );
-
-        button.classList.add("active");
-
-        Object.values(panels).forEach(panel =>
-            panel.classList.remove("active")
-        );
-
-        panels[mode].classList.add("active");
-
-    });
-
-});
+let isListening = false;
 
 
 /* =========================================================
-   MESSAGE
+   TOAST
    ========================================================= */
 
-function addMessage(
-    text,
-    type = "ai"
-){
+function showToast(message){
 
-    const box =
-        document.createElement("div");
+    toast.textContent = message;
 
-    box.className =
-        "msg " + type;
+    toast.classList.add("show");
 
-    const label =
-        document.createElement("div");
-
-    label.className =
-        "msg-label";
-
-    label.textContent =
-        type === "user"
-            ? "YOU"
-            : "ALFA AI";
-
-    const content =
-        document.createElement("div");
-
-    content.textContent =
-        text;
-
-    box.appendChild(label);
-    box.appendChild(content);
-
-    messages.appendChild(box);
-
-    messages.scrollTop =
-        messages.scrollHeight;
-
-    return content;
+    setTimeout(()=>{
+        toast.classList.remove("show");
+    },2500);
 }
 
 
 /* =========================================================
-   LOADING
+   CHAT MESSAGE
    ========================================================= */
 
-function addLoading(){
+function addMessage(type,text){
 
-    const box =
+    const div =
         document.createElement("div");
 
-    box.className =
-        "msg ai";
+    div.className =
+        "message " + type;
 
-    box.id =
-        "loadingMessage";
+    const label =
+        document.createElement("small");
 
-    box.innerHTML = `
-        <div class="msg-label">
-            ALFA AI
-        </div>
+    label.textContent =
+        type === "user"
+        ? "YOU"
+        : "ALFA AI";
 
-        <span class="loading">
+    div.appendChild(label);
+
+    const content =
+        document.createElement("div");
+
+    content.textContent = text;
+
+    div.appendChild(content);
+
+    chatBox.appendChild(div);
+
+    chatBox.scrollTop =
+        chatBox.scrollHeight;
+
+}
+
+
+/* =========================================================
+   TYPING
+   ========================================================= */
+
+function showTyping(){
+
+    const div =
+        document.createElement("div");
+
+    div.className =
+        "message ai";
+
+    div.id =
+        "typingMessage";
+
+    div.innerHTML = `
+        <small>ALFA AI</small>
+        <span class="typing">
             <i></i>
             <i></i>
             <i></i>
         </span>
     `;
 
-    messages.appendChild(box);
+    chatBox.appendChild(div);
 
-    messages.scrollTop =
-        messages.scrollHeight;
-
+    chatBox.scrollTop =
+        chatBox.scrollHeight;
 }
 
 
-/* =========================================================
-   REMOVE LOADING
-   ========================================================= */
+function removeTyping(){
 
-function removeLoading(){
-
-    const loading =
+    const typing =
         document.getElementById(
-            "loadingMessage"
+            "typingMessage"
         );
 
-    if(loading){
-        loading.remove();
+    if(typing){
+        typing.remove();
     }
-
 }
 
 
 /* =========================================================
-   PARSE WORKER RESPONSE
+   RESPONSE PARSER
    ========================================================= */
 
 function extractReply(data){
 
-    if(!data)
-        return "";
+    if(typeof data === "string"){
 
-    if(typeof data === "string")
-        return data;
+        try{
+
+            const parsed =
+                JSON.parse(data);
+
+            return extractReply(parsed);
+
+        }catch{
+
+            return data;
+
+        }
+
+    }
+
+
+    if(!data) return "";
+
 
     if(typeof data.reply === "string")
         return data.reply;
@@ -1320,99 +1562,42 @@ function extractReply(data){
     if(typeof data.output === "string")
         return data.output;
 
+
     if(data.data){
 
         if(typeof data.data === "string")
             return data.data;
 
-        if(typeof data.data.reply === "string")
-            return data.data.reply;
-
-        if(typeof data.data.response === "string")
-            return data.data.response;
-
+        return extractReply(data.data);
     }
+
 
     return "";
 }
 
 
 /* =========================================================
-   TYPE EFFECT
+   CHAT
    ========================================================= */
 
-async function typeText(
-    element,
-    text
-){
-
-    element.textContent = "";
-
-    for(
-        let i = 0;
-        i < text.length;
-        i++
-    ){
-
-        element.textContent +=
-            text[i];
-
-        if(
-            text[i] === "." ||
-            text[i] === "," ||
-            text[i] === "!"
-        ){
-
-            await new Promise(
-                resolve =>
-                    setTimeout(resolve,25)
-            );
-
-        }else{
-
-            await new Promise(
-                resolve =>
-                    setTimeout(resolve,7)
-            );
-
-        }
-
-        messages.scrollTop =
-            messages.scrollHeight;
-    }
-
-}
-
-
-/* =========================================================
-   SEND CHAT
-   ========================================================= */
-
-async function sendMessage(
-    customText = null
-){
+async function sendChat(){
 
     const text =
-        customText !== null
-            ? customText.trim()
-            : chatInput.value.trim();
+        chatInput.value.trim();
 
-    if(!text)
-        return;
+    if(!text) return;
+
 
     addMessage(
-        text,
-        "user"
+        "user",
+        text
     );
 
     chatInput.value = "";
 
+    showTyping();
+
     sendBtn.disabled = true;
-
-    systemStatus.textContent =
-        "AI PROCESSING...";
-
-    addLoading();
 
     try{
 
@@ -1428,13 +1613,8 @@ async function sendMessage(
                     },
 
                     body:JSON.stringify({
-
                         message:text,
-
-                        prompt:text,
-
-                        input:text
-
+                        prompt:text
                     })
                 }
             );
@@ -1443,121 +1623,77 @@ async function sendMessage(
         const raw =
             await response.text();
 
+
         let data;
 
         try{
-
             data =
                 JSON.parse(raw);
-
         }catch{
-
             data =
                 raw;
-
         }
 
 
-        removeLoading();
+        removeTyping();
 
 
         const reply =
             extractReply(data);
 
 
-        if(!response.ok){
+        if(reply){
 
-            throw new Error(
-                "Worker HTTP " +
-                response.status +
-                " : " +
+            lastAIResponse =
+                reply;
+
+            addMessage(
+                "ai",
+                reply
+            );
+
+        }else{
+
+            addMessage(
+                "ai",
+                "ALFA AI menerima response dari Worker, tetapi format jawabannya belum dikenali.\n\nRaw response:\n" +
                 raw
             );
 
         }
 
 
-        if(!reply){
-
-            throw new Error(
-                "Format response Worker tidak dikenali."
-            );
-
-        }
-
-
-        const content =
-            addMessage(
-                "",
-                "ai"
-            );
-
-        await typeText(
-            content,
-            reply
-        );
-
-
-        speak(reply);
-
-
-        systemStatus.textContent =
-            "SYSTEM ONLINE";
-
     }catch(error){
 
-        removeLoading();
-
-        console.error(
-            "ALFA AI ERROR:",
-            error
-        );
+        removeTyping();
 
         addMessage(
-            "⚠️ ALFA AI belum dapat memproses pesan.\n\n" +
-            error.message,
-            "ai"
+            "ai",
+            "Gagal terhubung ke ALFA AI Worker.\n\n" +
+            error.message
         );
 
-        systemStatus.textContent =
-            "CONNECTION ERROR";
-
-    }finally{
-
-        sendBtn.disabled =
-            false;
-
     }
+
+
+    sendBtn.disabled = false;
 
 }
 
 
 /* =========================================================
-   SEND BUTTON
-   ========================================================= */
-
-sendBtn.addEventListener(
-    "click",
-    () => sendMessage()
-);
-
-
-/* =========================================================
-   ENTER
+   ENTER CHAT
    ========================================================= */
 
 chatInput.addEventListener(
     "keydown",
-    event => {
+    function(e){
 
-        if(
-            event.key === "Enter" &&
-            !event.shiftKey
-        ){
+        if(e.key === "Enter" && !e.shiftKey){
 
-            event.preventDefault();
+            e.preventDefault();
 
-            sendMessage();
+            sendChat();
 
         }
 
@@ -1565,133 +1701,19 @@ chatInput.addEventListener(
 );
 
 
-/* =========================================================
-   QUICK PROMPTS
-   ========================================================= */
-
-document
-    .querySelectorAll("[data-prompt]")
-    .forEach(button => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                const prompt =
-                    button.dataset.prompt;
-
-                modes.forEach(x =>
-                    x.classList.remove("active")
-                );
-
-                document
-                    .querySelector(
-                        '[data-mode="text"]'
-                    )
-                    .classList.add("active");
-
-                Object.values(panels).forEach(
-                    panel =>
-                        panel.classList.remove("active")
-                );
-
-                panels.text.classList.add(
-                    "active"
-                );
-
-                sendMessage(prompt);
-
-            }
-        );
-
-    });
+sendBtn.addEventListener(
+    "click",
+    sendChat
+);
 
 
 /* =========================================================
-   VOICE SPEECH SYNTHESIS
-   ========================================================= */
-
-let speaking = false;
-
-function speak(text){
-
-    if(
-        !("speechSynthesis" in window)
-    )
-        return;
-
-    try{
-
-        window.speechSynthesis.cancel();
-
-        const utterance =
-            new SpeechSynthesisUtterance(
-                text
-            );
-
-        utterance.lang =
-            "id-ID";
-
-        utterance.rate =
-            1;
-
-        utterance.pitch =
-            1;
-
-        utterance.volume =
-            1;
-
-        utterance.onstart =
-            () => {
-
-                speaking = true;
-
-                voiceText.textContent =
-                    "ALFA AI sedang berbicara...";
-
-            };
-
-        utterance.onend =
-            () => {
-
-                speaking = false;
-
-                if(!isListening){
-
-                    voiceText.textContent =
-                        "Tekan tombol untuk mulai berbicara.";
-
-                }
-
-            };
-
-        window.speechSynthesis.speak(
-            utterance
-        );
-
-    }catch(error){
-
-        console.log(
-            "Speech error:",
-            error
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   VOICE RECOGNITION
+   VOICE CHAT
    ========================================================= */
 
 const SpeechRecognition =
     window.SpeechRecognition ||
     window.webkitSpeechRecognition;
-
-let recognition = null;
-
-let isListening = false;
 
 
 if(SpeechRecognition){
@@ -1706,137 +1728,94 @@ if(SpeechRecognition){
         false;
 
     recognition.interimResults =
-        true;
+        false;
 
 
     recognition.onstart =
-        () => {
+        function(){
 
             isListening = true;
 
-            voiceOrb.classList.add(
-                "listening"
-            );
+            voiceBtn.textContent =
+                "🛑 Stop Voice";
 
             voiceStatus.textContent =
-                "Mendengarkan...";
-
-            voiceText.textContent =
-                "Silakan bicara Bosss 🎙️";
+                "🎙️ Mendengarkan... silakan bicara.";
 
         };
 
 
     recognition.onresult =
-        event => {
+        function(event){
 
-            let finalText = "";
+            const transcript =
+                event.results[0][0].transcript;
 
-            for(
-                let i =
-                    event.resultIndex;
-                i <
-                    event.results.length;
-                i++
-            ){
+            chatInput.value =
+                transcript;
 
-                const transcript =
-                    event.results[i][0]
-                        .transcript;
+            voiceStatus.textContent =
+                "✅ Suara diterima: " +
+                transcript;
 
-                if(
-                    event.results[i].isFinal
-                ){
-
-                    finalText +=
-                        transcript;
-
-                }
-
-            }
-
-
-            if(finalText){
-
-                voiceText.textContent =
-                    "Pesan diterima: " +
-                    finalText;
-
-                sendMessage(
-                    finalText
-                );
-
-            }
+            setTimeout(
+                sendChat,
+                250
+            );
 
         };
 
 
     recognition.onerror =
-        event => {
+        function(event){
 
-            console.error(
-                "Voice error:",
-                event.error
-            );
-
-            voiceText.textContent =
-                "Voice error: " +
+            voiceStatus.textContent =
+                "⚠️ Voice error: " +
                 event.error;
 
         };
 
 
     recognition.onend =
-        () => {
+        function(){
 
             isListening = false;
 
-            voiceOrb.classList.remove(
-                "listening"
-            );
-
-            voiceStatus.textContent =
-                "Voice Chat ALFA AI";
-
-            if(!speaking){
-
-                voiceText.textContent =
-                    "Tekan tombol untuk mulai berbicara.";
-
-            }
+            voiceBtn.textContent =
+                "🎙️ Voice Chat";
 
         };
 
+
 }else{
 
-    voiceText.textContent =
-        "Browser ini belum mendukung Voice Recognition.";
+    voiceBtn.disabled = true;
+
+    voiceStatus.textContent =
+        "Browser ini tidak mendukung Speech Recognition.";
 
 }
 
 
-/* =========================================================
-   START VOICE
-   ========================================================= */
+voiceBtn.addEventListener(
+    "click",
+    function(){
 
-document
-    .getElementById("startVoice")
-    .addEventListener(
-        "click",
-        () => {
+        if(!recognition){
 
-            if(!recognition){
+            showToast(
+                "Voice Recognition tidak tersedia."
+            );
 
-                alert(
-                    "Browser ini belum mendukung Voice Chat."
-                );
+            return;
+        }
 
-                return;
 
-            }
+        if(isListening){
 
-            if(isListening)
-                return;
+            recognition.stop();
+
+        }else{
 
             try{
 
@@ -1849,75 +1828,728 @@ document
             }
 
         }
-    );
-
-
-/* =========================================================
-   STOP VOICE
-   ========================================================= */
-
-document
-    .getElementById("stopVoice")
-    .addEventListener(
-        "click",
-        () => {
-
-            if(
-                recognition &&
-                isListening
-            ){
-
-                recognition.stop();
-
-            }
-
-            if(
-                "speechSynthesis" in window
-            ){
-
-                speechSynthesis.cancel();
-
-            }
-
-        }
-    );
-
-
-/* =========================================================
-   AI IMAGE GENERATOR
-   ========================================================= */
-
-generateImage.addEventListener(
-    "click",
-    generateAIImage
-);
-
-
-imagePrompt.addEventListener(
-    "keydown",
-    event => {
-
-        if(event.key === "Enter"){
-
-            event.preventDefault();
-
-            generateAIImage();
-
-        }
 
     }
 );
 
 
-function generateAIImage(){
+/* =========================================================
+   VOICE OUTPUT
+   ========================================================= */
+
+function speakText(text){
+
+    if(!("speechSynthesis" in window)){
+
+        showToast(
+            "Browser tidak mendukung Voice Output."
+        );
+
+        return;
+    }
+
+
+    window.speechSynthesis.cancel();
+
+
+    const utterance =
+        new SpeechSynthesisUtterance(
+            text
+        );
+
+    utterance.lang =
+        "id-ID";
+
+    utterance.rate =
+        1;
+
+    utterance.pitch =
+        1;
+
+
+    window.speechSynthesis.speak(
+        utterance
+    );
+
+}
+
+
+speakLastBtn.addEventListener(
+    "click",
+    function(){
+
+        if(!lastAIResponse){
+
+            showToast(
+                "Belum ada jawaban AI."
+            );
+
+            return;
+        }
+
+        speakText(
+            lastAIResponse
+        );
+
+    }
+);
+
+
+/* =========================================================
+   CLEAR CHAT
+   ========================================================= */
+
+clearChatBtn.addEventListener(
+    "click",
+    function(){
+
+        chatBox.innerHTML = `
+            <div class="message ai">
+                <small>ALFA AI</small>
+                Chat dibersihkan. Saya siap ngobrol lagi.
+            </div>
+        `;
+
+        lastAIResponse = "";
+
+    }
+);
+
+
+/* =========================================================
+   MODE SWITCH
+   ========================================================= */
+
+document
+.querySelectorAll(".mode-btn")
+.forEach(button=>{
+
+    button.addEventListener(
+        "click",
+        ()=>{
+
+            const mode =
+                button.dataset.mode;
+
+            currentMode =
+                mode;
+
+
+            document
+            .querySelectorAll(".mode-btn")
+            .forEach(btn=>{
+                btn.classList.remove(
+                    "active"
+                );
+            });
+
+            button.classList.add(
+                "active"
+            );
+
+
+            document
+            .querySelectorAll(".design-panel")
+            .forEach(panel=>{
+                panel.classList.remove(
+                    "active"
+                );
+            });
+
+
+            const target =
+                document.getElementById(
+                    "panel-" + mode
+                );
+
+            if(target){
+
+                target.classList.add(
+                    "active"
+                );
+
+            }
+
+
+            document.getElementById(
+                "designModeLabel"
+            ).textContent =
+                mode.toUpperCase() +
+                " MODE";
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   QUICK PROMPTS
+   ========================================================= */
+
+document
+.querySelectorAll(".quick")
+.forEach(button=>{
+
+    button.addEventListener(
+        "click",
+        function(){
+
+            const targetId =
+                this.dataset.target;
+
+            const target =
+                document.getElementById(
+                    targetId
+                );
+
+            if(!target) return;
+
+
+            const examples = {
+
+                "Logo Tech":
+                    "logo teknologi AI futuristik dengan simbol huruf A",
+
+                "Logo Gaming":
+                    "logo gaming esports agresif dengan simbol unik",
+
+                "Logo UMKM":
+                    "logo UMKM modern yang ramah dan mudah diingat",
+
+                "Logo Clothing":
+                    "logo brand clothing streetwear premium",
+
+                "Logo Futuristic":
+                    "logo futuristik cyber technology dengan bentuk geometris",
+
+                "Promo Produk":
+                    "poster promo produk profesional dengan komposisi menarik",
+
+                "Event":
+                    "poster event modern dengan visual dramatis",
+
+                "Musik":
+                    "poster musik modern dengan atmosfer cinematic",
+
+                "Food":
+                    "poster makanan premium yang menggugah selera",
+
+                "Gaming":
+                    "poster gaming esports futuristik",
+
+                "Streetwear":
+                    "desain kaos streetwear bold dengan graphic illustration",
+
+                "Racing":
+                    "desain kaos racing motorsport agresif",
+
+                "Anime Style":
+                    "desain kaos ilustrasi anime original bergaya dinamis",
+
+                "Motorcycle":
+                    "desain kaos motorcycle club modern",
+
+                "Website":
+                    "hero banner website perusahaan teknologi modern",
+
+                "Business":
+                    "banner bisnis profesional premium",
+
+                "Technology":
+                    "banner teknologi AI futuristik",
+
+            };
+
+
+            const text =
+                examples[
+                    this.textContent.trim()
+                ] ||
+                this.textContent.trim();
+
+
+            target.value =
+                target.value
+                ? target.value +
+                  ", " +
+                  text
+                : text;
+
+
+            target.focus();
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   PROMPT ENHANCER
+   ========================================================= */
+
+function getPrompt(id){
+
+    const el =
+        document.getElementById(id);
+
+    return el
+        ? el.value.trim()
+        : "";
+
+}
+
+
+function enhanceLogoPrompt(){
+
+    const base =
+        getPrompt("logoPrompt");
+
+    if(!base){
+
+        showToast(
+            "Masukkan ide logo terlebih dahulu."
+        );
+
+        return "";
+
+    }
+
+
+    const style =
+        document.getElementById(
+            "logoStyle"
+        ).value;
+
+    const concept =
+        document.getElementById(
+            "logoConcept"
+        ).value;
+
+
+    return `
+Professional brand identity logo design.
+
+Core concept:
+${base}
+
+Style:
+${style}
+
+Logo concept:
+${concept}
+
+Create a distinctive original logo mark with:
+clean geometry,
+strong silhouette,
+excellent visual balance,
+professional branding,
+memorable shape,
+premium presentation,
+high contrast,
+sharp edges,
+clean composition,
+centered subject,
+isolated logo presentation,
+minimal unnecessary elements,
+modern brand identity,
+high quality digital design.
+
+The logo must look like a professionally designed brand identity,
+not a random illustration,
+not a photo,
+not a product mockup.
+
+Avoid:
+blurry details,
+clutter,
+photorealistic scene,
+mockup,
+watermark,
+duplicate symbols,
+distorted typography,
+unreadable text,
+extra objects.
+`.trim();
+
+}
+
+
+function enhanceGeneralPrompt(
+    type
+){
+
+    let base = "";
+
+    let style = "";
+
+    if(type === "poster"){
+
+        base =
+            getPrompt("posterPrompt");
+
+        style =
+            document.getElementById(
+                "posterStyle"
+            ).value;
+
+        return `
+Professional commercial poster design.
+
+Main idea:
+${base}
+
+Visual style:
+${style}
+
+Create a visually powerful poster with:
+strong composition,
+clear visual hierarchy,
+professional graphic design,
+dramatic lighting,
+high quality details,
+balanced spacing,
+premium advertising aesthetic,
+clean focal point,
+professional layout.
+
+Leave appropriate visual space for important text,
+but do not rely on unreadable generated text.
+
+Avoid:
+blurry image,
+clutter,
+watermark,
+distortion,
+duplicate subjects,
+random typography.
+`.trim();
+
+    }
+
+
+    if(type === "shirt"){
+
+        base =
+            getPrompt("shirtPrompt");
+
+        style =
+            document.getElementById(
+                "shirtStyle"
+            ).value;
+
+        const composition =
+            document.getElementById(
+                "shirtComposition"
+            ).value;
+
+        return `
+Professional apparel graphic design.
+
+Concept:
+${base}
+
+Style:
+${style}
+
+Composition:
+${composition}
+
+Create a clean high-impact T-shirt graphic suitable
+for screen printing and apparel branding.
+
+Use:
+strong silhouette,
+bold graphic composition,
+clean outlines,
+professional illustration,
+balanced shapes,
+high contrast,
+centered artwork,
+print-friendly visual structure,
+premium streetwear aesthetic.
+
+Avoid:
+photo mockup,
+person wearing shirt,
+hanger,
+clothing store scene,
+watermark,
+blurry details,
+unnecessary background clutter.
+`.trim();
+
+    }
+
+
+    if(type === "banner"){
+
+        base =
+            getPrompt("bannerPrompt");
+
+        style =
+            document.getElementById(
+                "bannerStyle"
+            ).value;
+
+        const layout =
+            document.getElementById(
+                "bannerLayout"
+            ).value;
+
+        return `
+Professional website hero banner.
+
+Concept:
+${base}
+
+Style:
+${style}
+
+Layout:
+${layout}
+
+Create a premium wide digital banner with:
+cinematic lighting,
+professional composition,
+strong focal point,
+modern technology aesthetic,
+clean visual hierarchy,
+high detail,
+premium commercial appearance,
+appropriate negative space for website headline and CTA.
+
+Avoid:
+watermark,
+random text,
+clutter,
+distorted objects,
+low resolution,
+duplicate subjects.
+`.trim();
+
+    }
+
+
+    base =
+        getPrompt("creativePrompt");
+
+    style =
+        document.getElementById(
+            "creativeStyle"
+        ).value;
+
+    return `
+Professional high-quality digital artwork.
+
+Creative concept:
+${base}
+
+Visual style:
+${style}
+
+Create an original visually impressive artwork with:
+cinematic composition,
+strong lighting,
+high detail,
+excellent depth,
+professional digital art direction,
+rich atmosphere,
+clear focal point,
+balanced composition,
+premium presentation.
+
+Avoid:
+blurry details,
+watermark,
+random text,
+duplicate subjects,
+distorted anatomy,
+visual clutter.
+`.trim();
+
+}
+
+
+function enhanceCurrent(type){
+
+    let enhanced = "";
+
+
+    if(type === "logo"){
+
+        enhanced =
+            enhanceLogoPrompt();
+
+        const box =
+            document.getElementById(
+                "logoEnhanced"
+            );
+
+        if(enhanced){
+
+            box.textContent =
+                enhanced;
+
+            box.style.display =
+                "block";
+
+        }
+
+    }
+
+
+    if(enhanced){
+
+        showToast(
+            "Prompt berhasil di-enhance."
+        );
+
+    }
+
+    return enhanced;
+
+}
+
+
+/* =========================================================
+   IMAGE GENERATOR
+   ========================================================= */
+
+function buildImagePrompt(type){
+
+    if(type === "logo"){
+
+        const auto =
+            document.getElementById(
+                "logoEnhance"
+            ).checked;
+
+        if(auto){
+
+            return enhanceLogoPrompt();
+
+        }
+
+        return getPrompt(
+            "logoPrompt"
+        );
+
+    }
+
+
+    return enhanceGeneralPrompt(
+        type
+    );
+
+}
+
+
+/* =========================================================
+   IMAGE SIZE
+   ========================================================= */
+
+function getImageDimensions(type){
+
+    if(type === "banner"){
+
+        return {
+            width:1280,
+            height:720
+        };
+
+    }
+
+
+    if(type === "poster"){
+
+        const format =
+            document.getElementById(
+                "posterFormat"
+            ).value;
+
+        if(format === "Landscape"){
+
+            return {
+                width:1280,
+                height:720
+            };
+
+        }
+
+        if(format === "Square"){
+
+            return {
+                width:1024,
+                height:1024
+            };
+
+        }
+
+        return {
+            width:768,
+            height:1024
+        };
+
+    }
+
+
+    if(type === "creative"){
+
+        const aspect =
+            document.getElementById(
+                "creativeAspect"
+            ).value;
+
+        if(aspect === "Landscape"){
+
+            return {
+                width:1280,
+                height:720
+            };
+
+        }
+
+        if(aspect === "Portrait"){
+
+            return {
+                width:768,
+                height:1024
+            };
+
+        }
+
+        return {
+            width:1024,
+            height:1024
+        };
+
+    }
+
+
+    return {
+        width:1024,
+        height:1024
+    };
+
+}
+
+
+/* =========================================================
+   GENERATE
+   ========================================================= */
+
+async function generateDesign(type){
 
     const prompt =
-        imagePrompt.value.trim();
+        buildImagePrompt(type);
+
 
     if(!prompt){
 
-        alert(
-            "Masukkan prompt gambar terlebih dahulu."
+        showToast(
+            "Masukkan prompt terlebih dahulu."
         );
 
         return;
@@ -1925,168 +2557,497 @@ function generateAIImage(){
     }
 
 
-    generateImage.disabled =
-        true;
-
-    generateImage.textContent =
-        "GENERATING...";
+    const dimensions =
+        getImageDimensions(type);
 
 
-    imageResult.innerHTML = `
-
-        <div class="image-placeholder">
-
-            <div class="big">
-                ⚡
-            </div>
-
+    imageStage.innerHTML = `
+        <div class="loading">
+            <div class="spinner"></div>
             <div>
-                ALFA AI sedang membuat gambar...
+                ALFA AI sedang membuat
+                ${type.toUpperCase()}...
             </div>
-
+            <br>
+            <small>
+                Prompt sedang diproses menjadi konsep visual.
+            </small>
         </div>
-
     `;
 
 
     /*
-       Free image generation endpoint.
-
-       Prompt dikirim langsung sebagai URL.
+       Generate 2 concepts.
+       Endpoint image tetap dipisahkan dari
+       Worker chat agar Voice + Chat tidak terganggu.
     */
 
-    const encodedPrompt =
-        encodeURIComponent(
-            prompt
-        );
+    const concepts = [];
 
 
-    const imageURL =
-        "https://image.pollinations.ai/prompt/" +
-        encodedPrompt +
-        "?width=1024&height=1024&nologo=true";
+    for(let i=1;i<=2;i++){
 
-
-    const img =
-        new Image();
-
-    img.className =
-        "generated-image";
-
-    img.alt =
-        prompt;
-
-
-    img.onload =
-        () => {
-
-            imageResult.innerHTML = "";
-
-            imageResult.appendChild(
-                img
+        const seed =
+            Date.now() +
+            Math.floor(
+                Math.random()*999999
             );
 
-            generateImage.disabled =
-                false;
 
-            generateImage.textContent =
-                "GENERATE 🎨";
-
-        };
+        const encodedPrompt =
+            encodeURIComponent(
+                prompt
+            );
 
 
-    img.onerror =
-        () => {
-
-            imageResult.innerHTML = `
-
-                <div class="image-placeholder">
-
-                    <div class="big">
-                        ⚠️
-                    </div>
-
-                    <div>
-                        Generator gambar gagal dimuat.
-                    </div>
-
-                </div>
-
-            `;
-
-            generateImage.disabled =
-                false;
-
-            generateImage.textContent =
-                "GENERATE 🎨";
-
-        };
+        const imageURL =
+            "https://image.pollinations.ai/prompt/" +
+            encodedPrompt +
+            "?width=" +
+            dimensions.width +
+            "&height=" +
+            dimensions.height +
+            "&nologo=true" +
+            "&seed=" +
+            seed;
 
 
-    img.src =
-        imageURL;
+        concepts.push({
+            url:imageURL,
+            prompt:prompt,
+            type:type
+        });
+
+    }
+
+
+    renderResults(
+        concepts
+    );
+
+
+    concepts.forEach(
+        item=>{
+            saveHistory(item);
+        }
+    );
+
+
+    showToast(
+        "2 konsep " +
+        type.toUpperCase() +
+        " dibuat."
+    );
 
 }
 
 
 /* =========================================================
-   SYSTEM CHECK
+   RESULT RENDER
    ========================================================= */
 
-async function checkWorker(){
+function renderResults(items){
+
+    imageStage.innerHTML = "";
+
+    const grid =
+        document.createElement(
+            "div"
+        );
+
+    grid.className =
+        "result-grid";
+
+
+    items.forEach(
+        (item,index)=>{
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+            card.className =
+                "result-card";
+
+
+            const img =
+                document.createElement(
+                    "img"
+                );
+
+            img.src =
+                item.url;
+
+            img.alt =
+                "ALFA AI generated design";
+
+
+            img.onerror =
+                function(){
+
+                    this.style.opacity =
+                        ".35";
+
+                };
+
+
+            const actions =
+                document.createElement(
+                    "div"
+                );
+
+            actions.className =
+                "result-actions";
+
+
+            const openBtn =
+                document.createElement(
+                    "button"
+                );
+
+            openBtn.textContent =
+                "↗ Buka";
+
+            openBtn.onclick =
+                function(){
+
+                    window.open(
+                        item.url,
+                        "_blank"
+                    );
+
+                };
+
+
+            const copyBtn =
+                document.createElement(
+                    "button"
+                );
+
+            copyBtn.textContent =
+                "📋 Prompt";
+
+            copyBtn.onclick =
+                async function(){
+
+                    try{
+
+                        await navigator
+                        .clipboard
+                        .writeText(
+                            item.prompt
+                        );
+
+                        showToast(
+                            "Prompt disalin."
+                        );
+
+                    }catch{
+
+                        showToast(
+                            "Clipboard tidak tersedia."
+                        );
+
+                    }
+
+                };
+
+
+            const downloadBtn =
+                document.createElement(
+                    "button"
+                );
+
+            downloadBtn.textContent =
+                "⬇️ Simpan";
+
+            downloadBtn.onclick =
+                function(){
+
+                    window.open(
+                        item.url,
+                        "_blank"
+                    );
+
+                    showToast(
+                        "Gambar dibuka. Simpan dari browser."
+                    );
+
+                };
+
+
+            actions.appendChild(
+                openBtn
+            );
+
+            actions.appendChild(
+                copyBtn
+            );
+
+            actions.appendChild(
+                downloadBtn
+            );
+
+
+            card.appendChild(
+                img
+            );
+
+            card.appendChild(
+                actions
+            );
+
+
+            grid.appendChild(
+                card
+            );
+
+        }
+    );
+
+
+    imageStage.appendChild(
+        grid
+    );
+
+}
+
+
+/* =========================================================
+   HISTORY
+   ========================================================= */
+
+const HISTORY_KEY =
+    "alfa_ai_v4_design_history";
+
+
+function getHistory(){
 
     try{
 
-        const response =
-            await fetch(
-                WORKER_URL,
-                {
-                    method:"GET"
-                }
-            );
-
-        if(response.ok){
-
-            systemStatus.textContent =
-                "SYSTEM ONLINE";
-
-        }else{
-
-            systemStatus.textContent =
-                "WORKER CHECK FAILED";
-
-        }
+        return JSON.parse(
+            localStorage.getItem(
+                HISTORY_KEY
+            ) || "[]"
+        );
 
     }catch{
 
-        /*
-           Chat tetap bisa dicoba walaupun
-           GET health check gagal karena
-           konfigurasi CORS/Cloudflare.
-        */
-
-        systemStatus.textContent =
-            "AI READY";
+        return [];
 
     }
 
 }
 
 
-checkWorker();
+function saveHistory(item){
+
+    const history =
+        getHistory();
+
+
+    history.unshift({
+        url:item.url,
+        prompt:item.prompt,
+        type:item.type,
+        time:new Date()
+        .toLocaleString("id-ID")
+    });
+
+
+    const limited =
+        history.slice(
+            0,
+            20
+        );
+
+
+    localStorage.setItem(
+        HISTORY_KEY,
+        JSON.stringify(
+            limited
+        )
+    );
+
+
+    renderHistory();
+
+}
+
+
+function renderHistory(){
+
+    const history =
+        getHistory();
+
+
+    gallery.innerHTML = "";
+
+
+    if(!history.length){
+
+        gallery.innerHTML = `
+            <div style="
+                color:#64748b;
+                font-size:11px;
+                grid-column:1/-1;
+                text-align:center;
+                padding:30px;
+            ">
+                Belum ada history desain.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    history.forEach(
+        item=>{
+
+            const box =
+                document.createElement(
+                    "div"
+                );
+
+            box.className =
+                "gallery-item";
+
+
+            const img =
+                document.createElement(
+                    "img"
+                );
+
+            img.src =
+                item.url;
+
+            img.alt =
+                "ALFA AI History";
+
+
+            img.onclick =
+                function(){
+
+                    window.open(
+                        item.url,
+                        "_blank"
+                    );
+
+                };
+
+
+            const info =
+                document.createElement(
+                    "div"
+                );
+
+            info.className =
+                "gallery-info";
+
+            info.innerHTML =
+                "<small>" +
+                item.type.toUpperCase() +
+                " • " +
+                item.time +
+                "</small>";
+
+
+            box.appendChild(
+                img
+            );
+
+            box.appendChild(
+                info
+            );
+
+
+            gallery.appendChild(
+                box
+            );
+
+        }
+    );
+
+}
+
+
+function clearHistory(){
+
+    if(
+        !confirm(
+            "Hapus semua history desain?"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    localStorage.removeItem(
+        HISTORY_KEY
+    );
+
+    renderHistory();
+
+    showToast(
+        "History dihapus."
+    );
+
+}
 
 
 /* =========================================================
-   AUTO FOCUS
+   CLEAR RESULT
    ========================================================= */
 
-setTimeout(
-    () => {
+function clearResults(){
 
-        chatInput.focus();
+    imageStage.innerHTML = `
+        <div class="empty-state">
 
-    },
-    500
+            <div class="empty-icon">🎨</div>
+
+            <h4>Canvas siap</h4>
+
+            <p>
+                Hasil desain akan muncul di sini.
+            </p>
+
+        </div>
+    `;
+
+}
+
+
+/* =========================================================
+   INIT
+   ========================================================= */
+
+renderHistory();
+
+
+/* =========================================================
+   WELCOME
+   ========================================================= */
+
+console.log(
+    "ALFA AI V4 DESIGN STUDIO ONLINE"
+);
+
+console.log(
+    "Text Chat: READY"
+);
+
+console.log(
+    "Voice Chat: READY"
+);
+
+console.log(
+    "Image Generator: READY"
 );
 
 </script>
