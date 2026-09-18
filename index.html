@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#030712">
 <meta name="color-scheme" content="dark">
 
-<title>ALFA AI V5.6 | VOICE CHAT PRO</title>
+<title>ALFA AI V5.7 | NATURAL VOICE</title>
 
 <style>
 *{
@@ -22,12 +22,11 @@ html{
 body{
   min-height:100vh;
   background:
-    radial-gradient(circle at 20% 10%,rgba(0,229,255,.10),transparent 30%),
-    radial-gradient(circle at 80% 90%,rgba(139,92,246,.12),transparent 35%),
+    radial-gradient(circle at 15% 10%,rgba(0,229,255,.11),transparent 30%),
+    radial-gradient(circle at 85% 90%,rgba(139,92,246,.13),transparent 35%),
     #030712;
   color:#e5f7ff;
   font-family:Inter,Segoe UI,Arial,sans-serif;
-  overflow-x:hidden;
 }
 
 body:before{
@@ -61,17 +60,16 @@ button{
 
 .header{
   position:sticky;
-  top:10px;
+  top:8px;
   z-index:20;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:12px;
-  padding:14px 18px;
-  margin-bottom:16px;
+  padding:13px 17px;
+  margin-bottom:15px;
   border:1px solid rgba(0,229,255,.18);
   border-radius:20px;
-  background:rgba(3,7,18,.82);
+  background:rgba(3,7,18,.84);
   backdrop-filter:blur(18px);
   box-shadow:0 0 35px rgba(0,229,255,.07);
 }
@@ -88,7 +86,7 @@ button{
   border-radius:13px;
   display:grid;
   place-items:center;
-  font-size:21px;
+  font-size:20px;
   font-weight:900;
   color:#001018;
   background:linear-gradient(135deg,#00e5ff,#8b5cf6);
@@ -103,8 +101,8 @@ button{
 .brand small{
   display:block;
   margin-top:2px;
-  color:#7dd3fc;
-  font-size:11px;
+  color:#67e8f9;
+  font-size:10px;
 }
 
 .status{
@@ -112,7 +110,7 @@ button{
   align-items:center;
   gap:7px;
   color:#86efac;
-  font-size:11px;
+  font-size:10px;
 }
 
 .dot{
@@ -123,15 +121,15 @@ button{
   box-shadow:0 0 12px #22c55e;
 }
 
-/* MAIN */
+/* HERO */
 
 .hero{
   text-align:center;
-  padding:18px 8px 15px;
+  padding:15px 7px 16px;
 }
 
 .hero h2{
-  font-size:clamp(27px,5vw,46px);
+  font-size:clamp(28px,5vw,46px);
   line-height:1.05;
   background:linear-gradient(90deg,#fff,#67e8f9,#a78bfa);
   -webkit-background-clip:text;
@@ -140,17 +138,16 @@ button{
 }
 
 .hero p{
-  color:#94a3b8;
   max-width:720px;
   margin:auto;
-  line-height:1.6;
+  color:#94a3b8;
   font-size:14px;
+  line-height:1.6;
 }
 
 /* CHAT */
 
 .chat-card{
-  position:relative;
   overflow:hidden;
   border:1px solid rgba(0,229,255,.18);
   border-radius:25px;
@@ -303,8 +300,8 @@ button{
 
 .typing-box{
   display:inline-flex;
-  gap:5px;
   align-items:center;
+  gap:5px;
   padding:9px 12px;
   border-radius:13px;
   background:#0f172a;
@@ -329,8 +326,14 @@ button{
 }
 
 @keyframes typing{
-  0%,60%,100%{opacity:.25;transform:translateY(0)}
-  30%{opacity:1;transform:translateY(-3px)}
+  0%,60%,100%{
+    opacity:.25;
+    transform:translateY(0);
+  }
+  30%{
+    opacity:1;
+    transform:translateY(-3px);
+  }
 }
 
 /* QUICK */
@@ -419,7 +422,7 @@ button{
 #sendBtn{
   background:linear-gradient(135deg,#0891b2,#6d28d9);
   border-color:transparent;
-  color:white;
+  color:#fff;
 }
 
 /* VOICE PANEL */
@@ -469,7 +472,9 @@ button{
 .voice-wave span:nth-child(5){animation-delay:.4s}
 
 @keyframes wave{
-  to{height:18px}
+  to{
+    height:18px;
+  }
 }
 
 .voice-stop{
@@ -493,6 +498,7 @@ button{
 /* MOBILE */
 
 @media(max-width:650px){
+
   .app{
     width:96%;
     padding-top:8px;
@@ -566,146 +572,177 @@ button{
 
 <div class="app">
 
-  <header class="header">
-    <div class="brand">
-      <div class="logo">AI</div>
-      <div>
-        <h1>ALFA AI</h1>
-        <small>VOICE CHAT PRO • V5.6</small>
-      </div>
+<header class="header">
+
+  <div class="brand">
+
+    <div class="logo">AI</div>
+
+    <div>
+      <h1>ALFA AI</h1>
+      <small>NATURAL VOICE • V5.7</small>
     </div>
 
-    <div class="status">
-      <span class="dot"></span>
-      ONLINE
-    </div>
-  </header>
-
-  <section class="hero">
-    <h2>Ngobrol Lebih Natural.</h2>
-    <p>
-      Bicara langsung dengan ALFA AI. Tanyakan sesuatu,
-      berdiskusi, minta ide, belajar, coding, atau sekadar ngobrol.
-    </p>
-  </section>
-
-  <main class="chat-card">
-
-    <div class="chat-top">
-
-      <div class="ai-info">
-        <div class="ai-avatar">✦</div>
-        <div>
-          <strong>ALFA AI Assistant</strong>
-          <span>Text + Voice Conversation</span>
-        </div>
-      </div>
-
-      <div class="top-actions">
-        <button class="small-btn" onclick="clearChat()">
-          Hapus Chat
-        </button>
-      </div>
-
-    </div>
-
-    <div id="messages" class="messages"></div>
-
-    <div id="typing" class="typing">
-      <div class="typing-box">
-        ALFA AI sedang berpikir
-        <i></i><i></i><i></i>
-      </div>
-    </div>
-
-    <div class="quick">
-      <button onclick="quickAsk('Jelaskan sesuatu dengan bahasa yang mudah dipahami.')">
-        💡 Jelaskan
-      </button>
-
-      <button onclick="quickAsk('Bantu saya mencari ide yang kreatif.')">
-        🚀 Cari Ide
-      </button>
-
-      <button onclick="quickAsk('Bantu saya membuat sesuatu yang profesional.')">
-        ✨ Buatkan
-      </button>
-
-      <button onclick="quickAsk('Mari ngobrol santai.')">
-        💬 Ngobrol
-      </button>
-    </div>
-
-    <div class="input-area">
-
-      <div class="input-row">
-
-        <textarea
-          id="messageInput"
-          placeholder="Ketik pesan atau tekan 🎙️ untuk bicara..."
-          rows="1"
-        ></textarea>
-
-        <button
-          id="voiceBtn"
-          class="icon-btn"
-          title="Voice Chat"
-          onclick="toggleVoice()"
-        >
-          🎙️
-        </button>
-
-        <button
-          id="sendBtn"
-          class="icon-btn"
-          title="Kirim"
-          onclick="sendChat()"
-        >
-          ➤
-        </button>
-
-      </div>
-
-      <div id="voicePanel" class="voice-panel">
-
-        <div class="voice-status">
-          <div class="voice-wave">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-
-          <span id="voiceStatusText">
-            Mendengarkan...
-          </span>
-        </div>
-
-        <button
-          class="voice-stop"
-          onclick="stopVoice()"
-        >
-          Berhenti
-        </button>
-
-      </div>
-
-    </div>
-
-  </main>
-
-  <div class="footer">
-    ALFA AI V5.6 • Natural Voice Conversation
   </div>
 
+  <div class="status">
+    <span class="dot"></span>
+    ONLINE
+  </div>
+
+</header>
+
+
+<section class="hero">
+
+  <h2>Talk Naturally With AI.</h2>
+
+  <p>
+    Ngobrol dengan ALFA AI menggunakan bahasa Indonesia
+    atau English secara natural.
+  </p>
+
+</section>
+
+
+<main class="chat-card">
+
+  <div class="chat-top">
+
+    <div class="ai-info">
+
+      <div class="ai-avatar">✦</div>
+
+      <div>
+        <strong>ALFA AI Assistant</strong>
+        <span>Natural Text + Voice Conversation</span>
+      </div>
+
+    </div>
+
+    <div class="top-actions">
+
+      <button
+        class="small-btn"
+        onclick="clearChat()">
+        Hapus Chat
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div id="messages" class="messages"></div>
+
+
+  <div id="typing" class="typing">
+
+    <div class="typing-box">
+
+      ALFA AI sedang berpikir
+
+      <i></i>
+      <i></i>
+      <i></i>
+
+    </div>
+
+  </div>
+
+
+  <div class="quick">
+
+    <button onclick="quickAsk('Jelaskan sesuatu dengan bahasa yang mudah dipahami.')">
+      💡 Jelaskan
+    </button>
+
+    <button onclick="quickAsk('Help me come up with a creative idea.')">
+      🚀 English
+    </button>
+
+    <button onclick="quickAsk('Bantu saya membuat sesuatu yang profesional.')">
+      ✨ Buatkan
+    </button>
+
+    <button onclick="quickAsk('Mari ngobrol santai.')">
+      💬 Ngobrol
+    </button>
+
+  </div>
+
+
+  <div class="input-area">
+
+    <div class="input-row">
+
+      <textarea
+        id="messageInput"
+        placeholder="Ketik pesan atau tekan 🎙️ untuk bicara..."
+        rows="1"></textarea>
+
+      <button
+        id="voiceBtn"
+        class="icon-btn"
+        title="Voice Chat"
+        onclick="toggleVoice()">
+        🎙️
+      </button>
+
+      <button
+        id="sendBtn"
+        class="icon-btn"
+        title="Kirim"
+        onclick="sendChat()">
+        ➤
+      </button>
+
+    </div>
+
+
+    <div id="voicePanel" class="voice-panel">
+
+      <div class="voice-status">
+
+        <div class="voice-wave">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <span id="voiceStatusText">
+          Mendengarkan...
+        </span>
+
+      </div>
+
+      <button
+        class="voice-stop"
+        onclick="stopVoice()">
+        Berhenti
+      </button>
+
+    </div>
+
+  </div>
+
+</main>
+
+
+<div class="footer">
+  ALFA AI V5.7 • Natural Voice Conversation
 </div>
+
+</div>
+
 
 <script>
 
 /* =========================================================
-   ALFA AI V5.6 VOICE CHAT PRO
-   WORKER TIDAK DIUBAH
+   ALFA AI V5.7
+   WORKER TETAP
 ========================================================= */
 
 const CHAT_URL =
@@ -713,57 +750,128 @@ const CHAT_URL =
 
 
 /* =========================================================
-   AI PERSONALITY
+   NATURAL AI PERSONALITY
 ========================================================= */
 
 const SYSTEM_PROMPT = `
-Kamu adalah ALFA AI, asisten AI yang komunikatif, cerdas,
-ramah, natural, dan memiliki wawasan luas.
 
-GAYA KOMUNIKASI:
+Kamu adalah ALFA AI.
 
-- Gunakan bahasa manusia yang natural.
-- Jangan terdengar seperti robot.
-- Jangan selalu menggunakan format daftar jika tidak diperlukan.
-- Jangan mengulang pertanyaan pengguna.
-- Jangan terlalu formal kecuali pengguna meminta formal.
-- Untuk percakapan santai, jawab dengan santai.
-- Untuk masalah teknis, jawab jelas dan terstruktur.
-- Jika pengguna menggunakan bahasa Indonesia, jawab bahasa Indonesia.
-- Jika pengguna menggunakan bahasa Inggris, ikuti bahasa Inggris.
-- Jika pengguna mencampur bahasa, ikuti gaya pengguna secara natural.
-- Jangan mengatakan "sebagai AI" berulang-ulang.
-- Jangan menggunakan kalimat pembuka generik secara terus-menerus.
-- Berikan jawaban langsung terlebih dahulu.
-- Jika pengguna meminta pendapat, jelaskan alasan secara seimbang.
-- Jika tidak tahu sesuatu, katakan dengan jujur.
-- Jangan mengarang fakta.
+Kamu adalah asisten percakapan yang:
+- ramah
+- natural
+- komunikatif
+- responsif
+- punya wawasan luas
+- tidak kaku
+- tidak terdengar seperti robot
+
+ATURAN UTAMA:
+
+1. Bahasa harus terasa seperti manusia sedang berbicara.
+
+2. Jangan menggunakan pembukaan yang sama berulang-ulang.
+
+3. Jangan mengatakan:
+   "Sebagai AI..."
+   kecuali memang sangat diperlukan.
+
+4. Jangan menjawab seperti artikel ensiklopedia
+   jika pengguna hanya sedang ngobrol.
+
+5. Jika pengguna santai, balas santai.
+
+6. Jika pengguna serius, balas serius.
+
+7. Jika pengguna bercanda, boleh ikut bercanda
+   secara wajar.
+
+8. Jika pengguna meminta bantuan teknis,
+   berikan solusi yang jelas dan praktis.
+
+9. Jangan terlalu banyak bullet point
+   jika jawaban percakapan biasa.
+
+10. Jangan mengulang pertanyaan pengguna.
+
+11. Jangan membuat jawaban terasa template.
+
+12. Jangan menggunakan bahasa yang terlalu formal
+    kecuali pengguna memintanya.
+
+BAHASA:
+
+- Jika pengguna berbicara Bahasa Indonesia,
+  jawab Bahasa Indonesia natural.
+
+- Jika pengguna berbicara English,
+  jawab English yang natural dan conversational.
+
+- Jika pengguna mencampur Indonesia dan English,
+  ikuti gaya campuran tersebut secara natural.
+
+- Jangan menerjemahkan secara kaku.
+
+VOICE:
+
+Ketika jawaban akan dibacakan:
+
+- gunakan kalimat yang mudah diucapkan
+- jangan menggunakan tabel
+- jangan menggunakan markdown berlebihan
+- jangan menggunakan simbol yang aneh
+- jangan membuat jawaban terlalu panjang
+- gunakan gaya bicara yang hangat
+- variasikan panjang kalimat
+- terdengar seperti teman yang pintar sedang membantu
+
+ENGLISH:
+
+Jika pengguna berbicara English,
+gunakan conversational English.
+
+Jangan menerjemahkan struktur Bahasa Indonesia
+secara literal ke English.
+
+Gunakan idiom English yang wajar jika sesuai konteks.
+
+INDONESIAN:
+
+Gunakan Bahasa Indonesia sehari-hari yang natural.
+
+Hindari gaya:
+"Adapun..."
+"Selanjutnya..."
+"Demikian..."
+"Berdasarkan uraian tersebut..."
+
+kecuali konteks memang membutuhkan bahasa formal.
 
 KONTEKS:
 
-Perhatikan percakapan sebelumnya.
-Jangan menjawab seolah-olah setiap pertanyaan berdiri sendiri.
+Selalu perhatikan percakapan sebelumnya.
 
-VOICE CONVERSATION:
-
-Ketika percakapan berasal dari suara:
-- Jawab dengan kalimat yang nyaman didengar.
-- Jangan membuat jawaban terlalu panjang kecuali diperlukan.
-- Gunakan gaya percakapan manusia.
-- Hindari simbol, format rumit, dan tabel jika tidak diperlukan.
-- Buat respons yang enak dibacakan oleh suara.
+Jika pengguna melanjutkan topik sebelumnya,
+jangan meminta mereka mengulang semuanya.
 
 PENGETAHUAN:
 
-Gunakan pengetahuan yang tersedia untuk membantu pengguna
-dalam teknologi, programming, website, bisnis, desain,
-AI, edukasi, produktivitas, dan pengetahuan umum.
+Gunakan seluruh pengetahuan yang tersedia
+untuk membantu pengguna dalam:
+teknologi, AI, programming, website, bisnis,
+desain, pendidikan, produktivitas, dan pengetahuan umum.
+
+Jika tidak mengetahui sesuatu,
+katakan dengan jujur.
+
+Jangan mengarang fakta.
 
 TUJUAN:
 
-Buat pengguna merasa sedang berbicara dengan asisten yang
-benar-benar memahami konteks percakapan, bukan sekadar
-mesin yang mengeluarkan jawaban.
+Pengguna harus merasa sedang berbicara
+dengan asisten yang memahami konteks,
+bukan dengan mesin yang membaca template.
+
 `;
 
 
@@ -771,60 +879,68 @@ mesin yang mengeluarkan jawaban.
    STATE
 ========================================================= */
 
-let conversation = [];
+let conversation=[];
 
-let isSending = false;
-let isListening = false;
-let currentUtterance = null;
+let isSending=false;
 
-const messagesEl =
+let isListening=false;
+
+let currentUtterance=null;
+
+let lastDetectedLanguage="id-ID";
+
+
+const messagesEl=
 document.getElementById("messages");
 
-const inputEl =
+const inputEl=
 document.getElementById("messageInput");
 
-const typingEl =
+const typingEl=
 document.getElementById("typing");
 
-const voiceBtn =
+const voiceBtn=
 document.getElementById("voiceBtn");
 
-const voicePanel =
+const voicePanel=
 document.getElementById("voicePanel");
 
-const voiceStatusText =
+const voiceStatusText=
 document.getElementById("voiceStatusText");
 
 
 /* =========================================================
-   LOAD CHAT
+   LOAD
 ========================================================= */
 
 function loadChat(){
 
   try{
 
-    const saved =
-    localStorage.getItem("alfa_ai_v56_chat");
+    const saved=
+    localStorage.getItem(
+      "alfa_ai_v57_chat"
+    );
 
     if(saved){
 
-      conversation =
+      conversation=
       JSON.parse(saved);
 
     }
 
   }catch(e){
 
-    conversation = [];
+    conversation=[];
 
   }
+
 
   if(!conversation.length){
 
     addMessage(
       "ai",
-      "Halo bosss 👋 Saya ALFA AI. Kita bisa ngobrol lewat teks atau suara. Mau bahas apa hari ini?"
+      "Halo bosss 👋 Saya ALFA AI. Mau ngobrol santai, pakai Bahasa Indonesia, atau English juga bisa."
     );
 
   }else{
@@ -832,11 +948,21 @@ function loadChat(){
     conversation.forEach(item=>{
 
       if(item.role==="user"){
-        renderMessage("user",item.content);
+
+        renderMessage(
+          "user",
+          item.content
+        );
+
       }
 
       if(item.role==="assistant"){
-        renderMessage("ai",item.content);
+
+        renderMessage(
+          "ai",
+          item.content
+        );
+
       }
 
     });
@@ -844,11 +970,12 @@ function loadChat(){
   }
 
   scrollBottom();
+
 }
 
 
 /* =========================================================
-   SAVE CHAT
+   SAVE
 ========================================================= */
 
 function saveChat(){
@@ -856,8 +983,10 @@ function saveChat(){
   try{
 
     localStorage.setItem(
-      "alfa_ai_v56_chat",
-      JSON.stringify(conversation.slice(-30))
+      "alfa_ai_v57_chat",
+      JSON.stringify(
+        conversation.slice(-30)
+      )
     );
 
   }catch(e){}
@@ -871,49 +1000,63 @@ function saveChat(){
 
 function renderMessage(role,text){
 
-  const wrapper =
+  const wrapper=
   document.createElement("div");
 
-  wrapper.className =
-  "message " + role;
+  wrapper.className=
+  "message "+role;
 
-  const box =
+
+  const box=
   document.createElement("div");
 
-  const label =
+
+  const label=
   document.createElement("div");
 
-  label.className =
+  label.className=
   "message-label";
 
-  label.textContent =
-  role==="user" ? "Kamu" : "ALFA AI";
+  label.textContent=
+  role==="user"
+  ?"Kamu"
+  :"ALFA AI";
 
-  const bubble =
+
+  const bubble=
   document.createElement("div");
 
-  bubble.className="bubble";
+  bubble.className=
+  "bubble";
 
-  bubble.textContent=text;
+  bubble.textContent=
+  text;
+
 
   box.appendChild(label);
+
   box.appendChild(bubble);
 
   wrapper.appendChild(box);
 
   messagesEl.appendChild(wrapper);
+
 }
 
 
 /* =========================================================
-   ADD MESSAGE
+   ADD
 ========================================================= */
 
 function addMessage(role,text){
 
-  renderMessage(role,text);
+  renderMessage(
+    role,
+    text
+  );
 
   scrollBottom();
+
 }
 
 
@@ -925,7 +1068,7 @@ function scrollBottom(){
 
   requestAnimationFrame(()=>{
 
-    messagesEl.scrollTop =
+    messagesEl.scrollTop=
     messagesEl.scrollHeight;
 
   });
@@ -934,72 +1077,101 @@ function scrollBottom(){
 
 
 /* =========================================================
-   SEND CHAT
+   SEND
 ========================================================= */
 
 async function sendChat(){
 
-  if(isSending) return;
+  if(isSending)return;
 
-  const message =
+
+  const message=
   inputEl.value.trim();
 
-  if(!message) return;
+
+  if(!message)return;
+
 
   stopSpeaking();
+
 
   inputEl.value="";
 
   inputEl.style.height="48px";
 
-  addMessage("user",message);
+
+  lastDetectedLanguage=
+  detectLanguage(message);
+
+
+  addMessage(
+    "user",
+    message
+  );
+
 
   conversation.push({
+
     role:"user",
+
     content:message
+
   });
 
+
   saveChat();
+
 
   isSending=true;
 
   typingEl.classList.add("show");
 
+
   try{
 
-    const response =
-    await fetch(CHAT_URL,{
+    const response=
+    await fetch(
+      CHAT_URL,
+      {
+        method:"POST",
 
-      method:"POST",
+        headers:{
+          "Content-Type":
+          "application/json"
+        },
 
-      headers:{
-        "Content-Type":"application/json"
-      },
+        body:JSON.stringify({
 
-      body:JSON.stringify({
+          action:"chat",
 
-        action:"chat",
+          message:message,
 
-        message:message,
+          prompt:
+          SYSTEM_PROMPT+
 
-        prompt:SYSTEM_PROMPT,
+          "\n\nBahasa percakapan saat ini: "+
+          lastDetectedLanguage,
 
-        messages:conversation.slice(-20)
+          messages:
+          conversation.slice(-20)
 
-      })
+        })
 
-    });
+      }
+    );
 
 
-    const raw =
+    const raw=
     await response.text();
 
 
     let data;
 
+
     try{
 
-      data=JSON.parse(raw);
+      data=
+      JSON.parse(raw);
 
     }catch(e){
 
@@ -1013,30 +1185,34 @@ async function sendChat(){
     if(!response.ok){
 
       throw new Error(
-        data.error ||
-        data.message ||
-        "Worker HTTP " + response.status
+        data.error||
+        data.message||
+        "Worker HTTP "+
+        response.status
       );
 
     }
 
 
-    let reply =
-      data.reply ??
-      data.response ??
-      data.message ??
-      data.result ??
-      data.text ??
+    let reply=
+      data.reply??
+      data.response??
+      data.message??
+      data.result??
+      data.text??
       data.content;
 
 
-    if(typeof reply==="object" && reply!==null){
+    if(
+      typeof reply==="object" &&
+      reply!==null
+    ){
 
-      reply =
-      reply.text ??
-      reply.content ??
-      reply.reply ??
-      JSON.stringify(reply);
+      reply=
+        reply.text??
+        reply.content??
+        reply.reply??
+        JSON.stringify(reply);
 
     }
 
@@ -1050,7 +1226,8 @@ async function sendChat(){
     }
 
 
-    reply=String(reply).trim();
+    reply=
+    String(reply).trim();
 
 
     conversation.push({
@@ -1061,30 +1238,45 @@ async function sendChat(){
 
     });
 
+
     saveChat();
 
-    addMessage("ai",reply);
 
-    /* VOICE RESPONSE */
+    addMessage(
+      "ai",
+      reply
+    );
 
-    speakReply(reply);
+
+    /* =========================
+       VOICE RESPONSE
+    ========================= */
+
+    speakReply(
+      reply,
+      lastDetectedLanguage
+    );
 
 
   }catch(error){
 
     console.error(error);
 
-    const errorText =
-      "Maaf bosss, koneksi ke ALFA AI sedang bermasalah.\n\n" +
-      "Detail: " + error.message;
 
-    addMessage("ai",errorText);
+    addMessage(
+      "ai",
+      "Maaf bosss, ALFA AI sedang mengalami kendala koneksi.\n\nDetail: "+
+      error.message
+    );
+
 
   }finally{
 
     isSending=false;
 
-    typingEl.classList.remove("show");
+    typingEl.classList.remove(
+      "show"
+    );
 
   }
 
@@ -1092,14 +1284,17 @@ async function sendChat(){
 
 
 /* =========================================================
-   ENTER SEND
+   ENTER
 ========================================================= */
 
 inputEl.addEventListener(
   "keydown",
   function(e){
 
-    if(e.key==="Enter" && !e.shiftKey){
+    if(
+      e.key==="Enter" &&
+      !e.shiftKey
+    ){
 
       e.preventDefault();
 
@@ -1112,24 +1307,28 @@ inputEl.addEventListener(
 
 
 /* =========================================================
-   AUTO TEXTAREA
+   TEXTAREA
 ========================================================= */
 
 inputEl.addEventListener(
   "input",
   function(){
 
-    this.style.height="auto";
+    this.style.height=
+    "auto";
 
-    this.style.height =
-      Math.min(this.scrollHeight,150) + "px";
+    this.style.height=
+    Math.min(
+      this.scrollHeight,
+      150
+    )+"px";
 
   }
 );
 
 
 /* =========================================================
-   QUICK ASK
+   QUICK
 ========================================================= */
 
 function quickAsk(text){
@@ -1144,27 +1343,176 @@ function quickAsk(text){
 
 
 /* =========================================================
-   CLEAR CHAT
+   CLEAR
 ========================================================= */
 
 function clearChat(){
 
   stopSpeaking();
 
-  if(!confirm("Hapus seluruh percakapan?")) return;
+  if(
+    !confirm(
+      "Hapus seluruh percakapan?"
+    )
+  )return;
+
 
   conversation=[];
 
+
   localStorage.removeItem(
-    "alfa_ai_v56_chat"
+    "alfa_ai_v57_chat"
   );
+
 
   messagesEl.innerHTML="";
 
+
   addMessage(
     "ai",
-    "Chat sudah dibersihkan. Kita mulai percakapan baru 👋"
+    "Oke bosss. Chat kita sudah dibersihkan. Mau mulai dari mana?"
   );
+
+}
+
+
+/* =========================================================
+   LANGUAGE DETECTION
+========================================================= */
+
+function detectLanguage(text){
+
+  const t=
+  text.toLowerCase();
+
+
+  const englishScore=
+    countMatches(
+      t,
+      [
+        "the",
+        "is",
+        "are",
+        "am",
+        "you",
+        "your",
+        "what",
+        "why",
+        "how",
+        "can",
+        "could",
+        "would",
+        "should",
+        "please",
+        "help",
+        "tell",
+        "explain",
+        "make",
+        "create",
+        "build",
+        "website",
+        "code",
+        "hello",
+        "thanks",
+        "thank",
+        "today",
+        "tomorrow",
+        "where",
+        "when",
+        "which"
+      ]
+    );
+
+
+  const indonesiaScore=
+    countMatches(
+      t,
+      [
+        "yang",
+        "dan",
+        "atau",
+        "saya",
+        "aku",
+        "kamu",
+        "anda",
+        "ini",
+        "itu",
+        "apa",
+        "kenapa",
+        "mengapa",
+        "bagaimana",
+        "bisa",
+        "tolong",
+        "jelaskan",
+        "buat",
+        "membuat",
+        "website",
+        "kode",
+        "hari",
+        "sekarang",
+        "besok",
+        "dimana",
+        "kapan"
+      ]
+    );
+
+
+  if(
+    englishScore >
+    indonesiaScore
+  ){
+
+    return "en-US";
+
+  }
+
+
+  return "id-ID";
+
+}
+
+
+/* =========================================================
+   COUNT WORDS
+========================================================= */
+
+function countMatches(
+  text,
+  words
+){
+
+  let score=0;
+
+
+  words.forEach(word=>{
+
+    const regex=
+    new RegExp(
+      "\\b"+
+      word.replace(
+        /[.*+?^${}()|[\]\\]/g,
+        "\\$&"
+      )+
+      "\\b",
+      "g"
+    );
+
+
+    const matches=
+    text.match(regex);
+
+
+    if(matches){
+
+      score+=
+      matches.length;
+
+    }
+
+  });
+
+
+  return score;
 
 }
 
@@ -1173,45 +1521,53 @@ function clearChat(){
    SPEECH RECOGNITION
 ========================================================= */
 
-const SpeechRecognition =
-window.SpeechRecognition ||
+const SpeechRecognition=
+window.SpeechRecognition||
 window.webkitSpeechRecognition;
+
 
 let recognition=null;
 
+
 if(SpeechRecognition){
 
-  recognition =
+  recognition=
   new SpeechRecognition();
 
-  recognition.lang="id-ID";
 
   recognition.continuous=false;
 
   recognition.interimResults=true;
 
-  recognition.maxAlternatives=1;
+  recognition.maxAlternatives=3;
 
 
-  recognition.onstart=function(){
+  recognition.onstart=
+  function(){
 
     isListening=true;
 
-    voiceBtn.classList.add("listening");
+    voiceBtn.classList.add(
+      "listening"
+    );
 
-    voicePanel.classList.add("show");
+    voicePanel.classList.add(
+      "show"
+    );
 
-    voiceStatusText.textContent =
-      "Mendengarkan suara kamu...";
+    voiceStatusText.textContent=
+      "Mendengarkan...";
 
   };
 
 
-  recognition.onresult=function(event){
+  recognition.onresult=
+  function(event){
 
     let finalText="";
 
     let interimText="";
+
 
     for(
       let i=event.resultIndex;
@@ -1219,16 +1575,22 @@ if(SpeechRecognition){
       i++
     ){
 
-      const transcript =
-      event.results[i][0].transcript;
+      const transcript=
+      event.results[i][0]
+      .transcript;
 
-      if(event.results[i].isFinal){
 
-        finalText += transcript;
+      if(
+        event.results[i].isFinal
+      ){
+
+        finalText+=
+        transcript;
 
       }else{
 
-        interimText += transcript;
+        interimText+=
+        transcript;
 
       }
 
@@ -1237,8 +1599,23 @@ if(SpeechRecognition){
 
     if(finalText){
 
-      inputEl.value =
+      const clean=
       finalText.trim();
+
+
+      inputEl.value=
+      clean;
+
+
+      lastDetectedLanguage=
+      detectLanguage(clean);
+
+
+      voiceStatusText.textContent=
+        lastDetectedLanguage==="en-US"
+        ?"English detected"
+        :"Bahasa Indonesia detected";
+
 
       inputEl.dispatchEvent(
         new Event("input")
@@ -1246,33 +1623,42 @@ if(SpeechRecognition){
 
     }else if(interimText){
 
-      voiceStatusText.textContent =
-        "Mendengar: " + interimText;
+      voiceStatusText.textContent=
+        "Mendengar: "+
+        interimText;
 
     }
 
   };
 
 
-  recognition.onerror=function(event){
+  recognition.onerror=
+  function(event){
 
     console.warn(
       "Speech recognition:",
       event.error
     );
 
+
     isListening=false;
 
-    voiceBtn.classList.remove("listening");
+    voiceBtn.classList.remove(
+      "listening"
+    );
 
-    voicePanel.classList.remove("show");
+    voicePanel.classList.remove(
+      "show"
+    );
 
 
-    if(event.error==="not-allowed"){
+    if(
+      event.error==="not-allowed"
+    ){
 
       addMessage(
         "ai",
-        "Izin microphone belum diberikan. Izinkan microphone di browser lalu tekan tombol 🎙️ lagi."
+        "Microphone belum mendapat izin. Pilih Allow pada izin microphone Chrome."
       );
 
     }
@@ -1280,20 +1666,28 @@ if(SpeechRecognition){
   };
 
 
-  recognition.onend=function(){
+  recognition.onend=
+  function(){
 
     isListening=false;
 
-    voiceBtn.classList.remove("listening");
+    voiceBtn.classList.remove(
+      "listening"
+    );
 
-    voicePanel.classList.remove("show");
+    voicePanel.classList.remove(
+      "show"
+    );
 
 
-    const text =
-      inputEl.value.trim();
+    const text=
+    inputEl.value.trim();
 
 
-    if(text && !isSending){
+    if(
+      text &&
+      !isSending
+    ){
 
       sendChat();
 
@@ -1305,7 +1699,7 @@ if(SpeechRecognition){
 
 
 /* =========================================================
-   START / STOP VOICE
+   START VOICE
 ========================================================= */
 
 function toggleVoice(){
@@ -1317,7 +1711,7 @@ function toggleVoice(){
 
     addMessage(
       "ai",
-      "Browser ini belum mendukung Voice Chat. Gunakan Chrome atau browser yang mendukung microphone."
+      "Browser ini belum mendukung Voice Chat. Gunakan Google Chrome."
     );
 
     return;
@@ -1340,16 +1734,25 @@ function toggleVoice(){
 
 function startVoice(){
 
-  if(!recognition) return;
+  if(!recognition)return;
 
-  if(isSending) return;
+  if(isSending)return;
+
 
   try{
 
     inputEl.value="";
 
+
+    /*
+      Default Indonesia.
+      Chrome akan menggunakan hasil recognition
+      lalu kita deteksi bahasanya dari hasil final.
+    */
+
     recognition.lang=
-      detectLanguage();
+    "id-ID";
+
 
     recognition.start();
 
@@ -1374,42 +1777,32 @@ function stopVoice(){
 
   }
 
+
   isListening=false;
 
-  voiceBtn.classList.remove("listening");
+  voiceBtn.classList.remove(
+    "listening"
+  );
 
-  voicePanel.classList.remove("show");
-
-}
-
-
-/* =========================================================
-   LANGUAGE DETECTION
-========================================================= */
-
-function detectLanguage(){
-
-  const text =
-    inputEl.value.trim();
-
-  if(/[a-zA-Z]/.test(text)){
-
-    return "id-ID";
-
-  }
-
-  return "id-ID";
+  voicePanel.classList.remove(
+    "show"
+  );
 
 }
 
 
 /* =========================================================
-   TEXT TO SPEECH
+   SPEECH SYNTHESIS
 ========================================================= */
 
-function speakReply(text){
+function speakReply(
+  text,
+  language
+){
 
-  if(!("speechSynthesis" in window)){
+  if(
+    !("speechSynthesis" in window)
+  ){
 
     return;
 
@@ -1419,41 +1812,27 @@ function speakReply(text){
   stopSpeaking();
 
 
-  /*
-    Bersihkan beberapa format markdown
-    supaya suara terdengar lebih natural.
-  */
-
-  let speechText =
-    text
-      .replace(/```[\s\S]*?```/g," ")
-      .replace(/[*_#>`]/g,"")
-      .replace(/\[([^\]]+)\]\([^)]+\)/g,"$1")
-      .replace(/\n+/g,". ")
-      .replace(/\s+/g," ")
-      .trim();
+  const speechText=
+  cleanForSpeech(text);
 
 
-  if(!speechText) return;
+  if(!speechText)return;
 
 
-  /*
-    Jangan membacakan jawaban yang terlalu panjang
-    sekaligus. Pecah berdasarkan kalimat.
-  */
-
-  const parts =
-    speechText.match(
-      /[^.!?]+[.!?]+|[^.!?]+$/g
-    ) || [speechText];
+  const parts=
+  splitSpeech(
+    speechText
+  );
 
 
   let index=0;
 
 
-  function speakNext(){
+  function next(){
 
-    if(index>=parts.length){
+    if(
+      index>=parts.length
+    ){
 
       currentUtterance=null;
 
@@ -1462,67 +1841,78 @@ function speakReply(text){
     }
 
 
-    const part =
-      parts[index++].trim();
+    const part=
+    parts[index++].trim();
 
 
     if(!part){
 
-      speakNext();
+      next();
 
       return;
 
     }
 
 
-    const utterance =
-      new SpeechSynthesisUtterance(part);
+    const utterance=
+    new SpeechSynthesisUtterance(
+      part
+    );
 
 
-    utterance.lang =
-      detectSpeechLanguage(part);
+    utterance.lang=
+      language==="en-US"
+      ?"en-US"
+      :"id-ID";
 
-    utterance.rate=.98;
 
-    utterance.pitch=1.02;
+    utterance.rate=
+      language==="en-US"
+      ?0.96
+      :0.94;
+
+
+    utterance.pitch=
+      language==="en-US"
+      ?1.02
+      :1.03;
+
 
     utterance.volume=1;
 
 
-    const voices =
-      window.speechSynthesis.getVoices();
-
-
-    const preferred =
-      voices.find(v=>
-        v.lang &&
-        v.lang.toLowerCase()
-        .startsWith("id")
+    const voice=
+      chooseBestVoice(
+        utterance.lang
       );
 
 
-    if(preferred){
+    if(voice){
 
-      utterance.voice=preferred;
+      utterance.voice=voice;
 
     }
 
 
-    utterance.onend=function(){
+    utterance.onend=
+    function(){
 
-      speakNext();
+      next();
 
     };
 
 
-    utterance.onerror=function(){
+    utterance.onerror=
+    function(){
 
       currentUtterance=null;
 
     };
 
 
-    currentUtterance=utterance;
+    currentUtterance=
+    utterance;
+
 
     window.speechSynthesis.speak(
       utterance
@@ -1531,33 +1921,323 @@ function speakReply(text){
   }
 
 
-  speakNext();
+  next();
 
 }
 
 
 /* =========================================================
-   SPEECH LANGUAGE
+   CHOOSE BEST NATIVE VOICE
 ========================================================= */
 
-function detectSpeechLanguage(text){
+function chooseBestVoice(
+  lang
+){
 
-  /*
-    Indonesia sebagai default.
-    Jika terlihat jelas ada bahasa Inggris,
-    gunakan English.
-  */
+  const voices=
+  window.speechSynthesis
+  .getVoices();
 
-  const englishWords =
-    /\b(the|this|that|what|why|how|can|could|would|please|hello|thanks|thank|you|website|code|programming)\b/i;
 
-  if(englishWords.test(text)){
+  if(!voices.length){
 
-    return "en-US";
+    return null;
 
   }
 
-  return "id-ID";
+
+  const wanted=
+  lang.toLowerCase();
+
+
+  const exact=
+  voices.filter(
+    voice=>
+      voice.lang &&
+      voice.lang.toLowerCase()===wanted
+  );
+
+
+  if(exact.length){
+
+    return rankVoices(
+      exact,
+      lang
+    )[0];
+
+  }
+
+
+  const base=
+  wanted.split("-")[0];
+
+
+  const regional=
+  voices.filter(
+    voice=>
+      voice.lang &&
+      voice.lang
+      .toLowerCase()
+      .startsWith(base+"-")
+  );
+
+
+  if(regional.length){
+
+    return rankVoices(
+      regional,
+      lang
+    )[0];
+
+  }
+
+
+  return null;
+
+}
+
+
+/* =========================================================
+   VOICE RANKING
+========================================================= */
+
+function rankVoices(
+  voices,
+  lang
+){
+
+  return voices
+    .map(
+      voice=>({
+
+        voice,
+
+        score:
+          voiceScore(
+            voice,
+            lang
+          )
+
+      })
+    )
+    .sort(
+      (a,b)=>
+      b.score-a.score
+    )
+    .map(
+      item=>item.voice
+    );
+
+}
+
+
+function voiceScore(
+  voice,
+  lang
+){
+
+  let score=0;
+
+
+  const name=
+  (voice.name||"")
+  .toLowerCase();
+
+
+  const vlang=
+  (voice.lang||"")
+  .toLowerCase();
+
+
+  if(
+    vlang===
+    lang.toLowerCase()
+  ){
+
+    score+=100;
+
+  }
+
+
+  if(
+    voice.localService
+  ){
+
+    score+=20;
+
+  }
+
+
+  /*
+    Prioritaskan voice yang biasanya
+    terdengar lebih natural pada sistem.
+  */
+
+  const preferred=
+  [
+    "natural",
+    "neural",
+    "premium",
+    "enhanced",
+    "google",
+    "microsoft"
+  ];
+
+
+  preferred.forEach(
+    word=>{
+
+      if(
+        name.includes(word)
+      ){
+
+        score+=10;
+
+      }
+
+    }
+  );
+
+
+  return score;
+
+}
+
+
+/* =========================================================
+   CLEAN TEXT FOR SPEECH
+========================================================= */
+
+function cleanForSpeech(
+  text
+){
+
+  return String(text)
+
+    .replace(
+      /```[\s\S]*?```/g,
+      " Saya akan jelaskan bagian kodenya di chat. "
+    )
+
+    .replace(
+      /`([^`]+)`/g,
+      "$1"
+    )
+
+    .replace(
+      /\*\*(.*?)\*\*/g,
+      "$1"
+    )
+
+    .replace(
+      /\*(.*?)\*/g,
+      "$1"
+    )
+
+    .replace(
+      /#{1,6}\s*/g,
+      ""
+    )
+
+    .replace(
+      /^\s*[-*+]\s+/gm,
+      ""
+    )
+
+    .replace(
+      /\[([^\]]+)\]\([^)]+\)/g,
+      "$1"
+    )
+
+    .replace(
+      /https?:\/\/\S+/gi,
+      ""
+    )
+
+    .replace(
+      /[•▪◾▶►]/g,
+      ""
+    )
+
+    .replace(
+      /\n+/g,
+      ". "
+    )
+
+    .replace(
+      /\s+/g,
+      " "
+    )
+
+    .trim();
+
+}
+
+
+/* =========================================================
+   SPLIT NATURAL SENTENCES
+========================================================= */
+
+function splitSpeech(
+  text
+){
+
+  const sentences=
+  text.match(
+    /[^.!?]+[.!?]+|[^.!?]+$/g
+  )||[text];
+
+
+  const result=[];
+
+
+  let buffer="";
+
+
+  sentences.forEach(
+    sentence=>{
+
+      const clean=
+      sentence.trim();
+
+
+      if(!clean)return;
+
+
+      if(
+        (buffer+" "+clean)
+        .trim()
+        .length<220
+      ){
+
+        buffer=
+        (buffer+" "+clean)
+        .trim();
+
+      }else{
+
+        if(buffer){
+
+          result.push(buffer);
+
+        }
+
+        buffer=clean;
+
+      }
+
+    }
+  );
+
+
+  if(buffer){
+
+    result.push(buffer);
+
+  }
+
+
+  return result;
 
 }
 
@@ -1576,19 +2256,40 @@ function stopSpeaking(){
 
   }
 
+
   currentUtterance=null;
 
 }
 
 
 /* =========================================================
-   LOAD VOICES
+   LOAD AVAILABLE VOICES
 ========================================================= */
 
-if("speechSynthesis" in window){
+function refreshVoices(){
 
-  window.speechSynthesis.onvoiceschanged=
-    function(){};
+  if(
+    !("speechSynthesis" in window)
+  ){
+
+    return;
+
+  }
+
+
+  window.speechSynthesis
+  .getVoices();
+
+}
+
+
+if(
+  "speechSynthesis" in window
+){
+
+  window.speechSynthesis
+  .onvoiceschanged=
+  refreshVoices;
 
 }
 
@@ -1598,6 +2299,8 @@ if("speechSynthesis" in window){
 ========================================================= */
 
 loadChat();
+
+refreshVoices();
 
 </script>
 
