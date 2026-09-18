@@ -2,769 +2,585 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#030712">
 
-<title>ALFA AI V4.2 | AI DESIGN STUDIO</title>
+<title>ALFA AI V5 | AI CHAT • VOICE • IMAGE</title>
 
 <meta name="description"
-content="ALFA AI V4.2 - AI Chat, Voice Chat, Logo Generator, Poster, T-Shirt, Banner dan Creative Design">
+content="ALFA AI V5 - AI Chat, Voice Chat, Image Generator dan Creative Design Studio">
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
-html{
-    scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
-    min-height:100vh;
-    font-family:Inter,Segoe UI,Arial,sans-serif;
-    color:#f8fafc;
-    background:
-        radial-gradient(circle at 15% 10%,rgba(0,229,255,.10),transparent 30%),
-        radial-gradient(circle at 85% 15%,rgba(124,58,237,.12),transparent 30%),
-        #030712;
-    overflow-x:hidden;
+min-height:100vh;
+font-family:Inter,Segoe UI,Arial,sans-serif;
+color:#f8fafc;
+background:
+radial-gradient(circle at 15% 10%,rgba(0,229,255,.11),transparent 30%),
+radial-gradient(circle at 85% 15%,rgba(124,58,237,.14),transparent 30%),
+#030712;
+overflow-x:hidden
 }
 
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:-1;
-    background-image:
-        linear-gradient(rgba(0,229,255,.025) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(0,229,255,.025) 1px,transparent 1px);
-    background-size:45px 45px;
+body:before{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+z-index:-1;
+background-image:
+linear-gradient(rgba(0,229,255,.025) 1px,transparent 1px),
+linear-gradient(90deg,rgba(0,229,255,.025) 1px,transparent 1px);
+background-size:45px 45px
 }
 
-button,
-textarea,
-select{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
-}
+button,textarea,select{font:inherit}
+button{cursor:pointer}
 
 .header{
-    position:sticky;
-    top:0;
-    z-index:100;
-    backdrop-filter:blur(18px);
-    background:rgba(3,7,18,.88);
-    border-bottom:1px solid rgba(148,163,184,.12);
+position:sticky;
+top:0;
+z-index:100;
+backdrop-filter:blur(18px);
+background:rgba(3,7,18,.88);
+border-bottom:1px solid rgba(148,163,184,.12)
 }
 
 .header-inner{
-    width:min(1400px,94%);
-    min-height:72px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+width:min(1400px,94%);
+min-height:72px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between
 }
 
-.brand{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
+.brand{display:flex;align-items:center;gap:12px}
 
 .logo{
-    width:44px;
-    height:44px;
-    display:grid;
-    place-items:center;
-    border-radius:13px;
-    background:linear-gradient(135deg,#00e5ff,#7c3aed);
-    font-size:18px;
-    font-weight:900;
-    box-shadow:0 0 28px rgba(0,229,255,.25);
+width:44px;height:44px;
+display:grid;place-items:center;
+border-radius:13px;
+background:linear-gradient(135deg,#00e5ff,#7c3aed);
+font-size:18px;font-weight:900;
+box-shadow:0 0 28px rgba(0,229,255,.25)
 }
 
-.brand h1{
-    font-size:19px;
-    letter-spacing:1px;
-}
-
-.brand p{
-    color:#64748b;
-    font-size:10px;
-    margin-top:2px;
-    letter-spacing:.8px;
-}
+.brand h1{font-size:19px;letter-spacing:1px}
+.brand p{color:#64748b;font-size:10px;margin-top:2px;letter-spacing:.8px}
 
 .status{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    padding:8px 13px;
-    border:1px solid rgba(0,229,255,.18);
-    border-radius:999px;
-    background:rgba(15,23,42,.65);
-    color:#a5f3fc;
-    font-size:11px;
+display:flex;align-items:center;gap:8px;
+padding:8px 13px;
+border:1px solid rgba(0,229,255,.18);
+border-radius:999px;
+background:rgba(15,23,42,.65);
+color:#a5f3fc;
+font-size:11px
 }
 
 .status-dot{
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:#22c55e;
-    box-shadow:0 0 12px #22c55e;
-    animation:pulse 1.5s infinite;
+width:8px;height:8px;border-radius:50%;
+background:#22c55e;
+box-shadow:0 0 12px #22c55e;
+animation:pulse 1.5s infinite
 }
 
 @keyframes pulse{
-    50%{
-        opacity:.35;
-        transform:scale(.75);
-    }
+50%{opacity:.35;transform:scale(.75)}
 }
 
 .container{
-    width:min(1400px,94%);
-    margin:25px auto 60px;
+width:min(1400px,94%);
+margin:25px auto 60px
 }
 
-.hero{
-    text-align:center;
-    padding:20px 10px 28px;
-}
+.hero{text-align:center;padding:20px 10px 28px}
 
 .hero h2{
-    font-size:clamp(32px,5vw,60px);
-    line-height:1;
-    background:linear-gradient(
-        90deg,
-        #fff,
-        #67e8f9,
-        #a78bfa,
-        #fff
-    );
-    background-size:250% auto;
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-    animation:shine 6s linear infinite;
+font-size:clamp(32px,5vw,60px);
+line-height:1;
+background:linear-gradient(90deg,#fff,#67e8f9,#a78bfa,#fff);
+background-size:250% auto;
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent;
+animation:shine 6s linear infinite
 }
 
 @keyframes shine{
-    to{
-        background-position:250% center;
-    }
+to{background-position:250% center}
 }
 
 .hero p{
-    max-width:760px;
-    margin:16px auto 0;
-    color:#94a3b8;
-    line-height:1.7;
-    font-size:14px;
+max-width:800px;
+margin:16px auto 0;
+color:#94a3b8;
+line-height:1.7;
+font-size:14px
 }
 
 .mode-bar{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:8px;
-    margin-bottom:20px;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:8px;
+margin-bottom:20px
 }
 
 .mode-btn{
-    border:1px solid rgba(148,163,184,.14);
-    background:rgba(15,23,42,.72);
-    color:#94a3b8;
-    padding:11px 15px;
-    border-radius:13px;
-    transition:.2s;
+border:1px solid rgba(148,163,184,.14);
+background:rgba(15,23,42,.72);
+color:#94a3b8;
+padding:11px 15px;
+border-radius:13px;
+transition:.2s
 }
 
-.mode-btn:hover{
-    transform:translateY(-2px);
-    color:#fff;
-}
+.mode-btn:hover{transform:translateY(-2px);color:#fff}
 
 .mode-btn.active{
-    color:#fff;
-    border-color:rgba(0,229,255,.55);
-    background:linear-gradient(
-        135deg,
-        rgba(0,229,255,.13),
-        rgba(124,58,237,.18)
-    );
+color:#fff;
+border-color:rgba(0,229,255,.55);
+background:linear-gradient(135deg,rgba(0,229,255,.13),rgba(124,58,237,.18))
 }
 
 .dashboard{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px
 }
 
 .card{
-    background:rgba(15,23,42,.63);
-    border:1px solid rgba(148,163,184,.12);
-    border-radius:22px;
-    padding:20px;
-    backdrop-filter:blur(18px);
-    box-shadow:0 20px 60px rgba(0,0,0,.2);
+background:rgba(15,23,42,.63);
+border:1px solid rgba(148,163,184,.12);
+border-radius:22px;
+padding:20px;
+backdrop-filter:blur(18px);
+box-shadow:0 20px 60px rgba(0,0,0,.2)
 }
 
 .card-title{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:14px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:14px
 }
 
-.card-title h3{
-    font-size:16px;
-}
-
-.card-title span{
-    color:#64748b;
-    font-size:10px;
-    letter-spacing:.8px;
-}
+.card-title h3{font-size:16px}
+.card-title span{color:#64748b;font-size:10px;letter-spacing:.8px}
 
 .chat-box{
-    height:430px;
-    overflow-y:auto;
-    padding:5px 4px 12px;
+height:430px;
+overflow-y:auto;
+padding:5px 4px 12px
 }
 
-.chat-box::-webkit-scrollbar{
-    width:5px;
-}
-
-.chat-box::-webkit-scrollbar-thumb{
-    background:#334155;
-    border-radius:99px;
-}
+.chat-box::-webkit-scrollbar{width:5px}
+.chat-box::-webkit-scrollbar-thumb{background:#334155;border-radius:99px}
 
 .message{
-    max-width:88%;
-    padding:12px 14px;
-    border-radius:16px;
-    margin:9px 0;
-    line-height:1.55;
-    white-space:pre-wrap;
-    word-break:break-word;
-    font-size:13px;
+max-width:90%;
+padding:12px 14px;
+border-radius:16px;
+margin:9px 0;
+line-height:1.6;
+white-space:pre-wrap;
+word-break:break-word;
+font-size:13px
 }
 
 .message.user{
-    margin-left:auto;
-    background:linear-gradient(
-        135deg,
-        rgba(0,229,255,.16),
-        rgba(37,99,235,.18)
-    );
-    border:1px solid rgba(0,229,255,.16);
+margin-left:auto;
+background:linear-gradient(135deg,rgba(0,229,255,.16),rgba(37,99,235,.18));
+border:1px solid rgba(0,229,255,.16)
 }
 
 .message.ai{
-    margin-right:auto;
-    background:rgba(30,41,59,.7);
-    border:1px solid rgba(148,163,184,.1);
+margin-right:auto;
+background:rgba(30,41,59,.7);
+border:1px solid rgba(148,163,184,.1)
 }
 
 .message small{
-    display:block;
-    color:#64748b;
-    font-size:9px;
-    letter-spacing:1px;
-    margin-bottom:5px;
+display:block;
+color:#64748b;
+font-size:9px;
+letter-spacing:1px;
+margin-bottom:5px
 }
 
-.typing{
-    display:inline-flex;
-    gap:4px;
-}
-
+.typing{display:inline-flex;gap:4px}
 .typing i{
-    width:5px;
-    height:5px;
-    border-radius:50%;
-    background:#67e8f9;
-    animation:typing 1s infinite;
+width:5px;height:5px;border-radius:50%;
+background:#67e8f9;
+animation:typing 1s infinite
 }
-
-.typing i:nth-child(2){
-    animation-delay:.15s;
-}
-
-.typing i:nth-child(3){
-    animation-delay:.3s;
-}
+.typing i:nth-child(2){animation-delay:.15s}
+.typing i:nth-child(3){animation-delay:.3s}
 
 @keyframes typing{
-    50%{
-        transform:translateY(-4px);
-        opacity:.3;
-    }
+50%{transform:translateY(-4px);opacity:.3}
 }
 
 textarea{
-    width:100%;
-    min-height:85px;
-    resize:vertical;
-    outline:none;
-    color:#f8fafc;
-    background:rgba(2,6,23,.82);
-    border:1px solid rgba(148,163,184,.14);
-    border-radius:15px;
-    padding:14px;
+width:100%;
+min-height:85px;
+resize:vertical;
+outline:none;
+color:#f8fafc;
+background:rgba(2,6,23,.82);
+border:1px solid rgba(148,163,184,.14);
+border-radius:15px;
+padding:14px
 }
 
 textarea:focus{
-    border-color:rgba(0,229,255,.5);
-    box-shadow:0 0 20px rgba(0,229,255,.07);
+border-color:rgba(0,229,255,.5);
+box-shadow:0 0 20px rgba(0,229,255,.07)
 }
 
 .controls{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-top:9px;
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin-top:9px
 }
 
 .btn{
-    border:1px solid rgba(148,163,184,.14);
-    background:rgba(15,23,42,.85);
-    color:#cbd5e1;
-    padding:10px 13px;
-    border-radius:12px;
-    transition:.2s;
+border:1px solid rgba(148,163,184,.14);
+background:rgba(15,23,42,.85);
+color:#cbd5e1;
+padding:10px 13px;
+border-radius:12px;
+transition:.2s
 }
 
 .btn:hover{
-    transform:translateY(-2px);
-    border-color:rgba(0,229,255,.4);
-    color:#fff;
+transform:translateY(-2px);
+border-color:rgba(0,229,255,.4);
+color:#fff
 }
 
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+
 .btn.primary{
-    border-color:transparent;
-    background:linear-gradient(135deg,#0891b2,#2563eb);
-    color:#fff;
-    font-weight:700;
+border-color:transparent;
+background:linear-gradient(135deg,#0891b2,#2563eb);
+color:#fff;font-weight:700
 }
 
 .btn.voice{
-    background:linear-gradient(
-        135deg,
-        rgba(124,58,237,.32),
-        rgba(59,130,246,.18)
-    );
+background:linear-gradient(135deg,rgba(124,58,237,.32),rgba(59,130,246,.18))
 }
 
-.btn.danger{
-    background:rgba(127,29,29,.22);
-}
+.btn.danger{background:rgba(127,29,29,.22)}
 
 .voice-status{
-    min-height:18px;
-    margin-top:8px;
-    color:#67e8f9;
-    font-size:11px;
+min-height:18px;
+margin-top:8px;
+color:#67e8f9;
+font-size:11px
 }
 
-.design-panel{
-    display:none;
+.voice-tools{
+display:flex;
+align-items:center;
+gap:8px;
+margin-top:9px;
+padding:9px;
+border:1px solid rgba(148,163,184,.1);
+border-radius:11px;
+background:rgba(2,6,23,.45)
 }
 
-.design-panel.active{
-    display:block;
+.voice-tools label{
+font-size:10px;
+color:#64748b
 }
+
+.voice-tools input{width:100%;accent-color:#06b6d4}
+
+.design-panel{display:none}
+.design-panel.active{display:block}
 
 .prompt-help{
-    margin:7px 0 10px;
-    color:#64748b;
-    font-size:10px;
-    line-height:1.5;
+margin:7px 0 10px;
+color:#64748b;
+font-size:10px;
+line-height:1.5
 }
 
 .quick-prompts{
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px;
-    margin-top:9px;
+display:flex;
+flex-wrap:wrap;
+gap:6px;
+margin-top:9px
 }
 
 .quick{
-    border:1px solid rgba(148,163,184,.12);
-    background:rgba(15,23,42,.6);
-    color:#94a3b8;
-    padding:7px 9px;
-    border-radius:9px;
-    font-size:10px;
+border:1px solid rgba(148,163,184,.12);
+background:rgba(15,23,42,.6);
+color:#94a3b8;
+padding:7px 9px;
+border-radius:9px;
+font-size:10px
 }
 
-.quick:hover{
-    color:#fff;
-    border-color:rgba(0,229,255,.35);
-}
+.quick:hover{color:#fff;border-color:rgba(0,229,255,.35)}
 
 .options-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:9px;
-    margin-top:10px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:9px;
+margin-top:10px
 }
 
-.field{
-    display:flex;
-    flex-direction:column;
-    gap:5px;
-}
-
-.field label{
-    color:#94a3b8;
-    font-size:10px;
-}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{color:#94a3b8;font-size:10px}
 
 select{
-    width:100%;
-    padding:10px;
-    border-radius:11px;
-    color:#e2e8f0;
-    background:rgba(2,6,23,.82);
-    border:1px solid rgba(148,163,184,.14);
-    outline:none;
+width:100%;
+padding:10px;
+border-radius:11px;
+color:#e2e8f0;
+background:rgba(2,6,23,.82);
+border:1px solid rgba(148,163,184,.14);
+outline:none
 }
 
 .checkbox{
-    display:flex;
-    align-items:center;
-    gap:7px;
-    margin-top:10px;
-    color:#94a3b8;
-    font-size:11px;
+display:flex;
+align-items:center;
+gap:7px;
+margin-top:10px;
+color:#94a3b8;
+font-size:11px
 }
 
-.checkbox input{
-    accent-color:#06b6d4;
-}
+.checkbox input{accent-color:#06b6d4}
 
 .speed-info{
-    margin-top:10px;
-    padding:10px 11px;
-    border-radius:10px;
-    background:rgba(34,197,94,.05);
-    border:1px solid rgba(34,197,94,.12);
-    color:#86efac;
-    font-size:10px;
-    line-height:1.5;
+margin-top:10px;
+padding:10px 11px;
+border-radius:10px;
+background:rgba(34,197,94,.05);
+border:1px solid rgba(34,197,94,.12);
+color:#86efac;
+font-size:10px;
+line-height:1.5
 }
 
-.generate-row{
-    display:flex;
-    gap:8px;
-    margin-top:13px;
-}
-
-.generate-row .btn{
-    flex:1;
-}
+.generate-row{display:flex;gap:8px;margin-top:13px}
+.generate-row .btn{flex:1}
 
 .image-stage{
-    min-height:450px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:13px;
-    overflow:hidden;
-    border-radius:17px;
-    border:1px dashed rgba(148,163,184,.15);
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(0,229,255,.055),
-            transparent 45%
-        ),
-        rgba(2,6,23,.55);
+min-height:450px;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:13px;
+overflow:hidden;
+border-radius:17px;
+border:1px dashed rgba(148,163,184,.15);
+background:radial-gradient(circle at center,rgba(0,229,255,.055),transparent 45%),rgba(2,6,23,.55)
 }
 
 .empty-state{
-    max-width:350px;
-    text-align:center;
-    color:#64748b;
+max-width:350px;
+text-align:center;
+color:#64748b
 }
 
-.empty-icon{
-    font-size:50px;
-    margin-bottom:10px;
-}
-
-.empty-state h4{
-    color:#cbd5e1;
-    margin-bottom:7px;
-}
-
-.empty-state p{
-    font-size:11px;
-    line-height:1.6;
-}
+.empty-icon{font-size:50px;margin-bottom:10px}
+.empty-state h4{color:#cbd5e1;margin-bottom:7px}
+.empty-state p{font-size:11px;line-height:1.6}
 
 .result-grid{
-    width:100%;
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
+width:100%;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px
 }
 
 .result-card{
-    overflow:hidden;
-    border-radius:14px;
-    background:#020617;
-    border:1px solid rgba(148,163,184,.12);
+overflow:hidden;
+border-radius:14px;
+background:#020617;
+border:1px solid rgba(148,163,184,.12)
 }
 
 .result-image-wrap{
-    position:relative;
-    width:100%;
-    background:#020617;
+position:relative;
+width:100%;
+background:#020617
 }
 
 .result-card img{
-    width:100%;
-    aspect-ratio:1/1;
-    object-fit:cover;
-    display:block;
-    cursor:pointer;
-}
-
-.loading-card{
-    min-height:300px;
+width:100%;
+aspect-ratio:1/1;
+object-fit:cover;
+display:block;
+cursor:pointer
 }
 
 .loader{
-    min-height:300px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    color:#67e8f9;
-    padding:20px;
+min-height:300px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:#67e8f9;
+padding:20px
 }
 
 .spinner{
-    width:42px;
-    height:42px;
-    margin-bottom:13px;
-    border:3px solid rgba(103,232,249,.12);
-    border-top-color:#67e8f9;
-    border-radius:50%;
-    animation:spin .75s linear infinite;
+width:42px;height:42px;
+margin-bottom:13px;
+border:3px solid rgba(103,232,249,.12);
+border-top-color:#67e8f9;
+border-radius:50%;
+animation:spin .75s linear infinite
 }
 
-@keyframes spin{
-    to{
-        transform:rotate(360deg);
-    }
-}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-.loader small{
-    color:#64748b;
-    margin-top:6px;
-}
+.loader small{color:#64748b;margin-top:6px}
 
 .error-box{
-    min-height:300px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:25px;
-    color:#fda4af;
-    font-size:11px;
-    line-height:1.6;
+min-height:300px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:25px;
+color:#fda4af;
+font-size:11px;
+line-height:1.6
 }
 
 .result-actions{
-    display:flex;
-    gap:5px;
-    padding:7px;
-    background:rgba(2,6,23,.94);
+display:flex;
+gap:5px;
+padding:7px;
+background:rgba(2,6,23,.94)
 }
 
 .result-actions button{
-    flex:1;
-    padding:7px 5px;
-    border-radius:8px;
-    border:1px solid rgba(148,163,184,.12);
-    background:#0f172a;
-    color:#cbd5e1;
-    font-size:9px;
+flex:1;
+padding:7px 5px;
+border-radius:8px;
+border:1px solid rgba(148,163,184,.12);
+background:#0f172a;
+color:#cbd5e1;
+font-size:9px
 }
 
 .result-actions button:hover{
-    color:#fff;
-    border-color:rgba(0,229,255,.35);
+color:#fff;
+border-color:rgba(0,229,255,.35)
 }
 
-.history-section{
-    margin-top:18px;
-}
+.history-section{margin-top:18px}
 
 .section-heading{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:11px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:11px
 }
 
-.section-heading h3{
-    font-size:15px;
-}
+.section-heading h3{font-size:15px}
 
 .section-heading button{
-    border:0;
-    background:none;
-    color:#64748b;
-    font-size:10px;
+border:0;
+background:none;
+color:#64748b;
+font-size:10px
 }
 
-.section-heading button:hover{
-    color:#f87171;
-}
+.section-heading button:hover{color:#f87171}
 
 .gallery{
-    display:grid;
-    grid-template-columns:repeat(6,1fr);
-    gap:8px;
-    max-height:300px;
-    overflow-y:auto;
+display:grid;
+grid-template-columns:repeat(6,1fr);
+gap:8px;
+max-height:300px;
+overflow-y:auto
 }
 
 .gallery-item{
-    overflow:hidden;
-    border-radius:11px;
-    border:1px solid rgba(148,163,184,.12);
-    background:#020617;
+overflow:hidden;
+border-radius:11px;
+border:1px solid rgba(148,163,184,.12);
+background:#020617
 }
 
 .gallery-item img{
-    width:100%;
-    aspect-ratio:1/1;
-    object-fit:cover;
-    display:block;
-    cursor:pointer;
+width:100%;
+aspect-ratio:1/1;
+object-fit:cover;
+display:block;
+cursor:pointer
 }
 
-.gallery-info{
-    padding:6px;
-}
-
-.gallery-info small{
-    color:#64748b;
-    font-size:8px;
-}
+.gallery-info{padding:6px}
+.gallery-info small{color:#64748b;font-size:8px}
 
 .toast{
-    position:fixed;
-    left:50%;
-    bottom:22px;
-    z-index:999;
-    transform:translate(-50%,20px);
-    opacity:0;
-    pointer-events:none;
-    padding:10px 15px;
-    border-radius:12px;
-    background:rgba(15,23,42,.96);
-    border:1px solid rgba(0,229,255,.22);
-    color:#e2e8f0;
-    font-size:11px;
-    transition:.25s;
+position:fixed;
+left:50%;
+bottom:22px;
+z-index:999;
+transform:translate(-50%,20px);
+opacity:0;
+pointer-events:none;
+padding:10px 15px;
+border-radius:12px;
+background:rgba(15,23,42,.96);
+border:1px solid rgba(0,229,255,.22);
+color:#e2e8f0;
+font-size:11px;
+transition:.25s
 }
 
 .toast.show{
-    opacity:1;
-    transform:translate(-50%,0);
+opacity:1;
+transform:translate(-50%,0)
 }
 
 .footer{
-    text-align:center;
-    padding:25px 0;
-    color:#475569;
-    font-size:10px;
+text-align:center;
+padding:25px 0;
+color:#475569;
+font-size:10px
 }
 
 @media(max-width:950px){
-
-    .dashboard{
-        grid-template-columns:1fr;
-    }
-
-    .gallery{
-        grid-template-columns:repeat(4,1fr);
-    }
+.dashboard{grid-template-columns:1fr}
+.gallery{grid-template-columns:repeat(4,1fr)}
 }
 
 @media(max-width:600px){
-
-    .header-inner{
-        min-height:63px;
-    }
-
-    .status{
-        display:none;
-    }
-
-    .container{
-        width:94%;
-        margin-top:14px;
-    }
-
-    .hero h2{
-        font-size:34px;
-    }
-
-    .hero p{
-        font-size:12px;
-    }
-
-    .card{
-        padding:14px;
-        border-radius:18px;
-    }
-
-    .chat-box{
-        height:390px;
-    }
-
-    .options-grid{
-        grid-template-columns:1fr;
-    }
-
-    .generate-row{
-        flex-direction:column;
-    }
-
-    .result-grid{
-        grid-template-columns:1fr;
-    }
-
-    .gallery{
-        grid-template-columns:repeat(3,1fr);
-    }
-
-    .mode-btn{
-        flex:1 1 29%;
-        padding:9px 7px;
-        font-size:10px;
-    }
+.header-inner{min-height:63px}
+.status{display:none}
+.container{width:94%;margin-top:14px}
+.hero h2{font-size:34px}
+.hero p{font-size:12px}
+.card{padding:14px;border-radius:18px}
+.chat-box{height:390px}
+.options-grid{grid-template-columns:1fr}
+.generate-row{flex-direction:column}
+.result-grid{grid-template-columns:1fr}
+.gallery{grid-template-columns:repeat(3,1fr)}
+.mode-btn{flex:1 1 29%;padding:9px 7px;font-size:10px}
+.voice-tools{flex-wrap:wrap}
 }
 </style>
 </head>
@@ -772,993 +588,508 @@ select{
 <body>
 
 <header class="header">
+<div class="header-inner">
 
-    <div class="header-inner">
+<div class="brand">
+<div class="logo">AI</div>
+<div>
+<h1>ALFA AI</h1>
+<p>V5 ULTRA • CHAT • VOICE • IMAGE</p>
+</div>
+</div>
 
-        <div class="brand">
+<div class="status">
+<span class="status-dot"></span>
+SYSTEM ONLINE
+</div>
 
-            <div class="logo">
-                AI
-            </div>
-
-            <div>
-
-                <h1>ALFA AI</h1>
-
-                <p>
-                    V4.2 FIX IMAGE ENGINE
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="status">
-
-            <span class="status-dot"></span>
-
-            SYSTEM ONLINE
-
-        </div>
-
-    </div>
-
+</div>
 </header>
-
 
 <main class="container">
 
-
 <section class="hero">
-
-    <h2>
-        ALFA AI DESIGN STUDIO
-    </h2>
-
-    <p>
-        Chat dengan AI, gunakan Voice Chat,
-        lalu ubah ide menjadi Logo, Poster,
-        T-Shirt, Banner dan berbagai desain kreatif.
-    </p>
-
+<h2>ALFA AI V5 ULTRA</h2>
+<p>
+AI assistant futuristik untuk Chat, Voice Chat,
+Creative Design dan Image Generator berbasis Cloudflare AI.
+</p>
 </section>
-
 
 <div class="mode-bar">
 
-    <button class="mode-btn active" data-mode="chat">
-        💬 CHAT
-    </button>
-
-    <button class="mode-btn" data-mode="logo">
-        ✦ LOGO
-    </button>
-
-    <button class="mode-btn" data-mode="poster">
-        🖼️ POSTER
-    </button>
-
-    <button class="mode-btn" data-mode="shirt">
-        👕 T-SHIRT
-    </button>
-
-    <button class="mode-btn" data-mode="banner">
-        🌐 BANNER
-    </button>
-
-    <button class="mode-btn" data-mode="creative">
-        🚀 FREE DESIGN
-    </button>
+<button class="mode-btn active" data-mode="chat">💬 CHAT</button>
+<button class="mode-btn" data-mode="logo">✦ LOGO</button>
+<button class="mode-btn" data-mode="poster">🖼️ POSTER</button>
+<button class="mode-btn" data-mode="shirt">👕 T-SHIRT</button>
+<button class="mode-btn" data-mode="banner">🌐 BANNER</button>
+<button class="mode-btn" data-mode="creative">🚀 FREE DESIGN</button>
 
 </div>
-
 
 <div class="dashboard">
 
-
-<!-- CHAT -->
-
-<section class="card">
-
-    <div class="card-title">
-
-        <h3>
-            🧠 ALFA AI CHAT
-        </h3>
-
-        <span>
-            TEXT + VOICE
-        </span>
-
-    </div>
-
-
-    <div id="chatBox" class="chat-box">
-
-        <div class="message ai">
-
-            <small>
-                ALFA AI
-            </small>
-
-            Halo! Saya ALFA AI.
-            Mau ngobrol atau membuat desain?
-
-        </div>
-
-    </div>
-
-
-    <textarea
-        id="chatInput"
-        placeholder="Tulis pesan untuk ALFA AI..."></textarea>
-
-
-    <div class="controls">
-
-        <button
-            class="btn primary"
-            id="sendBtn">
-
-            🚀 Kirim
-
-        </button>
-
-        <button
-            class="btn voice"
-            id="voiceBtn">
-
-            🎙️ Voice Chat
-
-        </button>
-
-        <button
-            class="btn"
-            id="speakLastBtn">
-
-            🔊 Bacakan
-
-        </button>
-
-        <button
-            class="btn danger"
-            id="clearChatBtn">
-
-            🗑️ Clear
-
-        </button>
-
-    </div>
-
-
-    <div
-        id="voiceStatus"
-        class="voice-status">
-    </div>
-
-</section>
-
-
-<!-- DESIGN -->
+<!-- ================= CHAT ================= -->
 
 <section class="card">
 
-    <div class="card-title">
+<div class="card-title">
+<h3>🧠 ALFA AI CHAT</h3>
+<span>V5 CONTEXT ENGINE</span>
+</div>
 
-        <h3>
-            🎨 DESIGN GENERATOR
-        </h3>
+<div id="chatBox" class="chat-box">
 
-        <span id="designModeLabel">
-            CHAT MODE
-        </span>
-
-    </div>
-
-
-<!-- CHAT PANEL -->
-
-<div
-    class="design-panel active"
-    id="panel-chat">
-
-    <div
-        class="empty-state"
-        style="margin:auto;padding:70px 10px">
-
-        <div class="empty-icon">
-            🤖
-        </div>
-
-        <h4>
-            ALFA AI siap bekerja
-        </h4>
-
-        <p>
-            Pilih mode desain di atas
-            untuk mulai membuat gambar.
-        </p>
-
-    </div>
+<div class="message ai">
+<small>ALFA AI</small>
+Halo bosss! 🔥 Saya ALFA AI V5.
+Sekarang saya siap ngobrol, menerima Voice,
+membantu coding, dan membuat desain.
+</div>
 
 </div>
 
+<textarea
+id="chatInput"
+placeholder="Tulis pesan... Enter untuk kirim, Shift+Enter untuk baris baru"></textarea>
+
+<div class="controls">
+
+<button class="btn primary" id="sendBtn">
+🚀 Kirim
+</button>
+
+<button class="btn voice" id="voiceBtn">
+🎙️ Voice Chat
+</button>
+
+<button class="btn" id="speakLastBtn">
+🔊 Bacakan
+</button>
+
+<button class="btn danger" id="clearChatBtn">
+🗑️ Clear
+</button>
+
+</div>
+
+<div id="voiceStatus" class="voice-status"></div>
+
+<div class="voice-tools">
+
+<label>🔊 Kecepatan Voice</label>
+
+<input
+type="range"
+id="voiceRate"
+min=".65"
+max="1.35"
+step=".05"
+value="1">
+
+<span id="voiceRateValue">1.00x</span>
+
+</div>
+
+</section>
+
+<!-- ================= DESIGN ================= -->
+
+<section class="card">
+
+<div class="card-title">
+<h3>🎨 DESIGN GENERATOR</h3>
+<span id="designModeLabel">CHAT MODE</span>
+</div>
+
+<div class="design-panel active" id="panel-chat">
+
+<div class="empty-state" style="margin:auto;padding:70px 10px">
+
+<div class="empty-icon">🤖</div>
+
+<h4>ALFA AI siap bekerja</h4>
+
+<p>
+Pilih mode desain di atas untuk membuat gambar.
+Image Generator sekarang menggunakan Worker ALFA AI,
+bukan direct Pollinations.
+</p>
+
+</div>
+
+</div>
 
 <!-- LOGO -->
 
-<div
-    class="design-panel"
-    id="panel-logo">
+<div class="design-panel" id="panel-logo">
 
-    <textarea
-        id="logoPrompt"
-        placeholder="Contoh: logo ALFA DESIGN futuristik dengan huruf A, premium, cyan purple"></textarea>
+<textarea
+id="logoPrompt"
+placeholder="Contoh: logo ALFA DESIGN futuristik dengan huruf A, premium, cyan purple"></textarea>
 
-    <div class="prompt-help">
+<div class="prompt-help">
+Tulis nama brand, simbol dan gaya yang kamu inginkan.
+</div>
 
-        Tulis nama brand, simbol dan gaya
-        yang kamu inginkan.
+<div class="quick-prompts">
 
-    </div>
-
-
-    <div class="quick-prompts">
-
-        <button class="quick" data-target="logoPrompt">
-            Logo Tech
-        </button>
-
-        <button class="quick" data-target="logoPrompt">
-            Logo Gaming
-        </button>
-
-        <button class="quick" data-target="logoPrompt">
-            Logo UMKM
-        </button>
-
-        <button class="quick" data-target="logoPrompt">
-            Logo Clothing
-        </button>
-
-        <button class="quick" data-target="logoPrompt">
-            Logo Premium
-        </button>
-
-    </div>
-
-
-    <div class="options-grid">
-
-        <div class="field">
-
-            <label>
-                Style
-            </label>
-
-            <select id="logoStyle">
-
-                <option>
-                    Modern Minimalist
-                </option>
-
-                <option>
-                    Futuristic Technology
-                </option>
-
-                <option>
-                    Luxury Premium
-                </option>
-
-                <option>
-                    Gaming Esports
-                </option>
-
-                <option>
-                    Streetwear
-                </option>
-
-                <option>
-                    Bold Professional
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                Konsep
-            </label>
-
-            <select id="logoConcept">
-
-                <option>
-                    Symbol + Wordmark
-                </option>
-
-                <option>
-                    Symbol Only
-                </option>
-
-                <option>
-                    Lettermark
-                </option>
-
-                <option>
-                    Monogram
-                </option>
-
-                <option>
-                    Mascot Logo
-                </option>
-
-            </select>
-
-        </div>
-
-    </div>
-
-
-    <label class="checkbox">
-
-        <input
-            type="checkbox"
-            id="logoEnhance"
-            checked>
-
-        Auto Enhance Prompt
-
-    </label>
-
-
-    <div class="speed-info">
-
-        ⚡ FAST ENGINE:
-        1 gambar sebagai default.
-        Klik 2 Concepts untuk membuat dua variasi.
-
-    </div>
-
-
-    <div class="generate-row">
-
-        <button
-            class="btn"
-            onclick="enhanceLogo()">
-
-            ✨ Enhance
-
-        </button>
-
-        <button
-            class="btn primary"
-            onclick="generateDesign('logo',1)">
-
-            🎨 Generate 1
-
-        </button>
-
-        <button
-            class="btn"
-            onclick="generateDesign('logo',2)">
-
-            🔥 2 Concepts
-
-        </button>
-
-    </div>
+<button class="quick" data-target="logoPrompt">Logo Tech</button>
+<button class="quick" data-target="logoPrompt">Logo Gaming</button>
+<button class="quick" data-target="logoPrompt">Logo UMKM</button>
+<button class="quick" data-target="logoPrompt">Logo Clothing</button>
+<button class="quick" data-target="logoPrompt">Logo Premium</button>
 
 </div>
 
+<div class="options-grid">
+
+<div class="field">
+<label>Style</label>
+<select id="logoStyle">
+<option>Modern Minimalist</option>
+<option>Futuristic Technology</option>
+<option>Luxury Premium</option>
+<option>Gaming Esports</option>
+<option>Streetwear</option>
+<option>Bold Professional</option>
+</select>
+</div>
+
+<div class="field">
+<label>Konsep</label>
+<select id="logoConcept">
+<option>Symbol + Wordmark</option>
+<option>Symbol Only</option>
+<option>Lettermark</option>
+<option>Monogram</option>
+<option>Mascot Logo</option>
+</select>
+</div>
+
+</div>
+
+<label class="checkbox">
+<input type="checkbox" id="logoEnhance" checked>
+Auto Enhance Prompt
+</label>
+
+<div class="speed-info">
+⚡ V5 IMAGE ENGINE: Cloudflare Workers AI + FLUX.
+</div>
+
+<div class="generate-row">
+
+<button class="btn" onclick="enhanceLogo()">✨ Enhance</button>
+
+<button class="btn primary" onclick="generateDesign('logo',1)">
+🎨 Generate 1
+</button>
+
+<button class="btn" onclick="generateDesign('logo',2)">
+🔥 2 Concepts
+</button>
+
+</div>
+
+</div>
 
 <!-- POSTER -->
 
-<div
-    class="design-panel"
-    id="panel-poster">
+<div class="design-panel" id="panel-poster">
 
-    <textarea
-        id="posterPrompt"
-        placeholder="Contoh: poster promo kopi premium, cinematic, elegan"></textarea>
+<textarea id="posterPrompt"
+placeholder="Contoh: poster promo kopi premium, cinematic, elegan"></textarea>
 
+<div class="quick-prompts">
+<button class="quick" data-target="posterPrompt">Promo Produk</button>
+<button class="quick" data-target="posterPrompt">Event</button>
+<button class="quick" data-target="posterPrompt">Musik</button>
+<button class="quick" data-target="posterPrompt">Food</button>
+<button class="quick" data-target="posterPrompt">Gaming</button>
+</div>
 
-    <div class="quick-prompts">
+<div class="options-grid">
 
-        <button class="quick" data-target="posterPrompt">
-            Promo Produk
-        </button>
+<div class="field">
+<label>Style</label>
+<select id="posterStyle">
+<option>Modern Professional</option>
+<option>Cinematic</option>
+<option>Luxury</option>
+<option>Neon Cyberpunk</option>
+<option>Minimalist</option>
+</select>
+</div>
 
-        <button class="quick" data-target="posterPrompt">
-            Event
-        </button>
-
-        <button class="quick" data-target="posterPrompt">
-            Musik
-        </button>
-
-        <button class="quick" data-target="posterPrompt">
-            Food
-        </button>
-
-        <button class="quick" data-target="posterPrompt">
-            Gaming
-        </button>
-
-    </div>
-
-
-    <div class="options-grid">
-
-        <div class="field">
-
-            <label>
-                Style
-            </label>
-
-            <select id="posterStyle">
-
-                <option>
-                    Modern Professional
-                </option>
-
-                <option>
-                    Cinematic
-                </option>
-
-                <option>
-                    Luxury
-                </option>
-
-                <option>
-                    Neon Cyberpunk
-                </option>
-
-                <option>
-                    Minimalist
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                Format
-            </label>
-
-            <select id="posterFormat">
-
-                <option>
-                    Portrait
-                </option>
-
-                <option>
-                    Square
-                </option>
-
-                <option>
-                    Landscape
-                </option>
-
-            </select>
-
-        </div>
-
-    </div>
-
-
-    <div class="generate-row">
-
-        <button
-            class="btn primary"
-            onclick="generateDesign('poster',1)">
-
-            🖼️ Generate Poster
-
-        </button>
-
-        <button
-            class="btn"
-            onclick="generateDesign('poster',2)">
-
-            🔥 2 Concepts
-
-        </button>
-
-    </div>
+<div class="field">
+<label>Format</label>
+<select id="posterFormat">
+<option>Portrait</option>
+<option>Square</option>
+<option>Landscape</option>
+</select>
+</div>
 
 </div>
 
+<div class="generate-row">
 
-<!-- T-SHIRT -->
+<button class="btn primary" onclick="generateDesign('poster',1)">
+🖼️ Generate Poster
+</button>
 
-<div
-    class="design-panel"
-    id="panel-shirt">
-
-    <textarea
-        id="shirtPrompt"
-        placeholder="Contoh: desain kaos streetwear naga cyber, bold, cocok untuk sablon"></textarea>
-
-
-    <div class="quick-prompts">
-
-        <button class="quick" data-target="shirtPrompt">
-            Streetwear
-        </button>
-
-        <button class="quick" data-target="shirtPrompt">
-            Racing
-        </button>
-
-        <button class="quick" data-target="shirtPrompt">
-            Gaming
-        </button>
-
-        <button class="quick" data-target="shirtPrompt">
-            Motorcycle
-        </button>
-
-    </div>
-
-
-    <div class="options-grid">
-
-        <div class="field">
-
-            <label>
-                Style
-            </label>
-
-            <select id="shirtStyle">
-
-                <option>
-                    Streetwear
-                </option>
-
-                <option>
-                    Vintage
-                </option>
-
-                <option>
-                    Graffiti
-                </option>
-
-                <option>
-                    Esports
-                </option>
-
-                <option>
-                    Illustration
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                Komposisi
-            </label>
-
-            <select id="shirtComposition">
-
-                <option>
-                    Centered Chest Graphic
-                </option>
-
-                <option>
-                    Large Front Graphic
-                </option>
-
-                <option>
-                    Small Chest Logo
-                </option>
-
-                <option>
-                    Back Print
-                </option>
-
-            </select>
-
-        </div>
-
-    </div>
-
-
-    <div class="generate-row">
-
-        <button
-            class="btn primary"
-            onclick="generateDesign('shirt',1)">
-
-            👕 Generate
-
-        </button>
-
-        <button
-            class="btn"
-            onclick="generateDesign('shirt',2)">
-
-            🔥 2 Concepts
-
-        </button>
-
-    </div>
+<button class="btn" onclick="generateDesign('poster',2)">
+🔥 2 Concepts
+</button>
 
 </div>
 
+</div>
+
+<!-- SHIRT -->
+
+<div class="design-panel" id="panel-shirt">
+
+<textarea id="shirtPrompt"
+placeholder="Contoh: desain kaos streetwear naga cyber, bold, cocok untuk sablon"></textarea>
+
+<div class="quick-prompts">
+<button class="quick" data-target="shirtPrompt">Streetwear</button>
+<button class="quick" data-target="shirtPrompt">Racing</button>
+<button class="quick" data-target="shirtPrompt">Gaming</button>
+<button class="quick" data-target="shirtPrompt">Motorcycle</button>
+</div>
+
+<div class="options-grid">
+
+<div class="field">
+<label>Style</label>
+<select id="shirtStyle">
+<option>Streetwear</option>
+<option>Vintage</option>
+<option>Graffiti</option>
+<option>Esports</option>
+<option>Illustration</option>
+</select>
+</div>
+
+<div class="field">
+<label>Komposisi</label>
+<select id="shirtComposition">
+<option>Centered Chest Graphic</option>
+<option>Large Front Graphic</option>
+<option>Small Chest Logo</option>
+<option>Back Print</option>
+</select>
+</div>
+
+</div>
+
+<div class="generate-row">
+
+<button class="btn primary" onclick="generateDesign('shirt',1)">
+👕 Generate
+</button>
+
+<button class="btn" onclick="generateDesign('shirt',2)">
+🔥 2 Concepts
+</button>
+
+</div>
+
+</div>
 
 <!-- BANNER -->
 
-<div
-    class="design-panel"
-    id="panel-banner">
+<div class="design-panel" id="panel-banner">
 
-    <textarea
-        id="bannerPrompt"
-        placeholder="Contoh: hero banner website AI futuristik cyan purple"></textarea>
+<textarea id="bannerPrompt"
+placeholder="Contoh: hero banner website AI futuristik cyan purple"></textarea>
 
+<div class="quick-prompts">
+<button class="quick" data-target="bannerPrompt">Website</button>
+<button class="quick" data-target="bannerPrompt">Business</button>
+<button class="quick" data-target="bannerPrompt">Technology</button>
+<button class="quick" data-target="bannerPrompt">Gaming</button>
+</div>
 
-    <div class="quick-prompts">
+<div class="options-grid">
 
-        <button class="quick" data-target="bannerPrompt">
-            Website
-        </button>
+<div class="field">
+<label>Style</label>
+<select id="bannerStyle">
+<option>Futuristic Technology</option>
+<option>Corporate Premium</option>
+<option>Gaming</option>
+<option>Luxury</option>
+<option>Dark Cinematic</option>
+</select>
+</div>
 
-        <button class="quick" data-target="bannerPrompt">
-            Business
-        </button>
-
-        <button class="quick" data-target="bannerPrompt">
-            Technology
-        </button>
-
-        <button class="quick" data-target="bannerPrompt">
-            Gaming
-        </button>
-
-    </div>
-
-
-    <div class="options-grid">
-
-        <div class="field">
-
-            <label>
-                Style
-            </label>
-
-            <select id="bannerStyle">
-
-                <option>
-                    Futuristic Technology
-                </option>
-
-                <option>
-                    Corporate Premium
-                </option>
-
-                <option>
-                    Gaming
-                </option>
-
-                <option>
-                    Luxury
-                </option>
-
-                <option>
-                    Dark Cinematic
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                Layout
-            </label>
-
-            <select id="bannerLayout">
-
-                <option>
-                    Wide Hero
-                </option>
-
-                <option>
-                    Centered
-                </option>
-
-                <option>
-                    Left Text Space
-                </option>
-
-                <option>
-                    Right Text Space
-                </option>
-
-            </select>
-
-        </div>
-
-    </div>
-
-
-    <div class="generate-row">
-
-        <button
-            class="btn primary"
-            onclick="generateDesign('banner',1)">
-
-            🌐 Generate
-
-        </button>
-
-        <button
-            class="btn"
-            onclick="generateDesign('banner',2)">
-
-            🔥 2 Concepts
-
-        </button>
-
-    </div>
+<div class="field">
+<label>Layout</label>
+<select id="bannerLayout">
+<option>Wide Hero</option>
+<option>Centered</option>
+<option>Left Text Space</option>
+<option>Right Text Space</option>
+</select>
+</div>
 
 </div>
 
+<div class="generate-row">
+
+<button class="btn primary" onclick="generateDesign('banner',1)">
+🌐 Generate
+</button>
+
+<button class="btn" onclick="generateDesign('banner',2)">
+🔥 2 Concepts
+</button>
+
+</div>
+
+</div>
 
 <!-- CREATIVE -->
 
-<div
-    class="design-panel"
-    id="panel-creative">
+<div class="design-panel" id="panel-creative">
 
-    <textarea
-        id="creativePrompt"
-        placeholder="Tulis ide desain apa saja..."></textarea>
+<textarea id="creativePrompt"
+placeholder="Tulis ide desain apa saja..."></textarea>
 
+<div class="options-grid">
 
-    <div class="options-grid">
+<div class="field">
+<label>Style</label>
+<select id="creativeStyle">
+<option>Ultra Detailed</option>
+<option>Cinematic</option>
+<option>Futuristic</option>
+<option>Realistic</option>
+<option>3D Render</option>
+<option>Digital Art</option>
+</select>
+</div>
 
-        <div class="field">
-
-            <label>
-                Style
-            </label>
-
-            <select id="creativeStyle">
-
-                <option>
-                    Ultra Detailed
-                </option>
-
-                <option>
-                    Cinematic
-                </option>
-
-                <option>
-                    Futuristic
-                </option>
-
-                <option>
-                    Realistic
-                </option>
-
-                <option>
-                    3D Render
-                </option>
-
-                <option>
-                    Digital Art
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                Aspect
-            </label>
-
-            <select id="creativeAspect">
-
-                <option>
-                    Square
-                </option>
-
-                <option>
-                    Portrait
-                </option>
-
-                <option>
-                    Landscape
-                </option>
-
-            </select>
-
-        </div>
-
-    </div>
-
-
-    <div class="generate-row">
-
-        <button
-            class="btn primary"
-            onclick="generateDesign('creative',1)">
-
-            🚀 Generate
-
-        </button>
-
-        <button
-            class="btn"
-            onclick="generateDesign('creative',2)">
-
-            🔥 2 Concepts
-
-        </button>
-
-    </div>
+<div class="field">
+<label>Aspect</label>
+<select id="creativeAspect">
+<option>Square</option>
+<option>Portrait</option>
+<option>Landscape</option>
+</select>
+</div>
 
 </div>
 
+<div class="generate-row">
+
+<button class="btn primary" onclick="generateDesign('creative',1)">
+🚀 Generate
+</button>
+
+<button class="btn" onclick="generateDesign('creative',2)">
+🔥 2 Concepts
+</button>
+
+</div>
+
+</div>
 
 </section>
-
 </div>
-
 
 <!-- RESULT -->
 
 <section class="card history-section">
 
-    <div class="section-heading">
+<div class="section-heading">
+<h3>🖼️ GENERATION RESULT</h3>
+<button onclick="clearResults()">Clear Result</button>
+</div>
 
-        <h3>
-            🖼️ GENERATION RESULT
-        </h3>
+<div id="imageStage" class="image-stage">
 
-        <button onclick="clearResults()">
-            Clear Result
-        </button>
+<div class="empty-state">
 
-    </div>
+<div class="empty-icon">🎨</div>
 
+<h4>Canvas siap</h4>
 
-    <div id="imageStage" class="image-stage">
+<p>Hasil desain akan muncul di sini.</p>
 
-        <div class="empty-state">
+</div>
 
-            <div class="empty-icon">
-                🎨
-            </div>
-
-            <h4>
-                Canvas siap
-            </h4>
-
-            <p>
-                Hasil desain akan muncul
-                di sini.
-            </p>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
-
 
 <!-- HISTORY -->
 
 <section class="card history-section">
 
-    <div class="section-heading">
+<div class="section-heading">
+<h3>🗂️ DESIGN HISTORY</h3>
+<button onclick="clearHistory()">Hapus History</button>
+</div>
 
-        <h3>
-            🗂️ DESIGN HISTORY
-        </h3>
-
-        <button onclick="clearHistory()">
-            Hapus History
-        </button>
-
-    </div>
-
-
-    <div id="gallery" class="gallery"></div>
+<div id="gallery" class="gallery"></div>
 
 </section>
 
-
 </main>
 
-
 <footer class="footer">
-
-    ALFA AI V4.2 FIX IMAGE ENGINE
-    • TEXT • VOICE • IMAGE
-
+ALFA AI V5 ULTRA • TEXT • VOICE • IMAGE
 </footer>
 
-
 <div id="toast" class="toast"></div>
-
 
 <script>
 
 /* =========================================================
-   ALFA AI V4.2
-   CHAT + VOICE + IMAGE
-========================================================= */
-
-
-/* =========================================================
-   WORKER CHAT
+   ALFA AI V5 ULTRA
+   CHAT + CONTEXT + VOICE + IMAGE
 ========================================================= */
 
 const WORKER_URL =
-    "https://shrill-haze-a236.adnan0076767.workers.dev";
+"https://shrill-haze-a236.adnan0076767.workers.dev";
 
 const CHAT_ENDPOINT =
-    WORKER_URL + "/chat";
+WORKER_URL + "/chat";
 
+const IMAGE_ENDPOINT =
+WORKER_URL + "/image";
 
-/* =========================================================
-   ELEMENTS
-========================================================= */
+const CHAT_HISTORY_KEY =
+"ALFA_AI_V5_CHAT_HISTORY";
 
-const chatBox =
-    document.getElementById("chatBox");
+const IMAGE_HISTORY_KEY =
+"ALFA_AI_V5_IMAGE_HISTORY";
 
-const chatInput =
-    document.getElementById("chatInput");
+const chatBox=document.getElementById("chatBox");
+const chatInput=document.getElementById("chatInput");
+const sendBtn=document.getElementById("sendBtn");
+const voiceBtn=document.getElementById("voiceBtn");
+const speakLastBtn=document.getElementById("speakLastBtn");
+const clearChatBtn=document.getElementById("clearChatBtn");
+const voiceStatus=document.getElementById("voiceStatus");
+const voiceRate=document.getElementById("voiceRate");
+const voiceRateValue=document.getElementById("voiceRateValue");
+const imageStage=document.getElementById("imageStage");
+const gallery=document.getElementById("gallery");
+const toast=document.getElementById("toast");
 
-const sendBtn =
-    document.getElementById("sendBtn");
+let lastAIResponse="";
+let recognition=null;
+let isListening=false;
+let isSending=false;
+let generationRunning=false;
 
-const voiceBtn =
-    document.getElementById("voiceBtn");
-
-const speakLastBtn =
-    document.getElementById("speakLastBtn");
-
-const clearChatBtn =
-    document.getElementById("clearChatBtn");
-
-const voiceStatus =
-    document.getElementById("voiceStatus");
-
-const imageStage =
-    document.getElementById("imageStage");
-
-const gallery =
-    document.getElementById("gallery");
-
-const toast =
-    document.getElementById("toast");
-
-
-let lastAIResponse = "";
-
-let recognition = null;
-
-let isListening = false;
-
-let generationRunning = false;
+let conversation=[];
 
 
 /* =========================================================
@@ -1767,140 +1098,120 @@ let generationRunning = false;
 
 function showToast(message){
 
-    toast.textContent =
-        message;
+toast.textContent=message;
+toast.classList.add("show");
 
-    toast.classList.add(
-        "show"
-    );
+clearTimeout(window.toastTimer);
 
-    clearTimeout(
-        window.toastTimer
-    );
-
-    window.toastTimer =
-        setTimeout(
-            ()=>{
-                toast.classList.remove(
-                    "show"
-                );
-            },
-            2500
-        );
+window.toastTimer=setTimeout(()=>{
+toast.classList.remove("show");
+},2800);
 
 }
 
 
 /* =========================================================
-   CHAT
+   CHAT STORAGE
 ========================================================= */
 
-function addMessage(
-    type,
-    text
-){
+function saveConversation(){
 
-    const div =
-        document.createElement(
-            "div"
-        );
+try{
 
-    div.className =
-        "message " + type;
+localStorage.setItem(
+CHAT_HISTORY_KEY,
+JSON.stringify(conversation.slice(-20))
+);
 
+}catch(e){}
 
-    const label =
-        document.createElement(
-            "small"
-        );
-
-    label.textContent =
-        type === "user"
-        ? "YOU"
-        : "ALFA AI";
+}
 
 
-    const content =
-        document.createElement(
-            "div"
-        );
+function loadConversation(){
 
-    content.textContent =
-        text;
+try{
+
+const saved=
+JSON.parse(
+localStorage.getItem(CHAT_HISTORY_KEY)||"[]"
+);
+
+if(Array.isArray(saved)){
+
+conversation=saved;
+
+for(const item of conversation){
+
+if(item.role==="user")
+addMessage("user",item.content,false);
+
+if(item.role==="assistant")
+addMessage("ai",item.content,false);
+
+}
+
+}
+
+}catch(e){}
+
+}
 
 
-    div.appendChild(
-        label
-    );
+/* =========================================================
+   CHAT UI
+========================================================= */
 
-    div.appendChild(
-        content
-    );
+function addMessage(type,text,scroll=true){
 
+const div=document.createElement("div");
+div.className="message "+type;
 
-    chatBox.appendChild(
-        div
-    );
+const label=document.createElement("small");
+label.textContent=type==="user"?"YOU":"ALFA AI";
 
+const content=document.createElement("div");
+content.textContent=text;
 
-    chatBox.scrollTop =
-        chatBox.scrollHeight;
+div.appendChild(label);
+div.appendChild(content);
+
+chatBox.appendChild(div);
+
+if(scroll)
+chatBox.scrollTop=chatBox.scrollHeight;
 
 }
 
 
 function showTyping(){
 
-    const div =
-        document.createElement(
-            "div"
-        );
+removeTyping();
 
-    div.id =
-        "typingMessage";
+const div=document.createElement("div");
 
-    div.className =
-        "message ai";
+div.id="typingMessage";
+div.className="message ai";
 
+div.innerHTML=`
+<small>ALFA AI</small>
+<span class="typing">
+<i></i><i></i><i></i>
+</span>
+`;
 
-    div.innerHTML = `
-
-        <small>
-            ALFA AI
-        </small>
-
-        <span class="typing">
-
-            <i></i>
-            <i></i>
-            <i></i>
-
-        </span>
-
-    `;
-
-
-    chatBox.appendChild(
-        div
-    );
-
-
-    chatBox.scrollTop =
-        chatBox.scrollHeight;
+chatBox.appendChild(div);
+chatBox.scrollTop=chatBox.scrollHeight;
 
 }
 
 
 function removeTyping(){
 
-    const typing =
-        document.getElementById(
-            "typingMessage"
-        );
+const el=document.getElementById("typingMessage");
 
-    if(typing){
-        typing.remove();
-    }
+if(el)
+el.remove();
 
 }
 
@@ -1911,358 +1222,303 @@ function removeTyping(){
 
 function extractReply(data){
 
-    if(typeof data === "string"){
+if(typeof data==="string"){
 
-        try{
+try{
+return extractReply(JSON.parse(data));
+}catch{
+return data;
+}
 
-            return extractReply(
-                JSON.parse(data)
-            );
+}
 
-        }catch{
+if(!data)
+return "";
 
-            return data;
+if(typeof data.reply==="string")
+return data.reply;
 
-        }
+if(typeof data.response==="string")
+return data.response;
 
-    }
+if(typeof data.message==="string")
+return data.message;
 
+if(typeof data.text==="string")
+return data.text;
 
-    if(!data)
-        return "";
+if(typeof data.result==="string")
+return data.result;
 
+if(typeof data.output==="string")
+return data.output;
 
-    if(typeof data.reply === "string")
-        return data.reply;
+if(data.data)
+return extractReply(data.data);
 
-
-    if(typeof data.response === "string")
-        return data.response;
-
-
-    if(typeof data.message === "string")
-        return data.message;
-
-
-    if(typeof data.text === "string")
-        return data.text;
-
-
-    if(typeof data.result === "string")
-        return data.result;
-
-
-    if(typeof data.output === "string")
-        return data.output;
-
-
-    if(data.data){
-
-        if(
-            typeof data.data === "string"
-        ){
-
-            return data.data;
-
-        }
-
-
-        return extractReply(
-            data.data
-        );
-
-    }
-
-
-    return "";
+return "";
 
 }
 
 
 /* =========================================================
-   SEND CHAT
+   CHAT
 ========================================================= */
 
 async function sendChat(){
 
-    const text =
-        chatInput.value.trim();
+if(isSending)
+return;
 
+const text=chatInput.value.trim();
 
-    if(!text)
-        return;
+if(!text)
+return;
 
+isSending=true;
+sendBtn.disabled=true;
 
-    addMessage(
-        "user",
-        text
-    );
+addMessage("user",text);
 
+conversation.push({
+role:"user",
+content:text
+});
 
-    chatInput.value =
-        "";
+saveConversation();
 
+chatInput.value="";
 
-    showTyping();
+showTyping();
 
+try{
 
-    sendBtn.disabled =
-        true;
+const messages=[
+...conversation.slice(-20)
+];
 
+const response=await fetch(
+CHAT_ENDPOINT,
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+message:text,
+messages:messages
+})
+}
+);
 
-    try{
+const raw=await response.text();
 
-        const response =
-            await fetch(
-                CHAT_ENDPOINT,
-                {
-                    method:"POST",
+let data;
 
-                    headers:{
-                        "Content-Type":
-                            "application/json"
-                    },
+try{
+data=JSON.parse(raw);
+}catch{
+data=raw;
+}
 
-                    body:
-                        JSON.stringify({
-                            message:text,
-                            prompt:text
-                        })
-                }
-            );
+removeTyping();
 
+const reply=extractReply(data);
 
-        const raw =
-            await response.text();
+if(reply){
 
+lastAIResponse=reply;
 
-        let data;
+conversation.push({
+role:"assistant",
+content:reply
+});
 
+saveConversation();
 
-        try{
+addMessage("ai",reply);
 
-            data =
-                JSON.parse(raw);
+}
 
-        }catch{
+else{
 
-            data =
-                raw;
+const errorText=
+data?.error ||
+"Response Worker tidak dikenali.";
 
-        }
+addMessage(
+"ai",
+"⚠️ "+errorText
+);
 
+}
 
-        removeTyping();
+}catch(error){
 
+removeTyping();
 
-        const reply =
-            extractReply(
-                data
-            );
+addMessage(
+"ai",
+"⚠️ Gagal terhubung ke ALFA AI Worker.\n\n"+
+error.message
+);
 
+}finally{
 
-        if(reply){
+isSending=false;
+sendBtn.disabled=false;
 
-            lastAIResponse =
-                reply;
-
-
-            addMessage(
-                "ai",
-                reply
-            );
-
-        }else{
-
-            addMessage(
-                "ai",
-                "ALFA AI menerima response Worker, tetapi format belum dikenali.\n\nRaw response:\n" +
-                raw
-            );
-
-        }
-
-    }catch(error){
-
-        removeTyping();
-
-
-        addMessage(
-            "ai",
-            "Gagal terhubung ke ALFA AI Worker.\n\n" +
-            error.message
-        );
-
-    }
-
-
-    sendBtn.disabled =
-        false;
+}
 
 }
 
 
 sendBtn.addEventListener(
-    "click",
-    sendChat
+"click",
+sendChat
 );
 
 
 chatInput.addEventListener(
-    "keydown",
-    function(e){
+"keydown",
+e=>{
 
-        if(
-            e.key === "Enter" &&
-            !e.shiftKey
-        ){
+if(e.key==="Enter"&&!e.shiftKey){
 
-            e.preventDefault();
+e.preventDefault();
+sendChat();
 
-            sendChat();
+}
 
-        }
-
-    }
+}
 );
 
 
 /* =========================================================
-   VOICE CHAT
+   VOICE INPUT
 ========================================================= */
 
-const SpeechRecognition =
-    window.SpeechRecognition ||
-    window.webkitSpeechRecognition;
-
+const SpeechRecognition=
+window.SpeechRecognition||
+window.webkitSpeechRecognition;
 
 if(SpeechRecognition){
 
-    recognition =
-        new SpeechRecognition();
+recognition=new SpeechRecognition();
 
+recognition.lang="id-ID";
+recognition.continuous=false;
+recognition.interimResults=true;
+recognition.maxAlternatives=1;
 
-    recognition.lang =
-        "id-ID";
+recognition.onstart=()=>{
 
+isListening=true;
 
-    recognition.continuous =
-        false;
+voiceBtn.textContent="🛑 Stop Voice";
 
+voiceStatus.textContent=
+"🎙️ Mendengarkan... silakan bicara.";
 
-    recognition.interimResults =
-        false;
+};
 
+recognition.onresult=event=>{
 
-    recognition.onstart =
-        function(){
+let transcript="";
 
-            isListening =
-                true;
+for(
+let i=event.resultIndex;
+i<event.results.length;
+i++
+){
 
+transcript+=
+event.results[i][0].transcript;
 
-            voiceBtn.textContent =
-                "🛑 Stop Voice";
+}
 
+chatInput.value=transcript;
 
-            voiceStatus.textContent =
-                "🎙️ Mendengarkan...";
+const latest=
+event.results[event.results.length-1];
 
-        };
+if(latest.isFinal){
 
+voiceStatus.textContent=
+"✅ Suara diterima. Mengirim...";
 
-    recognition.onresult =
-        function(event){
-
-            const transcript =
-                event.results[0][0]
-                .transcript;
-
-
-            chatInput.value =
-                transcript;
-
-
-            voiceStatus.textContent =
-                "✅ Suara diterima.";
-
-
-            setTimeout(
-                sendChat,
-                250
-            );
-
-        };
-
-
-    recognition.onerror =
-        function(event){
-
-            voiceStatus.textContent =
-                "⚠️ Voice error: " +
-                event.error;
-
-        };
-
-
-    recognition.onend =
-        function(){
-
-            isListening =
-                false;
-
-
-            voiceBtn.textContent =
-                "🎙️ Voice Chat";
-
-        };
+setTimeout(
+sendChat,
+300
+);
 
 }else{
 
-    voiceBtn.disabled =
-        true;
+voiceStatus.textContent=
+"🎙️ "+transcript;
 
+}
 
-    voiceStatus.textContent =
-        "Browser tidak mendukung Voice Recognition.";
+};
+
+recognition.onerror=event=>{
+
+voiceStatus.textContent=
+"⚠️ Voice: "+event.error;
+
+};
+
+recognition.onend=()=>{
+
+isListening=false;
+
+voiceBtn.textContent="🎙️ Voice Chat";
+
+};
+
+}else{
+
+voiceBtn.disabled=true;
+
+voiceStatus.textContent=
+"Browser ini tidak mendukung Voice Recognition.";
 
 }
 
 
 voiceBtn.addEventListener(
-    "click",
-    function(){
+"click",
+()=>{
 
-        if(!recognition){
+if(!recognition){
 
-            showToast(
-                "Voice Recognition tidak tersedia."
-            );
+showToast(
+"Voice Recognition tidak tersedia."
+);
 
-            return;
+return;
 
-        }
+}
 
+if(isListening){
 
-        if(isListening){
+recognition.stop();
+return;
 
-            recognition.stop();
+}
 
-        }else{
+try{
 
-            try{
+recognition.start();
 
-                recognition.start();
+}catch(error){
 
-            }catch(error){
+voiceStatus.textContent=
+"⚠️ Voice sedang aktif.";
 
-                console.log(error);
+}
 
-            }
-
-        }
-
-    }
+}
 );
 
 
@@ -2270,69 +1526,74 @@ voiceBtn.addEventListener(
    VOICE OUTPUT
 ========================================================= */
 
+voiceRate.addEventListener(
+"input",
+()=>{
+
+voiceRateValue.textContent=
+Number(voiceRate.value).toFixed(2)+"x";
+
+}
+);
+
+
 function speakText(text){
 
-    if(
-        !("speechSynthesis" in window)
-    ){
+if(!("speechSynthesis" in window)){
 
-        showToast(
-            "Voice Output tidak tersedia."
-        );
+showToast(
+"Voice Output tidak tersedia."
+);
 
-        return;
+return;
 
-    }
+}
 
+if(!text)
+return;
 
-    speechSynthesis.cancel();
+speechSynthesis.cancel();
 
+const utterance=
+new SpeechSynthesisUtterance(text);
 
-    const utterance =
-        new SpeechSynthesisUtterance(
-            text
-        );
+utterance.lang="id-ID";
+utterance.rate=Number(voiceRate.value);
+utterance.pitch=1;
+utterance.volume=1;
 
+utterance.onstart=()=>{
+voiceStatus.textContent="🔊 ALFA AI sedang berbicara...";
+};
 
-    utterance.lang =
-        "id-ID";
+utterance.onend=()=>{
+voiceStatus.textContent="✅ Voice selesai.";
+};
 
+utterance.onerror=()=>{
+voiceStatus.textContent="⚠️ Voice Output error.";
+};
 
-    utterance.rate =
-        1;
-
-
-    utterance.pitch =
-        1;
-
-
-    speechSynthesis.speak(
-        utterance
-    );
+speechSynthesis.speak(utterance);
 
 }
 
 
 speakLastBtn.addEventListener(
-    "click",
-    function(){
+"click",
+()=>{
 
-        if(!lastAIResponse){
+if(!lastAIResponse){
 
-            showToast(
-                "Belum ada jawaban AI."
-            );
+showToast("Belum ada jawaban AI.");
 
-            return;
+return;
 
-        }
+}
 
+speakText(lastAIResponse);
 
-        speakText(
-            lastAIResponse
-        );
-
-    }
+}
 );
 
 
@@ -2341,29 +1602,32 @@ speakLastBtn.addEventListener(
 ========================================================= */
 
 clearChatBtn.addEventListener(
-    "click",
-    function(){
+"click",
+()=>{
 
-        chatBox.innerHTML = `
+speechSynthesis.cancel();
 
-            <div class="message ai">
+conversation=[];
 
-                <small>
-                    ALFA AI
-                </small>
+lastAIResponse="";
 
-                Chat dibersihkan.
-                Saya siap ngobrol lagi.
+localStorage.removeItem(
+CHAT_HISTORY_KEY
+);
 
-            </div>
+chatBox.innerHTML=`
+<div class="message ai">
+<small>ALFA AI</small>
+Chat dibersihkan.
+Saya siap ngobrol lagi bosss. 🔥
+</div>
+`;
 
-        `;
+voiceStatus.textContent="";
 
+showToast("Chat + context dibersihkan.");
 
-        lastAIResponse =
-            "";
-
-    }
+}
 );
 
 
@@ -2373,69 +1637,45 @@ clearChatBtn.addEventListener(
 
 document
 .querySelectorAll(".mode-btn")
-.forEach(
-    button=>{
+.forEach(button=>{
 
-        button.addEventListener(
-            "click",
-            function(){
+button.addEventListener(
+"click",
+()=>{
 
-                const mode =
-                    this.dataset.mode;
+const mode=button.dataset.mode;
 
+document
+.querySelectorAll(".mode-btn")
+.forEach(btn=>
+btn.classList.remove("active")
+);
 
-                document
-                .querySelectorAll(".mode-btn")
-                .forEach(
-                    btn=>{
-                        btn.classList.remove(
-                            "active"
-                        );
-                    }
-                );
+button.classList.add("active");
 
+document
+.querySelectorAll(".design-panel")
+.forEach(panel=>
+panel.classList.remove("active")
+);
 
-                this.classList.add(
-                    "active"
-                );
+const panel=
+document.getElementById(
+"panel-"+mode
+);
 
+if(panel)
+panel.classList.add("active");
 
-                document
-                .querySelectorAll(".design-panel")
-                .forEach(
-                    panel=>{
-                        panel.classList.remove(
-                            "active"
-                        );
-                    }
-                );
+document.getElementById(
+"designModeLabel"
+).textContent=
+mode.toUpperCase()+" MODE";
 
+}
+);
 
-                const panel =
-                    document.getElementById(
-                        "panel-" + mode
-                    );
-
-
-                if(panel){
-
-                    panel.classList.add(
-                        "active"
-                    );
-
-                }
-
-
-                document.getElementById(
-                    "designModeLabel"
-                ).textContent =
-                    mode.toUpperCase() +
-                    " MODE";
-
-            }
-        );
-
-    }
+}
 );
 
 
@@ -2443,99 +1683,91 @@ document
    QUICK PROMPTS
 ========================================================= */
 
-const quickExamples = {
+const quickExamples={
 
-    "Logo Tech":
-        "logo teknologi AI futuristik dengan simbol huruf A",
+"Logo Tech":
+"logo teknologi AI futuristik dengan simbol huruf A",
 
-    "Logo Gaming":
-        "logo gaming esports agresif dengan simbol unik",
+"Logo Gaming":
+"logo gaming esports agresif dengan simbol unik",
 
-    "Logo UMKM":
-        "logo UMKM modern sederhana mudah diingat",
+"Logo UMKM":
+"logo UMKM modern sederhana mudah diingat",
 
-    "Logo Clothing":
-        "logo clothing streetwear premium",
+"Logo Clothing":
+"logo clothing streetwear premium",
 
-    "Logo Premium":
-        "logo brand premium elegan dan eksklusif",
+"Logo Premium":
+"logo brand premium elegan dan eksklusif",
 
-    "Promo Produk":
-        "poster promo produk profesional",
+"Promo Produk":
+"poster promo produk profesional",
 
-    "Event":
-        "poster event modern dramatis",
+"Event":
+"poster event modern dramatis",
 
-    "Musik":
-        "poster musik cinematic",
+"Musik":
+"poster musik cinematic",
 
-    "Food":
-        "poster makanan premium",
+"Food":
+"poster makanan premium",
 
-    "Gaming":
-        "poster gaming esports futuristik",
+"Gaming":
+"poster gaming esports futuristik",
 
-    "Streetwear":
-        "desain kaos streetwear bold",
+"Streetwear":
+"desain kaos streetwear bold",
 
-    "Racing":
-        "desain kaos racing motorsport",
+"Racing":
+"desain kaos racing motorsport",
 
-    "Motorcycle":
-        "desain kaos motorcycle club",
+"Motorcycle":
+"desain kaos motorcycle club",
 
-    "Website":
-        "hero banner website teknologi",
+"Website":
+"hero banner website teknologi",
 
-    "Business":
-        "banner bisnis profesional",
+"Business":
+"banner bisnis profesional",
 
-    "Technology":
-        "banner teknologi AI futuristik"
+"Technology":
+"banner teknologi AI futuristik"
 
 };
 
 
 document
 .querySelectorAll(".quick")
-.forEach(
-    button=>{
+.forEach(button=>{
 
-        button.addEventListener(
-            "click",
-            function(){
+button.addEventListener(
+"click",
+()=>{
 
-                const target =
-                    document.getElementById(
-                        this.dataset.target
-                    );
+const target=
+document.getElementById(
+button.dataset.target
+);
 
+if(!target)
+return;
 
-                if(!target)
-                    return;
+const example=
+quickExamples[
+button.textContent.trim()
+]||button.textContent.trim();
 
+target.value=
+target.value
+?target.value+", "+example
+:example;
 
-                const example =
-                    quickExamples[
-                        this.textContent.trim()
-                    ] ||
-                    this.textContent.trim();
+target.focus();
 
+}
+);
 
-                target.value =
-                    target.value
-                    ? target.value +
-                      ", " +
-                      example
-                    : example;
-
-
-                target.focus();
-
-            }
-        );
-
-    }
+}
 );
 
 
@@ -2545,55 +1777,36 @@ document
 
 function enhanceLogo(){
 
-    const input =
-        document.getElementById(
-            "logoPrompt"
-        );
+const input=
+document.getElementById("logoPrompt");
 
+const base=input.value.trim();
 
-    const base =
-        input.value.trim();
+if(!base){
 
+showToast(
+"Masukkan ide logo terlebih dahulu."
+);
 
-    if(!base){
+return;
 
-        showToast(
-            "Masukkan ide logo terlebih dahulu."
-        );
+}
 
-        return;
+input.value=`
+Professional ${document.getElementById("logoStyle").value}
+${document.getElementById("logoConcept").value} logo.
 
-    }
-
-
-    const style =
-        document.getElementById(
-            "logoStyle"
-        ).value;
-
-
-    const concept =
-        document.getElementById(
-            "logoConcept"
-        ).value;
-
-
-    input.value =
-`
-Professional ${style} ${concept} logo.
-
-Brand:
+Brand concept:
 ${base}
 
-Clean geometric mark,
-strong silhouette,
-memorable identity,
+Clean geometric identity,
+strong memorable silhouette,
+premium branding,
 balanced composition,
 centered isolated presentation,
-premium branding,
 sharp clean shapes,
 high contrast,
-minimal background.
+professional visual hierarchy.
 
 No mockup,
 no watermark,
@@ -2601,10 +1814,7 @@ no clutter,
 no blurry details.
 `.trim();
 
-
-    showToast(
-        "✨ Prompt berhasil di-enhance."
-    );
+showToast("✨ Prompt logo berhasil di-enhance.");
 
 }
 
@@ -2615,38 +1825,17 @@ no blurry details.
 
 function buildPrompt(type){
 
-    if(type === "logo"){
+if(type==="logo"){
 
-        const base =
-            document.getElementById(
-                "logoPrompt"
-            ).value.trim();
+const base=
+document.getElementById("logoPrompt").value.trim();
 
+if(!base)
+return "";
 
-        if(!base)
-            return "";
-
-
-        const style =
-            document.getElementById(
-                "logoStyle"
-            ).value;
-
-
-        const concept =
-            document.getElementById(
-                "logoConcept"
-            ).value;
-
-
-        if(
-            document.getElementById(
-                "logoEnhance"
-            ).checked
-        ){
-
-            return `
-Professional ${style} ${concept} logo.
+return `
+Professional ${document.getElementById("logoStyle").value}
+${document.getElementById("logoConcept").value} logo.
 
 ${base}
 
@@ -2654,8 +1843,7 @@ Clean geometric brand mark,
 strong silhouette,
 memorable identity,
 balanced composition,
-centered,
-isolated presentation,
+centered isolated presentation,
 premium branding,
 high contrast,
 sharp details.
@@ -2664,37 +1852,26 @@ No mockup,
 no watermark,
 no clutter,
 no blurry details.
-            `.trim();
+`.trim();
 
-        }
-
-
-        return base;
-
-    }
+}
 
 
-    if(type === "poster"){
+if(type==="poster"){
 
-        const base =
-            document.getElementById(
-                "posterPrompt"
-            ).value.trim();
+const base=
+document.getElementById("posterPrompt").value.trim();
 
+if(!base)
+return "";
 
-        if(!base)
-            return "";
-
-
-        return `
+return `
 Professional commercial poster.
 
 ${base}
 
 Style:
-${document.getElementById(
-    "posterStyle"
-).value}
+${document.getElementById("posterStyle").value}
 
 Strong focal point,
 professional graphic design,
@@ -2705,37 +1882,29 @@ premium advertising aesthetic.
 No watermark,
 no clutter,
 no blurry details.
-        `.trim();
+`.trim();
 
-    }
-
-
-    if(type === "shirt"){
-
-        const base =
-            document.getElementById(
-                "shirtPrompt"
-            ).value.trim();
+}
 
 
-        if(!base)
-            return "";
+if(type==="shirt"){
 
+const base=
+document.getElementById("shirtPrompt").value.trim();
 
-        return `
+if(!base)
+return "";
+
+return `
 Professional T-shirt graphic design.
 
 ${base}
 
 Style:
-${document.getElementById(
-    "shirtStyle"
-).value}
+${document.getElementById("shirtStyle").value}
 
 Composition:
-${document.getElementById(
-    "shirtComposition"
-).value}
+${document.getElementById("shirtComposition").value}
 
 Bold clean graphic,
 strong silhouette,
@@ -2747,37 +1916,29 @@ No clothing mockup,
 no person wearing shirt,
 no watermark,
 no clutter.
-        `.trim();
+`.trim();
 
-    }
-
-
-    if(type === "banner"){
-
-        const base =
-            document.getElementById(
-                "bannerPrompt"
-            ).value.trim();
+}
 
 
-        if(!base)
-            return "";
+if(type==="banner"){
 
+const base=
+document.getElementById("bannerPrompt").value.trim();
 
-        return `
+if(!base)
+return "";
+
+return `
 Professional website hero banner.
 
 ${base}
 
 Style:
-${document.getElementById(
-    "bannerStyle"
-).value}
+${document.getElementById("bannerStyle").value}
 
 Layout:
-${document.getElementById(
-    "bannerLayout"
-).value}
+${document.getElementById("bannerLayout").value}
 
 Premium visual,
 strong focal point,
@@ -2789,30 +1950,24 @@ negative space for headline.
 No watermark,
 no clutter,
 no distorted objects.
-        `.trim();
+`.trim();
 
-    }
-
-
-    const base =
-        document.getElementById(
-            "creativePrompt"
-        ).value.trim();
+}
 
 
-    if(!base)
-        return "";
+const base=
+document.getElementById("creativePrompt").value.trim();
 
+if(!base)
+return "";
 
-    return `
+return `
 Professional digital artwork.
 
 ${base}
 
 Visual style:
-${document.getElementById(
-    "creativeStyle"
-).value}
+${document.getElementById("creativeStyle").value}
 
 High detail,
 cinematic composition,
@@ -2825,167 +1980,103 @@ No watermark,
 no blurry details,
 no duplicate subjects,
 no visual clutter.
-    `.trim();
+`.trim();
 
 }
 
 
 /* =========================================================
-   DIMENSIONS
+   GENERATE IMAGE THROUGH WORKER
 ========================================================= */
 
-function getDimensions(type){
+async function generateOneImage(
+prompt,
+item,
+card,
+loader,
+img
+){
 
-    if(type === "logo"){
+try{
 
-        return {
-            width:768,
-            height:768
-        };
+const response=
+await fetch(
+IMAGE_ENDPOINT,
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+prompt:prompt,
+seed:item.seed
+})
+}
+);
 
-    }
+const raw=
+await response.text();
 
+let data;
 
-    if(type === "banner"){
+try{
+data=JSON.parse(raw);
+}catch{
+data=null;
+}
 
-        return {
-            width:1024,
-            height:576
-        };
+if(!response.ok||!data?.success||!data?.image){
 
-    }
-
-
-    if(type === "poster"){
-
-        const format =
-            document.getElementById(
-                "posterFormat"
-            ).value;
-
-
-        if(format === "Landscape"){
-
-            return {
-                width:1024,
-                height:576
-            };
-
-        }
-
-
-        if(format === "Square"){
-
-            return {
-                width:768,
-                height:768
-            };
-
-        }
-
-
-        return {
-            width:768,
-            height:1024
-        };
-
-    }
-
-
-    if(type === "shirt"){
-
-        return {
-            width:768,
-            height:768
-        };
-
-    }
-
-
-    if(type === "creative"){
-
-        const aspect =
-            document.getElementById(
-                "creativeAspect"
-            ).value;
-
-
-        if(aspect === "Landscape"){
-
-            return {
-                width:1024,
-                height:576
-            };
-
-        }
-
-
-        if(aspect === "Portrait"){
-
-            return {
-                width:768,
-                height:1024
-            };
-
-        }
-
-
-        return {
-            width:768,
-            height:768
-        };
-
-    }
-
-
-    return {
-        width:768,
-        height:768
-    };
+throw new Error(
+data?.error||
+"Worker Image Engine tidak mengembalikan gambar."
+);
 
 }
 
+const imageData=data.image;
 
-/* =========================================================
-   IMAGE ENDPOINTS
-========================================================= */
+img.onload=()=>{
 
-const IMAGE_ENGINES = [
+loader.remove();
 
-    function(prompt,size,seed){
+img.style.display="block";
 
-        return (
-            "https://image.pollinations.ai/prompt/" +
-            encodeURIComponent(prompt) +
-            "?width=" +
-            size.width +
-            "&height=" +
-            size.height +
-            "&nologo=true" +
-            "&seed=" +
-            seed
-        );
+card.classList.remove("loading-card");
 
-    },
+showToast("🎨 Desain selesai.");
 
-    function(prompt,size,seed){
+};
 
-        return (
-            "https://image.pollinations.ai/prompt/" +
-            encodeURIComponent(prompt) +
-            "?width=" +
-            size.width +
-            "&height=" +
-            size.height +
-            "&nologo=true" +
-            "&seed=" +
-            seed +
-            "&model=flux"
-        );
+img.onerror=()=>{
 
-    }
+showImageError(
+item,
+card,
+loader,
+"Data gambar tidak dapat ditampilkan."
+);
 
-];
+};
+
+img.src=imageData;
+
+item.url=imageData;
+
+saveImageHistory(item);
+
+}catch(error){
+
+showImageError(
+item,
+card,
+loader,
+error.message
+);
+
+}
+
+}
 
 
 /* =========================================================
@@ -2993,439 +2084,151 @@ const IMAGE_ENGINES = [
 ========================================================= */
 
 function createImageCard(
-    item,
-    grid
+item,
+grid
 ){
 
-    const card =
-        document.createElement(
-            "div"
-        );
+const card=
+document.createElement("div");
 
+card.className=
+"result-card loading-card";
 
-    card.className =
-        "result-card loading-card";
+const wrap=
+document.createElement("div");
 
+wrap.className=
+"result-image-wrap";
 
-    card.dataset.id =
-        item.id;
+const loader=
+document.createElement("div");
 
+loader.className="loader";
 
-    const wrap =
-        document.createElement(
-            "div"
-        );
+loader.innerHTML=`
+<div class="spinner"></div>
+<div>⚡ ALFA AI sedang membuat gambar...</div>
+<small>Cloudflare FLUX Image Engine</small>
+`;
 
+const img=
+document.createElement("img");
 
-    wrap.className =
-        "result-image-wrap";
+img.alt="ALFA AI generated design";
+img.style.display="none";
 
+img.onclick=()=>{
+window.open(item.url,"_blank");
+};
 
-    const loader =
-        document.createElement(
-            "div"
-        );
+const actions=
+document.createElement("div");
 
+actions.className="result-actions";
 
-    loader.className =
-        "loader";
+const openBtn=
+document.createElement("button");
 
+openBtn.textContent="↗ Buka";
 
-    loader.innerHTML = `
+openBtn.onclick=()=>{
+if(item.url)
+window.open(item.url,"_blank");
+};
 
-        <div class="spinner"></div>
+const copyBtn=
+document.createElement("button");
 
-        <div>
-            ⚡ Generating ${item.type.toUpperCase()}
-        </div>
+copyBtn.textContent="📋 Prompt";
 
-        <small>
-            Engine ${item.engine + 1}
-        </small>
+copyBtn.onclick=async()=>{
 
-    `;
+try{
 
+await navigator.clipboard.writeText(
+item.prompt
+);
 
-    const img =
-        document.createElement(
-            "img"
-        );
+showToast("Prompt disalin.");
 
+}catch{
 
-    img.alt =
-        "ALFA AI generated design";
+showToast("Clipboard tidak tersedia.");
 
+}
 
-    img.style.display =
-        "none";
+};
 
+const retryBtn=
+document.createElement("button");
 
-    img.onclick =
-        function(){
+retryBtn.textContent="🔄 Retry";
 
-            window.open(
-                item.url,
-                "_blank"
-            );
+retryBtn.onclick=()=>{
 
-        };
+loader.className="loader";
 
+loader.innerHTML=`
+<div class="spinner"></div>
+<div>🔄 Mencoba kembali...</div>
+<small>ALFA AI Image Engine</small>
+`;
 
-    const actions =
-        document.createElement(
-            "div"
-        );
+img.style.display="none";
 
+generateOneImage(
+item.prompt,
+item,
+card,
+loader,
+img
+);
 
-    actions.className =
-        "result-actions";
+};
 
-
-    const openBtn =
-        document.createElement(
-            "button"
-        );
-
-
-    openBtn.textContent =
-        "↗ Buka";
-
-
-    openBtn.onclick =
-        function(){
-
-            window.open(
-                item.url,
-                "_blank"
-            );
-
-        };
-
-
-    const copyBtn =
-        document.createElement(
-            "button"
-        );
-
-
-    copyBtn.textContent =
-        "📋 Prompt";
-
-
-    copyBtn.onclick =
-        async function(){
-
-            try{
-
-                await navigator
-                .clipboard
-                .writeText(
-                    item.prompt
-                );
-
-
-                showToast(
-                    "Prompt disalin."
-                );
-
-            }catch{
-
-                showToast(
-                    "Clipboard tidak tersedia."
-                );
-
-            }
-
-        };
-
-
-    const retryBtn =
-        document.createElement(
-            "button"
-        );
-
-
-    retryBtn.textContent =
-        "🔄 Retry";
-
-
-    retryBtn.onclick =
-        function(){
-
-            retryImage(
-                item,
-                card,
-                loader,
-                img
-            );
-
-        };
-
-
-    actions.appendChild(
-        openBtn
-    );
-
-    actions.appendChild(
-        copyBtn
-    );
-
-    actions.appendChild(
-        retryBtn
-    );
-
-
-    wrap.appendChild(
-        loader
-    );
-
-    wrap.appendChild(
-        img
-    );
-
-
-    card.appendChild(
-        wrap
-    );
-
-    card.appendChild(
-        actions
-    );
-
-
-    grid.appendChild(
-        card
-    );
-
-
-    loadImage(
-        item,
-        card,
-        loader,
-        img
-    );
+actions.appendChild(openBtn);
+actions.appendChild(copyBtn);
+actions.appendChild(retryBtn);
+
+wrap.appendChild(loader);
+wrap.appendChild(img);
+
+card.appendChild(wrap);
+card.appendChild(actions);
+
+grid.appendChild(card);
+
+generateOneImage(
+item.prompt,
+item,
+card,
+loader,
+img
+);
 
 }
 
 
 /* =========================================================
-   LOAD IMAGE
-========================================================= */
-
-function loadImage(
-    item,
-    card,
-    loader,
-    img
-){
-
-    const test =
-        new Image();
-
-
-    let finished =
-        false;
-
-
-    const timeout =
-        setTimeout(
-            function(){
-
-                if(finished)
-                    return;
-
-
-                finished =
-                    true;
-
-
-                showImageError(
-                    item,
-                    card,
-                    loader
-                );
-
-            },
-            60000
-        );
-
-
-    test.onload =
-        function(){
-
-            if(finished)
-                return;
-
-
-            finished =
-                true;
-
-
-            clearTimeout(
-                timeout
-            );
-
-
-            img.src =
-                item.url;
-
-
-            img.onload =
-                function(){
-
-                    loader.remove();
-
-                    img.style.display =
-                        "block";
-
-                    card.classList.remove(
-                        "loading-card"
-                    );
-
-                    showToast(
-                        "🎨 Desain selesai."
-                    );
-
-                };
-
-        };
-
-
-    test.onerror =
-        function(){
-
-            if(finished)
-                return;
-
-
-            finished =
-                true;
-
-
-            clearTimeout(
-                timeout
-            );
-
-
-            showImageError(
-                item,
-                card,
-                loader
-            );
-
-        };
-
-
-    test.src =
-        item.url;
-
-}
-
-
-/* =========================================================
-   ERROR
+   IMAGE ERROR
 ========================================================= */
 
 function showImageError(
-    item,
-    card,
-    loader
+item,
+card,
+loader,
+message
 ){
 
-    loader.className =
-        "error-box";
+loader.className="error-box";
 
+loader.innerHTML=`
+<div style="font-size:32px">⚠️</div>
+<div>Image Engine mengalami masalah.</div>
+<small>${escapeHTML(message||"Silakan Retry.")}</small>
+`;
 
-    loader.innerHTML = `
-
-        <div style="font-size:32px">
-            ⚠️
-        </div>
-
-        <div>
-            Generator belum merespons.
-        </div>
-
-        <small>
-            Tekan Retry untuk mencoba lagi.
-        </small>
-
-    `;
-
-
-    showToast(
-        "⚠️ Generator gambar belum merespons."
-    );
-
-}
-
-
-/* =========================================================
-   RETRY IMAGE
-========================================================= */
-
-function retryImage(
-    item,
-    card,
-    loader,
-    img
-){
-
-    item.retry =
-        (item.retry || 0) + 1;
-
-
-    item.engine =
-        item.retry %
-        IMAGE_ENGINES.length;
-
-
-    const seed =
-        Date.now() +
-        Math.floor(
-            Math.random()*999999
-        );
-
-
-    item.url =
-        IMAGE_ENGINES[
-            item.engine
-        ](
-            item.prompt,
-            item.size,
-            seed
-        );
-
-
-    loader.className =
-        "loader";
-
-
-    loader.innerHTML = `
-
-        <div class="spinner"></div>
-
-        <div>
-            🔄 Mencoba Engine ${item.engine + 1}
-        </div>
-
-        <small>
-            Mohon tunggu...
-        </small>
-
-    `;
-
-
-    img.style.display =
-        "none";
-
-
-    loadImage(
-        item,
-        card,
-        loader,
-        img
-    );
+showToast("⚠️ Gagal membuat gambar.");
 
 }
 
@@ -3435,336 +2238,231 @@ function retryImage(
 ========================================================= */
 
 async function generateDesign(
-    type,
-    count=1
+type,
+count=1
 ){
 
-    if(generationRunning){
+if(generationRunning){
 
-        showToast(
-            "Generator sedang bekerja..."
-        );
+showToast(
+"Generator sedang bekerja..."
+);
 
-        return;
+return;
 
-    }
+}
 
+const prompt=
+buildPrompt(type);
 
-    const prompt =
-        buildPrompt(type);
+if(!prompt){
 
+showToast(
+"Masukkan prompt terlebih dahulu."
+);
 
-    if(!prompt){
+return;
 
-        showToast(
-            "Masukkan prompt terlebih dahulu."
-        );
+}
 
-        return;
+generationRunning=true;
 
-    }
+imageStage.innerHTML="";
 
+const grid=
+document.createElement("div");
 
-    generationRunning =
-        true;
+grid.className="result-grid";
 
+imageStage.appendChild(grid);
 
-    imageStage.innerHTML =
-        "";
+for(let i=0;i<count;i++){
 
+const item={
 
-    const grid =
-        document.createElement(
-            "div"
-        );
+id:
+Date.now()+"-"+i+"-"+Math.random(),
 
+type:type,
 
-    grid.className =
-        "result-grid";
+prompt:prompt,
 
+seed:
+Math.floor(
+Math.random()*999999999
+),
 
-    imageStage.appendChild(
-        grid
-    );
+url:""
 
+};
 
-    const size =
-        getDimensions(type);
+createImageCard(
+item,
+grid
+);
 
+}
 
-    for(
-        let i=0;
-        i<count;
-        i++
-    ){
+generationRunning=false;
 
-        const seed =
-            Date.now() +
-            i +
-            Math.floor(
-                Math.random()*999999
-            );
-
-
-        const item = {
-
-            id:
-                Date.now() +
-                "-" +
-                i,
-
-            type:type,
-
-            prompt:prompt,
-
-            size:size,
-
-            engine:0,
-
-            retry:0,
-
-            url:
-                IMAGE_ENGINES[0](
-                    prompt,
-                    size,
-                    seed
-                )
-
-        };
-
-
-        createImageCard(
-            item,
-            grid
-        );
-
-
-        saveHistory(
-            item
-        );
-
-    }
-
-
-    generationRunning =
-        false;
-
-
-    showToast(
-        "⚡ Image Engine aktif."
-    );
+showToast(
+"⚡ ALFA AI Image Engine mulai bekerja."
+);
 
 }
 
 
 /* =========================================================
-   HISTORY
+   IMAGE HISTORY
 ========================================================= */
 
-const HISTORY_KEY =
-    "ALFA_AI_V42_HISTORY";
+function getImageHistory(){
 
+try{
 
-function getHistory(){
+return JSON.parse(
+localStorage.getItem(
+IMAGE_HISTORY_KEY
+)||"[]"
+);
 
-    try{
+}catch{
 
-        return JSON.parse(
-            localStorage.getItem(
-                HISTORY_KEY
-            ) || "[]"
-        );
+return [];
 
-    }catch{
-
-        return [];
-
-    }
+}
 
 }
 
 
-function saveHistory(item){
+function saveImageHistory(item){
 
-    const history =
-        getHistory();
+if(!item.url)
+return;
 
+const history=
+getImageHistory();
 
-    history.unshift({
+if(
+history.some(x=>x.id===item.id)
+)
+return;
 
-        url:item.url,
+history.unshift({
 
-        prompt:item.prompt,
+id:item.id,
 
-        type:item.type,
+url:item.url,
 
-        time:
-            new Date()
-            .toLocaleString(
-                "id-ID"
-            )
+prompt:item.prompt,
 
-    });
+type:item.type,
 
+time:
+new Date().toLocaleString("id-ID")
 
-    localStorage.setItem(
-        HISTORY_KEY,
-        JSON.stringify(
-            history.slice(
-                0,
-                20
-            )
-        )
-    );
+});
 
+try{
 
-    renderHistory();
+localStorage.setItem(
+IMAGE_HISTORY_KEY,
+JSON.stringify(
+history.slice(0,20)
+)
+);
+
+}catch(e){}
+
+renderHistory();
 
 }
 
 
 function renderHistory(){
 
-    const history =
-        getHistory();
+const history=
+getImageHistory();
 
+gallery.innerHTML="";
 
-    gallery.innerHTML =
-        "";
+if(!history.length){
 
+gallery.innerHTML=`
+<div style="
+grid-column:1/-1;
+text-align:center;
+color:#64748b;
+font-size:10px;
+padding:25px;
+">
+Belum ada history desain.
+</div>
+`;
 
-    if(!history.length){
+return;
 
-        gallery.innerHTML = `
+}
 
-            <div style="
-                grid-column:1/-1;
-                text-align:center;
-                color:#64748b;
-                font-size:10px;
-                padding:25px;
-            ">
+history.forEach(item=>{
 
-                Belum ada history desain.
+const box=
+document.createElement("div");
 
-            </div>
+box.className="gallery-item";
 
-        `;
+const img=
+document.createElement("img");
 
-        return;
+img.src=item.url;
+img.alt="ALFA AI History";
+img.loading="lazy";
 
-    }
+img.onclick=()=>{
+window.open(item.url,"_blank");
+};
 
+const info=
+document.createElement("div");
 
-    history.forEach(
-        item=>{
+info.className="gallery-info";
 
-            const box =
-                document.createElement(
-                    "div"
-                );
+const small=
+document.createElement("small");
 
+small.textContent=
+item.type.toUpperCase()+
+" • "+
+item.time;
 
-            box.className =
-                "gallery-item";
+info.appendChild(small);
 
+box.appendChild(img);
+box.appendChild(info);
 
-            const img =
-                document.createElement(
-                    "img"
-                );
+gallery.appendChild(box);
 
-
-            img.src =
-                item.url;
-
-
-            img.alt =
-                "ALFA AI History";
-
-
-            img.loading =
-                "lazy";
-
-
-            img.onclick =
-                function(){
-
-                    window.open(
-                        item.url,
-                        "_blank"
-                    );
-
-                };
-
-
-            const info =
-                document.createElement(
-                    "div"
-                );
-
-
-            info.className =
-                "gallery-info";
-
-
-            const small =
-                document.createElement(
-                    "small"
-                );
-
-
-            small.textContent =
-                item.type.toUpperCase() +
-                " • " +
-                item.time;
-
-
-            info.appendChild(
-                small
-            );
-
-
-            box.appendChild(
-                img
-            );
-
-            box.appendChild(
-                info
-            );
-
-
-            gallery.appendChild(
-                box
-            );
-
-        }
-    );
+});
 
 }
 
 
 function clearHistory(){
 
-    if(
-        !confirm(
-            "Hapus semua history desain?"
-        )
-    )
-        return;
+if(!confirm(
+"Hapus semua history desain?"
+))
+return;
 
+localStorage.removeItem(
+IMAGE_HISTORY_KEY
+);
 
-    localStorage.removeItem(
-        HISTORY_KEY
-    );
+renderHistory();
 
-
-    renderHistory();
-
-
-    showToast(
-        "History dihapus."
-    );
+showToast(
+"History desain dihapus."
+);
 
 }
 
@@ -3775,26 +2473,29 @@ function clearHistory(){
 
 function clearResults(){
 
-    imageStage.innerHTML = `
+imageStage.innerHTML=`
+<div class="empty-state">
+<div class="empty-icon">🎨</div>
+<h4>Canvas siap</h4>
+<p>Hasil desain akan muncul di sini.</p>
+</div>
+`;
 
-        <div class="empty-state">
+}
 
-            <div class="empty-icon">
-                🎨
-            </div>
 
-            <h4>
-                Canvas siap
-            </h4>
+/* =========================================================
+   ESCAPE ERROR
+========================================================= */
 
-            <p>
-                Hasil desain akan muncul
-                di sini.
-            </p>
+function escapeHTML(text){
 
-        </div>
-
-    `;
+return String(text)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 
 }
 
@@ -3803,32 +2504,18 @@ function clearResults(){
    START
 ========================================================= */
 
+loadConversation();
+
 renderHistory();
 
-
-console.log(
-    "================================"
-);
-
-console.log(
-    "ALFA AI V4.2"
-);
-
-console.log(
-    "CHAT ENGINE : READY"
-);
-
-console.log(
-    "VOICE ENGINE : READY"
-);
-
-console.log(
-    "IMAGE ENGINE : READY"
-);
-
-console.log(
-    "================================"
-);
+console.log("================================");
+console.log("ALFA AI V5 ULTRA");
+console.log("CHAT : READY");
+console.log("CONTEXT : READY");
+console.log("VOICE INPUT : READY");
+console.log("VOICE OUTPUT : READY");
+console.log("IMAGE : WORKER /image");
+console.log("================================");
 
 </script>
 
