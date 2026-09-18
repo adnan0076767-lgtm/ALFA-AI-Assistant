@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>ALFA AI V4 | Design Studio</title>
-
 <meta name="theme-color" content="#030712">
-<meta name="description" content="ALFA AI Design Studio - Text, Voice, Image, Logo, Poster, T-Shirt, Banner dan Creative Generator">
+
+<title>ALFA AI V4.1 | SPEED DESIGN STUDIO</title>
+
+<meta name="description"
+content="ALFA AI V4.1 Speed Design Studio - Chat, Voice, Logo, Poster, T-Shirt, Banner dan Creative AI">
 
 <style>
 *{
@@ -21,13 +22,13 @@ html{
 }
 
 body{
-    font-family:Inter,Segoe UI,Arial,sans-serif;
-    background:
-        radial-gradient(circle at 20% 10%,rgba(0,229,255,.12),transparent 30%),
-        radial-gradient(circle at 80% 20%,rgba(139,92,246,.13),transparent 30%),
-        #030712;
-    color:#f8fafc;
     min-height:100vh;
+    font-family:Inter,Segoe UI,Arial,sans-serif;
+    color:#f8fafc;
+    background:
+        radial-gradient(circle at 15% 10%,rgba(0,229,255,.11),transparent 30%),
+        radial-gradient(circle at 85% 15%,rgba(124,58,237,.12),transparent 30%),
+        #030712;
     overflow-x:hidden;
 }
 
@@ -36,30 +37,15 @@ body::before{
     position:fixed;
     inset:0;
     pointer-events:none;
-    background-image:
-        linear-gradient(rgba(0,229,255,.025) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(0,229,255,.025) 1px,transparent 1px);
-    background-size:45px 45px;
     z-index:-2;
-}
-
-body::after{
-    content:"";
-    position:fixed;
-    width:450px;
-    height:450px;
-    border-radius:50%;
-    background:rgba(0,229,255,.07);
-    filter:blur(100px);
-    top:-180px;
-    left:-180px;
-    pointer-events:none;
-    z-index:-1;
+    background-image:
+        linear-gradient(rgba(0,229,255,.022) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,229,255,.022) 1px,transparent 1px);
+    background-size:45px 45px;
 }
 
 button,
 textarea,
-input,
 select{
     font:inherit;
 }
@@ -68,19 +54,21 @@ button{
     cursor:pointer;
 }
 
+/* HEADER */
+
 .header{
     position:sticky;
     top:0;
     z-index:100;
     backdrop-filter:blur(18px);
-    background:rgba(3,7,18,.78);
+    background:rgba(3,7,18,.84);
     border-bottom:1px solid rgba(148,163,184,.12);
 }
 
 .header-inner{
     width:min(1400px,94%);
+    min-height:72px;
     margin:auto;
-    min-height:76px;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -94,39 +82,39 @@ button{
 }
 
 .logo{
-    width:45px;
-    height:45px;
+    width:44px;
+    height:44px;
     display:grid;
     place-items:center;
-    border-radius:14px;
+    border-radius:13px;
     background:linear-gradient(135deg,#00e5ff,#7c3aed);
-    color:white;
-    font-size:22px;
+    font-size:19px;
     font-weight:900;
-    box-shadow:0 0 30px rgba(0,229,255,.25);
+    box-shadow:0 0 28px rgba(0,229,255,.25);
 }
 
-.brand-text h1{
-    font-size:20px;
+.brand h1{
+    font-size:19px;
     letter-spacing:1px;
 }
 
-.brand-text p{
-    color:#94a3b8;
-    font-size:11px;
+.brand p{
+    color:#64748b;
+    font-size:10px;
     margin-top:2px;
+    letter-spacing:.8px;
 }
 
 .status{
     display:flex;
     align-items:center;
     gap:8px;
-    padding:9px 14px;
-    border:1px solid rgba(0,229,255,.2);
+    padding:8px 13px;
+    border:1px solid rgba(0,229,255,.18);
     border-radius:999px;
     background:rgba(15,23,42,.65);
     color:#a5f3fc;
-    font-size:12px;
+    font-size:11px;
 }
 
 .status-dot{
@@ -139,21 +127,26 @@ button{
 }
 
 @keyframes pulse{
-    50%{opacity:.35;transform:scale(.75)}
+    50%{
+        opacity:.35;
+        transform:scale(.75);
+    }
 }
+
+/* MAIN */
 
 .container{
     width:min(1400px,94%);
-    margin:30px auto 70px;
+    margin:25px auto 60px;
 }
 
 .hero{
     text-align:center;
-    padding:28px 15px 35px;
+    padding:20px 10px 28px;
 }
 
 .hero h2{
-    font-size:clamp(30px,5vw,62px);
+    font-size:clamp(32px,5vw,60px);
     line-height:1;
     background:linear-gradient(90deg,#fff,#67e8f9,#a78bfa,#fff);
     background-size:250% auto;
@@ -164,109 +157,125 @@ button{
 }
 
 @keyframes shine{
-    to{background-position:250% center}
+    to{
+        background-position:250% center;
+    }
 }
 
 .hero p{
-    max-width:800px;
-    margin:18px auto 0;
+    max-width:760px;
+    margin:16px auto 0;
     color:#94a3b8;
     line-height:1.7;
+    font-size:14px;
 }
+
+/* MODE */
 
 .mode-bar{
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
-    gap:10px;
-    margin:0 auto 25px;
+    gap:8px;
+    margin-bottom:20px;
 }
 
 .mode-btn{
-    border:1px solid rgba(148,163,184,.15);
-    background:rgba(15,23,42,.7);
-    color:#cbd5e1;
-    padding:12px 17px;
-    border-radius:14px;
-    transition:.25s;
+    border:1px solid rgba(148,163,184,.14);
+    background:rgba(15,23,42,.72);
+    color:#94a3b8;
+    padding:11px 15px;
+    border-radius:13px;
+    transition:.2s;
 }
 
 .mode-btn:hover{
     transform:translateY(-2px);
-    border-color:rgba(0,229,255,.45);
+    color:white;
 }
 
 .mode-btn.active{
-    background:linear-gradient(135deg,rgba(0,229,255,.16),rgba(124,58,237,.2));
-    border-color:rgba(0,229,255,.6);
-    color:#fff;
-    box-shadow:0 0 25px rgba(0,229,255,.1);
+    color:white;
+    border-color:rgba(0,229,255,.55);
+    background:linear-gradient(
+        135deg,
+        rgba(0,229,255,.13),
+        rgba(124,58,237,.18)
+    );
+    box-shadow:0 0 25px rgba(0,229,255,.08);
 }
+
+/* DASHBOARD */
 
 .dashboard{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:20px;
+    gap:18px;
 }
 
 .card{
-    border:1px solid rgba(148,163,184,.13);
-    background:rgba(15,23,42,.64);
+    background:rgba(15,23,42,.63);
+    border:1px solid rgba(148,163,184,.12);
+    border-radius:22px;
+    padding:20px;
     backdrop-filter:blur(18px);
-    border-radius:24px;
-    padding:22px;
-    box-shadow:0 20px 70px rgba(0,0,0,.2);
+    box-shadow:0 20px 60px rgba(0,0,0,.2);
 }
 
 .card-title{
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
     gap:10px;
-    margin-bottom:16px;
+    margin-bottom:14px;
 }
 
 .card-title h3{
-    font-size:17px;
+    font-size:16px;
 }
 
 .card-title span{
-    font-size:11px;
     color:#64748b;
+    font-size:10px;
+    letter-spacing:.8px;
 }
+
+/* CHAT */
 
 .chat-box{
-    height:470px;
+    height:430px;
     overflow-y:auto;
-    padding:8px 5px 15px;
-    scroll-behavior:smooth;
+    padding:5px 4px 12px;
 }
 
-.chat-box::-webkit-scrollbar,
-.gallery::-webkit-scrollbar{
+.chat-box::-webkit-scrollbar{
     width:5px;
 }
 
-.chat-box::-webkit-scrollbar-thumb,
-.gallery::-webkit-scrollbar-thumb{
+.chat-box::-webkit-scrollbar-thumb{
     background:#334155;
     border-radius:99px;
 }
 
 .message{
     max-width:88%;
-    padding:13px 15px;
-    border-radius:17px;
-    margin:10px 0;
+    padding:12px 14px;
+    border-radius:16px;
+    margin:9px 0;
     line-height:1.55;
     white-space:pre-wrap;
     word-break:break-word;
+    font-size:13px;
 }
 
 .message.user{
     margin-left:auto;
-    background:linear-gradient(135deg,rgba(0,229,255,.17),rgba(37,99,235,.2));
-    border:1px solid rgba(0,229,255,.18);
+    background:linear-gradient(
+        135deg,
+        rgba(0,229,255,.16),
+        rgba(37,99,235,.18)
+    );
+    border:1px solid rgba(0,229,255,.16);
 }
 
 .message.ai{
@@ -279,96 +288,105 @@ button{
     display:block;
     color:#64748b;
     font-size:9px;
-    margin-bottom:5px;
-    text-transform:uppercase;
     letter-spacing:1px;
+    margin-bottom:5px;
 }
 
 .typing{
     display:inline-flex;
     gap:4px;
-    align-items:center;
 }
 
 .typing i{
     width:5px;
     height:5px;
-    background:#67e8f9;
     border-radius:50%;
+    background:#67e8f9;
     animation:typing 1s infinite;
 }
 
-.typing i:nth-child(2){animation-delay:.15s}
-.typing i:nth-child(3){animation-delay:.3s}
-
-@keyframes typing{
-    50%{transform:translateY(-4px);opacity:.35}
+.typing i:nth-child(2){
+    animation-delay:.15s;
 }
 
-.chat-input-area{
-    margin-top:12px;
+.typing i:nth-child(3){
+    animation-delay:.3s;
+}
+
+@keyframes typing{
+    50%{
+        transform:translateY(-4px);
+        opacity:.3;
+    }
 }
 
 textarea{
     width:100%;
-    min-height:90px;
+    min-height:85px;
     resize:vertical;
-    color:#f8fafc;
-    background:rgba(2,6,23,.8);
-    border:1px solid rgba(148,163,184,.15);
-    border-radius:17px;
-    padding:15px;
     outline:none;
+    color:#f8fafc;
+    background:rgba(2,6,23,.82);
+    border:1px solid rgba(148,163,184,.14);
+    border-radius:15px;
+    padding:14px;
     transition:.2s;
 }
 
 textarea:focus{
-    border-color:rgba(0,229,255,.55);
-    box-shadow:0 0 25px rgba(0,229,255,.08);
+    border-color:rgba(0,229,255,.5);
+    box-shadow:0 0 20px rgba(0,229,255,.07);
 }
 
 .controls{
     display:flex;
     flex-wrap:wrap;
-    gap:9px;
-    margin-top:10px;
+    gap:8px;
+    margin-top:9px;
 }
 
 .btn{
-    border:1px solid rgba(148,163,184,.16);
+    border:1px solid rgba(148,163,184,.14);
     background:rgba(15,23,42,.85);
-    color:#e2e8f0;
-    padding:11px 14px;
-    border-radius:13px;
+    color:#cbd5e1;
+    padding:10px 13px;
+    border-radius:12px;
     transition:.2s;
 }
 
 .btn:hover{
     transform:translateY(-2px);
-    border-color:rgba(0,229,255,.45);
+    border-color:rgba(0,229,255,.4);
+    color:white;
 }
 
 .btn.primary{
-    background:linear-gradient(135deg,#0891b2,#2563eb);
     border-color:transparent;
+    background:linear-gradient(135deg,#0891b2,#2563eb);
     color:white;
     font-weight:700;
 }
 
 .btn.voice{
-    background:linear-gradient(135deg,rgba(124,58,237,.35),rgba(59,130,246,.2));
+    background:linear-gradient(
+        135deg,
+        rgba(124,58,237,.32),
+        rgba(59,130,246,.18)
+    );
 }
 
 .btn.danger{
-    background:rgba(127,29,29,.25);
+    background:rgba(127,29,29,.22);
 }
 
 .voice-status{
-    margin-top:10px;
-    color:#67e8f9;
-    font-size:12px;
     min-height:18px;
+    margin-top:8px;
+    color:#67e8f9;
+    font-size:11px;
 }
+
+/* DESIGN */
 
 .design-panel{
     display:none;
@@ -378,126 +396,128 @@ textarea:focus{
     display:block;
 }
 
-.prompt-box{
-    position:relative;
+.prompt-help{
+    margin:7px 0 10px;
+    color:#64748b;
+    font-size:10px;
+    line-height:1.5;
 }
 
-.prompt-box textarea{
-    min-height:145px;
+.quick-prompts{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-top:9px;
 }
 
-.enhanced-preview{
-    margin-top:10px;
-    padding:12px;
-    border-radius:13px;
-    background:rgba(2,6,23,.65);
-    border:1px dashed rgba(0,229,255,.18);
+.quick{
+    border:1px solid rgba(148,163,184,.12);
+    background:rgba(15,23,42,.6);
     color:#94a3b8;
-    font-size:12px;
-    line-height:1.55;
-    max-height:150px;
-    overflow:auto;
-    display:none;
+    padding:7px 9px;
+    border-radius:9px;
+    font-size:10px;
+}
+
+.quick:hover{
+    color:white;
+    border-color:rgba(0,229,255,.35);
 }
 
 .options-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:10px;
-    margin-top:12px;
+    gap:9px;
+    margin-top:10px;
 }
 
 .field{
     display:flex;
     flex-direction:column;
-    gap:6px;
+    gap:5px;
 }
 
 .field label{
     color:#94a3b8;
-    font-size:11px;
+    font-size:10px;
 }
 
-select,
-input[type="number"]{
+select{
     width:100%;
-    background:rgba(2,6,23,.8);
-    border:1px solid rgba(148,163,184,.14);
+    padding:10px;
+    border-radius:11px;
     color:#e2e8f0;
-    border-radius:12px;
-    padding:11px;
+    background:rgba(2,6,23,.82);
+    border:1px solid rgba(148,163,184,.14);
     outline:none;
 }
 
 .checkbox{
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:7px;
+    margin-top:10px;
     color:#94a3b8;
-    font-size:12px;
-    margin-top:12px;
+    font-size:11px;
 }
 
 .checkbox input{
     accent-color:#06b6d4;
 }
 
-.quick-prompts{
-    display:flex;
-    flex-wrap:wrap;
-    gap:7px;
-    margin-top:12px;
-}
-
-.quick{
-    padding:8px 10px;
-    border-radius:10px;
-    border:1px solid rgba(148,163,184,.12);
-    background:rgba(15,23,42,.6);
-    color:#94a3b8;
-    font-size:11px;
-    cursor:pointer;
-}
-
-.quick:hover{
-    color:#fff;
-    border-color:rgba(0,229,255,.35);
-}
-
 .generate-row{
     display:flex;
-    gap:9px;
-    margin-top:14px;
+    gap:8px;
+    margin-top:13px;
 }
 
 .generate-row .btn{
     flex:1;
 }
 
+.speed-info{
+    margin-top:9px;
+    padding:9px 11px;
+    border-radius:10px;
+    background:rgba(34,197,94,.05);
+    border:1px solid rgba(34,197,94,.12);
+    color:#86efac;
+    font-size:10px;
+    line-height:1.5;
+}
+
+/* IMAGE */
+
 .image-stage{
-    min-height:470px;
-    border-radius:18px;
-    border:1px dashed rgba(148,163,184,.16);
-    background:
-        radial-gradient(circle at center,rgba(0,229,255,.06),transparent 45%),
-        rgba(2,6,23,.55);
+    min-height:450px;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:15px;
+    padding:13px;
     overflow:hidden;
+    border-radius:17px;
+    border:1px dashed rgba(148,163,184,.15);
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0,229,255,.055),
+            transparent 45%
+        ),
+        rgba(2,6,23,.55);
 }
 
 .empty-state{
+    max-width:350px;
     text-align:center;
     color:#64748b;
-    max-width:360px;
 }
 
 .empty-icon{
-    font-size:54px;
-    margin-bottom:12px;
-    filter:drop-shadow(0 0 20px rgba(0,229,255,.2));
+    font-size:50px;
+    margin-bottom:10px;
+    filter:drop-shadow(
+        0 0 18px rgba(0,229,255,.2)
+    );
 }
 
 .empty-state h4{
@@ -506,153 +526,166 @@ input[type="number"]{
 }
 
 .empty-state p{
-    font-size:12px;
+    font-size:11px;
     line-height:1.6;
+}
+
+.loading{
+    text-align:center;
+    color:#67e8f9;
+    font-size:12px;
+}
+
+.spinner{
+    width:42px;
+    height:42px;
+    margin:0 auto 13px;
+    border:3px solid rgba(103,232,249,.12);
+    border-top-color:#67e8f9;
+    border-radius:50%;
+    animation:spin .75s linear infinite;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
 }
 
 .result-grid{
     width:100%;
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:12px;
+    gap:10px;
 }
 
 .result-card{
-    position:relative;
-    border-radius:15px;
     overflow:hidden;
+    border-radius:14px;
     background:#020617;
-    border:1px solid rgba(148,163,184,.13);
+    border:1px solid rgba(148,163,184,.12);
 }
 
 .result-card img{
     width:100%;
-    display:block;
     aspect-ratio:1/1;
     object-fit:cover;
+    display:block;
+    cursor:pointer;
+}
+
+.result-card.loading-card{
+    min-height:300px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 .result-actions{
     display:flex;
     gap:5px;
-    padding:8px;
-    background:rgba(2,6,23,.9);
+    padding:7px;
+    background:rgba(2,6,23,.94);
 }
 
 .result-actions button{
     flex:1;
-    border:1px solid rgba(148,163,184,.13);
+    padding:7px 5px;
+    border-radius:8px;
+    border:1px solid rgba(148,163,184,.12);
     background:#0f172a;
     color:#cbd5e1;
-    padding:7px;
-    border-radius:8px;
-    font-size:10px;
+    font-size:9px;
 }
 
 .result-actions button:hover{
-    color:#fff;
-    border-color:rgba(0,229,255,.4);
+    color:white;
+    border-color:rgba(0,229,255,.35);
 }
 
-.loading{
+.image-error{
+    padding:25px;
     text-align:center;
-    color:#67e8f9;
+    color:#fda4af;
+    font-size:11px;
 }
 
-.spinner{
-    width:45px;
-    height:45px;
-    margin:0 auto 14px;
-    border:3px solid rgba(103,232,249,.15);
-    border-top-color:#67e8f9;
-    border-radius:50%;
-    animation:spin .8s linear infinite;
-}
-
-@keyframes spin{
-    to{transform:rotate(360deg)}
-}
+/* HISTORY */
 
 .history-section{
-    margin-top:20px;
-}
-
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:10px;
-    max-height:330px;
-    overflow-y:auto;
-}
-
-.gallery-item{
-    border-radius:14px;
-    overflow:hidden;
-    border:1px solid rgba(148,163,184,.12);
-    background:#020617;
-}
-
-.gallery-item img{
-    width:100%;
-    display:block;
-    aspect-ratio:1/1;
-    object-fit:cover;
-    cursor:pointer;
-}
-
-.gallery-info{
-    padding:8px;
-}
-
-.gallery-info small{
-    color:#64748b;
-    font-size:9px;
+    margin-top:18px;
 }
 
 .section-heading{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    gap:10px;
-    margin-bottom:13px;
+    margin-bottom:11px;
 }
 
 .section-heading h3{
-    font-size:16px;
+    font-size:15px;
 }
 
 .section-heading button{
     border:0;
     background:none;
     color:#64748b;
-    font-size:11px;
+    font-size:10px;
 }
 
 .section-heading button:hover{
     color:#f87171;
 }
 
-.footer{
-    text-align:center;
-    color:#475569;
-    font-size:11px;
-    padding:25px 0;
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:8px;
+    max-height:300px;
+    overflow-y:auto;
 }
+
+.gallery-item{
+    overflow:hidden;
+    border-radius:11px;
+    border:1px solid rgba(148,163,184,.12);
+    background:#020617;
+}
+
+.gallery-item img{
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    display:block;
+    cursor:pointer;
+}
+
+.gallery-info{
+    padding:6px;
+}
+
+.gallery-info small{
+    color:#64748b;
+    font-size:8px;
+}
+
+/* TOAST */
 
 .toast{
     position:fixed;
     left:50%;
-    bottom:25px;
+    bottom:22px;
+    z-index:999;
     transform:translate(-50%,20px);
     opacity:0;
     pointer-events:none;
-    z-index:999;
-    padding:12px 18px;
-    border-radius:13px;
-    background:rgba(15,23,42,.95);
-    border:1px solid rgba(0,229,255,.25);
+    padding:10px 15px;
+    border-radius:12px;
+    background:rgba(15,23,42,.96);
+    border:1px solid rgba(0,229,255,.22);
     color:#e2e8f0;
-    font-size:12px;
+    font-size:11px;
     transition:.25s;
 }
 
@@ -661,7 +694,19 @@ input[type="number"]{
     transform:translate(-50%,0);
 }
 
+/* FOOTER */
+
+.footer{
+    text-align:center;
+    padding:25px 0;
+    color:#475569;
+    font-size:10px;
+}
+
+/* RESPONSIVE */
+
 @media(max-width:950px){
+
     .dashboard{
         grid-template-columns:1fr;
     }
@@ -672,8 +717,9 @@ input[type="number"]{
 }
 
 @media(max-width:600px){
+
     .header-inner{
-        min-height:65px;
+        min-height:63px;
     }
 
     .status{
@@ -682,30 +728,36 @@ input[type="number"]{
 
     .container{
         width:94%;
-        margin-top:15px;
+        margin-top:14px;
     }
 
     .hero{
-        padding:18px 5px 25px;
+        padding:15px 5px 22px;
     }
 
     .hero h2{
         font-size:34px;
     }
 
-    .card{
-        padding:15px;
-        border-radius:19px;
+    .hero p{
+        font-size:12px;
     }
 
-    .chat-box,
-    .image-stage{
-        height:auto;
-        min-height:420px;
+    .card{
+        padding:14px;
+        border-radius:18px;
+    }
+
+    .chat-box{
+        height:390px;
     }
 
     .options-grid{
         grid-template-columns:1fr;
+    }
+
+    .generate-row{
+        flex-direction:column;
     }
 
     .result-grid{
@@ -717,13 +769,9 @@ input[type="number"]{
     }
 
     .mode-btn{
-        flex:1 1 30%;
-        padding:10px 8px;
-        font-size:11px;
-    }
-
-    .generate-row{
-        flex-direction:column;
+        flex:1 1 29%;
+        padding:9px 7px;
+        font-size:10px;
     }
 }
 </style>
@@ -735,12 +783,16 @@ input[type="number"]{
     <div class="header-inner">
 
         <div class="brand">
-            <div class="logo">AI</div>
 
-            <div class="brand-text">
-                <h1>ALFA AI</h1>
-                <p>V4 DESIGN STUDIO</p>
+            <div class="logo">
+                AI
             </div>
+
+            <div>
+                <h1>ALFA AI</h1>
+                <p>V4.1 SPEED DESIGN STUDIO</p>
+            </div>
+
         </div>
 
         <div class="status">
@@ -754,616 +806,905 @@ input[type="number"]{
 
 <main class="container">
 
-    <section class="hero">
-        <h2>ALFA AI DESIGN STUDIO</h2>
+<section class="hero">
 
-        <p>
-            Chat dengan AI, gunakan Voice Chat, lalu ubah ide menjadi
-            logo, poster, desain kaos, banner, icon, mascot dan berbagai
-            konsep visual dari prompt.
-        </p>
-    </section>
+    <h2>
+        ALFA AI DESIGN STUDIO
+    </h2>
+
+    <p>
+        Chat dengan AI, gunakan Voice Chat,
+        dan ubah ide menjadi Logo, Poster,
+        T-Shirt, Banner atau Creative Design.
+    </p>
+
+</section>
 
 
-    <!-- MODE -->
-    <div class="mode-bar">
+<div class="mode-bar">
 
-        <button class="mode-btn active" data-mode="chat">
-            💬 CHAT
+    <button class="mode-btn active" data-mode="chat">
+        💬 CHAT
+    </button>
+
+    <button class="mode-btn" data-mode="logo">
+        ✦ LOGO
+    </button>
+
+    <button class="mode-btn" data-mode="poster">
+        🖼️ POSTER
+    </button>
+
+    <button class="mode-btn" data-mode="shirt">
+        👕 T-SHIRT
+    </button>
+
+    <button class="mode-btn" data-mode="banner">
+        🌐 BANNER
+    </button>
+
+    <button class="mode-btn" data-mode="creative">
+        🚀 FREE DESIGN
+    </button>
+
+</div>
+
+
+<div class="dashboard">
+
+
+<!-- CHAT -->
+
+<section class="card">
+
+    <div class="card-title">
+
+        <h3>
+            🧠 ALFA AI CHAT
+        </h3>
+
+        <span>
+            TEXT + VOICE
+        </span>
+
+    </div>
+
+
+    <div id="chatBox" class="chat-box">
+
+        <div class="message ai">
+
+            <small>
+                ALFA AI
+            </small>
+
+            Halo! Saya ALFA AI.
+            Mau ngobrol atau membuat desain?
+
+        </div>
+
+    </div>
+
+
+    <textarea
+        id="chatInput"
+        placeholder="Tulis pesan untuk ALFA AI..."></textarea>
+
+
+    <div class="controls">
+
+        <button
+            class="btn primary"
+            id="sendBtn">
+
+            🚀 Kirim
+
         </button>
 
-        <button class="mode-btn" data-mode="logo">
-            ✦ LOGO
+        <button
+            class="btn voice"
+            id="voiceBtn">
+
+            🎙️ Voice Chat
+
         </button>
 
-        <button class="mode-btn" data-mode="poster">
-            🖼️ POSTER
+        <button
+            class="btn"
+            id="speakLastBtn">
+
+            🔊 Bacakan
+
         </button>
 
-        <button class="mode-btn" data-mode="shirt">
-            👕 T-SHIRT
-        </button>
+        <button
+            class="btn danger"
+            id="clearChatBtn">
 
-        <button class="mode-btn" data-mode="banner">
-            🌐 BANNER
-        </button>
+            🗑️ Clear
 
-        <button class="mode-btn" data-mode="creative">
-            🚀 FREE DESIGN
         </button>
 
     </div>
 
 
-    <div class="dashboard">
+    <div
+        id="voiceStatus"
+        class="voice-status">
+    </div>
+
+</section>
 
 
-        <!-- ================= CHAT ================= -->
+<!-- DESIGN -->
 
-        <section class="card">
+<section class="card">
 
-            <div class="card-title">
-                <h3>🧠 ALFA AI CHAT</h3>
-                <span>TEXT + VOICE</span>
+    <div class="card-title">
+
+        <h3>
+            🎨 DESIGN GENERATOR
+        </h3>
+
+        <span id="designModeLabel">
+            CHAT MODE
+        </span>
+
+    </div>
+
+
+    <!-- CHAT PANEL -->
+
+    <div
+        class="design-panel active"
+        id="panel-chat">
+
+        <div
+            class="empty-state"
+            style="margin:auto;padding:70px 10px">
+
+            <div class="empty-icon">
+                🤖
             </div>
 
-            <div id="chatBox" class="chat-box">
+            <h4>
+                ALFA AI siap bekerja
+            </h4>
 
-                <div class="message ai">
-                    <small>ALFA AI</small>
-                    Halo! Saya ALFA AI. Mau ngobrol, bertanya,
-                    atau langsung membuat desain?
-                </div>
+            <p>
+                Pilih mode desain di atas
+                untuk mulai membuat gambar.
+            </p>
 
-            </div>
+        </div>
 
-
-            <div class="chat-input-area">
-
-                <textarea
-                    id="chatInput"
-                    placeholder="Tulis pesan untuk ALFA AI..."
-                ></textarea>
-
-                <div class="controls">
-
-                    <button
-                        class="btn primary"
-                        id="sendBtn">
-                        🚀 Kirim
-                    </button>
-
-                    <button
-                        class="btn voice"
-                        id="voiceBtn">
-                        🎙️ Voice Chat
-                    </button>
-
-                    <button
-                        class="btn"
-                        id="speakLastBtn">
-                        🔊 Bacakan
-                    </button>
-
-                    <button
-                        class="btn danger"
-                        id="clearChatBtn">
-                        🗑️ Clear
-                    </button>
-
-                </div>
-
-                <div
-                    id="voiceStatus"
-                    class="voice-status">
-                </div>
-
-            </div>
-
-        </section>
+    </div>
 
 
+    <!-- LOGO -->
 
-        <!-- ================= DESIGN STUDIO ================= -->
+    <div
+        class="design-panel"
+        id="panel-logo">
 
-        <section class="card">
-
-            <div class="card-title">
-                <h3>🎨 DESIGN GENERATOR</h3>
-                <span id="designModeLabel">CHAT MODE</span>
-            </div>
-
-
-            <!-- LOGO -->
-
-            <div
-                class="design-panel active"
-                data-panel="chat"
-                id="panel-chat">
-
-                <div class="empty-state" style="margin:auto;padding:70px 10px">
-
-                    <div class="empty-icon">🤖</div>
-
-                    <h4>ALFA AI siap bekerja</h4>
-
-                    <p>
-                        Pilih mode desain di bagian atas untuk membuka
-                        Design Generator.
-                    </p>
-
-                </div>
-
-            </div>
+        <textarea
+            id="logoPrompt"
+            placeholder="Contoh: logo ALFA DESIGN futuristik, huruf A, premium, cyan purple"></textarea>
 
 
-            <!-- DESIGN PANELS -->
+        <div class="prompt-help">
 
-            <div
-                class="design-panel"
-                data-panel="logo"
-                id="panel-logo">
+            Tulis nama brand + simbol +
+            gaya yang diinginkan.
 
-                <div class="prompt-box">
+        </div>
 
-                    <textarea
-                        id="logoPrompt"
-                        placeholder="Contoh: Logo modern untuk ALFA DESIGN, huruf A futuristik, cyan dan ungu, elegan, profesional, cocok untuk perusahaan teknologi..."></textarea>
 
-                    <div
-                        id="logoEnhanced"
-                        class="enhanced-preview">
-                    </div>
+        <div class="quick-prompts">
 
-                </div>
+            <button class="quick" data-target="logoPrompt">
+                Logo Tech
+            </button>
 
-                <div class="quick-prompts">
+            <button class="quick" data-target="logoPrompt">
+                Logo Gaming
+            </button>
 
-                    <button class="quick" data-target="logoPrompt">
-                        Logo Tech
-                    </button>
+            <button class="quick" data-target="logoPrompt">
+                Logo UMKM
+            </button>
 
-                    <button class="quick" data-target="logoPrompt">
-                        Logo Gaming
-                    </button>
+            <button class="quick" data-target="logoPrompt">
+                Logo Clothing
+            </button>
 
-                    <button class="quick" data-target="logoPrompt">
-                        Logo UMKM
-                    </button>
+            <button class="quick" data-target="logoPrompt">
+                Logo Premium
+            </button>
 
-                    <button class="quick" data-target="logoPrompt">
-                        Logo Clothing
-                    </button>
+        </div>
 
-                    <button class="quick" data-target="logoPrompt">
-                        Logo Futuristic
-                    </button>
 
-                </div>
+        <div class="options-grid">
 
-                <div class="options-grid">
+            <div class="field">
 
-                    <div class="field">
-                        <label>Style Logo</label>
-
-                        <select id="logoStyle">
-                            <option>Modern Minimalist</option>
-                            <option>Futuristic Technology</option>
-                            <option>Luxury Premium</option>
-                            <option>Gaming Esports</option>
-                            <option>Bold Professional</option>
-                            <option>Streetwear</option>
-                            <option>Elegant</option>
-                        </select>
-                    </div>
-
-                    <div class="field">
-                        <label>Konsep</label>
-
-                        <select id="logoConcept">
-                            <option>Symbol + Wordmark</option>
-                            <option>Symbol Only</option>
-                            <option>Lettermark</option>
-                            <option>Monogram</option>
-                            <option>Mascot Logo</option>
-                        </select>
-                    </div>
-
-                </div>
-
-                <label class="checkbox">
-                    <input
-                        type="checkbox"
-                        id="logoEnhance"
-                        checked>
-                    Auto Enhance Prompt
+                <label>
+                    Style
                 </label>
 
-                <div class="generate-row">
+                <select id="logoStyle">
 
-                    <button
-                        class="btn"
-                        onclick="enhanceCurrent('logo')">
-                        ✨ Enhance
-                    </button>
+                    <option>
+                        Modern Minimalist
+                    </option>
 
-                    <button
-                        class="btn primary"
-                        onclick="generateDesign('logo')">
-                        🎨 Generate Logo
-                    </button>
+                    <option>
+                        Futuristic Technology
+                    </option>
 
-                </div>
+                    <option>
+                        Luxury Premium
+                    </option>
 
-            </div>
+                    <option>
+                        Gaming Esports
+                    </option>
 
-
-            <!-- POSTER -->
-
-            <div
-                class="design-panel"
-                data-panel="poster"
-                id="panel-poster">
-
-                <textarea
-                    id="posterPrompt"
-                    placeholder="Contoh: Poster promo minuman kopi modern, suasana malam, premium, ruang untuk headline dan harga..."></textarea>
-
-                <div class="quick-prompts">
-
-                    <button class="quick" data-target="posterPrompt">
-                        Promo Produk
-                    </button>
-
-                    <button class="quick" data-target="posterPrompt">
-                        Event
-                    </button>
-
-                    <button class="quick" data-target="posterPrompt">
-                        Musik
-                    </button>
-
-                    <button class="quick" data-target="posterPrompt">
-                        Food
-                    </button>
-
-                    <button class="quick" data-target="posterPrompt">
-                        Gaming
-                    </button>
-
-                </div>
-
-                <div class="options-grid">
-
-                    <div class="field">
-                        <label>Style</label>
-
-                        <select id="posterStyle">
-                            <option>Modern Professional</option>
-                            <option>Cinematic</option>
-                            <option>Luxury</option>
-                            <option>Neon Cyberpunk</option>
-                            <option>Minimalist</option>
-                            <option>Bold Commercial</option>
-                        </select>
-                    </div>
-
-                    <div class="field">
-                        <label>Format</label>
-
-                        <select id="posterFormat">
-                            <option>Portrait</option>
-                            <option>Square</option>
-                            <option>Landscape</option>
-                        </select>
-                    </div>
-
-                </div>
-
-                <div class="generate-row">
-
-                    <button
-                        class="btn primary"
-                        onclick="generateDesign('poster')">
-                        🖼️ Generate Poster
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- T SHIRT -->
-
-            <div
-                class="design-panel"
-                data-panel="shirt"
-                id="panel-shirt">
-
-                <textarea
-                    id="shirtPrompt"
-                    placeholder="Contoh: desain kaos streetwear bertema naga cyber, komposisi tengah, bold, cocok untuk sablon..."></textarea>
-
-                <div class="quick-prompts">
-
-                    <button class="quick" data-target="shirtPrompt">
+                    <option>
                         Streetwear
-                    </button>
+                    </option>
 
-                    <button class="quick" data-target="shirtPrompt">
-                        Racing
-                    </button>
+                    <option>
+                        Bold Professional
+                    </option>
 
-                    <button class="quick" data-target="shirtPrompt">
-                        Gaming
-                    </button>
-
-                    <button class="quick" data-target="shirtPrompt">
-                        Anime Style
-                    </button>
-
-                    <button class="quick" data-target="shirtPrompt">
-                        Motorcycle
-                    </button>
-
-                </div>
-
-                <div class="options-grid">
-
-                    <div class="field">
-                        <label>Style</label>
-
-                        <select id="shirtStyle">
-                            <option>Streetwear</option>
-                            <option>Vintage</option>
-                            <option>Graffiti</option>
-                            <option>Esports</option>
-                            <option>Minimalist</option>
-                            <option>Illustration</option>
-                            <option>Heavy Metal</option>
-                        </select>
-                    </div>
-
-                    <div class="field">
-                        <label>Komposisi</label>
-
-                        <select id="shirtComposition">
-                            <option>Centered Chest Graphic</option>
-                            <option>Large Front Graphic</option>
-                            <option>Small Chest Logo</option>
-                            <option>Back Print</option>
-                        </select>
-                    </div>
-
-                </div>
-
-                <div class="generate-row">
-
-                    <button
-                        class="btn primary"
-                        onclick="generateDesign('shirt')">
-                        👕 Generate T-Shirt
-                    </button>
-
-                </div>
+                </select>
 
             </div>
 
 
-            <!-- BANNER -->
+            <div class="field">
 
-            <div
-                class="design-panel"
-                data-panel="banner"
-                id="panel-banner">
+                <label>
+                    Konsep
+                </label>
 
-                <textarea
-                    id="bannerPrompt"
-                    placeholder="Contoh: website hero banner ALFA DESIGN, teknologi AI futuristik, city lights, cyan purple, ruang kosong untuk headline..."></textarea>
+                <select id="logoConcept">
 
-                <div class="quick-prompts">
+                    <option>
+                        Symbol + Wordmark
+                    </option>
 
-                    <button class="quick" data-target="bannerPrompt">
-                        Website
-                    </button>
+                    <option>
+                        Symbol Only
+                    </option>
 
-                    <button class="quick" data-target="bannerPrompt">
-                        Business
-                    </button>
+                    <option>
+                        Lettermark
+                    </option>
 
-                    <button class="quick" data-target="bannerPrompt">
-                        Technology
-                    </button>
+                    <option>
+                        Monogram
+                    </option>
 
-                    <button class="quick" data-target="bannerPrompt">
-                        Gaming
-                    </button>
+                    <option>
+                        Mascot Logo
+                    </option>
 
-                </div>
-
-                <div class="options-grid">
-
-                    <div class="field">
-                        <label>Style</label>
-
-                        <select id="bannerStyle">
-                            <option>Futuristic Technology</option>
-                            <option>Corporate Premium</option>
-                            <option>Gaming</option>
-                            <option>Luxury</option>
-                            <option>Minimalist</option>
-                            <option>Cyberpunk</option>
-                        </select>
-                    </div>
-
-                    <div class="field">
-                        <label>Layout</label>
-
-                        <select id="bannerLayout">
-                            <option>Wide Hero</option>
-                            <option>Centered</option>
-                            <option>Left Text Space</option>
-                            <option>Right Text Space</option>
-                        </select>
-                    </div>
-
-                </div>
-
-                <div class="generate-row">
-
-                    <button
-                        class="btn primary"
-                        onclick="generateDesign('banner')">
-                        🌐 Generate Banner
-                    </button>
-
-                </div>
+                </select>
 
             </div>
 
-
-            <!-- FREE -->
-
-            <div
-                class="design-panel"
-                data-panel="creative"
-                id="panel-creative">
-
-                <textarea
-                    id="creativePrompt"
-                    placeholder="Tulis ide apa saja. Contoh: buat artwork futuristik bertema Indonesia 2050 dengan kota cyber dan Garuda mekanik..."></textarea>
-
-                <div class="options-grid">
-
-                    <div class="field">
-                        <label>Visual Style</label>
-
-                        <select id="creativeStyle">
-                            <option>Ultra Detailed</option>
-                            <option>Cinematic</option>
-                            <option>Futuristic</option>
-                            <option>Fantasy</option>
-                            <option>Realistic</option>
-                            <option>3D Render</option>
-                            <option>Digital Art</option>
-                        </select>
-                    </div>
-
-                    <div class="field">
-                        <label>Aspect</label>
-
-                        <select id="creativeAspect">
-                            <option>Square</option>
-                            <option>Portrait</option>
-                            <option>Landscape</option>
-                        </select>
-                    </div>
-
-                </div>
-
-                <div class="generate-row">
-
-                    <button
-                        class="btn primary"
-                        onclick="generateDesign('creative')">
-                        🚀 Generate Design
-                    </button>
-
-                </div>
-
-            </div>
+        </div>
 
 
-        </section>
+        <label class="checkbox">
+
+            <input
+                type="checkbox"
+                id="logoEnhance"
+                checked>
+
+            Auto Enhance Prompt
+
+        </label>
+
+
+        <div class="speed-info">
+
+            ⚡ SPEED MODE:
+            Generate 1 adalah mode default.
+            Gunakan 2 Concepts jika ingin variasi.
+
+        </div>
+
+
+        <div class="generate-row">
+
+            <button
+                class="btn"
+                onclick="enhanceLogo()">
+
+                ✨ Enhance
+
+            </button>
+
+            <button
+                class="btn primary"
+                onclick="generateDesign('logo',1)">
+
+                🎨 Generate 1
+
+            </button>
+
+            <button
+                class="btn"
+                onclick="generateDesign('logo',2)">
+
+                🔥 2 Concepts
+
+            </button>
+
+        </div>
 
     </div>
 
 
+    <!-- POSTER -->
 
-    <!-- IMAGE RESULT -->
+    <div
+        class="design-panel"
+        id="panel-poster">
 
-    <section class="card history-section">
+        <textarea
+            id="posterPrompt"
+            placeholder="Contoh: poster promo kopi premium, malam hari, cinematic"></textarea>
 
-        <div class="section-heading">
 
-            <h3>🖼️ GENERATION RESULT</h3>
+        <div class="quick-prompts">
 
-            <button onclick="clearResults()">
-                Clear Result
+            <button class="quick" data-target="posterPrompt">
+                Promo Produk
+            </button>
+
+            <button class="quick" data-target="posterPrompt">
+                Event
+            </button>
+
+            <button class="quick" data-target="posterPrompt">
+                Musik
+            </button>
+
+            <button class="quick" data-target="posterPrompt">
+                Food
+            </button>
+
+            <button class="quick" data-target="posterPrompt">
+                Gaming
             </button>
 
         </div>
 
-        <div
-            id="imageStage"
-            class="image-stage">
 
-            <div class="empty-state">
+        <div class="options-grid">
 
-                <div class="empty-icon">🎨</div>
+            <div class="field">
 
-                <h4>Canvas siap</h4>
+                <label>
+                    Style
+                </label>
 
-                <p>
-                    Hasil desain akan muncul di sini.
-                </p>
+                <select id="posterStyle">
+
+                    <option>
+                        Modern Professional
+                    </option>
+
+                    <option>
+                        Cinematic
+                    </option>
+
+                    <option>
+                        Luxury
+                    </option>
+
+                    <option>
+                        Neon Cyberpunk
+                    </option>
+
+                    <option>
+                        Minimalist
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Format
+                </label>
+
+                <select id="posterFormat">
+
+                    <option>
+                        Portrait
+                    </option>
+
+                    <option>
+                        Square
+                    </option>
+
+                    <option>
+                        Landscape
+                    </option>
+
+                </select>
 
             </div>
 
         </div>
 
-    </section>
 
+        <div class="generate-row">
 
+            <button
+                class="btn primary"
+                onclick="generateDesign('poster',1)">
 
-    <!-- HISTORY -->
+                🖼️ Generate Poster
 
-    <section class="card history-section">
+            </button>
 
-        <div class="section-heading">
+            <button
+                class="btn"
+                onclick="generateDesign('poster',2)">
 
-            <h3>🗂️ DESIGN HISTORY</h3>
+                🔥 2 Concepts
 
-            <button onclick="clearHistory()">
-                Hapus History
             </button>
 
         </div>
 
-        <div
-            id="gallery"
-            class="gallery">
+    </div>
+
+
+    <!-- T SHIRT -->
+
+    <div
+        class="design-panel"
+        id="panel-shirt">
+
+        <textarea
+            id="shirtPrompt"
+            placeholder="Contoh: desain kaos streetwear naga cyber, bold, cocok untuk sablon"></textarea>
+
+
+        <div class="quick-prompts">
+
+            <button class="quick" data-target="shirtPrompt">
+                Streetwear
+            </button>
+
+            <button class="quick" data-target="shirtPrompt">
+                Racing
+            </button>
+
+            <button class="quick" data-target="shirtPrompt">
+                Gaming
+            </button>
+
+            <button class="quick" data-target="shirtPrompt">
+                Motorcycle
+            </button>
 
         </div>
 
-    </section>
 
+        <div class="options-grid">
+
+            <div class="field">
+
+                <label>
+                    Style
+                </label>
+
+                <select id="shirtStyle">
+
+                    <option>
+                        Streetwear
+                    </option>
+
+                    <option>
+                        Vintage
+                    </option>
+
+                    <option>
+                        Graffiti
+                    </option>
+
+                    <option>
+                        Esports
+                    </option>
+
+                    <option>
+                        Illustration
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Komposisi
+                </label>
+
+                <select id="shirtComposition">
+
+                    <option>
+                        Centered Chest Graphic
+                    </option>
+
+                    <option>
+                        Large Front Graphic
+                    </option>
+
+                    <option>
+                        Small Chest Logo
+                    </option>
+
+                    <option>
+                        Back Print
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div class="generate-row">
+
+            <button
+                class="btn primary"
+                onclick="generateDesign('shirt',1)">
+
+                👕 Generate
+
+            </button>
+
+            <button
+                class="btn"
+                onclick="generateDesign('shirt',2)">
+
+                🔥 2 Concepts
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- BANNER -->
+
+    <div
+        class="design-panel"
+        id="panel-banner">
+
+        <textarea
+            id="bannerPrompt"
+            placeholder="Contoh: hero banner website teknologi AI futuristik cyan purple"></textarea>
+
+
+        <div class="quick-prompts">
+
+            <button class="quick" data-target="bannerPrompt">
+                Website
+            </button>
+
+            <button class="quick" data-target="bannerPrompt">
+                Business
+            </button>
+
+            <button class="quick" data-target="bannerPrompt">
+                Technology
+            </button>
+
+            <button class="quick" data-target="bannerPrompt">
+                Gaming
+            </button>
+
+        </div>
+
+
+        <div class="options-grid">
+
+            <div class="field">
+
+                <label>
+                    Style
+                </label>
+
+                <select id="bannerStyle">
+
+                    <option>
+                        Futuristic Technology
+                    </option>
+
+                    <option>
+                        Corporate Premium
+                    </option>
+
+                    <option>
+                        Gaming
+                    </option>
+
+                    <option>
+                        Luxury
+                    </option>
+
+                    <option>
+                        Dark Cinematic
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Layout
+                </label>
+
+                <select id="bannerLayout">
+
+                    <option>
+                        Wide Hero
+                    </option>
+
+                    <option>
+                        Centered
+                    </option>
+
+                    <option>
+                        Left Text Space
+                    </option>
+
+                    <option>
+                        Right Text Space
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div class="generate-row">
+
+            <button
+                class="btn primary"
+                onclick="generateDesign('banner',1)">
+
+                🌐 Generate
+
+            </button>
+
+            <button
+                class="btn"
+                onclick="generateDesign('banner',2)">
+
+                🔥 2 Concepts
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- FREE DESIGN -->
+
+    <div
+        class="design-panel"
+        id="panel-creative">
+
+        <textarea
+            id="creativePrompt"
+            placeholder="Tulis ide desain apa saja..."></textarea>
+
+
+        <div class="options-grid">
+
+            <div class="field">
+
+                <label>
+                    Style
+                </label>
+
+                <select id="creativeStyle">
+
+                    <option>
+                        Ultra Detailed
+                    </option>
+
+                    <option>
+                        Cinematic
+                    </option>
+
+                    <option>
+                        Futuristic
+                    </option>
+
+                    <option>
+                        Realistic
+                    </option>
+
+                    <option>
+                        3D Render
+                    </option>
+
+                    <option>
+                        Digital Art
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Aspect
+                </label>
+
+                <select id="creativeAspect">
+
+                    <option>
+                        Square
+                    </option>
+
+                    <option>
+                        Portrait
+                    </option>
+
+                    <option>
+                        Landscape
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div class="generate-row">
+
+            <button
+                class="btn primary"
+                onclick="generateDesign('creative',1)">
+
+                🚀 Generate
+
+            </button>
+
+            <button
+                class="btn"
+                onclick="generateDesign('creative',2)">
+
+                🔥 2 Concepts
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+</div>
+
+
+<!-- RESULT -->
+
+<section class="card history-section">
+
+    <div class="section-heading">
+
+        <h3>
+            🖼️ GENERATION RESULT
+        </h3>
+
+        <button onclick="clearResults()">
+            Clear Result
+        </button>
+
+    </div>
+
+
+    <div id="imageStage" class="image-stage">
+
+        <div class="empty-state">
+
+            <div class="empty-icon">
+                🎨
+            </div>
+
+            <h4>
+                Canvas siap
+            </h4>
+
+            <p>
+                Hasil desain akan muncul
+                di sini.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HISTORY -->
+
+<section class="card history-section">
+
+    <div class="section-heading">
+
+        <h3>
+            🗂️ DESIGN HISTORY
+        </h3>
+
+        <button onclick="clearHistory()">
+            Hapus History
+        </button>
+
+    </div>
+
+
+    <div id="gallery" class="gallery"></div>
+
+</section>
 
 </main>
 
 
 <footer class="footer">
-    ALFA AI V4 DESIGN STUDIO • Text • Voice • Image • Creative AI
+
+    ALFA AI V4.1 SPEED DESIGN STUDIO
+    • TEXT • VOICE • IMAGE
+
 </footer>
 
 
-<div
-    id="toast"
-    class="toast">
-</div>
+<div id="toast" class="toast"></div>
 
 
 <script>
 
 /* =========================================================
-   ALFA AI V4 DESIGN STUDIO
-   TEXT + VOICE + IMAGE
-   ========================================================= */
+   ALFA AI V4.1
+   CHAT + VOICE + IMAGE
+========================================================= */
 
 
 /* =========================================================
-   WORKER CONFIG
-   ========================================================= */
+   WORKER
+========================================================= */
 
 const WORKER_URL =
     "https://shrill-haze-a236.adnan0076767.workers.dev";
@@ -1373,8 +1714,8 @@ const CHAT_ENDPOINT =
 
 
 /* =========================================================
-   DOM
-   ========================================================= */
+   ELEMENTS
+========================================================= */
 
 const chatBox =
     document.getElementById("chatBox");
@@ -1409,36 +1750,38 @@ const toast =
 
 /* =========================================================
    STATE
-   ========================================================= */
+========================================================= */
 
 let lastAIResponse = "";
-
-let currentMode = "chat";
 
 let recognition = null;
 
 let isListening = false;
 
+let generating = false;
+
 
 /* =========================================================
    TOAST
-   ========================================================= */
+========================================================= */
 
 function showToast(message){
 
-    toast.textContent = message;
+    toast.textContent =
+        message;
 
     toast.classList.add("show");
 
     setTimeout(()=>{
         toast.classList.remove("show");
-    },2500);
+    },2300);
+
 }
 
 
 /* =========================================================
-   CHAT MESSAGE
-   ========================================================= */
+   CHAT
+========================================================= */
 
 function addMessage(type,text){
 
@@ -1448,6 +1791,7 @@ function addMessage(type,text){
     div.className =
         "message " + type;
 
+
     const label =
         document.createElement("small");
 
@@ -1456,12 +1800,15 @@ function addMessage(type,text){
         ? "YOU"
         : "ALFA AI";
 
-    div.appendChild(label);
 
     const content =
         document.createElement("div");
 
-    content.textContent = text;
+    content.textContent =
+        text;
+
+
+    div.appendChild(label);
 
     div.appendChild(content);
 
@@ -1473,20 +1820,17 @@ function addMessage(type,text){
 }
 
 
-/* =========================================================
-   TYPING
-   ========================================================= */
-
 function showTyping(){
 
     const div =
         document.createElement("div");
 
+    div.id =
+        "typingMessage";
+
     div.className =
         "message ai";
 
-    div.id =
-        "typingMessage";
 
     div.innerHTML = `
         <small>ALFA AI</small>
@@ -1497,10 +1841,12 @@ function showTyping(){
         </span>
     `;
 
+
     chatBox.appendChild(div);
 
     chatBox.scrollTop =
         chatBox.scrollHeight;
+
 }
 
 
@@ -1514,12 +1860,13 @@ function removeTyping(){
     if(typing){
         typing.remove();
     }
+
 }
 
 
 /* =========================================================
    RESPONSE PARSER
-   ========================================================= */
+========================================================= */
 
 function extractReply(data){
 
@@ -1527,10 +1874,9 @@ function extractReply(data){
 
         try{
 
-            const parsed =
-                JSON.parse(data);
-
-            return extractReply(parsed);
+            return extractReply(
+                JSON.parse(data)
+            );
 
         }catch{
 
@@ -1541,23 +1887,29 @@ function extractReply(data){
     }
 
 
-    if(!data) return "";
+    if(!data)
+        return "";
 
 
     if(typeof data.reply === "string")
         return data.reply;
 
+
     if(typeof data.response === "string")
         return data.response;
+
 
     if(typeof data.message === "string")
         return data.message;
 
+
     if(typeof data.text === "string")
         return data.text;
 
+
     if(typeof data.result === "string")
         return data.result;
+
 
     if(typeof data.output === "string")
         return data.output;
@@ -1568,24 +1920,30 @@ function extractReply(data){
         if(typeof data.data === "string")
             return data.data;
 
-        return extractReply(data.data);
+        return extractReply(
+            data.data
+        );
+
     }
 
 
     return "";
+
 }
 
 
 /* =========================================================
-   CHAT
-   ========================================================= */
+   SEND CHAT
+========================================================= */
 
 async function sendChat(){
 
     const text =
         chatInput.value.trim();
 
-    if(!text) return;
+
+    if(!text)
+        return;
 
 
     addMessage(
@@ -1593,11 +1951,17 @@ async function sendChat(){
         text
     );
 
-    chatInput.value = "";
+
+    chatInput.value =
+        "";
+
 
     showTyping();
 
-    sendBtn.disabled = true;
+
+    sendBtn.disabled =
+        true;
+
 
     try{
 
@@ -1612,10 +1976,11 @@ async function sendChat(){
                             "application/json"
                     },
 
-                    body:JSON.stringify({
-                        message:text,
-                        prompt:text
-                    })
+                    body:
+                        JSON.stringify({
+                            message:text,
+                            prompt:text
+                        })
                 }
             );
 
@@ -1626,12 +1991,17 @@ async function sendChat(){
 
         let data;
 
+
         try{
+
             data =
                 JSON.parse(raw);
+
         }catch{
+
             data =
                 raw;
+
         }
 
 
@@ -1647,6 +2017,7 @@ async function sendChat(){
             lastAIResponse =
                 reply;
 
+
             addMessage(
                 "ai",
                 reply
@@ -1656,7 +2027,7 @@ async function sendChat(){
 
             addMessage(
                 "ai",
-                "ALFA AI menerima response dari Worker, tetapi format jawabannya belum dikenali.\n\nRaw response:\n" +
+                "ALFA AI menerima response Worker, tetapi format belum dikenali.\n\nRaw response:\n" +
                 raw
             );
 
@@ -1667,6 +2038,7 @@ async function sendChat(){
 
         removeTyping();
 
+
         addMessage(
             "ai",
             "Gagal terhubung ke ALFA AI Worker.\n\n" +
@@ -1676,20 +2048,26 @@ async function sendChat(){
     }
 
 
-    sendBtn.disabled = false;
+    sendBtn.disabled =
+        false;
 
 }
 
 
-/* =========================================================
-   ENTER CHAT
-   ========================================================= */
+sendBtn.addEventListener(
+    "click",
+    sendChat
+);
+
 
 chatInput.addEventListener(
     "keydown",
     function(e){
 
-        if(e.key === "Enter" && !e.shiftKey){
+        if(
+            e.key === "Enter" &&
+            !e.shiftKey
+        ){
 
             e.preventDefault();
 
@@ -1701,15 +2079,9 @@ chatInput.addEventListener(
 );
 
 
-sendBtn.addEventListener(
-    "click",
-    sendChat
-);
-
-
 /* =========================================================
    VOICE CHAT
-   ========================================================= */
+========================================================= */
 
 const SpeechRecognition =
     window.SpeechRecognition ||
@@ -1721,11 +2093,14 @@ if(SpeechRecognition){
     recognition =
         new SpeechRecognition();
 
+
     recognition.lang =
         "id-ID";
 
+
     recognition.continuous =
         false;
+
 
     recognition.interimResults =
         false;
@@ -1734,13 +2109,16 @@ if(SpeechRecognition){
     recognition.onstart =
         function(){
 
-            isListening = true;
+            isListening =
+                true;
+
 
             voiceBtn.textContent =
                 "🛑 Stop Voice";
 
+
             voiceStatus.textContent =
-                "🎙️ Mendengarkan... silakan bicara.";
+                "🎙️ Mendengarkan...";
 
         };
 
@@ -1749,14 +2127,17 @@ if(SpeechRecognition){
         function(event){
 
             const transcript =
-                event.results[0][0].transcript;
+                event.results[0][0]
+                .transcript;
+
 
             chatInput.value =
                 transcript;
 
+
             voiceStatus.textContent =
-                "✅ Suara diterima: " +
-                transcript;
+                "✅ Suara diterima.";
+
 
             setTimeout(
                 sendChat,
@@ -1779,20 +2160,23 @@ if(SpeechRecognition){
     recognition.onend =
         function(){
 
-            isListening = false;
+            isListening =
+                false;
+
 
             voiceBtn.textContent =
                 "🎙️ Voice Chat";
 
         };
 
-
 }else{
 
-    voiceBtn.disabled = true;
+    voiceBtn.disabled =
+        true;
+
 
     voiceStatus.textContent =
-        "Browser ini tidak mendukung Speech Recognition.";
+        "Browser tidak mendukung Voice Recognition.";
 
 }
 
@@ -1808,6 +2192,7 @@ voiceBtn.addEventListener(
             );
 
             return;
+
         }
 
 
@@ -1835,21 +2220,24 @@ voiceBtn.addEventListener(
 
 /* =========================================================
    VOICE OUTPUT
-   ========================================================= */
+========================================================= */
 
 function speakText(text){
 
-    if(!("speechSynthesis" in window)){
+    if(
+        !("speechSynthesis" in window)
+    ){
 
         showToast(
-            "Browser tidak mendukung Voice Output."
+            "Voice Output tidak tersedia."
         );
 
         return;
+
     }
 
 
-    window.speechSynthesis.cancel();
+    speechSynthesis.cancel();
 
 
     const utterance =
@@ -1857,17 +2245,20 @@ function speakText(text){
             text
         );
 
+
     utterance.lang =
         "id-ID";
 
+
     utterance.rate =
         1;
+
 
     utterance.pitch =
         1;
 
 
-    window.speechSynthesis.speak(
+    speechSynthesis.speak(
         utterance
     );
 
@@ -1885,7 +2276,9 @@ speakLastBtn.addEventListener(
             );
 
             return;
+
         }
+
 
         speakText(
             lastAIResponse
@@ -1897,20 +2290,30 @@ speakLastBtn.addEventListener(
 
 /* =========================================================
    CLEAR CHAT
-   ========================================================= */
+========================================================= */
 
 clearChatBtn.addEventListener(
     "click",
     function(){
 
         chatBox.innerHTML = `
+
             <div class="message ai">
-                <small>ALFA AI</small>
-                Chat dibersihkan. Saya siap ngobrol lagi.
+
+                <small>
+                    ALFA AI
+                </small>
+
+                Chat dibersihkan.
+                Saya siap ngobrol lagi.
+
             </div>
+
         `;
 
-        lastAIResponse = "";
+
+        lastAIResponse =
+            "";
 
     }
 );
@@ -1918,7 +2321,7 @@ clearChatBtn.addEventListener(
 
 /* =========================================================
    MODE SWITCH
-   ========================================================= */
+========================================================= */
 
 document
 .querySelectorAll(".mode-btn")
@@ -1926,13 +2329,10 @@ document
 
     button.addEventListener(
         "click",
-        ()=>{
+        function(){
 
             const mode =
-                button.dataset.mode;
-
-            currentMode =
-                mode;
+                this.dataset.mode;
 
 
             document
@@ -1943,7 +2343,8 @@ document
                 );
             });
 
-            button.classList.add(
+
+            this.classList.add(
                 "active"
             );
 
@@ -1957,14 +2358,15 @@ document
             });
 
 
-            const target =
+            const panel =
                 document.getElementById(
                     "panel-" + mode
                 );
 
-            if(target){
 
-                target.classList.add(
+            if(panel){
+
+                panel.classList.add(
                     "active"
                 );
 
@@ -1985,7 +2387,60 @@ document
 
 /* =========================================================
    QUICK PROMPTS
-   ========================================================= */
+========================================================= */
+
+const quickExamples = {
+
+    "Logo Tech":
+        "logo teknologi AI futuristik dengan simbol huruf A",
+
+    "Logo Gaming":
+        "logo gaming esports agresif dengan simbol unik",
+
+    "Logo UMKM":
+        "logo UMKM modern sederhana mudah diingat",
+
+    "Logo Clothing":
+        "logo clothing streetwear premium",
+
+    "Logo Premium":
+        "logo brand premium elegan dan eksklusif",
+
+    "Promo Produk":
+        "poster promo produk profesional",
+
+    "Event":
+        "poster event modern dramatis",
+
+    "Musik":
+        "poster musik cinematic",
+
+    "Food":
+        "poster makanan premium",
+
+    "Gaming":
+        "poster gaming esports futuristik",
+
+    "Streetwear":
+        "desain kaos streetwear bold",
+
+    "Racing":
+        "desain kaos racing motorsport",
+
+    "Motorcycle":
+        "desain kaos motorcycle club",
+
+    "Website":
+        "hero banner website teknologi",
+
+    "Business":
+        "banner bisnis profesional",
+
+    "Technology":
+        "banner teknologi AI futuristik"
+
+};
+
 
 document
 .querySelectorAll(".quick")
@@ -1995,75 +2450,18 @@ document
         "click",
         function(){
 
-            const targetId =
-                this.dataset.target;
-
             const target =
                 document.getElementById(
-                    targetId
+                    this.dataset.target
                 );
 
-            if(!target) return;
+
+            if(!target)
+                return;
 
 
-            const examples = {
-
-                "Logo Tech":
-                    "logo teknologi AI futuristik dengan simbol huruf A",
-
-                "Logo Gaming":
-                    "logo gaming esports agresif dengan simbol unik",
-
-                "Logo UMKM":
-                    "logo UMKM modern yang ramah dan mudah diingat",
-
-                "Logo Clothing":
-                    "logo brand clothing streetwear premium",
-
-                "Logo Futuristic":
-                    "logo futuristik cyber technology dengan bentuk geometris",
-
-                "Promo Produk":
-                    "poster promo produk profesional dengan komposisi menarik",
-
-                "Event":
-                    "poster event modern dengan visual dramatis",
-
-                "Musik":
-                    "poster musik modern dengan atmosfer cinematic",
-
-                "Food":
-                    "poster makanan premium yang menggugah selera",
-
-                "Gaming":
-                    "poster gaming esports futuristik",
-
-                "Streetwear":
-                    "desain kaos streetwear bold dengan graphic illustration",
-
-                "Racing":
-                    "desain kaos racing motorsport agresif",
-
-                "Anime Style":
-                    "desain kaos ilustrasi anime original bergaya dinamis",
-
-                "Motorcycle":
-                    "desain kaos motorcycle club modern",
-
-                "Website":
-                    "hero banner website perusahaan teknologi modern",
-
-                "Business":
-                    "banner bisnis profesional premium",
-
-                "Technology":
-                    "banner teknologi AI futuristik",
-
-            };
-
-
-            const text =
-                examples[
+            const example =
+                quickExamples[
                     this.textContent.trim()
                 ] ||
                 this.textContent.trim();
@@ -2073,8 +2471,8 @@ document
                 target.value
                 ? target.value +
                   ", " +
-                  text
-                : text;
+                  example
+                : example;
 
 
             target.focus();
@@ -2086,25 +2484,20 @@ document
 
 
 /* =========================================================
-   PROMPT ENHANCER
-   ========================================================= */
+   LOGO ENHANCER
+========================================================= */
 
-function getPrompt(id){
+function enhanceLogo(){
 
-    const el =
-        document.getElementById(id);
+    const input =
+        document.getElementById(
+            "logoPrompt"
+        );
 
-    return el
-        ? el.value.trim()
-        : "";
-
-}
-
-
-function enhanceLogoPrompt(){
 
     const base =
-        getPrompt("logoPrompt");
+        input.value.trim();
+
 
     if(!base){
 
@@ -2112,7 +2505,7 @@ function enhanceLogoPrompt(){
             "Masukkan ide logo terlebih dahulu."
         );
 
-        return "";
+        return;
 
     }
 
@@ -2122,132 +2515,182 @@ function enhanceLogoPrompt(){
             "logoStyle"
         ).value;
 
+
     const concept =
         document.getElementById(
             "logoConcept"
         ).value;
 
 
-    return `
-Professional brand identity logo design.
+    input.value = `
+Professional ${style} ${concept} logo.
 
-Core concept:
+Brand concept:
+${base}
+
+Clean geometric mark,
+strong silhouette,
+memorable identity,
+balanced composition,
+centered isolated presentation,
+premium branding,
+sharp clean shapes,
+high contrast,
+minimal background.
+
+No mockup,
+no watermark,
+no clutter,
+no blurry details,
+no distorted typography.
+    `.trim();
+
+
+    showToast(
+        "Prompt berhasil di-enhance."
+    );
+
+}
+
+
+/* =========================================================
+   BUILD PROMPT
+========================================================= */
+
+function buildPrompt(type){
+
+    if(type === "logo"){
+
+        const base =
+            document.getElementById(
+                "logoPrompt"
+            ).value.trim();
+
+
+        if(!base)
+            return "";
+
+
+        if(
+            document.getElementById(
+                "logoEnhance"
+            ).checked
+        ){
+
+            const style =
+                document.getElementById(
+                    "logoStyle"
+                ).value;
+
+
+            const concept =
+                document.getElementById(
+                    "logoConcept"
+                ).value;
+
+
+            return `
+Professional ${style} ${concept} logo design.
+
+${base}
+
+Clean geometric brand mark,
+strong silhouette,
+memorable identity,
+balanced composition,
+centered,
+isolated presentation,
+premium branding,
+high contrast,
+minimal background,
+sharp details.
+
+No mockup,
+no watermark,
+no clutter,
+no blurry details,
+no duplicate symbols,
+no distorted typography.
+            `.trim();
+
+        }
+
+
+        return base;
+
+    }
+
+
+    if(type === "poster"){
+
+        const base =
+            document.getElementById(
+                "posterPrompt"
+            ).value.trim();
+
+
+        if(!base)
+            return "";
+
+
+        const style =
+            document.getElementById(
+                "posterStyle"
+            ).value;
+
+
+        return `
+Professional commercial poster.
+
 ${base}
 
 Style:
 ${style}
 
-Logo concept:
-${concept}
-
-Create a distinctive original logo mark with:
-clean geometry,
-strong silhouette,
-excellent visual balance,
-professional branding,
-memorable shape,
-premium presentation,
-high contrast,
-sharp edges,
-clean composition,
-centered subject,
-isolated logo presentation,
-minimal unnecessary elements,
-modern brand identity,
-high quality digital design.
-
-The logo must look like a professionally designed brand identity,
-not a random illustration,
-not a photo,
-not a product mockup.
-
-Avoid:
-blurry details,
-clutter,
-photorealistic scene,
-mockup,
-watermark,
-duplicate symbols,
-distorted typography,
-unreadable text,
-extra objects.
-`.trim();
-
-}
-
-
-function enhanceGeneralPrompt(
-    type
-){
-
-    let base = "";
-
-    let style = "";
-
-    if(type === "poster"){
-
-        base =
-            getPrompt("posterPrompt");
-
-        style =
-            document.getElementById(
-                "posterStyle"
-            ).value;
-
-        return `
-Professional commercial poster design.
-
-Main idea:
-${base}
-
-Visual style:
-${style}
-
-Create a visually powerful poster with:
-strong composition,
-clear visual hierarchy,
+Strong composition,
+clear focal point,
 professional graphic design,
-dramatic lighting,
-high quality details,
-balanced spacing,
-premium advertising aesthetic,
-clean focal point,
-professional layout.
+cinematic lighting,
+high quality,
+balanced layout,
+premium advertising aesthetic.
 
-Leave appropriate visual space for important text,
-but do not rely on unreadable generated text.
-
-Avoid:
-blurry image,
-clutter,
-watermark,
-distortion,
-duplicate subjects,
-random typography.
-`.trim();
+No watermark,
+no clutter,
+no blurry details,
+no distortion.
+        `.trim();
 
     }
 
 
     if(type === "shirt"){
 
-        base =
-            getPrompt("shirtPrompt");
+        const base =
+            document.getElementById(
+                "shirtPrompt"
+            ).value.trim();
 
-        style =
+
+        if(!base)
+            return "";
+
+
+        const style =
             document.getElementById(
                 "shirtStyle"
             ).value;
+
 
         const composition =
             document.getElementById(
                 "shirtComposition"
             ).value;
 
-        return `
-Professional apparel graphic design.
 
-Concept:
+        return `
+Professional T-shirt graphic design.
+
 ${base}
 
 Style:
@@ -2256,52 +2699,48 @@ ${style}
 Composition:
 ${composition}
 
-Create a clean high-impact T-shirt graphic suitable
-for screen printing and apparel branding.
-
-Use:
+Bold clean graphic,
 strong silhouette,
-bold graphic composition,
-clean outlines,
-professional illustration,
-balanced shapes,
+print-friendly illustration,
 high contrast,
-centered artwork,
-print-friendly visual structure,
-premium streetwear aesthetic.
+premium apparel design.
 
-Avoid:
-photo mockup,
-person wearing shirt,
-hanger,
-clothing store scene,
-watermark,
-blurry details,
-unnecessary background clutter.
-`.trim();
+No clothing mockup,
+no person wearing shirt,
+no watermark,
+no clutter.
+        `.trim();
 
     }
 
 
     if(type === "banner"){
 
-        base =
-            getPrompt("bannerPrompt");
+        const base =
+            document.getElementById(
+                "bannerPrompt"
+            ).value.trim();
 
-        style =
+
+        if(!base)
+            return "";
+
+
+        const style =
             document.getElementById(
                 "bannerStyle"
             ).value;
+
 
         const layout =
             document.getElementById(
                 "bannerLayout"
             ).value;
 
+
         return `
 Professional website hero banner.
 
-Concept:
 ${base}
 
 Style:
@@ -2310,153 +2749,91 @@ ${style}
 Layout:
 ${layout}
 
-Create a premium wide digital banner with:
+Premium visual,
 cinematic lighting,
-professional composition,
 strong focal point,
-modern technology aesthetic,
-clean visual hierarchy,
+clean composition,
+modern digital design,
 high detail,
-premium commercial appearance,
-appropriate negative space for website headline and CTA.
+negative space for headline.
 
-Avoid:
-watermark,
-random text,
-clutter,
-distorted objects,
-low resolution,
-duplicate subjects.
-`.trim();
+No watermark,
+no clutter,
+no distorted objects.
+        `.trim();
 
     }
 
 
-    base =
-        getPrompt("creativePrompt");
+    const base =
+        document.getElementById(
+            "creativePrompt"
+        ).value.trim();
 
-    style =
+
+    if(!base)
+        return "";
+
+
+    const style =
         document.getElementById(
             "creativeStyle"
         ).value;
 
-    return `
-Professional high-quality digital artwork.
 
-Creative concept:
+    return `
+Professional digital artwork.
+
 ${base}
 
 Visual style:
 ${style}
 
-Create an original visually impressive artwork with:
+High detail,
 cinematic composition,
 strong lighting,
-high detail,
-excellent depth,
-professional digital art direction,
-rich atmosphere,
+depth,
 clear focal point,
-balanced composition,
-premium presentation.
+premium presentation,
+original artwork.
 
-Avoid:
-blurry details,
-watermark,
+No watermark,
 random text,
+blurry details,
 duplicate subjects,
-distorted anatomy,
 visual clutter.
-`.trim();
-
-}
-
-
-function enhanceCurrent(type){
-
-    let enhanced = "";
-
-
-    if(type === "logo"){
-
-        enhanced =
-            enhanceLogoPrompt();
-
-        const box =
-            document.getElementById(
-                "logoEnhanced"
-            );
-
-        if(enhanced){
-
-            box.textContent =
-                enhanced;
-
-            box.style.display =
-                "block";
-
-        }
-
-    }
-
-
-    if(enhanced){
-
-        showToast(
-            "Prompt berhasil di-enhance."
-        );
-
-    }
-
-    return enhanced;
+    `.trim();
 
 }
 
 
 /* =========================================================
-   IMAGE GENERATOR
-   ========================================================= */
+   DIMENSIONS
+========================================================= */
 
-function buildImagePrompt(type){
+function getDimensions(type){
 
     if(type === "logo"){
 
-        const auto =
-            document.getElementById(
-                "logoEnhance"
-            ).checked;
+        /*
+        SPEED:
+        Logo menggunakan 768x768.
+        Lebih ringan daripada 1024x1024.
+        */
 
-        if(auto){
-
-            return enhanceLogoPrompt();
-
-        }
-
-        return getPrompt(
-            "logoPrompt"
-        );
+        return {
+            width:768,
+            height:768
+        };
 
     }
 
-
-    return enhanceGeneralPrompt(
-        type
-    );
-
-}
-
-
-/* =========================================================
-   IMAGE SIZE
-   ========================================================= */
-
-function getImageDimensions(type){
 
     if(type === "banner"){
 
         return {
-            width:1280,
-            height:720
+            width:1024,
+            height:576
         };
 
     }
@@ -2469,27 +2846,40 @@ function getImageDimensions(type){
                 "posterFormat"
             ).value;
 
+
         if(format === "Landscape"){
 
             return {
-                width:1280,
-                height:720
+                width:1024,
+                height:576
             };
 
         }
+
 
         if(format === "Square"){
 
             return {
-                width:1024,
-                height:1024
+                width:768,
+                height:768
             };
 
         }
 
+
         return {
             width:768,
             height:1024
+        };
+
+    }
+
+
+    if(type === "shirt"){
+
+        return {
+            width:768,
+            height:768
         };
 
     }
@@ -2502,14 +2892,16 @@ function getImageDimensions(type){
                 "creativeAspect"
             ).value;
 
+
         if(aspect === "Landscape"){
 
             return {
-                width:1280,
-                height:720
+                width:1024,
+                height:576
             };
 
         }
+
 
         if(aspect === "Portrait"){
 
@@ -2520,30 +2912,76 @@ function getImageDimensions(type){
 
         }
 
+
         return {
-            width:1024,
-            height:1024
+            width:768,
+            height:768
         };
 
     }
 
 
     return {
-        width:1024,
-        height:1024
+        width:768,
+        height:768
     };
 
 }
 
 
 /* =========================================================
-   GENERATE
-   ========================================================= */
+   IMAGE URL
+========================================================= */
 
-async function generateDesign(type){
+function createImageURL(
+    prompt,
+    dimensions,
+    seed
+){
+
+    const encoded =
+        encodeURIComponent(
+            prompt
+        );
+
+
+    return (
+        "https://image.pollinations.ai/prompt/" +
+        encoded +
+        "?width=" +
+        dimensions.width +
+        "&height=" +
+        dimensions.height +
+        "&nologo=true" +
+        "&seed=" +
+        seed
+    );
+
+}
+
+
+/* =========================================================
+   GENERATE DESIGN
+========================================================= */
+
+async function generateDesign(
+    type,
+    count = 1
+){
+
+    if(generating){
+
+        showToast(
+            "ALFA AI masih membuat gambar..."
+        );
+
+        return;
+
+    }
+
 
     const prompt =
-        buildImagePrompt(type);
+        buildPrompt(type);
 
 
     if(!prompt){
@@ -2557,269 +2995,448 @@ async function generateDesign(type){
     }
 
 
+    generating =
+        true;
+
+
     const dimensions =
-        getImageDimensions(type);
-
-
-    imageStage.innerHTML = `
-        <div class="loading">
-            <div class="spinner"></div>
-            <div>
-                ALFA AI sedang membuat
-                ${type.toUpperCase()}...
-            </div>
-            <br>
-            <small>
-                Prompt sedang diproses menjadi konsep visual.
-            </small>
-        </div>
-    `;
+        getDimensions(type);
 
 
     /*
-       Generate 2 concepts.
-       Endpoint image tetap dipisahkan dari
-       Worker chat agar Voice + Chat tidak terganggu.
+       SPEED EDITION
+
+       Default:
+       1 gambar.
+
+       Optional:
+       2 konsep.
+
+       Gambar langsung dimuat satu per satu
+       tanpa menunggu semua selesai.
     */
 
-    const concepts = [];
 
+    imageStage.innerHTML =
+        "";
 
-    for(let i=1;i<=2;i++){
-
-        const seed =
-            Date.now() +
-            Math.floor(
-                Math.random()*999999
-            );
-
-
-        const encodedPrompt =
-            encodeURIComponent(
-                prompt
-            );
-
-
-        const imageURL =
-            "https://image.pollinations.ai/prompt/" +
-            encodedPrompt +
-            "?width=" +
-            dimensions.width +
-            "&height=" +
-            dimensions.height +
-            "&nologo=true" +
-            "&seed=" +
-            seed;
-
-
-        concepts.push({
-            url:imageURL,
-            prompt:prompt,
-            type:type
-        });
-
-    }
-
-
-    renderResults(
-        concepts
-    );
-
-
-    concepts.forEach(
-        item=>{
-            saveHistory(item);
-        }
-    );
-
-
-    showToast(
-        "2 konsep " +
-        type.toUpperCase() +
-        " dibuat."
-    );
-
-}
-
-
-/* =========================================================
-   RESULT RENDER
-   ========================================================= */
-
-function renderResults(items){
-
-    imageStage.innerHTML = "";
 
     const grid =
         document.createElement(
             "div"
         );
 
+
     grid.className =
         "result-grid";
-
-
-    items.forEach(
-        (item,index)=>{
-
-            const card =
-                document.createElement(
-                    "div"
-                );
-
-            card.className =
-                "result-card";
-
-
-            const img =
-                document.createElement(
-                    "img"
-                );
-
-            img.src =
-                item.url;
-
-            img.alt =
-                "ALFA AI generated design";
-
-
-            img.onerror =
-                function(){
-
-                    this.style.opacity =
-                        ".35";
-
-                };
-
-
-            const actions =
-                document.createElement(
-                    "div"
-                );
-
-            actions.className =
-                "result-actions";
-
-
-            const openBtn =
-                document.createElement(
-                    "button"
-                );
-
-            openBtn.textContent =
-                "↗ Buka";
-
-            openBtn.onclick =
-                function(){
-
-                    window.open(
-                        item.url,
-                        "_blank"
-                    );
-
-                };
-
-
-            const copyBtn =
-                document.createElement(
-                    "button"
-                );
-
-            copyBtn.textContent =
-                "📋 Prompt";
-
-            copyBtn.onclick =
-                async function(){
-
-                    try{
-
-                        await navigator
-                        .clipboard
-                        .writeText(
-                            item.prompt
-                        );
-
-                        showToast(
-                            "Prompt disalin."
-                        );
-
-                    }catch{
-
-                        showToast(
-                            "Clipboard tidak tersedia."
-                        );
-
-                    }
-
-                };
-
-
-            const downloadBtn =
-                document.createElement(
-                    "button"
-                );
-
-            downloadBtn.textContent =
-                "⬇️ Simpan";
-
-            downloadBtn.onclick =
-                function(){
-
-                    window.open(
-                        item.url,
-                        "_blank"
-                    );
-
-                    showToast(
-                        "Gambar dibuka. Simpan dari browser."
-                    );
-
-                };
-
-
-            actions.appendChild(
-                openBtn
-            );
-
-            actions.appendChild(
-                copyBtn
-            );
-
-            actions.appendChild(
-                downloadBtn
-            );
-
-
-            card.appendChild(
-                img
-            );
-
-            card.appendChild(
-                actions
-            );
-
-
-            grid.appendChild(
-                card
-            );
-
-        }
-    );
 
 
     imageStage.appendChild(
         grid
     );
 
+
+    const items = [];
+
+
+    for(
+        let i=0;
+        i<count;
+        i++
+    ){
+
+        const seed =
+            Date.now() +
+            i +
+            Math.floor(
+                Math.random()*100000
+            );
+
+
+        const url =
+            createImageURL(
+                prompt,
+                dimensions,
+                seed
+            );
+
+
+        const item = {
+
+            url:url,
+
+            prompt:prompt,
+
+            type:type,
+
+            index:i
+
+        };
+
+
+        items.push(
+            item
+        );
+
+
+        createResultCard(
+            item,
+            grid
+        );
+
+    }
+
+
+    /*
+       Jangan menunggu semua image.
+       Browser langsung mulai request.
+    */
+
+    items.forEach(
+        item=>{
+
+            const img =
+                new Image();
+
+
+            img.onload =
+                function(){
+
+                    const card =
+                        document.querySelector(
+                            `[data-result-index="${item.index}"]`
+                        );
+
+
+                    if(card){
+
+                        card.classList.remove(
+                            "loading-card"
+                        );
+
+                    }
+
+
+                    showToast(
+                        "🎨 Desain " +
+                        (item.index+1) +
+                        " selesai."
+                    );
+
+                };
+
+
+            img.onerror =
+                function(){
+
+                    const card =
+                        document.querySelector(
+                            `[data-result-index="${item.index}"]`
+                        );
+
+
+                    if(card){
+
+                        card.innerHTML = `
+
+                            <div class="image-error">
+
+                                ⚠️
+                                <br><br>
+
+                                Generator gambar
+                                belum merespons.
+
+                            </div>
+
+                        `;
+
+                    }
+
+                };
+
+
+            img.src =
+                item.url;
+
+        }
+    );
+
+
+    items.forEach(
+        item=>{
+            saveHistory(
+                item
+            );
+        }
+    );
+
+
+    generating =
+        false;
+
+
+    showToast(
+        "⚡ Generator dimulai — gambar muncul saat siap."
+    );
+
+}
+
+
+/* =========================================================
+   RESULT CARD
+========================================================= */
+
+function createResultCard(
+    item,
+    grid
+){
+
+    const card =
+        document.createElement(
+            "div"
+        );
+
+
+    card.className =
+        "result-card loading-card";
+
+
+    card.dataset.resultIndex =
+        item.index;
+
+
+    const img =
+        document.createElement(
+            "img"
+        );
+
+
+    img.alt =
+        "ALFA AI generated design";
+
+
+    img.loading =
+        "eager";
+
+
+    img.style.display =
+        "none";
+
+
+    img.onclick =
+        function(){
+
+            window.open(
+                item.url,
+                "_blank"
+            );
+
+        };
+
+
+    const loading =
+        document.createElement(
+            "div"
+        );
+
+
+    loading.className =
+        "loading";
+
+
+    loading.innerHTML = `
+
+        <div class="spinner"></div>
+
+        <div>
+            AI ${item.type.toUpperCase()}
+        </div>
+
+        <small>
+            Loading...
+        </small>
+
+    `;
+
+
+    const actions =
+        document.createElement(
+            "div"
+        );
+
+
+    actions.className =
+        "result-actions";
+
+
+    const open =
+        document.createElement(
+            "button"
+        );
+
+
+    open.textContent =
+        "↗ Buka";
+
+
+    open.onclick =
+        function(){
+
+            window.open(
+                item.url,
+                "_blank"
+            );
+
+        };
+
+
+    const copy =
+        document.createElement(
+            "button"
+        );
+
+
+    copy.textContent =
+        "📋 Prompt";
+
+
+    copy.onclick =
+        async function(){
+
+            try{
+
+                await navigator
+                .clipboard
+                .writeText(
+                    item.prompt
+                );
+
+
+                showToast(
+                    "Prompt disalin."
+                );
+
+            }catch{
+
+                showToast(
+                    "Clipboard tidak tersedia."
+                );
+
+            }
+
+        };
+
+
+    const save =
+        document.createElement(
+            "button"
+        );
+
+
+    save.textContent =
+        "⬇️ Simpan";
+
+
+    save.onclick =
+        function(){
+
+            window.open(
+                item.url,
+                "_blank"
+            );
+
+
+            showToast(
+                "Gambar dibuka. Simpan dari browser."
+            );
+
+        };
+
+
+    actions.appendChild(
+        open
+    );
+
+    actions.appendChild(
+        copy
+    );
+
+    actions.appendChild(
+        save
+    );
+
+
+    card.appendChild(
+        loading
+    );
+
+    card.appendChild(
+        img
+    );
+
+    card.appendChild(
+        actions
+    );
+
+
+    grid.appendChild(
+        card
+    );
+
+
+    /*
+       Reuse image URL.
+    */
+
+    img.onload =
+        function(){
+
+            loading.remove();
+
+            img.style.display =
+                "block";
+
+            card.classList.remove(
+                "loading-card"
+            );
+
+        };
+
+
+    img.onerror =
+        function(){
+
+            loading.innerHTML = `
+
+                <div class="image-error">
+
+                    ⚠️ Generator gambar
+                    belum merespons.
+
+                    <br><br>
+
+                    Coba generate lagi.
+
+                </div>
+
+            `;
+
+        };
+
+
+    img.src =
+        item.url;
+
 }
 
 
 /* =========================================================
    HISTORY
-   ========================================================= */
+========================================================= */
 
 const HISTORY_KEY =
-    "alfa_ai_v4_design_history";
+    "ALFA_AI_V41_HISTORY";
 
 
 function getHistory(){
@@ -2848,25 +3465,29 @@ function saveHistory(item){
 
 
     history.unshift({
+
         url:item.url,
+
         prompt:item.prompt,
+
         type:item.type,
-        time:new Date()
-        .toLocaleString("id-ID")
+
+        time:
+            new Date()
+            .toLocaleString(
+                "id-ID"
+            )
+
     });
-
-
-    const limited =
-        history.slice(
-            0,
-            20
-        );
 
 
     localStorage.setItem(
         HISTORY_KEY,
         JSON.stringify(
-            limited
+            history.slice(
+                0,
+                20
+            )
         )
     );
 
@@ -2882,21 +3503,26 @@ function renderHistory(){
         getHistory();
 
 
-    gallery.innerHTML = "";
+    gallery.innerHTML =
+        "";
 
 
     if(!history.length){
 
         gallery.innerHTML = `
+
             <div style="
-                color:#64748b;
-                font-size:11px;
                 grid-column:1/-1;
                 text-align:center;
-                padding:30px;
+                color:#64748b;
+                font-size:10px;
+                padding:25px;
             ">
+
                 Belum ada history desain.
+
             </div>
+
         `;
 
         return;
@@ -2912,6 +3538,7 @@ function renderHistory(){
                     "div"
                 );
 
+
             box.className =
                 "gallery-item";
 
@@ -2921,11 +3548,17 @@ function renderHistory(){
                     "img"
                 );
 
+
             img.src =
                 item.url;
 
+
             img.alt =
                 "ALFA AI History";
+
+
+            img.loading =
+                "lazy";
 
 
             img.onclick =
@@ -2944,15 +3577,26 @@ function renderHistory(){
                     "div"
                 );
 
+
             info.className =
                 "gallery-info";
 
-            info.innerHTML =
-                "<small>" +
+
+            const small =
+                document.createElement(
+                    "small"
+                );
+
+
+            small.textContent =
                 item.type.toUpperCase() +
                 " • " +
-                item.time +
-                "</small>";
+                item.time;
+
+
+            info.appendChild(
+                small
+            );
 
 
             box.appendChild(
@@ -2980,18 +3624,17 @@ function clearHistory(){
         !confirm(
             "Hapus semua history desain?"
         )
-    ){
-
+    )
         return;
-
-    }
 
 
     localStorage.removeItem(
         HISTORY_KEY
     );
 
+
     renderHistory();
+
 
     showToast(
         "History dihapus."
@@ -3002,52 +3645,55 @@ function clearHistory(){
 
 /* =========================================================
    CLEAR RESULT
-   ========================================================= */
+========================================================= */
 
 function clearResults(){
 
     imageStage.innerHTML = `
+
         <div class="empty-state">
 
-            <div class="empty-icon">🎨</div>
+            <div class="empty-icon">
+                🎨
+            </div>
 
-            <h4>Canvas siap</h4>
+            <h4>
+                Canvas siap
+            </h4>
 
             <p>
-                Hasil desain akan muncul di sini.
+                Hasil desain akan muncul
+                di sini.
             </p>
 
         </div>
+
     `;
 
 }
 
 
 /* =========================================================
-   INIT
-   ========================================================= */
+   START
+========================================================= */
 
 renderHistory();
 
 
-/* =========================================================
-   WELCOME
-   ========================================================= */
-
 console.log(
-    "ALFA AI V4 DESIGN STUDIO ONLINE"
+    "ALFA AI V4.1 SPEED DESIGN STUDIO ONLINE"
 );
 
 console.log(
-    "Text Chat: READY"
+    "CHAT: READY"
 );
 
 console.log(
-    "Voice Chat: READY"
+    "VOICE: READY"
 );
 
 console.log(
-    "Image Generator: READY"
+    "IMAGE: SPEED MODE"
 );
 
 </script>
