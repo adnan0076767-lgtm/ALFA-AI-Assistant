@@ -2,11 +2,11 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#030712">
 <meta name="color-scheme" content="dark">
 
-<title>ALFA AI V5.6 | COMMUNICATIVE ASSISTANT</title>
+<title>ALFA AI V5.6 | VOICE CHAT PRO</title>
 
 <style>
 *{
@@ -15,19 +15,31 @@
   padding:0;
 }
 
-html,body{
-  width:100%;
-  min-height:100%;
+html{
+  scroll-behavior:smooth;
 }
 
 body{
-  font-family:Inter,Segoe UI,Arial,sans-serif;
+  min-height:100vh;
   background:
-    radial-gradient(circle at 15% 10%,rgba(0,210,255,.14),transparent 30%),
-    radial-gradient(circle at 85% 20%,rgba(125,70,255,.14),transparent 30%),
+    radial-gradient(circle at 20% 10%,rgba(0,229,255,.10),transparent 30%),
+    radial-gradient(circle at 80% 90%,rgba(139,92,246,.12),transparent 35%),
     #030712;
-  color:#eef7ff;
+  color:#e5f7ff;
+  font-family:Inter,Segoe UI,Arial,sans-serif;
   overflow-x:hidden;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(rgba(0,229,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,229,255,.025) 1px,transparent 1px);
+  background-size:40px 40px;
+  mask-image:linear-gradient(to bottom,black,transparent);
 }
 
 button,
@@ -39,286 +51,198 @@ button{
   cursor:pointer;
 }
 
-.bg{
-  position:fixed;
-  inset:0;
-  z-index:-2;
-  overflow:hidden;
-  pointer-events:none;
-}
-
-.grid{
-  position:absolute;
-  inset:0;
-  background-image:
-    linear-gradient(rgba(0,220,255,.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,220,255,.035) 1px,transparent 1px);
-  background-size:45px 45px;
-}
-
-.orb{
-  position:absolute;
-  width:280px;
-  height:280px;
-  border-radius:50%;
-  filter:blur(90px);
-  opacity:.22;
-  animation:float 8s ease-in-out infinite alternate;
-}
-
-.orb1{
-  background:#00d9ff;
-  left:-130px;
-  top:80px;
-}
-
-.orb2{
-  background:#7146ff;
-  right:-130px;
-  top:320px;
-  animation-delay:2s;
-}
-
-@keyframes float{
-  from{transform:translateY(-20px)}
-  to{transform:translateY(35px)}
+.app{
+  width:min(1100px,94%);
+  margin:auto;
+  padding:18px 0 35px;
 }
 
 /* HEADER */
 
-header{
+.header{
   position:sticky;
-  top:0;
-  z-index:50;
-  border-bottom:1px solid rgba(255,255,255,.07);
-  background:rgba(3,7,18,.78);
-  backdrop-filter:blur(18px);
-}
-
-.nav{
-  width:min(1180px,94%);
-  min-height:70px;
-  margin:auto;
+  top:10px;
+  z-index:20;
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:12px;
+  padding:14px 18px;
+  margin-bottom:16px;
+  border:1px solid rgba(0,229,255,.18);
+  border-radius:20px;
+  background:rgba(3,7,18,.82);
+  backdrop-filter:blur(18px);
+  box-shadow:0 0 35px rgba(0,229,255,.07);
 }
 
-.logo{
+.brand{
   display:flex;
   align-items:center;
   gap:11px;
-  font-weight:900;
-  letter-spacing:1px;
 }
 
-.logoBox{
+.logo{
   width:42px;
   height:42px;
   border-radius:13px;
   display:grid;
   place-items:center;
-  font-size:20px;
-  background:linear-gradient(135deg,#00d9ff,#7655ff);
-  box-shadow:0 0 28px rgba(0,217,255,.28);
+  font-size:21px;
+  font-weight:900;
+  color:#001018;
+  background:linear-gradient(135deg,#00e5ff,#8b5cf6);
+  box-shadow:0 0 22px rgba(0,229,255,.3);
 }
 
-.logoText small{
+.brand h1{
+  font-size:17px;
+  letter-spacing:.8px;
+}
+
+.brand small{
   display:block;
-  color:#8195aa;
-  font-size:9px;
-  letter-spacing:2px;
   margin-top:2px;
-}
-
-.online{
-  display:flex;
-  align-items:center;
-  gap:7px;
-  color:#8ea2b7;
+  color:#7dd3fc;
   font-size:11px;
 }
 
-.onlineDot{
+.status{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:#86efac;
+  font-size:11px;
+}
+
+.dot{
   width:8px;
   height:8px;
   border-radius:50%;
-  background:#36ff9a;
-  box-shadow:0 0 13px #36ff9a;
+  background:#22c55e;
+  box-shadow:0 0 12px #22c55e;
 }
 
 /* MAIN */
 
-main{
-  width:min(1180px,94%);
-  margin:auto;
-  padding:50px 0 100px;
-}
-
 .hero{
   text-align:center;
-  max-width:850px;
-  margin:0 auto 35px;
+  padding:18px 8px 15px;
 }
 
-.badge{
-  display:inline-flex;
-  padding:8px 14px;
-  border:1px solid rgba(0,220,255,.22);
-  border-radius:999px;
-  background:rgba(0,220,255,.05);
-  color:#78eaff;
-  font-size:11px;
-  margin-bottom:18px;
-}
-
-h1{
-  font-size:clamp(38px,7vw,70px);
-  line-height:1;
-  letter-spacing:-2px;
-  margin-bottom:18px;
-}
-
-.gradient{
-  background:linear-gradient(
-    90deg,
-    #fff,
-    #63eaff,
-    #9b7cff,
-    #fff
-  );
-  background-size:250%;
+.hero h2{
+  font-size:clamp(27px,5vw,46px);
+  line-height:1.05;
+  background:linear-gradient(90deg,#fff,#67e8f9,#a78bfa);
   -webkit-background-clip:text;
-  background-clip:text;
   color:transparent;
-  animation:shine 7s linear infinite;
-}
-
-@keyframes shine{
-  to{background-position:250%}
+  margin-bottom:10px;
 }
 
 .hero p{
-  color:#91a5b9;
-  line-height:1.7;
+  color:#94a3b8;
+  max-width:720px;
+  margin:auto;
+  line-height:1.6;
   font-size:14px;
-}
-
-/* APP */
-
-.app{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) 290px;
-  gap:18px;
-}
-
-.panel{
-  border:1px solid rgba(255,255,255,.09);
-  border-radius:23px;
-  background:rgba(8,14,29,.78);
-  backdrop-filter:blur(20px);
-  box-shadow:0 25px 80px rgba(0,0,0,.3);
-  overflow:hidden;
 }
 
 /* CHAT */
 
-.chatPanel{
-  min-height:650px;
-  display:flex;
-  flex-direction:column;
+.chat-card{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(0,229,255,.18);
+  border-radius:25px;
+  background:rgba(5,10,25,.78);
+  box-shadow:
+    0 20px 70px rgba(0,0,0,.35),
+    inset 0 0 40px rgba(0,229,255,.025);
 }
 
-.chatHeader{
-  min-height:72px;
-  padding:14px 18px;
+.chat-top{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  border-bottom:1px solid rgba(255,255,255,.07);
+  gap:10px;
+  padding:13px 15px;
+  border-bottom:1px solid rgba(148,163,184,.10);
 }
 
-.aiInfo{
+.ai-info{
   display:flex;
   align-items:center;
-  gap:11px;
+  gap:10px;
 }
 
-.aiAvatar{
-  width:43px;
-  height:43px;
-  border-radius:14px;
+.ai-avatar{
+  width:38px;
+  height:38px;
+  border-radius:12px;
   display:grid;
   place-items:center;
-  background:linear-gradient(
-    135deg,
-    rgba(0,217,255,.18),
-    rgba(118,70,255,.2)
-  );
-  border:1px solid rgba(0,217,255,.22);
-  font-size:20px;
+  background:linear-gradient(135deg,#06b6d4,#7c3aed);
+  box-shadow:0 0 18px rgba(34,211,238,.2);
 }
 
-.aiInfo strong{
-  display:block;
+.ai-info strong{
   font-size:14px;
 }
 
-.aiInfo span{
+.ai-info span{
   display:block;
-  color:#71869c;
+  color:#64748b;
   font-size:10px;
-  margin-top:3px;
+  margin-top:2px;
 }
 
-.headerButtons{
+.top-actions{
   display:flex;
   gap:7px;
 }
 
-.iconBtn{
-  width:40px;
-  height:40px;
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:11px;
-  background:rgba(255,255,255,.035);
-  color:#d9eaff;
-  transition:.2s;
+.small-btn{
+  border:1px solid rgba(148,163,184,.15);
+  background:rgba(15,23,42,.8);
+  color:#cbd5e1;
+  border-radius:10px;
+  padding:8px 10px;
+  font-size:11px;
 }
 
-.iconBtn:hover{
-  transform:translateY(-2px);
-  border-color:rgba(0,217,255,.4);
-  background:rgba(0,217,255,.08);
+.small-btn:hover{
+  border-color:#22d3ee;
+  color:#67e8f9;
 }
+
+/* MESSAGES */
 
 .messages{
-  flex:1;
-  min-height:0;
+  height:clamp(420px,60vh,600px);
   overflow-y:auto;
-  padding:20px;
-  display:flex;
-  flex-direction:column;
-  gap:15px;
+  padding:18px;
   scroll-behavior:smooth;
 }
 
-.message{
-  max-width:87%;
-  display:flex;
-  gap:9px;
-  animation:messageIn .22s ease;
+.messages::-webkit-scrollbar{
+  width:5px;
 }
 
-.message.user{
-  align-self:flex-end;
-  flex-direction:row-reverse;
+.messages::-webkit-scrollbar-thumb{
+  background:#164e63;
+  border-radius:20px;
+}
+
+.message{
+  display:flex;
+  margin-bottom:15px;
+  animation:messageIn .25s ease;
 }
 
 @keyframes messageIn{
   from{
     opacity:0;
-    transform:translateY(7px);
+    transform:translateY(8px);
   }
   to{
     opacity:1;
@@ -326,297 +250,313 @@ h1{
   }
 }
 
-.msgAvatar{
-  flex:0 0 34px;
-  width:34px;
-  height:34px;
-  border-radius:10px;
-  display:grid;
-  place-items:center;
-  background:rgba(255,255,255,.045);
-  border:1px solid rgba(255,255,255,.07);
-  font-size:15px;
-}
-
-.user .msgAvatar{
-  background:rgba(0,210,255,.08);
-  border-color:rgba(0,210,255,.18);
+.message.user{
+  justify-content:flex-end;
 }
 
 .bubble{
-  padding:12px 15px;
+  max-width:min(82%,720px);
+  padding:12px 14px;
   border-radius:17px;
-  background:rgba(255,255,255,.045);
-  border:1px solid rgba(255,255,255,.065);
-  color:#dce8f5;
+  line-height:1.6;
   font-size:14px;
-  line-height:1.65;
   white-space:pre-wrap;
-  overflow-wrap:anywhere;
+  word-break:break-word;
 }
 
-.user .bubble{
-  background:linear-gradient(
-    135deg,
-    rgba(0,180,255,.13),
-    rgba(105,70,255,.14)
-  );
-  border-color:rgba(0,217,255,.18);
+.message.ai .bubble{
+  background:rgba(15,23,42,.9);
+  border:1px solid rgba(34,211,238,.12);
+  color:#dbeafe;
+  border-bottom-left-radius:5px;
+}
+
+.message.user .bubble{
+  background:linear-gradient(135deg,#075985,#312e81);
+  border:1px solid rgba(103,232,249,.15);
+  color:#fff;
+  border-bottom-right-radius:5px;
+}
+
+.message-label{
+  font-size:9px;
+  color:#64748b;
+  margin-bottom:5px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.user .message-label{
+  text-align:right;
 }
 
 /* TYPING */
 
 .typing{
-  display:flex;
-  gap:4px;
+  display:none;
+  padding:0 18px 13px;
+}
+
+.typing.show{
+  display:block;
+}
+
+.typing-box{
+  display:inline-flex;
+  gap:5px;
   align-items:center;
-  height:18px;
+  padding:9px 12px;
+  border-radius:13px;
+  background:#0f172a;
+  color:#64748b;
+  font-size:11px;
 }
 
-.typing span{
-  width:6px;
-  height:6px;
+.typing-box i{
+  width:5px;
+  height:5px;
   border-radius:50%;
-  background:#6feaff;
-  animation:type 1s infinite;
+  background:#22d3ee;
+  animation:typing 1s infinite;
 }
 
-.typing span:nth-child(2){
+.typing-box i:nth-child(2){
   animation-delay:.15s;
 }
 
-.typing span:nth-child(3){
+.typing-box i:nth-child(3){
   animation-delay:.3s;
 }
 
-@keyframes type{
-  0%,60%,100%{
-    opacity:.25;
-    transform:translateY(0);
-  }
-  30%{
-    opacity:1;
-    transform:translateY(-4px);
-  }
+@keyframes typing{
+  0%,60%,100%{opacity:.25;transform:translateY(0)}
+  30%{opacity:1;transform:translateY(-3px)}
 }
 
-/* COMPOSER */
+/* QUICK */
 
-.composer{
-  padding:14px;
-  border-top:1px solid rgba(255,255,255,.07);
-  background:rgba(3,7,18,.42);
+.quick{
+  display:flex;
+  gap:7px;
+  overflow-x:auto;
+  padding:0 15px 12px;
 }
 
-.inputBox{
+.quick button{
+  flex:0 0 auto;
+  border:1px solid rgba(34,211,238,.13);
+  background:rgba(8,47,73,.35);
+  color:#7dd3fc;
+  border-radius:999px;
+  padding:7px 11px;
+  font-size:10px;
+}
+
+/* INPUT */
+
+.input-area{
+  padding:12px;
+  border-top:1px solid rgba(148,163,184,.10);
+  background:rgba(2,6,23,.75);
+}
+
+.input-row{
   display:flex;
   align-items:flex-end;
   gap:8px;
-  padding:8px;
-  border-radius:17px;
-  background:rgba(255,255,255,.035);
-  border:1px solid rgba(255,255,255,.1);
-  transition:.2s;
-}
-
-.inputBox:focus-within{
-  border-color:rgba(0,217,255,.43);
-  box-shadow:0 0 0 3px rgba(0,217,255,.05);
 }
 
 #messageInput{
-  flex:1;
   width:100%;
-  min-height:45px;
+  min-height:48px;
   max-height:150px;
   resize:none;
-  border:0;
-  outline:0;
-  padding:10px;
-  background:transparent;
-  color:#f2f8ff;
-  line-height:1.5;
+  border:1px solid rgba(148,163,184,.15);
+  outline:none;
+  border-radius:15px;
+  padding:13px 14px;
+  color:#e2e8f0;
+  background:#020617;
+  line-height:1.45;
 }
 
-#messageInput::placeholder{
-  color:#62768c;
+#messageInput:focus{
+  border-color:rgba(34,211,238,.45);
+  box-shadow:0 0 0 3px rgba(34,211,238,.05);
 }
 
-.sendBtn{
+.icon-btn{
   flex:0 0 48px;
   width:48px;
   height:48px;
-  border:0;
-  border-radius:14px;
-  background:linear-gradient(135deg,#00bde8,#7655ff);
+  border-radius:15px;
+  border:1px solid rgba(148,163,184,.15);
+  background:#0f172a;
+  color:#cbd5e1;
+  font-size:20px;
+  transition:.2s;
+}
+
+.icon-btn:hover{
+  transform:translateY(-1px);
+  border-color:#22d3ee;
+}
+
+#voiceBtn.listening{
+  color:#fff;
+  border-color:#ef4444;
+  background:rgba(127,29,29,.55);
+  box-shadow:0 0 25px rgba(239,68,68,.25);
+  animation:pulseVoice 1.2s infinite;
+}
+
+@keyframes pulseVoice{
+  50%{
+    box-shadow:0 0 35px rgba(239,68,68,.45);
+  }
+}
+
+#sendBtn{
+  background:linear-gradient(135deg,#0891b2,#6d28d9);
+  border-color:transparent;
   color:white;
-  font-size:18px;
-  box-shadow:0 7px 22px rgba(0,190,255,.18);
-  transition:.2s;
 }
 
-.sendBtn:hover{
-  transform:translateY(-2px);
+/* VOICE PANEL */
+
+.voice-panel{
+  display:none;
+  margin-top:10px;
+  padding:11px 13px;
+  border-radius:14px;
+  border:1px solid rgba(34,211,238,.15);
+  background:rgba(8,47,73,.22);
 }
 
-.sendBtn:active{
-  transform:scale(.94);
-}
-
-.sendBtn:disabled{
-  opacity:.45;
-  cursor:not-allowed;
-  transform:none;
-}
-
-.tools{
+.voice-panel.show{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  padding:7px 4px 0;
-  color:#62768b;
-  font-size:10px;
+  justify-content:space-between;
+  gap:10px;
 }
 
-.voiceBtn{
-  border:0;
-  background:transparent;
-  color:#75eaff;
-  padding:4px;
-}
-
-/* SIDE */
-
-.side{
-  padding:18px;
-}
-
-.side h3{
-  font-size:14px;
-  margin-bottom:9px;
-}
-
-.sideIntro{
-  color:#7e92a7;
-  font-size:11px;
-  line-height:1.6;
-}
-
-.quickList{
-  margin-top:17px;
-  display:grid;
-  gap:8px;
-}
-
-.quick{
-  width:100%;
-  text-align:left;
-  padding:11px 12px;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,.07);
-  background:rgba(255,255,255,.025);
-  color:#cbd9e8;
-  font-size:11px;
-  transition:.2s;
-}
-
-.quick:hover{
-  border-color:rgba(0,217,255,.25);
-  background:rgba(0,217,255,.06);
-}
-
-.features{
-  margin-top:20px;
-  padding-top:17px;
-  border-top:1px solid rgba(255,255,255,.07);
-}
-
-.feature{
+.voice-status{
   display:flex;
+  align-items:center;
   gap:9px;
-  margin:11px 0;
-  color:#7e92a7;
-  font-size:10px;
-  line-height:1.5;
-}
-
-.feature b{
-  color:#dce9f7;
-}
-
-/* TOAST */
-
-.toast{
-  position:fixed;
-  left:50%;
-  bottom:22px;
-  z-index:100;
-  padding:11px 16px;
-  border-radius:12px;
-  background:#101a2b;
-  border:1px solid rgba(0,217,255,.22);
-  color:#dff5ff;
   font-size:11px;
-  opacity:0;
-  pointer-events:none;
-  transform:translate(-50%,20px);
-  transition:.25s;
+  color:#67e8f9;
 }
 
-.toast.show{
-  opacity:1;
-  transform:translate(-50%,0);
+.voice-wave{
+  display:flex;
+  align-items:center;
+  gap:3px;
+  height:20px;
+}
+
+.voice-wave span{
+  width:3px;
+  height:7px;
+  border-radius:4px;
+  background:#22d3ee;
+  animation:wave .7s infinite alternate;
+}
+
+.voice-wave span:nth-child(2){animation-delay:.1s}
+.voice-wave span:nth-child(3){animation-delay:.2s}
+.voice-wave span:nth-child(4){animation-delay:.3s}
+.voice-wave span:nth-child(5){animation-delay:.4s}
+
+@keyframes wave{
+  to{height:18px}
+}
+
+.voice-stop{
+  border:1px solid rgba(248,113,113,.25);
+  color:#fca5a5;
+  background:rgba(127,29,29,.2);
+  border-radius:9px;
+  padding:6px 9px;
+  font-size:10px;
+}
+
+/* FOOTER */
+
+.footer{
+  text-align:center;
+  color:#475569;
+  font-size:10px;
+  padding-top:15px;
 }
 
 /* MOBILE */
 
-@media(max-width:850px){
-
+@media(max-width:650px){
   .app{
-    grid-template-columns:1fr;
+    width:96%;
+    padding-top:8px;
   }
 
-  .side{
-    display:none;
+  .header{
+    top:5px;
+    padding:11px 12px;
+    border-radius:17px;
   }
 
-  .chatPanel{
-    min-height:calc(100vh - 200px);
-  }
-}
-
-@media(max-width:560px){
-
-  .nav{
-    min-height:62px;
+  .brand h1{
+    font-size:14px;
   }
 
-  .online{
-    display:none;
+  .status{
+    font-size:9px;
   }
 
-  main{
-    padding-top:32px;
+  .hero{
+    padding:12px 5px;
   }
 
-  h1{
-    font-size:40px;
+  .hero h2{
+    font-size:28px;
   }
 
-  .message{
-    max-width:94%;
+  .hero p{
+    font-size:12px;
+  }
+
+  .chat-card{
+    border-radius:20px;
   }
 
   .messages{
-    padding:14px;
+    height:55vh;
+    min-height:390px;
+    padding:14px 11px;
   }
 
-  .chatPanel{
-    border-radius:18px;
+  .bubble{
+    max-width:90%;
+    font-size:13px;
   }
 
-  .tools{
-    font-size:9px;
+  .chat-top{
+    padding:11px;
+  }
+
+  .small-btn{
+    padding:7px 8px;
+    font-size:10px;
+  }
+
+  .input-area{
+    padding:9px;
+  }
+
+  .icon-btn{
+    width:44px;
+    height:44px;
+    flex-basis:44px;
+    border-radius:13px;
   }
 }
 </style>
@@ -624,1138 +564,1040 @@ h1{
 
 <body>
 
-<div class="bg">
-  <div class="grid"></div>
-  <div class="orb orb1"></div>
-  <div class="orb orb2"></div>
-</div>
+<div class="app">
 
-<header>
-  <div class="nav">
-
-    <div class="logo">
-      <div class="logoBox">✦</div>
-
-      <div class="logoText">
-        ALFA AI
-        <small>COMMUNICATIVE ASSISTANT</small>
-      </div>
-    </div>
-
-    <div class="online">
-      <span class="onlineDot"></span>
-      AI SYSTEM ONLINE
-    </div>
-
-  </div>
-</header>
-
-<main>
-
-<section class="hero">
-
-  <div class="badge">
-    ⚡ ALFA AI V5.6 COMMUNICATIVE PRO
-  </div>
-
-  <h1>
-    <span class="gradient">Ngobrol.</span><br>
-    Tanya. Bangun Ide.
-  </h1>
-
-  <p>
-    Asisten AI yang dirancang untuk percakapan,
-    brainstorming, coding, website, bisnis,
-    belajar, dan berbagai kebutuhan sehari-hari.
-  </p>
-
-</section>
-
-<section class="app">
-
-<div class="panel chatPanel">
-
-  <div class="chatHeader">
-
-    <div class="aiInfo">
-
-      <div class="aiAvatar">
-        🤖
-      </div>
-
+  <header class="header">
+    <div class="brand">
+      <div class="logo">AI</div>
       <div>
-        <strong>ALFA AI</strong>
-        <span>Ready to communicate</span>
+        <h1>ALFA AI</h1>
+        <small>VOICE CHAT PRO • V5.6</small>
+      </div>
+    </div>
+
+    <div class="status">
+      <span class="dot"></span>
+      ONLINE
+    </div>
+  </header>
+
+  <section class="hero">
+    <h2>Ngobrol Lebih Natural.</h2>
+    <p>
+      Bicara langsung dengan ALFA AI. Tanyakan sesuatu,
+      berdiskusi, minta ide, belajar, coding, atau sekadar ngobrol.
+    </p>
+  </section>
+
+  <main class="chat-card">
+
+    <div class="chat-top">
+
+      <div class="ai-info">
+        <div class="ai-avatar">✦</div>
+        <div>
+          <strong>ALFA AI Assistant</strong>
+          <span>Text + Voice Conversation</span>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <button class="small-btn" onclick="clearChat()">
+          Hapus Chat
+        </button>
       </div>
 
     </div>
 
-    <div class="headerButtons">
+    <div id="messages" class="messages"></div>
 
-      <button
-        type="button"
-        class="iconBtn"
-        id="chatBtn"
-        title="Aktifkan Chat"
-        aria-label="Aktifkan Chat"
-      >
-        💬
-      </button>
-
-      <button
-        type="button"
-        class="iconBtn"
-        id="clearBtn"
-        title="Percakapan baru"
-        aria-label="Percakapan baru"
-      >
-        ↻
-      </button>
-
+    <div id="typing" class="typing">
+      <div class="typing-box">
+        ALFA AI sedang berpikir
+        <i></i><i></i><i></i>
+      </div>
     </div>
 
-  </div>
+    <div class="quick">
+      <button onclick="quickAsk('Jelaskan sesuatu dengan bahasa yang mudah dipahami.')">
+        💡 Jelaskan
+      </button>
 
-  <div
-    class="messages"
-    id="messages"
-  >
+      <button onclick="quickAsk('Bantu saya mencari ide yang kreatif.')">
+        🚀 Cari Ide
+      </button>
 
-    <div class="message ai">
+      <button onclick="quickAsk('Bantu saya membuat sesuatu yang profesional.')">
+        ✨ Buatkan
+      </button>
 
-      <div class="msgAvatar">
-        🤖
+      <button onclick="quickAsk('Mari ngobrol santai.')">
+        💬 Ngobrol
+      </button>
+    </div>
+
+    <div class="input-area">
+
+      <div class="input-row">
+
+        <textarea
+          id="messageInput"
+          placeholder="Ketik pesan atau tekan 🎙️ untuk bicara..."
+          rows="1"
+        ></textarea>
+
+        <button
+          id="voiceBtn"
+          class="icon-btn"
+          title="Voice Chat"
+          onclick="toggleVoice()"
+        >
+          🎙️
+        </button>
+
+        <button
+          id="sendBtn"
+          class="icon-btn"
+          title="Kirim"
+          onclick="sendChat()"
+        >
+          ➤
+        </button>
+
       </div>
 
-      <div class="bubble">
-Halo BOSSS 👋
+      <div id="voicePanel" class="voice-panel">
 
-Saya ALFA AI.
+        <div class="voice-status">
+          <div class="voice-wave">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
 
-Kita bisa ngobrol santai, berdiskusi,
-mencari ide, belajar coding, membangun website,
-membahas bisnis, atau mengembangkan proyek.
+          <span id="voiceStatusText">
+            Mendengarkan...
+          </span>
+        </div>
 
-Saya juga akan mempertahankan konteks percakapan
-agar pembicaraan terasa lebih nyambung.
+        <button
+          class="voice-stop"
+          onclick="stopVoice()"
+        >
+          Berhenti
+        </button>
 
-Silakan mulai ngobrol. 🚀
       </div>
 
     </div>
 
-  </div>
+  </main>
 
-  <div class="composer">
-
-    <div class="inputBox">
-
-      <textarea
-        id="messageInput"
-        rows="1"
-        placeholder="Tulis pesan untuk ALFA AI..."
-        autocomplete="off"
-        spellcheck="true"
-      ></textarea>
-
-      <button
-        type="button"
-        class="sendBtn"
-        id="sendBtn"
-        title="Kirim pesan"
-        aria-label="Kirim pesan"
-      >
-        ➤
-      </button>
-
-    </div>
-
-    <div class="tools">
-
-      <span>
-        Enter = kirim • Shift + Enter = baris baru
-      </span>
-
-      <button
-        type="button"
-        class="voiceBtn"
-        id="voiceBtn"
-      >
-        🎤 Voice
-      </button>
-
-    </div>
-
+  <div class="footer">
+    ALFA AI V5.6 • Natural Voice Conversation
   </div>
 
 </div>
-
-<aside class="panel side">
-
-  <h3>💡 Ayo ngobrol</h3>
-
-  <p class="sideIntro">
-    Klik salah satu topik atau tulis sendiri.
-    ALFA AI akan mencoba mengikuti konteks percakapan.
-  </p>
-
-  <div class="quickList">
-
-    <button type="button" class="quick">
-      Ayo ngobrol santai dengan saya
-    </button>
-
-    <button type="button" class="quick">
-      Bantu saya membuat ide website UMKM
-    </button>
-
-    <button type="button" class="quick">
-      Bantu saya belajar coding dari dasar
-    </button>
-
-    <button type="button" class="quick">
-      Mari brainstorming ide bisnis
-    </button>
-
-    <button type="button" class="quick">
-      Jelaskan teknologi dengan bahasa sederhana
-    </button>
-
-  </div>
-
-  <div class="features">
-
-    <div class="feature">
-      <span>💬</span>
-      <div>
-        <b>Context Chat</b><br>
-        Percakapan sebelumnya ikut dipertahankan.
-      </div>
-    </div>
-
-    <div class="feature">
-      <span>🎤</span>
-      <div>
-        <b>Voice</b><br>
-        Input suara tetap tersedia.
-      </div>
-    </div>
-
-    <div class="feature">
-      <span>🧠</span>
-      <div>
-        <b>Communicative</b><br>
-        Dirancang untuk dialog natural.
-      </div>
-    </div>
-
-    <div class="feature">
-      <span>🌐</span>
-      <div>
-        <b>Reference Ready</b><br>
-        Siap dikembangkan dengan referensi web.
-      </div>
-    </div>
-
-  </div>
-
-</aside>
-
-</section>
-
-</main>
-
-<div
-  class="toast"
-  id="toast"
-></div>
 
 <script>
 
 /* =========================================================
-   ALFA AI V5.6
-   WORKER LAMA — JANGAN DIUBAH
-   ========================================================= */
+   ALFA AI V5.6 VOICE CHAT PRO
+   WORKER TIDAK DIUBAH
+========================================================= */
 
 const CHAT_URL =
-  "https://shrill-haze-a236.adnan0076767.workers.dev/chat";
+"https://shrill-haze-a236.adnan0076767.workers.dev/chat";
+
 
 /* =========================================================
-   ALFA AI PERSONALITY
-   ========================================================= */
+   AI PERSONALITY
+========================================================= */
 
 const SYSTEM_PROMPT = `
-Kamu adalah ALFA AI.
+Kamu adalah ALFA AI, asisten AI yang komunikatif, cerdas,
+ramah, natural, dan memiliki wawasan luas.
 
-Kamu adalah asisten AI yang komunikatif, ramah,
-natural, sabar, dan mudah diajak ngobrol.
+GAYA KOMUNIKASI:
 
-Gunakan bahasa Indonesia jika pengguna menggunakan
-bahasa Indonesia.
+- Gunakan bahasa manusia yang natural.
+- Jangan terdengar seperti robot.
+- Jangan selalu menggunakan format daftar jika tidak diperlukan.
+- Jangan mengulang pertanyaan pengguna.
+- Jangan terlalu formal kecuali pengguna meminta formal.
+- Untuk percakapan santai, jawab dengan santai.
+- Untuk masalah teknis, jawab jelas dan terstruktur.
+- Jika pengguna menggunakan bahasa Indonesia, jawab bahasa Indonesia.
+- Jika pengguna menggunakan bahasa Inggris, ikuti bahasa Inggris.
+- Jika pengguna mencampur bahasa, ikuti gaya pengguna secara natural.
+- Jangan mengatakan "sebagai AI" berulang-ulang.
+- Jangan menggunakan kalimat pembuka generik secara terus-menerus.
+- Berikan jawaban langsung terlebih dahulu.
+- Jika pengguna meminta pendapat, jelaskan alasan secara seimbang.
+- Jika tidak tahu sesuatu, katakan dengan jujur.
+- Jangan mengarang fakta.
 
-Jangan selalu menjawab dengan gaya formal.
-Untuk percakapan santai, gunakan gaya santai dan natural.
+KONTEKS:
 
-Pahami konteks percakapan sebelumnya.
-Jangan mengulang pertanyaan yang sudah dijawab
-jika informasinya masih tersedia dalam percakapan.
+Perhatikan percakapan sebelumnya.
+Jangan menjawab seolah-olah setiap pertanyaan berdiri sendiri.
 
-Kamu dapat membantu pengguna dalam:
-- percakapan umum
-- brainstorming
-- ide bisnis
-- website
-- HTML CSS JavaScript
-- coding
-- desain
-- belajar
-- penulisan
-- teknologi
-- pemecahan masalah
-- perencanaan proyek
+VOICE CONVERSATION:
 
-Jika pengguna sedang mengembangkan proyek,
-bantu secara bertahap dan jangan sengaja menghapus
-atau merusak fitur yang sudah ada.
+Ketika percakapan berasal dari suara:
+- Jawab dengan kalimat yang nyaman didengar.
+- Jangan membuat jawaban terlalu panjang kecuali diperlukan.
+- Gunakan gaya percakapan manusia.
+- Hindari simbol, format rumit, dan tabel jika tidak diperlukan.
+- Buat respons yang enak dibacakan oleh suara.
 
-Jika informasi realtime atau sumber internet diperlukan,
-jangan mengarang sumber.
-Jelaskan bahwa referensi realtime memerlukan akses
-web/search apabila fitur tersebut belum tersedia.
+PENGETAHUAN:
 
-Jawablah secara jelas, relevan, dan manusiawi.
+Gunakan pengetahuan yang tersedia untuk membantu pengguna
+dalam teknologi, programming, website, bisnis, desain,
+AI, edukasi, produktivitas, dan pengetahuan umum.
+
+TUJUAN:
+
+Buat pengguna merasa sedang berbicara dengan asisten yang
+benar-benar memahami konteks percakapan, bukan sekadar
+mesin yang mengeluarkan jawaban.
 `;
 
-/* =========================================================
-   ELEMENT
-   ========================================================= */
-
-const messagesEl =
-  document.getElementById("messages");
-
-const inputEl =
-  document.getElementById("messageInput");
-
-const sendBtn =
-  document.getElementById("sendBtn");
-
-const chatBtn =
-  document.getElementById("chatBtn");
-
-const clearBtn =
-  document.getElementById("clearBtn");
-
-const voiceBtn =
-  document.getElementById("voiceBtn");
-
-const toastEl =
-  document.getElementById("toast");
 
 /* =========================================================
    STATE
-   ========================================================= */
+========================================================= */
 
-const STORAGE_KEY =
-  "ALFA_AI_V56_CONVERSATION";
+let conversation = [];
 
-let history = [];
+let isSending = false;
+let isListening = false;
+let currentUtterance = null;
 
-let busy = false;
+const messagesEl =
+document.getElementById("messages");
 
-/* =========================================================
-   TOAST
-   ========================================================= */
+const inputEl =
+document.getElementById("messageInput");
 
-function showToast(text){
+const typingEl =
+document.getElementById("typing");
 
-  toastEl.textContent = text;
+const voiceBtn =
+document.getElementById("voiceBtn");
 
-  toastEl.classList.add("show");
+const voicePanel =
+document.getElementById("voicePanel");
 
-  clearTimeout(window.alfaToastTimer);
+const voiceStatusText =
+document.getElementById("voiceStatusText");
 
-  window.alfaToastTimer =
-    setTimeout(()=>{
-      toastEl.classList.remove("show");
-    },2200);
-}
-
-/* =========================================================
-   ESCAPE
-   ========================================================= */
-
-function safeText(value){
-
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-}
 
 /* =========================================================
-   ADD MESSAGE
-   ========================================================= */
+   LOAD CHAT
+========================================================= */
 
-function addMessage(
-  role,
-  text,
-  save = true
-){
+function loadChat(){
 
-  const message =
-    document.createElement("div");
+  try{
 
-  message.className =
-    "message " +
-    (role === "user" ? "user" : "ai");
+    const saved =
+    localStorage.getItem("alfa_ai_v56_chat");
 
-  const avatar =
-    document.createElement("div");
+    if(saved){
 
-  avatar.className =
-    "msgAvatar";
+      conversation =
+      JSON.parse(saved);
 
-  avatar.textContent =
-    role === "user" ? "👤" : "🤖";
+    }
 
-  const bubble =
-    document.createElement("div");
+  }catch(e){
 
-  bubble.className =
-    "bubble";
+    conversation = [];
 
-  bubble.innerHTML =
-    safeText(text);
+  }
 
-  message.appendChild(avatar);
+  if(!conversation.length){
 
-  message.appendChild(bubble);
+    addMessage(
+      "ai",
+      "Halo bosss 👋 Saya ALFA AI. Kita bisa ngobrol lewat teks atau suara. Mau bahas apa hari ini?"
+    );
 
-  messagesEl.appendChild(message);
+  }else{
 
-  messagesEl.scrollTop =
-    messagesEl.scrollHeight;
+    conversation.forEach(item=>{
 
-  if(save){
+      if(item.role==="user"){
+        renderMessage("user",item.content);
+      }
 
-    history.push({
-      role:
-        role === "user"
-          ? "user"
-          : "assistant",
+      if(item.role==="assistant"){
+        renderMessage("ai",item.content);
+      }
 
-      content:
-        String(text)
     });
 
-    saveHistory();
   }
+
+  scrollBottom();
 }
+
 
 /* =========================================================
-   TYPING
-   ========================================================= */
+   SAVE CHAT
+========================================================= */
 
-function showTyping(){
-
-  const message =
-    document.createElement("div");
-
-  message.className =
-    "message ai";
-
-  message.id =
-    "alfaTyping";
-
-  message.innerHTML = `
-    <div class="msgAvatar">🤖</div>
-
-    <div class="bubble">
-
-      <div class="typing">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-    </div>
-  `;
-
-  messagesEl.appendChild(message);
-
-  messagesEl.scrollTop =
-    messagesEl.scrollHeight;
-}
-
-function hideTyping(){
-
-  const typing =
-    document.getElementById("alfaTyping");
-
-  if(typing){
-    typing.remove();
-  }
-}
-
-/* =========================================================
-   HISTORY
-   ========================================================= */
-
-function saveHistory(){
+function saveChat(){
 
   try{
 
     localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify(
-        history.slice(-30)
-      )
+      "alfa_ai_v56_chat",
+      JSON.stringify(conversation.slice(-30))
     );
 
-  }catch(error){
+  }catch(e){}
 
-    console.warn(
-      "History tidak tersimpan:",
-      error
-    );
-
-  }
 }
 
-function loadHistory(){
 
-  try{
+/* =========================================================
+   RENDER
+========================================================= */
 
-    const raw =
-      localStorage.getItem(STORAGE_KEY);
+function renderMessage(role,text){
 
-    if(!raw){
-      return;
-    }
+  const wrapper =
+  document.createElement("div");
 
-    const saved =
-      JSON.parse(raw);
+  wrapper.className =
+  "message " + role;
 
-    if(!Array.isArray(saved)){
-      return;
-    }
+  const box =
+  document.createElement("div");
 
-    history =
-      saved.slice(-30);
+  const label =
+  document.createElement("div");
 
-    if(history.length){
+  label.className =
+  "message-label";
 
-      messagesEl.innerHTML = "";
+  label.textContent =
+  role==="user" ? "Kamu" : "ALFA AI";
 
-      history.forEach(item=>{
+  const bubble =
+  document.createElement("div");
 
-        if(
-          !item ||
-          !item.content
-        ){
-          return;
-        }
+  bubble.className="bubble";
 
-        addMessage(
-          item.role === "user"
-            ? "user"
-            : "ai",
-          item.content,
-          false
-        );
+  bubble.textContent=text;
 
-      });
+  box.appendChild(label);
+  box.appendChild(bubble);
 
-    }
+  wrapper.appendChild(box);
 
-  }catch(error){
-
-    console.warn(
-      "History tidak dapat dimuat:",
-      error
-    );
-
-    history = [];
-
-  }
+  messagesEl.appendChild(wrapper);
 }
 
+
 /* =========================================================
-   AUTO RESIZE
-   ========================================================= */
+   ADD MESSAGE
+========================================================= */
 
-function resizeInput(){
+function addMessage(role,text){
 
-  inputEl.style.height =
-    "auto";
+  renderMessage(role,text);
 
-  inputEl.style.height =
-    Math.min(
-      inputEl.scrollHeight,
-      150
-    ) + "px";
+  scrollBottom();
 }
 
-inputEl.addEventListener(
-  "input",
-  resizeInput
-);
 
 /* =========================================================
-   RESPONSE PARSER
-   ========================================================= */
+   SCROLL
+========================================================= */
 
-function getReply(data){
+function scrollBottom(){
 
-  if(typeof data === "string"){
-    return data;
-  }
-
-  if(!data || typeof data !== "object"){
-    return "";
-  }
-
-  if(typeof data.reply === "string"){
-    return data.reply;
-  }
-
-  if(typeof data.response === "string"){
-    return data.response;
-  }
-
-  if(typeof data.message === "string"){
-    return data.message;
-  }
-
-  if(typeof data.answer === "string"){
-    return data.answer;
-  }
-
-  if(typeof data.text === "string"){
-    return data.text;
-  }
-
-  if(
-    data.result &&
-    typeof data.result === "string"
-  ){
-    return data.result;
-  }
-
-  if(
-    data.result &&
-    typeof data.result === "object"
-  ){
-
-    if(typeof data.result.reply === "string"){
-      return data.result.reply;
-    }
-
-    if(typeof data.result.response === "string"){
-      return data.result.response;
-    }
-
-    if(typeof data.result.message === "string"){
-      return data.result.message;
-    }
-  }
-
-  if(
-    Array.isArray(data.choices) &&
-    data.choices[0]
-  ){
-
-    const choice =
-      data.choices[0];
-
-    if(
-      choice.message &&
-      typeof choice.message.content === "string"
-    ){
-      return choice.message.content;
-    }
-
-    if(
-      typeof choice.text === "string"
-    ){
-      return choice.text;
-    }
-  }
-
-  return "";
-}
-
-/* =========================================================
-   CALL WORKER
-   ========================================================= */
-
-async function askALFA(userText){
-
-  /*
-   Konteks percakapan.
-   Maksimal 20 pesan terakhir supaya request
-   tidak terlalu besar.
-  */
-
-  const messages = [
-    {
-      role:"system",
-      content:SYSTEM_PROMPT
-    },
-
-    ...history
-      .slice(-20)
-      .map(item=>({
-        role:
-          item.role === "assistant"
-            ? "assistant"
-            : "user",
-
-        content:
-          item.content
-      })),
-
-    {
-      role:"user",
-      content:userText
-    }
-  ];
-
-  const response =
-    await fetch(
-      CHAT_URL,
-      {
-        method:"POST",
-
-        headers:{
-          "Content-Type":
-            "application/json"
-        },
-
-        body:JSON.stringify({
-
-          action:"chat",
-
-          message:userText,
-
-          prompt:userText,
-
-          messages:messages
-
-        })
-      }
-    );
-
-  const raw =
-    await response.text();
-
-  let data;
-
-  try{
-
-    data =
-      JSON.parse(raw);
-
-  }catch{
-
-    data =
-      raw;
-
-  }
-
-  if(!response.ok){
-
-    let errorMessage =
-      "";
-
-    if(
-      data &&
-      typeof data === "object"
-    ){
-
-      errorMessage =
-        data.error ||
-        data.message ||
-        data.reply ||
-        "";
-
-    }else{
-
-      errorMessage =
-        String(data);
-
-    }
-
-    throw new Error(
-      errorMessage ||
-      "Worker HTTP " +
-      response.status
-    );
-  }
-
-  const reply =
-    getReply(data);
-
-  if(!reply){
-
-    console.error(
-      "RAW WORKER RESPONSE:",
-      data
-    );
-
-    throw new Error(
-      "Worker merespons tetapi format reply tidak dikenali."
-    );
-  }
-
-  return reply;
-}
-
-/* =========================================================
-   SEND MESSAGE
-   ========================================================= */
-
-async function sendMessage(){
-
-  if(busy){
-    return;
-  }
-
-  const text =
-    inputEl.value.trim();
-
-  if(!text){
-
-    inputEl.focus();
-
-    return;
-  }
-
-  busy = true;
-
-  sendBtn.disabled = true;
-
-  inputEl.disabled = true;
-
-  addMessage(
-    "user",
-    text,
-    true
-  );
-
-  inputEl.value = "";
-
-  resizeInput();
-
-  showTyping();
-
-  try{
-
-    const reply =
-      await askALFA(text);
-
-    hideTyping();
-
-    addMessage(
-      "ai",
-      reply,
-      true
-    );
-
-  }catch(error){
-
-    hideTyping();
-
-    console.error(
-      "ALFA AI ERROR:",
-      error
-    );
-
-    addMessage(
-      "ai",
-      "Maaf BOSSS, ALFA AI belum bisa mendapatkan jawaban.\n\n" +
-      "Detail: " +
-      (
-        error?.message ||
-        "Unknown error"
-      ),
-      true
-    );
-
-    showToast(
-      "Terjadi kendala koneksi AI"
-    );
-
-  }finally{
-
-    busy = false;
-
-    sendBtn.disabled = false;
-
-    inputEl.disabled = false;
-
-    inputEl.focus();
-  }
-}
-
-/* =========================================================
-   SEND BUTTON
-   ========================================================= */
-
-sendBtn.addEventListener(
-  "click",
-  function(event){
-
-    event.preventDefault();
-
-    sendMessage();
-
-  }
-);
-
-/* =========================================================
-   ENTER
-   ========================================================= */
-
-inputEl.addEventListener(
-  "keydown",
-  function(event){
-
-    if(
-      event.key === "Enter" &&
-      !event.shiftKey
-    ){
-
-      event.preventDefault();
-
-      sendMessage();
-
-    }
-
-  }
-);
-
-/* =========================================================
-   CHAT ICON
-   ========================================================= */
-
-chatBtn.addEventListener(
-  "click",
-  function(event){
-
-    event.preventDefault();
-
-    inputEl.focus();
+  requestAnimationFrame(()=>{
 
     messagesEl.scrollTop =
-      messagesEl.scrollHeight;
-
-    showToast(
-      "Chat ALFA AI siap digunakan"
-    );
-
-  }
-);
-
-/* =========================================================
-   CLEAR CHAT
-   ========================================================= */
-
-clearBtn.addEventListener(
-  "click",
-  function(event){
-
-    event.preventDefault();
-
-    if(
-      !confirm(
-        "Mulai percakapan baru?"
-      )
-    ){
-      return;
-    }
-
-    history = [];
-
-    localStorage.removeItem(
-      STORAGE_KEY
-    );
-
-    messagesEl.innerHTML = "";
-
-    addMessage(
-      "ai",
-      "Percakapan baru dimulai, BOSSS 👋\n\n" +
-      "Ayo ngobrol. Apa yang ingin kita bahas?",
-      false
-    );
-
-    showToast(
-      "Percakapan baru"
-    );
-
-    inputEl.focus();
-
-  }
-);
-
-/* =========================================================
-   QUICK CHAT
-   ========================================================= */
-
-document
-  .querySelectorAll(".quick")
-  .forEach(button=>{
-
-    button.addEventListener(
-      "click",
-      function(){
-
-        inputEl.value =
-          this.textContent.trim();
-
-        resizeInput();
-
-        inputEl.focus();
-
-        sendMessage();
-
-      }
-    );
+    messagesEl.scrollHeight;
 
   });
 
+}
+
+
 /* =========================================================
-   VOICE INPUT
-   ========================================================= */
+   SEND CHAT
+========================================================= */
+
+async function sendChat(){
+
+  if(isSending) return;
+
+  const message =
+  inputEl.value.trim();
+
+  if(!message) return;
+
+  stopSpeaking();
+
+  inputEl.value="";
+
+  inputEl.style.height="48px";
+
+  addMessage("user",message);
+
+  conversation.push({
+    role:"user",
+    content:message
+  });
+
+  saveChat();
+
+  isSending=true;
+
+  typingEl.classList.add("show");
+
+  try{
+
+    const response =
+    await fetch(CHAT_URL,{
+
+      method:"POST",
+
+      headers:{
+        "Content-Type":"application/json"
+      },
+
+      body:JSON.stringify({
+
+        action:"chat",
+
+        message:message,
+
+        prompt:SYSTEM_PROMPT,
+
+        messages:conversation.slice(-20)
+
+      })
+
+    });
+
+
+    const raw =
+    await response.text();
+
+
+    let data;
+
+    try{
+
+      data=JSON.parse(raw);
+
+    }catch(e){
+
+      throw new Error(
+        "Response Worker bukan JSON."
+      );
+
+    }
+
+
+    if(!response.ok){
+
+      throw new Error(
+        data.error ||
+        data.message ||
+        "Worker HTTP " + response.status
+      );
+
+    }
+
+
+    let reply =
+      data.reply ??
+      data.response ??
+      data.message ??
+      data.result ??
+      data.text ??
+      data.content;
+
+
+    if(typeof reply==="object" && reply!==null){
+
+      reply =
+      reply.text ??
+      reply.content ??
+      reply.reply ??
+      JSON.stringify(reply);
+
+    }
+
+
+    if(!reply){
+
+      throw new Error(
+        "Response AI tidak ditemukan."
+      );
+
+    }
+
+
+    reply=String(reply).trim();
+
+
+    conversation.push({
+
+      role:"assistant",
+
+      content:reply
+
+    });
+
+    saveChat();
+
+    addMessage("ai",reply);
+
+    /* VOICE RESPONSE */
+
+    speakReply(reply);
+
+
+  }catch(error){
+
+    console.error(error);
+
+    const errorText =
+      "Maaf bosss, koneksi ke ALFA AI sedang bermasalah.\n\n" +
+      "Detail: " + error.message;
+
+    addMessage("ai",errorText);
+
+  }finally{
+
+    isSending=false;
+
+    typingEl.classList.remove("show");
+
+  }
+
+}
+
+
+/* =========================================================
+   ENTER SEND
+========================================================= */
+
+inputEl.addEventListener(
+  "keydown",
+  function(e){
+
+    if(e.key==="Enter" && !e.shiftKey){
+
+      e.preventDefault();
+
+      sendChat();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   AUTO TEXTAREA
+========================================================= */
+
+inputEl.addEventListener(
+  "input",
+  function(){
+
+    this.style.height="auto";
+
+    this.style.height =
+      Math.min(this.scrollHeight,150) + "px";
+
+  }
+);
+
+
+/* =========================================================
+   QUICK ASK
+========================================================= */
+
+function quickAsk(text){
+
+  inputEl.value=text;
+
+  inputEl.focus();
+
+  sendChat();
+
+}
+
+
+/* =========================================================
+   CLEAR CHAT
+========================================================= */
+
+function clearChat(){
+
+  stopSpeaking();
+
+  if(!confirm("Hapus seluruh percakapan?")) return;
+
+  conversation=[];
+
+  localStorage.removeItem(
+    "alfa_ai_v56_chat"
+  );
+
+  messagesEl.innerHTML="";
+
+  addMessage(
+    "ai",
+    "Chat sudah dibersihkan. Kita mulai percakapan baru 👋"
+  );
+
+}
+
+
+/* =========================================================
+   SPEECH RECOGNITION
+========================================================= */
 
 const SpeechRecognition =
-  window.SpeechRecognition ||
-  window.webkitSpeechRecognition;
+window.SpeechRecognition ||
+window.webkitSpeechRecognition;
 
-let recognition = null;
+let recognition=null;
 
 if(SpeechRecognition){
 
   recognition =
-    new SpeechRecognition();
+  new SpeechRecognition();
 
-  recognition.lang =
-    "id-ID";
+  recognition.lang="id-ID";
 
-  recognition.continuous =
-    false;
+  recognition.continuous=false;
 
-  recognition.interimResults =
-    false;
+  recognition.interimResults=true;
 
-  recognition.onstart =
-    function(){
+  recognition.maxAlternatives=1;
 
-      voiceBtn.textContent =
-        "🔴 Mendengarkan...";
 
-      showToast(
-        "Silakan bicara..."
-      );
+  recognition.onstart=function(){
 
-    };
+    isListening=true;
 
-  recognition.onresult =
-    function(event){
+    voiceBtn.classList.add("listening");
+
+    voicePanel.classList.add("show");
+
+    voiceStatusText.textContent =
+      "Mendengarkan suara kamu...";
+
+  };
+
+
+  recognition.onresult=function(event){
+
+    let finalText="";
+
+    let interimText="";
+
+    for(
+      let i=event.resultIndex;
+      i<event.results.length;
+      i++
+    ){
 
       const transcript =
-        event
-          .results?.[0]?.[0]
-          ?.transcript ||
-        "";
+      event.results[i][0].transcript;
 
-      if(transcript){
+      if(event.results[i].isFinal){
 
-        inputEl.value =
-          transcript;
+        finalText += transcript;
 
-        resizeInput();
+      }else{
 
-        inputEl.focus();
-
-      }
-
-    };
-
-  recognition.onerror =
-    function(event){
-
-      console.warn(
-        "VOICE ERROR:",
-        event.error
-      );
-
-      showToast(
-        "Voice mengalami kendala"
-      );
-
-    };
-
-  recognition.onend =
-    function(){
-
-      voiceBtn.textContent =
-        "🎤 Voice";
-
-    };
-
-  voiceBtn.addEventListener(
-    "click",
-    function(){
-
-      if(busy){
-        return;
-      }
-
-      try{
-
-        recognition.start();
-
-      }catch(error){
-
-        console.warn(error);
+        interimText += transcript;
 
       }
 
     }
-  );
 
-}else{
 
-  voiceBtn.addEventListener(
-    "click",
-    function(){
+    if(finalText){
 
-      showToast(
-        "Browser belum mendukung Voice Input"
+      inputEl.value =
+      finalText.trim();
+
+      inputEl.dispatchEvent(
+        new Event("input")
+      );
+
+    }else if(interimText){
+
+      voiceStatusText.textContent =
+        "Mendengar: " + interimText;
+
+    }
+
+  };
+
+
+  recognition.onerror=function(event){
+
+    console.warn(
+      "Speech recognition:",
+      event.error
+    );
+
+    isListening=false;
+
+    voiceBtn.classList.remove("listening");
+
+    voicePanel.classList.remove("show");
+
+
+    if(event.error==="not-allowed"){
+
+      addMessage(
+        "ai",
+        "Izin microphone belum diberikan. Izinkan microphone di browser lalu tekan tombol 🎙️ lagi."
       );
 
     }
-  );
+
+  };
+
+
+  recognition.onend=function(){
+
+    isListening=false;
+
+    voiceBtn.classList.remove("listening");
+
+    voicePanel.classList.remove("show");
+
+
+    const text =
+      inputEl.value.trim();
+
+
+    if(text && !isSending){
+
+      sendChat();
+
+    }
+
+  };
 
 }
 
+
 /* =========================================================
-   START
-   ========================================================= */
+   START / STOP VOICE
+========================================================= */
 
-loadHistory();
+function toggleVoice(){
 
-resizeInput();
+  stopSpeaking();
 
-inputEl.focus();
 
-console.log(
-  "ALFA AI V5.6 COMMUNICATIVE PRO READY"
-);
+  if(!SpeechRecognition){
+
+    addMessage(
+      "ai",
+      "Browser ini belum mendukung Voice Chat. Gunakan Chrome atau browser yang mendukung microphone."
+    );
+
+    return;
+
+  }
+
+
+  if(isListening){
+
+    stopVoice();
+
+  }else{
+
+    startVoice();
+
+  }
+
+}
+
+
+function startVoice(){
+
+  if(!recognition) return;
+
+  if(isSending) return;
+
+  try{
+
+    inputEl.value="";
+
+    recognition.lang=
+      detectLanguage();
+
+    recognition.start();
+
+  }catch(error){
+
+    console.warn(error);
+
+  }
+
+}
+
+
+function stopVoice(){
+
+  if(recognition){
+
+    try{
+
+      recognition.stop();
+
+    }catch(e){}
+
+  }
+
+  isListening=false;
+
+  voiceBtn.classList.remove("listening");
+
+  voicePanel.classList.remove("show");
+
+}
+
+
+/* =========================================================
+   LANGUAGE DETECTION
+========================================================= */
+
+function detectLanguage(){
+
+  const text =
+    inputEl.value.trim();
+
+  if(/[a-zA-Z]/.test(text)){
+
+    return "id-ID";
+
+  }
+
+  return "id-ID";
+
+}
+
+
+/* =========================================================
+   TEXT TO SPEECH
+========================================================= */
+
+function speakReply(text){
+
+  if(!("speechSynthesis" in window)){
+
+    return;
+
+  }
+
+
+  stopSpeaking();
+
+
+  /*
+    Bersihkan beberapa format markdown
+    supaya suara terdengar lebih natural.
+  */
+
+  let speechText =
+    text
+      .replace(/```[\s\S]*?```/g," ")
+      .replace(/[*_#>`]/g,"")
+      .replace(/\[([^\]]+)\]\([^)]+\)/g,"$1")
+      .replace(/\n+/g,". ")
+      .replace(/\s+/g," ")
+      .trim();
+
+
+  if(!speechText) return;
+
+
+  /*
+    Jangan membacakan jawaban yang terlalu panjang
+    sekaligus. Pecah berdasarkan kalimat.
+  */
+
+  const parts =
+    speechText.match(
+      /[^.!?]+[.!?]+|[^.!?]+$/g
+    ) || [speechText];
+
+
+  let index=0;
+
+
+  function speakNext(){
+
+    if(index>=parts.length){
+
+      currentUtterance=null;
+
+      return;
+
+    }
+
+
+    const part =
+      parts[index++].trim();
+
+
+    if(!part){
+
+      speakNext();
+
+      return;
+
+    }
+
+
+    const utterance =
+      new SpeechSynthesisUtterance(part);
+
+
+    utterance.lang =
+      detectSpeechLanguage(part);
+
+    utterance.rate=.98;
+
+    utterance.pitch=1.02;
+
+    utterance.volume=1;
+
+
+    const voices =
+      window.speechSynthesis.getVoices();
+
+
+    const preferred =
+      voices.find(v=>
+        v.lang &&
+        v.lang.toLowerCase()
+        .startsWith("id")
+      );
+
+
+    if(preferred){
+
+      utterance.voice=preferred;
+
+    }
+
+
+    utterance.onend=function(){
+
+      speakNext();
+
+    };
+
+
+    utterance.onerror=function(){
+
+      currentUtterance=null;
+
+    };
+
+
+    currentUtterance=utterance;
+
+    window.speechSynthesis.speak(
+      utterance
+    );
+
+  }
+
+
+  speakNext();
+
+}
+
+
+/* =========================================================
+   SPEECH LANGUAGE
+========================================================= */
+
+function detectSpeechLanguage(text){
+
+  /*
+    Indonesia sebagai default.
+    Jika terlihat jelas ada bahasa Inggris,
+    gunakan English.
+  */
+
+  const englishWords =
+    /\b(the|this|that|what|why|how|can|could|would|please|hello|thanks|thank|you|website|code|programming)\b/i;
+
+  if(englishWords.test(text)){
+
+    return "en-US";
+
+  }
+
+  return "id-ID";
+
+}
+
+
+/* =========================================================
+   STOP SPEAKING
+========================================================= */
+
+function stopSpeaking(){
+
+  if(
+    "speechSynthesis" in window
+  ){
+
+    window.speechSynthesis.cancel();
+
+  }
+
+  currentUtterance=null;
+
+}
+
+
+/* =========================================================
+   LOAD VOICES
+========================================================= */
+
+if("speechSynthesis" in window){
+
+  window.speechSynthesis.onvoiceschanged=
+    function(){};
+
+}
+
+
+/* =========================================================
+   INIT
+========================================================= */
+
+loadChat();
 
 </script>
 
