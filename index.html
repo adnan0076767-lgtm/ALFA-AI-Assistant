@@ -1,11 +1,16 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#030712">
+<meta name="color-scheme" content="dark">
 
-<title>ALFA AI V5.3.1 | AI CHAT • VOICE • IMAGE</title>
+<title>ALFA AI V5.3.2 | CHAT • VOICE • IMAGE</title>
+
+<meta name="description" content="ALFA AI futuristic assistant dengan AI Chat, Voice Chat dan Image Pro.">
+<meta name="robots" content="index,follow">
 
 <style>
 *{
@@ -14,59 +19,115 @@
   padding:0;
 }
 
-:root{
-  --bg:#030712;
-  --panel:#0b1220;
-  --panel2:#111827;
-  --line:rgba(56,189,248,.18);
-  --cyan:#22d3ee;
-  --blue:#3b82f6;
-  --purple:#a855f7;
-  --green:#22c55e;
-  --text:#f8fafc;
-  --muted:#94a3b8;
-  --danger:#ef4444;
-  --shadow:0 0 35px rgba(34,211,238,.12);
+html{
+  scroll-behavior:smooth;
 }
 
 body{
   min-height:100vh;
   font-family:Inter,Segoe UI,Arial,sans-serif;
-  color:var(--text);
   background:
-    radial-gradient(circle at 15% 10%,rgba(59,130,246,.13),transparent 28%),
-    radial-gradient(circle at 85% 20%,rgba(168,85,247,.12),transparent 28%),
-    linear-gradient(135deg,#020617,#030712 50%,#07111f);
+    radial-gradient(circle at 15% 10%,rgba(0,212,255,.12),transparent 30%),
+    radial-gradient(circle at 85% 20%,rgba(124,58,237,.14),transparent 32%),
+    radial-gradient(circle at 50% 100%,rgba(0,255,170,.06),transparent 35%),
+    #030712;
+  color:#e5f6ff;
   overflow-x:hidden;
 }
 
-body:before{
-  content:"";
+button,
+textarea,
+input,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+::selection{
+  background:#00d9ff;
+  color:#001018;
+}
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+.bg{
   position:fixed;
   inset:0;
   pointer-events:none;
+  overflow:hidden;
+  z-index:0;
+}
+
+.grid{
+  position:absolute;
+  inset:0;
   background-image:
-    linear-gradient(rgba(34,211,238,.025) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(34,211,238,.025) 1px,transparent 1px);
-  background-size:40px 40px;
+    linear-gradient(rgba(0,220,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,220,255,.035) 1px,transparent 1px);
+  background-size:45px 45px;
   mask-image:linear-gradient(to bottom,black,transparent);
 }
 
-.container{
-  width:min(1180px,94%);
-  margin:auto;
+.orb{
+  position:absolute;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  filter:blur(70px);
+  opacity:.13;
+  animation:floatOrb 9s ease-in-out infinite alternate;
 }
+
+.orb.one{
+  top:5%;
+  left:-70px;
+  background:#00d9ff;
+}
+
+.orb.two{
+  right:-80px;
+  top:35%;
+  background:#8b5cf6;
+  animation-delay:2s;
+}
+
+.orb.three{
+  bottom:-100px;
+  left:35%;
+  background:#00ffa6;
+  animation-delay:4s;
+}
+
+@keyframes floatOrb{
+  from{
+    transform:translateY(-20px) scale(1);
+  }
+  to{
+    transform:translateY(30px) scale(1.15);
+  }
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
 
 header{
   position:sticky;
   top:0;
   z-index:50;
+  border-bottom:1px solid rgba(0,220,255,.12);
+  background:rgba(3,7,18,.78);
   backdrop-filter:blur(18px);
-  background:rgba(3,7,18,.82);
-  border-bottom:1px solid var(--line);
 }
 
-.nav{
+.header-inner{
+  width:min(1180px,94%);
+  margin:auto;
   min-height:72px;
   display:flex;
   align-items:center;
@@ -77,41 +138,78 @@ header{
 .logo{
   display:flex;
   align-items:center;
-  gap:11px;
-  font-size:20px;
+  gap:12px;
   font-weight:900;
-  letter-spacing:.5px;
+  letter-spacing:1px;
 }
 
 .logo-icon{
   width:42px;
   height:42px;
+  border-radius:13px;
   display:grid;
   place-items:center;
-  border-radius:14px;
-  background:linear-gradient(135deg,var(--cyan),var(--blue),var(--purple));
-  box-shadow:0 0 25px rgba(34,211,238,.3);
+  background:linear-gradient(135deg,#00d9ff,#7c3aed);
+  color:white;
+  box-shadow:
+    0 0 20px rgba(0,217,255,.28),
+    inset 0 0 15px rgba(255,255,255,.12);
+}
+
+.logo-text{
+  line-height:1.05;
+}
+
+.logo-text strong{
+  display:block;
+  font-size:16px;
+}
+
+.logo-text span{
+  display:block;
+  margin-top:4px;
+  color:#6ee7ff;
+  font-size:10px;
+  letter-spacing:2px;
 }
 
 .status{
   display:flex;
   align-items:center;
   gap:7px;
+  color:#7ee7c2;
   font-size:12px;
-  color:#86efac;
 }
 
-.dot{
+.status-dot{
   width:8px;
   height:8px;
   border-radius:50%;
-  background:#22c55e;
-  box-shadow:0 0 12px #22c55e;
+  background:#00ffa6;
+  box-shadow:0 0 12px #00ffa6;
+  animation:pulse 1.7s infinite;
+}
+
+@keyframes pulse{
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:.45;transform:scale(.75)}
+}
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+main{
+  position:relative;
+  z-index:1;
+  width:min(1180px,94%);
+  margin:0 auto;
+  padding:35px 0 70px;
 }
 
 .hero{
   text-align:center;
-  padding:65px 0 35px;
+  padding:20px 10px 28px;
 }
 
 .badge{
@@ -119,429 +217,641 @@ header{
   align-items:center;
   gap:8px;
   padding:8px 14px;
-  border:1px solid rgba(34,211,238,.25);
+  border:1px solid rgba(0,220,255,.2);
   border-radius:999px;
-  color:#67e8f9;
-  background:rgba(34,211,238,.06);
-  font-size:12px;
+  background:rgba(0,220,255,.06);
+  color:#77e9ff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1.2px;
   margin-bottom:18px;
 }
 
 .hero h1{
-  font-size:clamp(38px,7vw,76px);
-  line-height:.95;
-  font-weight:1000;
-  letter-spacing:-3px;
-  background:linear-gradient(90deg,#fff,#67e8f9,#818cf8,#c084fc,#fff);
-  background-size:300%;
+  font-size:clamp(32px,6vw,65px);
+  line-height:1;
+  font-weight:950;
+  letter-spacing:-2px;
+  background:linear-gradient(90deg,#fff,#6ee7ff,#a78bfa,#fff);
+  background-size:250% auto;
   -webkit-background-clip:text;
+  background-clip:text;
   color:transparent;
-  animation:gradient 8s linear infinite;
+  animation:shine 5s linear infinite;
 }
 
-@keyframes gradient{
-  0%{background-position:0}
-  100%{background-position:300%}
+@keyframes shine{
+  to{background-position:250% center}
 }
 
 .hero p{
   max-width:720px;
-  margin:22px auto 0;
-  color:var(--muted);
+  margin:17px auto 0;
+  color:#8ca7b7;
   line-height:1.7;
+  font-size:14px;
 }
 
-.dashboard{
-  margin:25px auto 60px;
-  padding:18px;
-  border:1px solid var(--line);
-  border-radius:28px;
-  background:rgba(11,18,32,.75);
-  box-shadow:var(--shadow);
-  backdrop-filter:blur(20px);
-}
+/* =========================================================
+   MODE BUTTONS
+   ========================================================= */
 
-.modes{
+.mode-bar{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:10px;
-  margin-bottom:18px;
+  margin:10px 0 22px;
 }
 
-.mode{
-  border:1px solid rgba(148,163,184,.14);
-  background:rgba(15,23,42,.8);
-  color:#cbd5e1;
-  padding:15px;
+.mode-btn{
+  border:1px solid rgba(0,220,255,.13);
+  background:rgba(7,15,30,.8);
+  color:#7893a4;
   border-radius:16px;
-  cursor:pointer;
+  padding:15px 10px;
   transition:.25s;
   font-weight:800;
 }
 
-.mode:hover{
+.mode-btn:hover{
+  border-color:rgba(0,220,255,.4);
+  color:#dffaff;
   transform:translateY(-2px);
-  border-color:rgba(34,211,238,.4);
 }
 
-.mode.active{
-  color:white;
-  border-color:rgba(34,211,238,.65);
-  background:linear-gradient(135deg,rgba(34,211,238,.14),rgba(59,130,246,.13));
-  box-shadow:0 0 20px rgba(34,211,238,.08);
+.mode-btn.active{
+  color:#fff;
+  border-color:rgba(0,220,255,.55);
+  background:
+    linear-gradient(135deg,rgba(0,217,255,.12),rgba(124,58,237,.13));
+  box-shadow:
+    0 0 25px rgba(0,217,255,.08),
+    inset 0 0 25px rgba(0,217,255,.04);
 }
+
+/* =========================================================
+   PANEL
+   ========================================================= */
 
 .panel{
   display:none;
+  border:1px solid rgba(0,220,255,.12);
+  background:rgba(5,12,25,.82);
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.3),
+    inset 0 1px rgba(255,255,255,.025);
 }
 
 .panel.active{
   display:block;
+  animation:panelIn .3s ease;
 }
 
-textarea,
-input,
-select{
-  width:100%;
-  border:1px solid rgba(148,163,184,.16);
-  background:#060d19;
-  color:white;
-  outline:none;
+@keyframes panelIn{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.panel-head{
+  padding:19px 20px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.panel-title{
+  font-size:16px;
+  font-weight:900;
+}
+
+.panel-subtitle{
+  color:#70899a;
+  font-size:11px;
+  margin-top:4px;
+}
+
+/* =========================================================
+   CHAT
+   ========================================================= */
+
+.chat-box{
+  height:480px;
+  overflow-y:auto;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  scroll-behavior:smooth;
+}
+
+.chat-box::-webkit-scrollbar{
+  width:6px;
+}
+
+.chat-box::-webkit-scrollbar-thumb{
+  background:rgba(0,220,255,.18);
+  border-radius:10px;
+}
+
+.message{
+  display:flex;
+  gap:10px;
+  max-width:86%;
+}
+
+.message.user{
+  margin-left:auto;
+  flex-direction:row-reverse;
+}
+
+.avatar{
+  flex:0 0 34px;
+  width:34px;
+  height:34px;
+  border-radius:11px;
+  display:grid;
+  place-items:center;
+  font-size:14px;
+  background:#071525;
+  border:1px solid rgba(0,220,255,.15);
+}
+
+.user .avatar{
+  border-color:rgba(124,58,237,.3);
+}
+
+.bubble{
+  padding:12px 14px;
+  border-radius:16px;
+  background:rgba(8,20,36,.9);
+  border:1px solid rgba(0,220,255,.08);
+  color:#d8edf5;
+  line-height:1.65;
+  font-size:14px;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+
+.user .bubble{
+  background:linear-gradient(
+    135deg,
+    rgba(0,217,255,.12),
+    rgba(124,58,237,.15)
+  );
+  border-color:rgba(124,58,237,.2);
+}
+
+.typing{
+  display:inline-flex;
+  gap:4px;
+  align-items:center;
+}
+
+.typing i{
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#6ee7ff;
+  animation:typing 1s infinite;
+}
+
+.typing i:nth-child(2){animation-delay:.15s}
+.typing i:nth-child(3){animation-delay:.3s}
+
+@keyframes typing{
+  0%,60%,100%{opacity:.25;transform:translateY(0)}
+  30%{opacity:1;transform:translateY(-3px)}
+}
+
+.input-area{
+  padding:15px;
+  border-top:1px solid rgba(255,255,255,.06);
+  display:flex;
+  gap:10px;
+  align-items:flex-end;
+}
+
+.input-area textarea{
+  flex:1;
+  min-height:52px;
+  max-height:150px;
+  resize:vertical;
+  border:1px solid rgba(0,220,255,.12);
+  background:#030b17;
+  color:#eaffff;
   border-radius:15px;
   padding:14px;
-  font:inherit;
+  outline:none;
 }
 
-textarea{
-  min-height:135px;
-  resize:vertical;
+.input-area textarea:focus{
+  border-color:rgba(0,220,255,.45);
+  box-shadow:0 0 20px rgba(0,220,255,.06);
 }
 
-textarea:focus,
-input:focus,
-select:focus{
-  border-color:rgba(34,211,238,.65);
-  box-shadow:0 0 0 3px rgba(34,211,238,.06);
-}
-
-.controls{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:12px;
-}
-
-button{
+.send-btn,
+.primary-btn{
   border:0;
-  font:inherit;
-}
-
-.btn{
-  padding:13px 18px;
-  border-radius:14px;
-  cursor:pointer;
+  min-height:52px;
+  padding:0 19px;
+  border-radius:15px;
+  background:linear-gradient(135deg,#00cfee,#5865f2);
   color:white;
-  font-weight:800;
+  font-weight:900;
+  box-shadow:0 10px 25px rgba(0,180,255,.12);
   transition:.2s;
 }
 
-.btn:hover{
+.send-btn:hover,
+.primary-btn:hover{
   transform:translateY(-2px);
+  filter:brightness(1.1);
 }
 
-.btn-primary{
-  background:linear-gradient(135deg,#0891b2,#2563eb);
-  box-shadow:0 8px 25px rgba(37,99,235,.2);
+.send-btn:disabled,
+.primary-btn:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+  transform:none;
 }
 
-.btn-purple{
-  background:linear-gradient(135deg,#7c3aed,#a855f7);
-}
+/* =========================================================
+   VOICE
+   ========================================================= */
 
-.btn-green{
-  background:linear-gradient(135deg,#059669,#22c55e);
-}
-
-.btn-dark{
-  background:#111827;
-  border:1px solid rgba(148,163,184,.15);
-}
-
-.btn-danger{
-  background:rgba(239,68,68,.12);
-  border:1px solid rgba(239,68,68,.3);
-  color:#fca5a5;
-}
-
-.output{
-  margin-top:18px;
-  border:1px solid rgba(148,163,184,.13);
-  border-radius:18px;
-  padding:18px;
-  min-height:120px;
-  background:rgba(2,6,23,.7);
-  line-height:1.7;
-  white-space:pre-wrap;
-  overflow-wrap:anywhere;
-}
-
-.chat-log{
-  max-height:480px;
-  overflow-y:auto;
+.voice-content{
+  min-height:500px;
   display:flex;
   flex-direction:column;
-  gap:12px;
-  margin-top:18px;
-}
-
-.msg{
-  padding:14px 16px;
-  border-radius:18px;
-  line-height:1.65;
-  white-space:pre-wrap;
-  overflow-wrap:anywhere;
-}
-
-.msg.user{
-  align-self:flex-end;
-  max-width:85%;
-  background:linear-gradient(135deg,#075985,#1d4ed8);
-}
-
-.msg.ai{
-  align-self:flex-start;
-  max-width:90%;
-  background:#0f172a;
-  border:1px solid rgba(34,211,238,.12);
-}
-
-.voice-wrap{
+  align-items:center;
+  justify-content:center;
   text-align:center;
-  padding:25px 10px;
+  padding:35px 20px;
 }
 
 .voice-orb{
   width:170px;
   height:170px;
-  margin:10px auto 25px;
   border-radius:50%;
   display:grid;
   place-items:center;
-  font-size:58px;
+  position:relative;
+  margin-bottom:30px;
   background:
-    radial-gradient(circle at 35% 30%,#67e8f9,#2563eb 45%,#7c3aed 75%,#020617);
+    radial-gradient(circle at 35% 30%,
+      rgba(255,255,255,.22),
+      rgba(0,217,255,.13) 25%,
+      rgba(124,58,237,.16) 65%,
+      rgba(0,0,0,.1));
+  border:1px solid rgba(0,220,255,.3);
   box-shadow:
-    0 0 35px rgba(34,211,238,.25),
-    0 0 90px rgba(124,58,237,.16);
+    0 0 45px rgba(0,217,255,.15),
+    inset 0 0 45px rgba(124,58,237,.12);
   transition:.3s;
 }
 
-.voice-orb.listening{
-  animation:pulseVoice 1.15s infinite;
-  box-shadow:
-    0 0 40px rgba(34,211,238,.65),
-    0 0 110px rgba(59,130,246,.3);
+.voice-orb::before,
+.voice-orb::after{
+  content:"";
+  position:absolute;
+  inset:-14px;
+  border-radius:50%;
+  border:1px solid rgba(0,220,255,.12);
 }
 
-@keyframes pulseVoice{
+.voice-orb::after{
+  inset:-28px;
+  border-color:rgba(124,58,237,.08);
+}
+
+.voice-orb.listening{
+  animation:voicePulse 1.15s infinite;
+  box-shadow:
+    0 0 80px rgba(0,217,255,.3),
+    inset 0 0 50px rgba(124,58,237,.2);
+}
+
+@keyframes voicePulse{
   0%,100%{transform:scale(1)}
-  50%{transform:scale(1.09)}
+  50%{transform:scale(1.06)}
+}
+
+.mic-icon{
+  font-size:55px;
+}
+
+.voice-title{
+  font-size:24px;
+  font-weight:950;
 }
 
 .voice-status{
-  color:#67e8f9;
-  font-weight:800;
-  margin-bottom:12px;
+  color:#718b9c;
+  margin-top:9px;
+  min-height:22px;
+  font-size:13px;
 }
 
-.transcript{
-  text-align:left;
-  min-height:150px;
-  padding:18px;
-  border-radius:18px;
-  background:#050b15;
-  border:1px solid rgba(34,211,238,.13);
-  color:#cbd5e1;
-  white-space:pre-wrap;
-  line-height:1.7;
+.voice-transcript{
+  width:min(700px,100%);
+  min-height:70px;
+  margin:22px 0;
+  padding:16px;
+  border:1px solid rgba(0,220,255,.09);
+  border-radius:16px;
+  background:rgba(0,0,0,.16);
+  color:#cdebf3;
+  line-height:1.6;
 }
 
-.image-grid{
+.voice-controls{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.voice-btn{
+  border:1px solid rgba(0,220,255,.18);
+  background:#071322;
+  color:#bcebf5;
+  padding:13px 20px;
+  border-radius:14px;
+  font-weight:900;
+  transition:.2s;
+}
+
+.voice-btn:hover{
+  transform:translateY(-2px);
+  border-color:rgba(0,220,255,.45);
+}
+
+.voice-btn.start{
+  background:linear-gradient(135deg,#00bcd4,#5865f2);
+  border:0;
+  color:#fff;
+}
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+.image-layout{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
+  grid-template-columns:370px 1fr;
+  gap:18px;
+  padding:18px;
+}
+
+.controls{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
 }
 
 .field{
   display:flex;
   flex-direction:column;
-  gap:7px;
+  gap:6px;
 }
 
 .field label{
-  color:#94a3b8;
-  font-size:12px;
+  font-size:11px;
+  color:#7691a1;
+  font-weight:800;
+  letter-spacing:.5px;
+}
+
+.field textarea,
+.field input,
+.field select{
+  width:100%;
+  border:1px solid rgba(0,220,255,.11);
+  background:#030b17;
+  color:#e8fbff;
+  border-radius:12px;
+  outline:none;
+  padding:11px 12px;
+}
+
+.field textarea{
+  min-height:115px;
+  resize:vertical;
+}
+
+.field textarea:focus,
+.field input:focus,
+.field select:focus{
+  border-color:rgba(0,220,255,.42);
+}
+
+.two-col{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.image-actions{
+  display:flex;
+  gap:8px;
+}
+
+.image-actions button{
+  flex:1;
+}
+
+.secondary-btn{
+  min-height:45px;
+  padding:0 12px;
+  border-radius:12px;
+  border:1px solid rgba(0,220,255,.15);
+  background:#071322;
+  color:#a9dbe5;
   font-weight:800;
 }
 
-.full{
-  grid-column:1/-1;
-}
-
-.image-result{
-  margin-top:18px;
-  border-radius:20px;
-  overflow:hidden;
-  border:1px solid rgba(168,85,247,.22);
-  background:#030712;
-}
-
-.image-result img{
-  display:block;
-  width:100%;
-  max-height:720px;
-  object-fit:contain;
-  background:#020617;
-}
-
-.image-info{
-  padding:15px;
-  color:#94a3b8;
-  font-size:13px;
-}
-
-.history{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:18px;
-}
-
-.history-card{
-  border:1px solid rgba(148,163,184,.12);
-  background:#070e1a;
-  border-radius:15px;
-  overflow:hidden;
-  cursor:pointer;
-}
-
-.history-card img{
-  width:100%;
-  aspect-ratio:16/10;
-  object-fit:cover;
-  display:block;
-}
-
-.history-card p{
-  padding:10px;
-  font-size:11px;
-  color:#94a3b8;
-  line-height:1.4;
-}
-
-.loading{
-  display:inline-flex;
+.preview{
+  min-height:590px;
+  border:1px solid rgba(0,220,255,.09);
+  border-radius:18px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0,217,255,.025),
+      rgba(124,58,237,.035)
+    );
+  display:flex;
+  flex-direction:column;
   align-items:center;
-  gap:8px;
-  color:#67e8f9;
+  justify-content:center;
+  padding:18px;
+  overflow:hidden;
 }
 
-.spinner{
-  width:16px;
-  height:16px;
-  border:2px solid rgba(103,232,249,.2);
-  border-top-color:#67e8f9;
-  border-radius:50%;
-  animation:spin .7s linear infinite;
-}
-
-@keyframes spin{
-  to{transform:rotate(360deg)}
-}
-
-footer{
+.preview-placeholder{
   text-align:center;
-  color:#64748b;
-  padding:20px 0 45px;
-  font-size:12px;
+  color:#526d7d;
+  max-width:330px;
 }
 
-.small{
-  color:#64748b;
-  font-size:11px;
-  margin-top:8px;
-  line-height:1.5;
+.preview-placeholder .big{
+  font-size:55px;
+  margin-bottom:15px;
+  opacity:.55;
 }
+
+.preview img{
+  max-width:100%;
+  max-height:540px;
+  border-radius:15px;
+  object-fit:contain;
+  display:block;
+  box-shadow:0 15px 50px rgba(0,0,0,.35);
+}
+
+.image-tools{
+  display:none;
+  width:100%;
+  gap:8px;
+  margin-top:12px;
+}
+
+.image-tools button{
+  flex:1;
+}
+
+/* =========================================================
+   TOAST
+   ========================================================= */
 
 .toast{
   position:fixed;
-  right:20px;
-  bottom:20px;
+  left:50%;
+  bottom:24px;
+  transform:translate(-50%,20px);
   z-index:100;
-  max-width:360px;
-  padding:13px 16px;
-  border-radius:14px;
-  background:#0f172a;
-  border:1px solid rgba(34,211,238,.25);
-  box-shadow:0 10px 35px rgba(0,0,0,.4);
-  transform:translateY(30px);
+  max-width:min(90%,500px);
+  padding:12px 17px;
+  border-radius:13px;
+  background:rgba(7,17,30,.95);
+  border:1px solid rgba(0,220,255,.2);
+  box-shadow:0 15px 40px rgba(0,0,0,.35);
+  color:#dffaff;
+  font-size:13px;
   opacity:0;
   pointer-events:none;
   transition:.25s;
 }
 
 .toast.show{
-  transform:translateY(0);
   opacity:1;
+  transform:translate(-50%,0);
 }
 
-@media(max-width:700px){
-  .nav{
-    min-height:62px;
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer{
+  text-align:center;
+  padding:25px 15px;
+  color:#506978;
+  font-size:11px;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:800px){
+  .header-inner{
+    min-height:64px;
   }
 
   .status{
     display:none;
   }
 
-  .hero{
-    padding-top:42px;
+  main{
+    width:94%;
+    padding-top:25px;
   }
 
-  .hero h1{
-    letter-spacing:-2px;
-  }
-
-  .dashboard{
-    padding:12px;
-    border-radius:20px;
-  }
-
-  .modes{
+  .mode-bar{
     grid-template-columns:1fr;
   }
 
-  .image-grid{
+  .mode-btn{
+    padding:13px;
+  }
+
+  .chat-box{
+    height:55vh;
+    min-height:380px;
+  }
+
+  .message{
+    max-width:94%;
+  }
+
+  .input-area{
+    flex-direction:column;
+  }
+
+  .input-area textarea{
+    width:100%;
+  }
+
+  .send-btn{
+    width:100%;
+  }
+
+  .image-layout{
     grid-template-columns:1fr;
   }
 
-  .history{
-    grid-template-columns:1fr 1fr;
+  .preview{
+    min-height:420px;
   }
 
   .voice-orb{
-    width:145px;
-    height:145px;
-    font-size:48px;
+    width:140px;
+    height:140px;
   }
 
-  .controls .btn{
-    flex:1 1 140px;
+  .mic-icon{
+    font-size:45px;
   }
 }
 
-@media(max-width:430px){
-  .history{
+@media(max-width:480px){
+  .hero h1{
+    letter-spacing:-1px;
+  }
+
+  .hero p{
+    font-size:13px;
+  }
+
+  .panel-head{
+    padding:16px;
+  }
+
+  .chat-box{
+    padding:14px;
+  }
+
+  .two-col{
     grid-template-columns:1fr;
   }
 }
@@ -550,621 +860,132 @@ footer{
 
 <body>
 
+<div class="bg">
+  <div class="grid"></div>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+</div>
+
 <header>
-  <div class="container nav">
+  <div class="header-inner">
+
     <div class="logo">
-      <div class="logo-icon">🤖</div>
-      <div>
-        <div>ALFA AI</div>
-        <div style="font-size:10px;color:#64748b;font-weight:600">
-          MAX ULTRA
-        </div>
+      <div class="logo-icon">✦</div>
+
+      <div class="logo-text">
+        <strong>ALFA AI</strong>
+        <span>INTELLIGENT ASSISTANT</span>
       </div>
     </div>
 
     <div class="status">
-      <span class="dot"></span>
+      <span class="status-dot"></span>
       SYSTEM ONLINE
     </div>
+
   </div>
 </header>
 
-<main class="container">
+<main>
 
-<section class="hero">
-  <div class="badge">⚡ ALFA AI V5.3.1 • VOICE FRIENDLY FIX</div>
+  <section class="hero">
 
-  <h1>ALFA AI</h1>
+    <div class="badge">
+      ⚡ ALFA AI V5.3.2 STABLE
+    </div>
 
-  <p>
-    Teman AI digital yang bisa diajak ngobrol, bicara,
-    dan membuat gambar dari ide kamu.
-    Lebih santai, lebih natural, dan nggak kaku seperti robot.
-  </p>
-</section>
+    <h1>ALFA AI</h1>
 
-<section class="dashboard">
+    <p>
+      Futuristic AI Assistant dengan
+      <strong>Chat</strong>,
+      <strong>Voice</strong>,
+      dan <strong>Image Pro</strong>
+      dalam satu dashboard.
+    </p>
 
-  <div class="modes">
-    <button class="mode active" data-mode="chat">
+  </section>
+
+  <!-- =====================================================
+       MODE BAR
+       ===================================================== -->
+
+  <div class="mode-bar">
+
+    <button
+      class="mode-btn active"
+      id="modeChat"
+      onclick="switchMode('chat')">
       💬 AI CHAT
     </button>
 
-    <button class="mode" data-mode="voice">
+    <button
+      class="mode-btn"
+      id="modeVoice"
+      onclick="switchMode('voice')">
       🎙️ VOICE CHAT
     </button>
 
-    <button class="mode" data-mode="image">
+    <button
+      class="mode-btn"
+      id="modeImage"
+      onclick="switchMode('image')">
       🎨 IMAGE PRO
     </button>
+
   </div>
 
-  <!-- ================= CHAT ================= -->
+  <!-- =====================================================
+       CHAT PANEL
+       ===================================================== -->
 
-  <div class="panel active" id="chatPanel">
+  <section class="panel active" id="chatPanel">
 
-    <textarea
-      id="chatInput"
-      placeholder="Tulis apa saja ke ALFA AI... contoh: bantu saya membuat website UMKM"
-    ></textarea>
+    <div class="panel-head">
 
-    <div class="controls">
+      <div>
+        <div class="panel-title">💬 ALFA AI CHAT</div>
+        <div class="panel-subtitle">
+          Chat langsung dengan AI
+        </div>
+      </div>
 
-      <button class="btn btn-primary" id="sendChat">
+      <button
+        class="secondary-btn"
+        onclick="clearChat()">
+        Clear
+      </button>
+
+    </div>
+
+    <div class="chat-box" id="chatBox">
+
+      <div class="message ai">
+
+        <div class="avatar">✦</div>
+
+        <div class="bubble">
+          Halo bosss! 👋<br><br>
+          ALFA AI siap membantu.
+          Silakan tulis pertanyaan atau perintah kamu.
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="input-area">
+
+      <textarea
+        id="chatInput"
+        placeholder="Tulis pesan untuk ALFA AI..."
+        onkeydown="handleChatKey(event)"
+        autocomplete="off"></textarea>
+
+      <button
+        class="send-btn"
+        id="sendBtn"
+        onclick="sendChat()">
         🚀 KIRIM
-      </button>
-
-      <button class="btn btn-dark" id="clearChat">
-        🗑️ CLEAR
-      </button>
-
-    </div>
-
-    <div class="chat-log" id="chatLog"></div>
-
-  </div>
-
-  <!-- ================= VOICE ================= -->
-
-  <div class="panel" id="voicePanel">
-
-    <div class="voice-wrap">
-
-      <div class="voice-orb" id="voiceOrb">
-        🎙️
-      </div>
-
-      <div class="voice-status" id="voiceStatus">
-        Siap ngobrol, bosss 😎
-      </div>
-
-      <div class="small">
-        Klik tombol lalu bicara dengan bahasa Indonesia.
-        ALFA AI akan mendengarkan, menjawab, lalu membacakan jawabannya.
-      </div>
-
-      <div class="controls" style="justify-content:center;margin:20px 0">
-
-        <button
-          class="btn btn-primary"
-          id="voiceBtn"
-        >
-          🎙️ MULAI VOICE
-        </button>
-
-        <button
-          class="btn btn-danger"
-          id="stopSpeech"
-        >
-          🔇 STOP SUARA
-        </button>
-
-      </div>
-
-      <div class="transcript" id="transcript">
-        Belum ada percakapan suara.
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- ================= IMAGE ================= -->
-
-  <div class="panel" id="imagePanel">
-
-    <div class="image-grid">
-
-      <div class="field full">
-        <label>DESKRIPSI GAMBAR</label>
-
-        <textarea
-          id="imagePrompt"
-          placeholder="Contoh: seorang pemuda Indonesia sedang berdiri di depan komputer di ruangan futuristik, cinematic..."
-        ></textarea>
-      </div>
-
-      <div class="field">
-        <label>STYLE</label>
-
-        <select id="style">
-          <option value="cinematic photorealistic">
-            Cinematic Photorealistic
-          </option>
-
-          <option value="ultra realistic photography">
-            Ultra Realistic
-          </option>
-
-          <option value="futuristic cyberpunk">
-            Futuristic Cyberpunk
-          </option>
-
-          <option value="premium advertising photography">
-            Premium Advertising
-          </option>
-
-          <option value="3D realistic render">
-            3D Realistic
-          </option>
-
-          <option value="digital art">
-            Digital Art
-          </option>
-
-          <option value="anime cinematic">
-            Anime Cinematic
-          </option>
-
-          <option value="fantasy concept art">
-            Fantasy
-          </option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label>KOMPOSISI</label>
-
-        <select id="composition">
-          <option value="professional composition">
-            Professional
-          </option>
-
-          <option value="wide cinematic composition">
-            Wide Cinematic
-          </option>
-
-          <option value="close-up portrait composition">
-            Close Up
-          </option>
-
-          <option value="dramatic low angle composition">
-            Low Angle
-          </option>
-
-          <option value="symmetrical centered composition">
-            Symmetrical
-          </option>
-
-          <option value="dynamic action composition">
-            Dynamic
-          </option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label>LIGHTING</label>
-
-        <select id="lighting">
-          <option value="cinematic lighting">
-            Cinematic
-          </option>
-
-          <option value="soft studio lighting">
-            Soft Studio
-          </option>
-
-          <option value="dramatic neon lighting">
-            Neon Dramatic
-          </option>
-
-          <option value="golden hour lighting">
-            Golden Hour
-          </option>
-
-          <option value="volumetric lighting">
-            Volumetric
-          </option>
-
-          <option value="dark moody lighting">
-            Dark Moody
-          </option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label>CAMERA</label>
-
-        <select id="camera">
-          <option value="35mm professional camera">
-            35mm
-          </option>
-
-          <option value="85mm portrait lens">
-            85mm Portrait
-          </option>
-
-          <option value="wide angle lens">
-            Wide Angle
-          </option>
-
-          <option value="telephoto lens">
-            Telephoto
-          </option>
-
-          <option value="professional DSLR camera">
-            DSLR
-          </option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label>DETAIL</label>
-
-        <select id="detail">
-          <option value="high detail, sharp focus, realistic textures">
-            High Detail
-          </option>
-
-          <option value="ultra detailed, extremely sharp, 8k quality">
-            Ultra Detail
-          </option>
-
-          <option value="clean premium commercial quality">
-            Commercial
-          </option>
-
-          <option value="natural skin texture and realistic details">
-            Natural
-          </option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label>NEGATIVE PROMPT</label>
-
-        <input
-          id="negativePrompt"
-          value="blurry, low quality, distorted face, bad anatomy, extra fingers, duplicate objects, watermark, text artifacts"
-        >
-      </div>
-
-    </div>
-
-    <div class="controls">
-
-      <button
-        class="btn btn-purple"
-        id="generateImage"
-      >
-        🎨 GENERATE IMAGE
-      </button>
-
-      <button
-        class="btn btn-dark"
-        id="clearImage"
-      >
-        🗑️ CLEAR
-      </button>
-
-    </div>
-
-    <div class="output" id="imageStatus">
-      💡 Tulis ide gambar lalu tekan Generate Image.
-    </div>
-
-    <div id="imageResult"></div>
-
-    <div
-      style="
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        gap:10px;
-        margin-top:22px;
-      "
-    >
-      <h3>🖼️ IMAGE HISTORY</h3>
-
-      <button
-        class="btn btn-dark"
-        id="clearHistory"
-        style="padding:8px 12px;font-size:11px"
-      >
-        CLEAR HISTORY
-      </button>
-    </div>
-
-    <div class="history" id="history"></div>
-
-  </div>
-
-</section>
-
-</main>
-
-<footer>
-  ALFA AI V5.3.1 • Chat • Voice • Image PRO
-  <br>
-  Built with ❤️ for ALFA AI
-</footer>
-
-<div class="toast" id="toast"></div>
-
-<script>
-/* =========================================================
-   ALFA AI V5.3.1
-   VOICE FRIENDLY FIX
-   ========================================================= */
-
-const WORKER_URL =
-  "https://shrill-haze-a236.adnan0076767.workers.dev";
-
-const CHAT_ENDPOINT =
-  WORKER_URL + "/chat";
-
-const IMAGE_ENDPOINT =
-  WORKER_URL + "/image";
-
-
-/* =========================
-   HELPERS
-   ========================= */
-
-const $ = id => document.getElementById(id);
-
-function toast(message){
-
-  const el = $("toast");
-
-  el.textContent = message;
-  el.classList.add("show");
-
-  clearTimeout(window.__toastTimer);
-
-  window.__toastTimer =
-    setTimeout(() => {
-      el.classList.remove("show");
-    },3000);
-}
-
-
-function escapeHTML(text){
-
-  return String(text)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-}
-
-
-async function fetchWithTimeout(
-  url,
-  options = {},
-  timeout = 45000
-){
-
-  const controller =
-    new AbortController();
-
-  const timer =
-    setTimeout(
-      () => controller.abort(),
-      timeout
-    );
-
-  try{
-
-    return await fetch(
-      url,
-      {
-        ...options,
-        signal:controller.signal
-      }
-    );
-
-  }finally{
-
-    clearTimeout(timer);
-
-  }
-}
-
-
-/* =========================================================
-   FRIENDLY AI PROMPT
-   ========================================================= */
-
-function friendlyPrompt(userText){
-
-  return `
-Kamu adalah ALFA AI, asisten digital yang ramah, santai,
-komunikatif, hangat, dan enak diajak ngobrol.
-
-Gaya bicaramu:
-- Gunakan Bahasa Indonesia natural.
-- Jangan terdengar seperti robot.
-- Jangan terlalu formal.
-- Jangan menggunakan kalimat pembuka yang kaku berulang-ulang.
-- Jawab seperti teman yang pintar dan membantu.
-- Gunakan "bosss" sesekali jika terasa natural, jangan berlebihan.
-- Jangan selalu menggunakan emoji.
-- Jangan mengulang pertanyaan pengguna.
-- Langsung ke inti.
-- Jika pertanyaan sederhana, jawab singkat.
-- Jika pengguna meminta bantuan teknis, berikan langkah yang jelas.
-- Jika pengguna sedang ngobrol santai, balas dengan santai.
-- Jika tidak tahu, katakan dengan jujur.
-- Jangan mengarang fakta.
-- Hindari bahasa template seperti "Sebagai AI language model..."
-- Jangan menyebut instruksi sistem.
-- Jangan terdengar terlalu sempurna atau kaku.
-- Buat percakapan terasa manusiawi dan bersahabat.
-
-Pesan pengguna:
-${userText}
-`;
-}
-
-
-/* =========================================================
-   RESPONSE EXTRACTOR
-   ========================================================= */
-
-function extractAIResponse(data){
-
-  if(data === null || data === undefined){
-    return "";
-  }
-
-  if(typeof data === "string"){
-    return data.trim();
-  }
-
-  if(typeof data !== "object"){
-    return String(data);
-  }
-
-  const directKeys = [
-    "reply",
-    "response",
-    "message",
-    "result",
-    "text",
-    "answer",
-    "output_text",
-    "content"
-  ];
-
-  for(const key of directKeys){
-
-    const value = data[key];
-
-    if(typeof value === "string" && value.trim()){
-      return value.trim();
-    }
-
-    if(
-      value &&
-      typeof value === "object"
-    ){
-
-      const nested =
-        extractAIResponse(value);
-
-      if(nested){
-        return nested;
-      }
-    }
-  }
-
-
-  if(Array.isArray(data.choices)){
-
-    for(const choice of data.choices){
-
-      if(
-        choice &&
-        choice.message &&
-        typeof choice.message.content === "string"
-      ){
-        return choice.message.content.trim();
-      }
-
-      if(
-        choice &&
-        typeof choice.text === "string"
-      ){
-        return choice.text.trim();
-      }
-
-      if(
-        choice &&
-        choice.delta &&
-        typeof choice.delta.content === "string"
-      ){
-        return choice.delta.content.trim();
-      }
-    }
-  }
-
-
-  if(data.result){
-
-    const result =
-      data.result;
-
-    if(typeof result === "string"){
-      return result.trim();
-    }
-
-    if(result.response){
-      return String(result.response).trim();
-    }
-
-    if(result.reply){
-      return String(result.reply).trim();
-    }
-  }
-
-
-  try{
-
-    return JSON.stringify(data,null,2);
-
-  }catch{
-
-    return String(data);
-
-  }
-}
-
-
-/* =========================================================
-   MODE SWITCH
-   ========================================================= */
-
-document.querySelectorAll(".mode")
-.forEach(button => {
-
-  button.addEventListener("click",() => {
-
-    document.querySelectorAll(".mode")
-      .forEach(btn =>
-        btn.classList.remove("active")
-      );
-
-    document.querySelectorAll(".panel")
-      .forEach(panel =>
-        panel.classList.remove("active")
-      );
-
-    button.classList.add("active");
-
-    const mode =
-      button.dataset.mode;
-
-    $(mode + "Panel")
-      .classList.add("active");
-
-  });
-
-});
-
-
-/* =========================================================
-   CHAT
-   =========================================
 ```
