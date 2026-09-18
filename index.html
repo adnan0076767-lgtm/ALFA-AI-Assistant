@@ -2,250 +2,309 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#030712">
-<meta name="color-scheme" content="dark">
 
-<title>ALFA AI V5.5.1 | AI CHAT • VOICE • IMAGE PRO</title>
+<title>ALFA AI V5.5.2 | AI CHAT • VOICE • IMAGE PRO</title>
 
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
+*{
+  box-sizing:border-box;
   margin:0;
-  min-height:100vh;
-  background:
-    radial-gradient(circle at 15% 10%,rgba(0,200,255,.10),transparent 30%),
-    radial-gradient(circle at 85% 20%,rgba(130,70,255,.10),transparent 30%),
-    #030712;
-  color:#e5faff;
-  font-family:Inter,Arial,sans-serif;
+  padding:0;
 }
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  font-family:Arial,Helvetica,sans-serif;
+  color:#e5f7ff;
+  background:
+    radial-gradient(circle at 20% 10%,rgba(0,220,255,.12),transparent 30%),
+    radial-gradient(circle at 80% 20%,rgba(120,70,255,.13),transparent 30%),
+    #030712;
+}
+
+button,
+textarea,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
 
 .app{
-  width:min(1200px,94%);
+  width:min(1180px,94%);
   margin:auto;
-  padding:20px 0 50px;
+  padding:25px 0 50px;
 }
 
 .header{
-  border:1px solid rgba(0,220,255,.25);
+  padding:25px;
+  border:1px solid rgba(0,220,255,.22);
   border-radius:24px;
-  padding:22px;
   background:rgba(3,7,18,.82);
-  box-shadow:0 0 35px rgba(0,200,255,.08);
-  margin-bottom:18px;
+  box-shadow:0 0 35px rgba(0,220,255,.08);
+  backdrop-filter:blur(15px);
 }
 
 .brand{
   display:flex;
   align-items:center;
-  gap:14px;
+  gap:15px;
 }
 
 .logo{
   width:58px;
   height:58px;
-  border-radius:18px;
   display:grid;
   place-items:center;
-  font-size:27px;
+  border-radius:18px;
+  font-size:28px;
   font-weight:900;
-  background:linear-gradient(135deg,#00d9ff,#7655ff);
-  color:#001018;
-  box-shadow:0 0 28px rgba(0,210,255,.3);
+  background:linear-gradient(135deg,#00eaff,#7048ff);
+  color:#020617;
+  box-shadow:0 0 30px rgba(0,234,255,.25);
 }
 
-h1{
-  margin:0;
+.brand h1{
   font-size:clamp(22px,4vw,34px);
 }
-.subtitle{
-  margin:5px 0 0;
-  color:#8ba7b5;
+
+.brand p{
+  margin-top:5px;
+  color:#8ba9b8;
+  font-size:13px;
 }
 
 .status{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:16px;
-}
-
-.badge{
-  padding:7px 11px;
-  border-radius:999px;
-  border:1px solid rgba(0,220,255,.2);
-  background:rgba(0,220,255,.06);
-  color:#8eeeff;
-  font-size:12px;
+  margin-top:18px;
+  padding:10px 14px;
+  border-radius:12px;
+  background:rgba(0,255,180,.06);
+  border:1px solid rgba(0,255,180,.16);
+  color:#70ffd2;
+  font-size:13px;
 }
 
 .tabs{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:10px;
-  margin-bottom:18px;
+  margin:18px 0;
 }
 
 .tab{
-  border:1px solid rgba(0,220,255,.2);
-  border-radius:15px;
-  padding:13px;
-  background:#07111c;
-  color:#9ab0bd;
+  border:1px solid rgba(0,220,255,.18);
+  background:#08111f;
+  color:#9eb8c7;
+  border-radius:14px;
+  padding:14px;
   font-weight:800;
 }
+
 .tab.active{
   color:#fff;
-  border-color:#00d9ff;
-  background:linear-gradient(135deg,rgba(0,217,255,.14),rgba(118,85,255,.14));
-  box-shadow:0 0 20px rgba(0,217,255,.09);
+  border-color:#00dfff;
+  background:linear-gradient(135deg,rgba(0,220,255,.14),rgba(100,70,255,.15));
+  box-shadow:0 0 20px rgba(0,220,255,.09);
 }
 
 .panel{
   display:none;
-  border:1px solid rgba(0,220,255,.18);
-  border-radius:22px;
-  background:rgba(3,7,18,.82);
-  padding:18px;
-  box-shadow:0 0 30px rgba(0,0,0,.25);
 }
-.panel.active{display:block}
 
-.chatbox{
-  min-height:430px;
-  max-height:600px;
-  overflow:auto;
-  padding:8px;
+.panel.active{
+  display:block;
+}
+
+.card{
+  border:1px solid rgba(0,220,255,.17);
+  border-radius:22px;
+  background:rgba(3,7,18,.86);
+  padding:20px;
+  box-shadow:0 0 30px rgba(0,0,0,.2);
+}
+
+.chat-box{
+  height:490px;
+  overflow-y:auto;
+  padding:10px;
+  border-radius:18px;
+  background:#020611;
+  border:1px solid rgba(0,220,255,.1);
 }
 
 .msg{
-  max-width:86%;
+  display:flex;
   margin:12px 0;
-  padding:13px 15px;
-  border-radius:17px;
+}
+
+.msg.user{
+  justify-content:flex-end;
+}
+
+.bubble{
+  max-width:82%;
+  padding:12px 15px;
+  border-radius:16px;
   line-height:1.55;
   white-space:pre-wrap;
+  word-break:break-word;
 }
-.msg.user{
-  margin-left:auto;
-  background:linear-gradient(135deg,#07394a,#102c52);
-  border:1px solid rgba(0,220,255,.22);
+
+.msg.ai .bubble{
+  background:#0a1625;
+  border:1px solid rgba(0,220,255,.13);
 }
-.msg.ai{
-  background:#09111c;
-  border:1px solid rgba(160,120,255,.18);
+
+.msg.user .bubble{
+  background:linear-gradient(135deg,#075b70,#403080);
+  border:1px solid rgba(0,220,255,.2);
 }
 
 .composer{
   display:flex;
-  gap:9px;
+  gap:10px;
   margin-top:12px;
-}
-textarea,input,select{
-  width:100%;
-  color:#eaffff;
-  background:#050c15;
-  border:1px solid rgba(0,220,255,.2);
-  border-radius:13px;
-  padding:12px;
-  outline:none;
-}
-textarea:focus,input:focus,select:focus{
-  border-color:#00d9ff;
-  box-shadow:0 0 15px rgba(0,217,255,.08);
 }
 
 textarea{
-  min-height:56px;
+  width:100%;
+  min-height:55px;
+  max-height:160px;
   resize:vertical;
-}
-
-.btn{
-  border:0;
-  border-radius:13px;
-  padding:12px 16px;
-  font-weight:900;
-  color:#001018;
-  background:linear-gradient(135deg,#00e5ff,#63a8ff);
-  min-width:100px;
-}
-.btn.secondary{
-  color:#dffaff;
-  background:#0b1824;
+  padding:15px;
+  border-radius:15px;
   border:1px solid rgba(0,220,255,.2);
-}
-.btn.danger{
+  outline:none;
+  background:#050b16;
   color:#fff;
-  background:#30121a;
-  border:1px solid #7d2638;
 }
 
-.voice-card{
-  text-align:center;
-  padding:28px 12px;
+textarea:focus{
+  border-color:#00dfff;
+  box-shadow:0 0 18px rgba(0,220,255,.08);
 }
 
-.voice-orb{
-  width:145px;
-  height:145px;
-  margin:15px auto 25px;
-  border-radius:50%;
+.primary{
+  min-width:115px;
+  border:0;
+  border-radius:15px;
+  background:linear-gradient(135deg,#00dfff,#7048ff);
+  color:#020617;
+  font-weight:900;
+}
+
+.primary:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.voice-top{
   display:grid;
-  place-items:center;
-  font-size:55px;
-  background:radial-gradient(circle,#0d3242,#07111c 65%);
-  border:1px solid #00d9ff;
-  box-shadow:0 0 35px rgba(0,217,255,.2);
-  transition:.25s;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-bottom:15px;
 }
-.voice-orb.listening{
-  animation:pulse 1.25s infinite;
+
+.field{
+  padding:14px;
+  border-radius:15px;
+  background:#050b16;
+  border:1px solid rgba(0,220,255,.13);
 }
-.voice-orb.speaking{
-  box-shadow:0 0 55px rgba(125,85,255,.45);
+
+.field label{
+  display:block;
+  margin-bottom:8px;
+  color:#8ba9b8;
+  font-size:12px;
 }
+
+select{
+  width:100%;
+  padding:11px;
+  border-radius:10px;
+  border:1px solid rgba(0,220,255,.2);
+  background:#07101c;
+  color:#fff;
+  outline:none;
+}
+
+.voice-stage{
+  min-height:260px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:25px;
+  border-radius:20px;
+  background:
+    radial-gradient(circle,rgba(0,220,255,.08),transparent 55%),
+    #020611;
+  border:1px solid rgba(0,220,255,.13);
+}
+
+.mic{
+  width:105px;
+  height:105px;
+  border-radius:50%;
+  border:1px solid rgba(0,220,255,.4);
+  background:linear-gradient(135deg,#06283a,#24164a);
+  color:#fff;
+  font-size:42px;
+  box-shadow:0 0 35px rgba(0,220,255,.14);
+}
+
+.mic.listening{
+  animation:pulse 1.2s infinite;
+}
+
 @keyframes pulse{
   0%,100%{transform:scale(1)}
-  50%{transform:scale(1.07)}
+  50%{transform:scale(1.08)}
 }
 
 .voice-state{
-  font-size:20px;
-  font-weight:900;
-}
-.voice-help{
-  color:#8298a5;
-  margin:8px auto 20px;
-  max-width:700px;
+  margin-top:15px;
+  font-size:18px;
+  font-weight:800;
 }
 
-.voice-controls{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:9px;
-  margin-bottom:18px;
-}
-
-.voice-transcript{
-  max-width:800px;
-  margin:auto;
+.transcript{
+  width:100%;
+  margin-top:18px;
   padding:15px;
+  min-height:70px;
   text-align:left;
-  border-radius:15px;
-  background:#050c15;
-  border:1px solid rgba(0,220,255,.15);
+  border-radius:14px;
+  background:#050b16;
+  border:1px solid rgba(0,220,255,.1);
+  color:#b8d1dc;
 }
-.voice-transcript small{
-  color:#6f8794;
+
+.voice-buttons{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:15px;
+  flex-wrap:wrap;
 }
-.voice-transcript div{
-  margin-top:6px;
-  min-height:25px;
+
+.secondary{
+  padding:12px 18px;
+  border-radius:12px;
+  background:#091422;
+  color:#d9f7ff;
+  border:1px solid rgba(0,220,255,.18);
+  font-weight:800;
 }
 
 .image-grid{
@@ -255,222 +314,273 @@ textarea{
 }
 
 .controls{
-  display:grid;
-  gap:11px;
-  align-content:start;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
 }
 
-.field label{
+.control{
+  padding:14px;
+  border-radius:15px;
+  background:#050b16;
+  border:1px solid rgba(0,220,255,.12);
+}
+
+.control label{
   display:block;
-  color:#88a2af;
+  color:#8ba9b8;
   font-size:12px;
-  margin-bottom:6px;
-  font-weight:800;
+  margin-bottom:8px;
 }
 
 .generate{
   width:100%;
-  padding:15px;
-  font-size:15px;
+  min-height:50px;
+  border:0;
+  border-radius:14px;
+  background:linear-gradient(135deg,#00dfff,#7048ff);
+  color:#020617;
+  font-weight:900;
 }
 
-.prompt-preview{
-  padding:12px;
-  border-radius:13px;
-  background:#050c15;
-  border:1px solid rgba(0,220,255,.12);
-  color:#9ab3bf;
-  font-size:12px;
-  line-height:1.5;
-  max-height:150px;
-  overflow:auto;
-}
-
-.image-result{
-  min-height:500px;
-  display:grid;
-  place-items:center;
+.image-output{
+  min-height:570px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   padding:15px;
-  border:1px dashed rgba(0,220,255,.2);
-  border-radius:18px;
-  background:#02070d;
+  border-radius:20px;
+  background:#020611;
+  border:1px solid rgba(0,220,255,.1);
   overflow:hidden;
 }
 
-.image-result img{
-  display:block;
+.image-output img{
   max-width:100%;
-  max-height:760px;
-  border-radius:14px;
-  object-fit:contain;
-  box-shadow:0 0 35px rgba(0,0,0,.5);
+  max-height:650px;
+  border-radius:16px;
+  display:block;
+  box-shadow:0 0 35px rgba(0,220,255,.12);
 }
 
 .placeholder{
+  color:#607987;
   text-align:center;
-  color:#718793;
-  padding:40px 15px;
+  line-height:1.7;
 }
 
-.placeholder strong{
-  display:block;
-  color:#9cc0cc;
-  font-size:18px;
-  margin-bottom:7px;
-}
-
-.logs{
+.log-card{
   margin-top:18px;
 }
-.logs summary{
-  cursor:pointer;
-  color:#72eaff;
-  font-weight:800;
+
+.log-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
 }
-.logbox{
-  margin-top:10px;
-  max-height:220px;
+
+.log{
+  height:170px;
   overflow:auto;
   padding:12px;
-  background:#02060b;
-  border-radius:12px;
-  border:1px solid rgba(0,220,255,.1);
-  color:#6fe9ff;
-  font:11px Consolas,monospace;
+  border-radius:13px;
+  background:#01040a;
+  border:1px solid rgba(0,220,255,.08);
+  color:#7defff;
+  font:12px/1.6 Consolas,monospace;
   white-space:pre-wrap;
 }
 
-.notice{
-  padding:11px 13px;
-  border-radius:12px;
-  background:rgba(0,217,255,.05);
-  border:1px solid rgba(0,217,255,.13);
-  color:#9bb9c5;
+.small{
+  color:#718b98;
   font-size:12px;
-  line-height:1.5;
+  margin-top:8px;
 }
 
 @media(max-width:800px){
-  .image-grid{grid-template-columns:1fr}
-  .image-result{min-height:360px}
-  .composer{flex-direction:column}
-  .btn{width:100%}
+  .image-grid{
+    grid-template-columns:1fr;
+  }
+
+  .voice-top{
+    grid-template-columns:1fr;
+  }
+
+  .composer{
+    flex-direction:column;
+  }
+
+  .primary{
+    min-height:50px;
+  }
+
+  .image-output{
+    min-height:350px;
+  }
 }
 </style>
 </head>
 
 <body>
+
 <div class="app">
 
-<header class="header">
-  <div class="brand">
-    <div class="logo">AI</div>
-    <div>
-      <h1>ALFA AI V5.5.1</h1>
-      <div class="subtitle">CHAT • VOICE • IMAGE PRO</div>
-    </div>
-  </div>
-
-  <div class="status">
-    <span class="badge">● WORKER ONLINE</span>
-    <span class="badge">CHAT READY</span>
-    <span class="badge">VOICE NATURAL</span>
-    <span class="badge">IMAGE PRO</span>
-  </div>
-</header>
-
-<div class="tabs">
-  <button type="button" class="tab active" data-tab="chat">💬 CHAT</button>
-  <button type="button" class="tab" data-tab="voice">🎙️ VOICE</button>
-  <button type="button" class="tab" data-tab="image">🎨 IMAGE PRO</button>
-</div>
-
-<!-- CHAT -->
-<section id="chatPanel" class="panel active">
-  <div id="chatbox" class="chatbox">
-    <div class="msg ai">
-      Halo Bosss 👋<br>
-      Saya ALFA AI. Silakan ngobrol, bertanya, atau minta saya membuat gambar.
-    </div>
-  </div>
-
-  <div class="composer">
-    <textarea id="chatInput" placeholder="Tulis pesan ke ALFA AI..."></textarea>
-    <button type="button" class="btn" id="sendChat">KIRIM</button>
-  </div>
-
-  <div style="display:flex;gap:9px;margin-top:9px">
-    <button type="button" class="btn secondary" id="clearChat">🗑️ Bersihkan</button>
-  </div>
-</section>
-
-<!-- VOICE -->
-<section id="voicePanel" class="panel">
-  <div class="voice-card">
-
-    <div class="voice-orb" id="voiceOrb">🎙️</div>
-
-    <div class="voice-state" id="voiceState">SIAP MENDENGARKAN</div>
-
-    <div class="voice-help">
-      Bicara satu kali → ALFA AI memproses → menjawab → suara selesai.
-      Mode otomatis tidak akan mengirim request berulang.
+  <header class="header">
+    <div class="brand">
+      <div class="logo">AI</div>
+      <div>
+        <h1>ALFA AI V5.5.2</h1>
+        <p>CHAT • VOICE • IMAGE PRO</p>
+      </div>
     </div>
 
-    <div class="voice-controls">
+    <div class="status" id="status">
+      ● Menghubungkan ke ALFA AI Worker...
+    </div>
+  </header>
 
-      <div style="min-width:210px">
-        <select id="voiceLanguage">
-          <option value="auto">AUTO — Indonesia / English / Sunda</option>
-          <option value="id">🇮🇩 Bahasa Indonesia</option>
-          <option value="en">🇬🇧 English</option>
-          <option value="su">🟢 Basa Sunda</option>
-        </select>
+  <nav class="tabs">
+    <button type="button" class="tab active" data-tab="chat">💬 CHAT</button>
+    <button type="button" class="tab" data-tab="voice">🎙️ VOICE</button>
+    <button type="button" class="tab" data-tab="image">🎨 IMAGE PRO</button>
+  </nav>
+
+  <!-- CHAT -->
+  <section class="panel active" id="chatPanel">
+    <div class="card">
+
+      <div class="chat-box" id="chatBox">
+        <div class="msg ai">
+          <div class="bubble">
+            Halo Bosss 👋<br><br>
+            Saya ALFA AI. Silakan kirim pesan.
+          </div>
+        </div>
       </div>
 
-      <button type="button" class="btn" id="startVoice">🎙️ MULAI BICARA</button>
-      <button type="button" class="btn secondary" id="stopVoice">⏹ STOP</button>
-      <button type="button" class="btn danger" id="interruptVoice">✋ INTERRUPT</button>
+      <div class="composer">
+        <textarea
+          id="chatInput"
+          placeholder="Tulis pesan untuk ALFA AI..."
+        ></textarea>
 
-    </div>
-
-    <div style="margin-bottom:15px">
-      <label style="display:flex;justify-content:center;gap:8px;align-items:center;color:#8fa8b4">
-        <input type="checkbox" id="continuousVoice" style="width:auto" checked>
-        Lanjut otomatis setelah AI selesai bicara
-      </label>
-    </div>
-
-    <div class="voice-transcript">
-      <small>TRANSKRIP ANDA</small>
-      <div id="voiceTranscript">—</div>
-
-      <small>JAWABAN ALFA AI</small>
-      <div id="voiceReply">—</div>
-    </div>
-
-  </div>
-</section>
-
-<!-- IMAGE -->
-<section id="imagePanel" class="panel">
-
-  <div class="notice" style="margin-bottom:15px">
-    <strong>IMAGE PRO ENGINE</strong><br>
-    Prompt asli tetap dipertahankan. ALFA AI menambahkan detail visual secara terstruktur
-    tanpa mengganti maksud utama prompt.
-  </div>
-
-  <div class="image-grid">
-
-    <div class="controls">
-
-      <div class="field">
-        <label>PROMPT GAMBAR</label>
-        <textarea id="imagePrompt" style="min-height:130px"
-          placeholder="Contoh: seorang pemuda berdiri di depan motor sport futuristik saat malam hari"></textarea>
+        <button
+          type="button"
+          class="primary"
+          id="sendChat"
+        >
+          KIRIM 🚀
+        </button>
       </div>
 
-      <div class="field">
-        <label>STYLE</label>
+      <div class="small">
+        Enter = kirim • Shift + Enter = baris baru
+      </div>
+    </div>
+  </section>
+
+  <!-- VOICE -->
+  <section class="panel" id="voicePanel">
+    <div class="card">
+
+      <div class="voice-top">
+
+        <div class="field">
+          <label>BAHASA VOICE</label>
+          <select id="voiceLanguage">
+            <option value="auto">AUTO</option>
+            <option value="id">🇮🇩 Indonesia</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="su">🟢 Sunda</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>MODE</label>
+          <select id="voiceMode">
+            <option value="single">Sekali Bicara</option>
+            <option value="continuous">Percakapan Berkelanjutan</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="voice-stage">
+
+        <button
+          type="button"
+          class="mic"
+          id="voiceButton"
+        >
+          🎙️
+        </button>
+
+        <div class="voice-state" id="voiceState">
+          Tekan mikrofon untuk mulai
+        </div>
+
+        <div class="transcript" id="voiceTranscript">
+          Transkrip suara akan muncul di sini...
+        </div>
+
+        <div class="voice-buttons">
+          <button
+            type="button"
+            class="secondary"
+            id="stopVoice"
+          >
+            ⏹ STOP
+          </button>
+
+          <button
+            type="button"
+            class="secondary"
+            id="clearVoice"
+          >
+            🗑️ CLEAR
+          </button>
+        </div>
+
+      </div>
+
+      <div class="small">
+        Voice mendukung Indonesia, English, dan mode jawaban Sunda.
+        Dukungan pengenalan suara Sunda bergantung pada browser.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- IMAGE -->
+  <section class="panel" id="imagePanel">
+
+    <div class="card">
+
+      <div class="image-grid">
+
+        <div class="controls">
+
+          <div class="control">
+            <label>PROMPT</label>
+            <textarea
+              id="imagePrompt"
+              style="min-height:150px"
+              placeholder="Contoh: buat poster kaos ALFA DESIGN futuristik, seorang pemuda memakai kaos hitam, neon biru, suasana cyberpunk..."
+            ></textarea>
+          </div>
+
+          <div class="control">
+            <label>STYLE</label>
+            <select id="imageStyle">
+              <option value="cinematic">Cinematic</option>
+              <option value="realistic">Realistic</option>
+              <option value="photorealistic">Photorealistic</option>
+              <option value="anime">Anime</option>
+              <option value="product">Product</option>
+              <option value="poster">Poster</option>
+              <option value="character">Character</option>
+              <option value="fantasy">Fantasy</option>
+              <option value="digital art">Digital Art</o
 ```
