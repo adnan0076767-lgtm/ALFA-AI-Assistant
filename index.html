@@ -6,511 +6,164 @@
 <meta name="theme-color" content="#030712">
 <meta name="color-scheme" content="dark">
 
-<title>ALFA AI V7 | HUMAN CONVERSATION PRO</title>
+<title>ALFA AI V7.1 | NEURAL HUMAN VOICE</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 body{
-  min-height:100vh;
-  overflow-x:hidden;
-  color:#e8fbff;
+  min-height:100vh;overflow-x:hidden;color:#e8fbff;
   font-family:Inter,Segoe UI,Arial,sans-serif;
   background:
     radial-gradient(circle at 15% 10%,rgba(0,229,255,.13),transparent 30%),
     radial-gradient(circle at 85% 15%,rgba(124,58,237,.15),transparent 30%),
     #030712;
 }
-
 body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
+  content:"";position:fixed;inset:0;pointer-events:none;
   background:
     linear-gradient(rgba(0,229,255,.025) 1px,transparent 1px),
     linear-gradient(90deg,rgba(0,229,255,.025) 1px,transparent 1px);
   background-size:40px 40px;
   mask-image:linear-gradient(to bottom,black,transparent);
 }
-
-.container{
-  width:min(1120px,94%);
-  margin:auto;
-}
-
-header{
-  position:relative;
-  z-index:2;
-  padding:25px 0 18px;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-
+.container{width:min(1120px,94%);margin:auto}
+header{position:relative;z-index:2;padding:25px 0 18px}
+.brand{display:flex;align-items:center;gap:14px}
 .logo{
-  width:54px;
-  height:54px;
-  display:grid;
-  place-items:center;
-  border-radius:17px;
-  font-size:27px;
+  width:54px;height:54px;display:grid;place-items:center;
+  border-radius:17px;font-size:27px;
   background:linear-gradient(135deg,#00e5ff,#7c3aed);
-  box-shadow:
-    0 0 28px rgba(0,229,255,.25),
-    inset 0 0 20px rgba(255,255,255,.12);
+  box-shadow:0 0 28px rgba(0,229,255,.25),inset 0 0 20px rgba(255,255,255,.12);
 }
-
-.brand h1{
-  font-size:22px;
-  letter-spacing:1px;
-}
-
-.brand p{
-  margin-top:4px;
-  color:#67e8f9;
-  font-size:11px;
-  letter-spacing:.8px;
-}
-
-.status{
-  margin-left:auto;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  color:#64748b;
-  font-size:11px;
-}
-
-.dot{
-  width:9px;
-  height:9px;
-  border-radius:50%;
-  background:#22c55e;
-  box-shadow:0 0 13px #22c55e;
-}
-
+.brand h1{font-size:22px;letter-spacing:1px}
+.brand p{margin-top:4px;color:#67e8f9;font-size:11px;letter-spacing:.8px}
+.status{margin-left:auto;display:flex;align-items:center;gap:8px;color:#64748b;font-size:11px}
+.dot{width:9px;height:9px;border-radius:50%;background:#22c55e;box-shadow:0 0 13px #22c55e}
 .dashboard{
-  position:relative;
-  z-index:2;
-  display:grid;
-  grid-template-columns:minmax(0,1fr) 310px;
-  gap:18px;
-  padding-bottom:30px;
+  position:relative;z-index:2;display:grid;
+  grid-template-columns:minmax(0,1fr) 310px;gap:18px;padding-bottom:30px
 }
-
 .card{
   border:1px solid rgba(0,229,255,.13);
   background:rgba(5,15,30,.78);
-  backdrop-filter:blur(18px);
-  border-radius:22px;
-  box-shadow:
-    0 15px 50px rgba(0,0,0,.35),
-    inset 0 1px 0 rgba(255,255,255,.035);
+  backdrop-filter:blur(18px);border-radius:22px;
+  box-shadow:0 15px 50px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.035)
 }
-
-.chat-card{
-  min-height:690px;
-  display:flex;
-  flex-direction:column;
-  overflow:hidden;
-}
-
+.chat-card{min-height:690px;display:flex;flex-direction:column;overflow:hidden}
 .chat-head{
-  min-height:62px;
-  padding:16px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  border-bottom:1px solid rgba(255,255,255,.07);
+  min-height:62px;padding:16px 20px;display:flex;
+  justify-content:space-between;align-items:center;gap:10px;
+  border-bottom:1px solid rgba(255,255,255,.07)
 }
-
-.chat-head strong{
-  color:#67e8f9;
-  font-size:13px;
-}
-
-.state{
-  color:#64748b;
-  font-size:11px;
-}
-
-.messages{
-  flex:1;
-  min-height:480px;
-  max-height:570px;
-  padding:20px;
-  overflow-y:auto;
-}
-
-.message{
-  display:flex;
-  margin-bottom:16px;
-  animation:messageIn .25s ease;
-}
-
+.chat-head strong{color:#67e8f9;font-size:13px}
+.state{color:#64748b;font-size:11px}
+.messages{flex:1;min-height:480px;max-height:570px;padding:20px;overflow-y:auto}
+.message{display:flex;margin-bottom:16px;animation:messageIn .25s ease}
 @keyframes messageIn{
-  from{
-    opacity:0;
-    transform:translateY(8px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
 }
-
-.message.user{
-  justify-content:flex-end;
-}
-
+.message.user{justify-content:flex-end}
 .bubble{
-  max-width:83%;
-  padding:13px 16px;
-  border-radius:18px;
-  font-size:14px;
-  line-height:1.6;
-  white-space:pre-wrap;
-  overflow-wrap:anywhere;
+  max-width:83%;padding:13px 16px;border-radius:18px;
+  font-size:14px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere
 }
-
-.message.ai .bubble{
-  background:rgba(15,35,55,.92);
-  border:1px solid rgba(0,229,255,.10);
-}
-
+.message.ai .bubble{background:rgba(15,35,55,.92);border:1px solid rgba(0,229,255,.10)}
 .message.user .bubble{
   background:linear-gradient(135deg,#075985,#4338ca);
-  border:1px solid rgba(125,211,252,.2);
+  border:1px solid rgba(125,211,252,.2)
 }
-
-.typing{
-  display:none;
-  padding:0 20px 14px;
-  color:#64748b;
-  font-size:12px;
-}
-
-.typing span{
-  display:inline-block;
-  animation:typing 1s infinite;
-}
-
-.typing span:nth-child(2){
-  animation-delay:.15s;
-}
-
-.typing span:nth-child(3){
-  animation-delay:.3s;
-}
-
-@keyframes typing{
-  0%,100%{opacity:.2}
-  50%{opacity:1}
-}
-
-.input-area{
-  padding:15px;
-  border-top:1px solid rgba(255,255,255,.07);
-}
-
-.input-row{
-  display:flex;
-  gap:9px;
-}
-
+.typing{display:none;padding:0 20px 14px;color:#64748b;font-size:12px}
+.typing span{display:inline-block;animation:typing 1s infinite}
+.typing span:nth-child(2){animation-delay:.15s}
+.typing span:nth-child(3){animation-delay:.3s}
+@keyframes typing{0%,100%{opacity:.2}50%{opacity:1}}
+.input-area{padding:15px;border-top:1px solid rgba(255,255,255,.07)}
+.input-row{display:flex;gap:9px}
 textarea{
-  flex:1;
-  min-height:54px;
-  max-height:160px;
-  resize:vertical;
-  padding:15px;
-  outline:none;
-  border:1px solid rgba(0,229,255,.16);
-  border-radius:15px;
-  background:#020817;
-  color:#e8fbff;
-  font:inherit;
+  flex:1;min-height:54px;max-height:160px;resize:vertical;
+  padding:15px;outline:none;border:1px solid rgba(0,229,255,.16);
+  border-radius:15px;background:#020817;color:#e8fbff;font:inherit
 }
-
-textarea:focus{
-  border-color:rgba(0,229,255,.5);
-  box-shadow:0 0 20px rgba(0,229,255,.08);
+textarea:focus{border-color:rgba(0,229,255,.5);box-shadow:0 0 20px rgba(0,229,255,.08)}
+button,select{
+  border:1px solid rgba(0,229,255,.17);border-radius:13px;
+  background:#071426;color:#dffaff;cursor:pointer;transition:.2s
 }
-
-button,
-select{
-  border:1px solid rgba(0,229,255,.17);
-  border-radius:13px;
-  background:#071426;
-  color:#dffaff;
-  cursor:pointer;
-  transition:.2s;
-}
-
-button:hover,
-select:hover{
-  border-color:rgba(0,229,255,.55);
-  box-shadow:0 0 18px rgba(0,229,255,.1);
-}
-
-button:active{
-  transform:scale(.97);
-}
-
-button:disabled{
-  opacity:.45;
-  cursor:not-allowed;
-  transform:none;
-  box-shadow:none;
-}
-
-.send{
-  min-width:95px;
-  font-weight:700;
-  background:linear-gradient(135deg,#0891b2,#4f46e5);
-}
-
-.controls{
-  display:grid;
-  gap:13px;
-}
-
-.control-box{
-  padding:17px;
-}
-
-.control-box h3{
-  margin-bottom:9px;
-  color:#67e8f9;
-  font-size:13px;
-}
-
-.control-box p{
-  color:#64748b;
-  font-size:11px;
-  line-height:1.55;
-}
-
+button:hover,select:hover{border-color:rgba(0,229,255,.55);box-shadow:0 0 18px rgba(0,229,255,.1)}
+button:active{transform:scale(.97)}
+button:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.send{min-width:95px;font-weight:700;background:linear-gradient(135deg,#0891b2,#4f46e5)}
+.controls{display:grid;gap:13px}
+.control-box{padding:17px}
+.control-box h3{margin-bottom:9px;color:#67e8f9;font-size:13px}
+.control-box p{color:#64748b;font-size:11px;line-height:1.55}
 .orb{
-  width:116px;
-  height:116px;
-  margin:0 auto 14px;
-  display:grid;
-  place-items:center;
-  border-radius:50%;
-  font-size:38px;
-  background:
-    radial-gradient(circle,#0e7490 0%,#082f49 42%,#020617 73%);
+  width:116px;height:116px;margin:0 auto 14px;display:grid;place-items:center;
+  border-radius:50%;font-size:38px;
+  background:radial-gradient(circle,#0e7490 0%,#082f49 42%,#020617 73%);
   border:1px solid rgba(0,229,255,.3);
-  box-shadow:
-    0 0 35px rgba(0,229,255,.15),
-    inset 0 0 25px rgba(0,229,255,.08);
+  box-shadow:0 0 35px rgba(0,229,255,.15),inset 0 0 25px rgba(0,229,255,.08)
 }
-
-.orb.listening{
-  animation:listeningPulse 1.1s infinite;
-}
-
-.orb.speaking{
-  animation:speakingPulse .72s infinite;
-}
-
+.orb.listening{animation:listeningPulse 1.1s infinite}
+.orb.speaking{animation:speakingPulse .72s infinite}
 @keyframes listeningPulse{
-  0%,100%{
-    transform:scale(1);
-  }
-  50%{
-    transform:scale(1.09);
-    box-shadow:
-      0 0 45px rgba(0,229,255,.45),
-      0 0 80px rgba(124,58,237,.2);
-  }
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.09);box-shadow:0 0 45px rgba(0,229,255,.45),0 0 80px rgba(124,58,237,.2)}
 }
-
 @keyframes speakingPulse{
-  0%,100%{
-    transform:scale(1);
-  }
-  50%{
-    transform:scale(1.06);
-    box-shadow:
-      0 0 42px rgba(124,58,237,.4),
-      0 0 75px rgba(0,229,255,.22);
-  }
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.06);box-shadow:0 0 42px rgba(124,58,237,.4),0 0 75px rgba(0,229,255,.22)}
 }
-
-.voice-status{
-  min-height:34px;
-  text-align:center;
-  color:#94a3b8;
-  font-size:11px;
-  line-height:1.5;
-}
-
+.voice-status{min-height:34px;text-align:center;color:#94a3b8;font-size:11px;line-height:1.5}
 .mic-btn{
-  width:100%;
-  margin-top:10px;
-  padding:14px;
-  font-weight:700;
-  background:linear-gradient(135deg,#075985,#312e81);
+  width:100%;margin-top:10px;padding:14px;font-weight:700;
+  background:linear-gradient(135deg,#075985,#312e81)
 }
-
-.mic-btn.active{
-  background:linear-gradient(135deg,#dc2626,#7f1d1d);
-  box-shadow:0 0 25px rgba(239,68,68,.2);
-}
-
-.stop-btn{
-  width:100%;
-  margin-top:8px;
-  padding:11px;
-}
-
-.control-box select{
-  width:100%;
-  margin-top:6px;
-  padding:11px;
-  outline:none;
-}
-
-.mode-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-  margin-top:10px;
-}
-
-.mode-grid button{
-  padding:10px 7px;
-  font-size:11px;
-}
-
+.mic-btn.active{background:linear-gradient(135deg,#dc2626,#7f1d1d);box-shadow:0 0 25px rgba(239,68,68,.2)}
+.stop-btn{width:100%;margin-top:8px;padding:11px}
+.control-box select{width:100%;margin-top:6px;padding:11px;outline:none}
+.mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.mode-grid button{padding:10px 7px;font-size:11px}
 .mode-grid button.selected{
-  border-color:#22d3ee;
-  box-shadow:0 0 15px rgba(34,211,238,.15);
-  background:#0c2639;
+  border-color:#22d3ee;box-shadow:0 0 15px rgba(34,211,238,.15);background:#0c2639
 }
-
-.toggle-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  margin-top:11px;
-}
-
-.toggle{
-  position:relative;
-  width:45px;
-  height:24px;
-  flex:none;
-}
-
-.toggle input{
-  display:none;
-}
-
+.toggle-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:11px}
+.toggle{position:relative;width:45px;height:24px;flex:none}
+.toggle input{display:none}
 .slider{
-  position:absolute;
-  inset:0;
-  border-radius:20px;
-  background:#172033;
-  border:1px solid rgba(255,255,255,.08);
-  cursor:pointer;
+  position:absolute;inset:0;border-radius:20px;background:#172033;
+  border:1px solid rgba(255,255,255,.08);cursor:pointer
 }
-
 .slider::before{
-  content:"";
-  position:absolute;
-  width:18px;
-  height:18px;
-  left:2px;
-  top:2px;
-  border-radius:50%;
-  background:#64748b;
-  transition:.2s;
+  content:"";position:absolute;width:18px;height:18px;left:2px;top:2px;
+  border-radius:50%;background:#64748b;transition:.2s
 }
-
-.toggle input:checked + .slider{
-  background:#075985;
-  border-color:#22d3ee;
+.toggle input:checked+.slider{background:#075985;border-color:#22d3ee}
+.toggle input:checked+.slider::before{
+  transform:translateX(21px);background:#67e8f9;box-shadow:0 0 10px #22d3ee
 }
-
-.toggle input:checked + .slider::before{
-  transform:translateX(21px);
-  background:#67e8f9;
-  box-shadow:0 0 10px #22d3ee;
+.engine-badge{
+  margin-top:10px;padding:9px;border-radius:10px;text-align:center;
+  font-size:10px;color:#67e8f9;border:1px solid rgba(34,211,238,.15);
+  background:rgba(0,229,255,.04)
 }
-
-.footer{
-  position:relative;
-  z-index:2;
-  padding:4px 0 30px;
-  text-align:center;
-  color:#475569;
-  font-size:11px;
-}
-
+.footer{position:relative;z-index:2;padding:4px 0 30px;text-align:center;color:#475569;font-size:11px}
 @media(max-width:850px){
-  .dashboard{
-    grid-template-columns:1fr;
-  }
-
-  .controls{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .chat-card{
-    min-height:620px;
-  }
+  .dashboard{grid-template-columns:1fr}
+  .controls{grid-template-columns:1fr 1fr}
+  .chat-card{min-height:620px}
 }
-
 @media(max-width:600px){
-  .container{
-    width:96%;
-  }
-
-  header{
-    padding-top:17px;
-  }
-
-  .status{
-    display:none;
-  }
-
-  .controls{
-    grid-template-columns:1fr;
-  }
-
-  .chat-card{
-    min-height:650px;
-  }
-
-  .messages{
-    min-height:430px;
-    max-height:none;
-  }
-
-  .bubble{
-    max-width:91%;
-  }
-
-  .send{
-    min-width:70px;
-  }
+  .container{width:96%}
+  header{padding-top:17px}
+  .status{display:none}
+  .controls{grid-template-columns:1fr}
+  .chat-card{min-height:650px}
+  .messages{min-height:430px;max-height:none}
+  .bubble{max-width:91%}
+  .send{min-width:70px}
 }
 </style>
 </head>
@@ -521,19 +174,15 @@ button:disabled{
 
 <header>
   <div class="brand">
-
     <div class="logo">✦</div>
-
     <div>
       <h1>ALFA AI</h1>
-      <p>HUMAN CONVERSATION PRO</p>
+      <p>NEURAL HUMAN VOICE PRO</p>
     </div>
-
     <div class="status">
       <span class="dot"></span>
       <span id="workerStatus">AI Ready</span>
     </div>
-
   </div>
 </header>
 
@@ -556,7 +205,6 @@ button:disabled{
   </div>
 
   <div class="input-area">
-
     <div class="input-row">
 
       <textarea
@@ -564,15 +212,11 @@ button:disabled{
         placeholder="Ketik pesan atau tekan Mulai Ngobrol..."
         autocomplete="off"></textarea>
 
-      <button
-        class="send"
-        id="sendBtn"
-        type="button">
+      <button class="send" id="sendBtn" type="button">
         Kirim
       </button>
 
     </div>
-
   </div>
 
 </section>
@@ -581,27 +225,19 @@ button:disabled{
 
   <div class="card control-box">
 
-    <div class="orb" id="voiceOrb">
-      🎙️
-    </div>
+    <div class="orb" id="voiceOrb">🎙️</div>
 
-    <h3>HUMAN VOICE PRO</h3>
+    <h3>NEURAL VOICE PRO</h3>
 
     <div class="voice-status" id="voiceState">
-      Voice Chat siap digunakan.
+      Neural Voice siap digunakan.
     </div>
 
-    <button
-      class="mic-btn"
-      id="micBtn"
-      type="button">
+    <button class="mic-btn" id="micBtn" type="button">
       🎙️ Mulai Ngobrol
     </button>
 
-    <button
-      class="stop-btn"
-      id="stopBtn"
-      type="button">
+    <button class="stop-btn" id="stopBtn" type="button">
       ⏹ Stop Voice
     </button>
 
@@ -612,57 +248,51 @@ button:disabled{
     <h3>BAHASA</h3>
 
     <select id="languageSelect">
-
-      <option value="auto">
-        🤖 Auto Detect
-      </option>
-
-      <option value="id-ID">
-        🇮🇩 Bahasa Indonesia
-      </option>
-
-      <option value="en-US">
-        🇺🇸 English
-      </option>
-
+      <option value="auto">🤖 Auto Detect</option>
+      <option value="id-ID">🇮🇩 Bahasa Indonesia</option>
+      <option value="en-US">🇺🇸 English</option>
     </select>
 
   </div>
 
   <div class="card control-box">
 
-    <h3>VOICE ENGINE</h3>
+    <h3>NEURAL VOICE ENGINE</h3>
 
     <select id="voiceSelect">
-      <option value="">
-        Memuat voice...
-      </option>
+      <option value="luna">🌙 Luna — Neural</option>
+      <option value="athena">Athena — Neural</option>
+      <option value="stella">Stella — Neural</option>
+      <option value="hera">Hera — Neural</option>
+      <option value="orion">Orion — Neural</option>
+      <option value="orpheus">Orpheus — Neural</option>
+      <option value="zeus">Zeus — Neural</option>
+      <option value="helios">Helios — Neural</option>
+      <option value="perseus">Perseus — Neural</option>
+      <option value="asteria">Asteria — Neural</option>
+      <option value="arcas">Arcas — Neural</option>
+      <option value="angus">Angus — Neural</option>
     </select>
+
+    <div class="engine-badge" id="engineBadge">
+      🔊 CLOUDFLARE NEURAL TTS • LUNA
+    </div>
 
     <div class="mode-grid">
 
-      <button
-        type="button"
-        data-mode="natural"
-        class="selected">
+      <button type="button" data-mode="natural" class="selected">
         🗣️ Natural
       </button>
 
-      <button
-        type="button"
-        data-mode="normal">
+      <button type="button" data-mode="normal">
         🎧 Normal
       </button>
 
-      <button
-        type="button"
-        data-mode="slow">
+      <button type="button" data-mode="slow">
         🐢 Slow
       </button>
 
-      <button
-        type="button"
-        id="testVoiceBtn">
+      <button type="button" id="testVoiceBtn">
         🔊 Test
       </button>
 
@@ -687,10 +317,7 @@ button:disabled{
 
       <label class="toggle">
 
-        <input
-          type="checkbox"
-          id="autoListenToggle"
-          checked>
+        <input type="checkbox" id="autoListenToggle" checked>
 
         <span class="slider"></span>
 
@@ -717,7 +344,7 @@ button:disabled{
 </main>
 
 <div class="footer">
-  ALFA AI V7 • Human Conversation Pro • Free
+  ALFA AI V7.1 • Neural Human Voice Pro • Free
 </div>
 
 </div>
@@ -725,22 +352,30 @@ button:disabled{
 <script>
 
 /* =========================================================
-   ALFA AI V7
-   HUMAN CONVERSATION PRO
+   ALFA AI V7.1
+   NEURAL HUMAN VOICE PRO
 
-   WORKER TETAP
-   VOICE ENGINE = BROWSER
+   CHAT       = CLOUDFLARE WORKER
+   TTS        = CLOUDFLARE AURA-1
+   FALLBACK   = BROWSER SPEECH SYNTHESIS
+   INPUT      = BROWSER SPEECH RECOGNITION
 
-   TIDAK ADA PERUBAHAN WORKER
+   WORKER TIDAK DIUBAH
 ========================================================= */
 
 
 /* =========================================================
-   WORKER
+   ENDPOINT
 ========================================================= */
 
-const WORKER_URL =
-  "https://shrill-haze-a236.adnan0076767.workers.dev/chat";
+const WORKER_BASE =
+  "https://shrill-haze-a236.adnan0076767.workers.dev";
+
+const CHAT_URL =
+  WORKER_BASE + "/chat";
+
+const TTS_URL =
+  WORKER_BASE + "/tts";
 
 
 /* =========================================================
@@ -789,6 +424,9 @@ const testVoiceBtn =
 const autoListenToggle =
   document.getElementById("autoListenToggle");
 
+const engineBadge =
+  document.getElementById("engineBadge");
+
 
 /* =========================================================
    STATE
@@ -808,13 +446,15 @@ let autoListen = true;
 
 let restartTimer = null;
 
-let selectedVoiceIndex = "";
-
 let voiceMode = "natural";
 
 let speechSession = 0;
 
-let recognitionSession = 0;
+let currentAudio = null;
+
+let currentAudioURL = null;
+
+let neuralVoiceBusy = false;
 
 
 /* =========================================================
@@ -922,7 +562,7 @@ function hideTyping(){
 
 
 /* =========================================================
-   CHAT
+   CHAT UI
 ========================================================= */
 
 function addMessage(
@@ -974,11 +614,8 @@ function addConversation(
 ){
 
   conversation.push({
-
     role,
-
     content
-
   });
 
   saveConversation();
@@ -1004,13 +641,10 @@ function renderConversation(){
       }
 
       addMessage(
-
         item.role === "user"
           ? "user"
           : "ai",
-
         item.content
-
       );
 
     }
@@ -1027,7 +661,8 @@ function showWelcome(){
 
   const welcome =
     "Halo Bosss 😄\n\n" +
-    "Saya ALFA AI. Santai aja, kita ngobrol " +
+    "Saya ALFA AI. Sekarang sudah terhubung " +
+    "dengan Neural Voice. Santai aja, kita ngobrol " +
     "seperti biasa. Bos bisa ketik atau langsung " +
     "tekan Mulai Ngobrol.";
 
@@ -1086,8 +721,6 @@ function initRecognition(){
       listening =
         true;
 
-      recognitionSession++;
-
       micBtn.classList.add(
         "active"
       );
@@ -1127,7 +760,7 @@ function initRecognition(){
         let i =
           event.resultIndex;
         i <
-          event.results.length;
+        event.results.length;
         i++
       ){
 
@@ -1139,9 +772,7 @@ function initRecognition(){
             .transcript
             .trim();
 
-        if(
-          result.isFinal
-        ){
+        if(result.isFinal){
 
           finalText +=
             " " +
@@ -1170,9 +801,7 @@ function initRecognition(){
 
       }
 
-      if(
-        finalText.trim()
-      ){
+      if(finalText.trim()){
 
         const message =
           finalText
@@ -1331,7 +960,7 @@ function initRecognition(){
 
 
 /* =========================================================
-   SPEECH LANGUAGE
+   LANGUAGE
 ========================================================= */
 
 function getSpeechLanguage(){
@@ -1347,7 +976,6 @@ function getSpeechLanguage(){
     return selected;
 
   }
-
 
   const lastUser =
     [...conversation]
@@ -1373,322 +1001,6 @@ function getSpeechLanguage(){
   )
     ? "en-US"
     : "id-ID";
-
-}
-
-
-/* =========================================================
-   VOICE SCORING
-========================================================= */
-
-function voiceScore(
-  voice,
-  wanted
-){
-
-  let score =
-    0;
-
-  const name =
-    String(
-      voice.name || ""
-    ).toLowerCase();
-
-  const lang =
-    String(
-      voice.lang || ""
-    ).toLowerCase();
-
-  const shortLang =
-    wanted
-      .substring(0,2)
-      .toLowerCase();
-
-
-  if(
-    lang ===
-    wanted.toLowerCase()
-  ){
-
-    score +=
-      180;
-
-  }else if(
-    lang.startsWith(
-      shortLang
-    )
-  ){
-
-    score +=
-      100;
-
-  }
-
-
-  if(
-    name.includes(
-      "natural"
-    )
-  ){
-
-    score +=
-      70;
-
-  }
-
-  if(
-    name.includes(
-      "neural"
-    )
-  ){
-
-    score +=
-      65;
-
-  }
-
-  if(
-    name.includes(
-      "premium"
-    )
-  ){
-
-    score +=
-      30;
-
-  }
-
-  if(
-    name.includes(
-      "microsoft"
-    )
-  ){
-
-    score +=
-      35;
-
-  }
-
-  if(
-    name.includes(
-      "google"
-    )
-  ){
-
-    score +=
-      30;
-
-  }
-
-  if(
-    name.includes(
-      "enhanced"
-    )
-  ){
-
-    score +=
-      25;
-
-  }
-
-  if(
-    name.includes(
-      "online"
-    )
-  ){
-
-    score +=
-      10;
-
-  }
-
-
-  return score;
-
-}
-
-
-/* =========================================================
-   LOAD VOICES
-========================================================= */
-
-function loadVoices(){
-
-  if(
-    !("speechSynthesis" in window)
-  ){
-
-    voiceSelect.innerHTML =
-      "<option>Voice tidak tersedia</option>";
-
-    return;
-
-  }
-
-  const voices =
-    speechSynthesis.getVoices();
-
-  if(!voices.length){
-
-    return;
-
-  }
-
-  const wanted =
-    getSpeechLanguage();
-
-  const ranked =
-    voices
-      .map(
-        (voice,index) => ({
-          voice,
-          index,
-          score:
-            voiceScore(
-              voice,
-              wanted
-            )
-        })
-      )
-      .sort(
-        (a,b) =>
-          b.score -
-          a.score
-      );
-
-  voiceSelect.innerHTML =
-    "";
-
-  ranked.forEach(
-    item => {
-
-      const option =
-        document.createElement(
-          "option"
-        );
-
-      option.value =
-        String(
-          item.index
-        );
-
-      option.textContent =
-        item.voice.name +
-        " — " +
-        item.voice.lang;
-
-      voiceSelect.appendChild(
-        option
-      );
-
-    }
-  );
-
-
-  if(
-    selectedVoiceIndex &&
-    [...voiceSelect.options]
-      .some(
-        option =>
-          option.value ===
-          selectedVoiceIndex
-      )
-  ){
-
-    voiceSelect.value =
-      selectedVoiceIndex;
-
-  }else if(
-    ranked.length
-  ){
-
-    voiceSelect.value =
-      String(
-        ranked[0].index
-      );
-
-    selectedVoiceIndex =
-      voiceSelect.value;
-
-  }
-
-}
-
-
-if(
-  "speechSynthesis" in window
-){
-
-  speechSynthesis.onvoiceschanged =
-    loadVoices;
-
-  loadVoices();
-
-}
-
-
-/* =========================================================
-   GET SELECTED VOICE
-========================================================= */
-
-function getSelectedVoice(){
-
-  if(
-    !("speechSynthesis" in window)
-  ){
-
-    return null;
-
-  }
-
-  const voices =
-    speechSynthesis.getVoices();
-
-  if(!voices.length){
-
-    return null;
-
-  }
-
-  if(
-    voiceSelect.value !==
-    ""
-  ){
-
-    const index =
-      Number(
-        voiceSelect.value
-      );
-
-    if(
-      voices[index]
-    ){
-
-      return voices[index];
-
-    }
-
-  }
-
-  const wanted =
-    getSpeechLanguage();
-
-  return voices
-    .slice()
-    .sort(
-      (
-        a,
-        b
-      ) =>
-        voiceScore(
-          b,
-          wanted
-        ) -
-        voiceScore(
-          a,
-          wanted
-        )
-    )[0];
 
 }
 
@@ -1764,7 +1076,7 @@ function cleanSpeech(text){
 
 
 /* =========================================================
-   NATURAL TEXT PREPROCESSOR
+   HUMANIZE
 ========================================================= */
 
 function humanizeSpeechText(text){
@@ -1777,12 +1089,6 @@ function humanizeSpeechText(text){
   if(!value){
     return "";
   }
-
-
-  /*
-     Tambahkan sedikit ruang natural
-     setelah beberapa tanda baca.
-  */
 
   value =
     value
@@ -1797,21 +1103,11 @@ function humanizeSpeechText(text){
       .replace(
         /:\s*/g,
         ": "
-      );
-
-
-  /*
-     Jangan biarkan terlalu banyak
-     tanda baca beruntun.
-  */
-
-  value =
-    value
+      )
       .replace(
         /([.!?]){2,}/g,
         "$1"
       );
-
 
   return value.trim();
 
@@ -1819,7 +1115,7 @@ function humanizeSpeechText(text){
 
 
 /* =========================================================
-   SPLIT NATURAL SPEECH
+   SPLIT TEXT
 ========================================================= */
 
 function splitForSpeech(text){
@@ -1833,20 +1129,15 @@ function splitForSpeech(text){
     return [];
   }
 
-
   const sentences =
     cleaned.match(
       /[^.!?。！？]+[.!?。！？]+|[^.!?。！？]+$/g
     ) ||
     [cleaned];
 
+  const chunks = [];
 
-  const chunks =
-    [];
-
-  let buffer =
-    "";
-
+  let buffer = "";
 
   sentences.forEach(
     sentence => {
@@ -1858,12 +1149,6 @@ function splitForSpeech(text){
         return;
       }
 
-
-      /*
-         Kalau kalimat pendek,
-         gabungkan secukupnya.
-      */
-
       if(!buffer){
 
         buffer =
@@ -1873,14 +1158,13 @@ function splitForSpeech(text){
 
       }
 
-
       if(
         (
           buffer +
           " " +
           s
         ).length <=
-        95
+        140
       ){
 
         buffer =
@@ -1902,7 +1186,6 @@ function splitForSpeech(text){
     }
   );
 
-
   if(buffer){
 
     chunks.push(
@@ -1911,17 +1194,465 @@ function splitForSpeech(text){
 
   }
 
-
   return chunks;
 
 }
 
 
 /* =========================================================
-   NATURAL PAUSE
+   NEURAL SPEAKER
 ========================================================= */
 
-function getNaturalPause(
+function getNeuralSpeaker(){
+
+  const allowed = [
+    "angus",
+    "asteria",
+    "arcas",
+    "orion",
+    "orpheus",
+    "athena",
+    "luna",
+    "zeus",
+    "perseus",
+    "helios",
+    "hera",
+    "stella"
+  ];
+
+  const selected =
+    voiceSelect.value;
+
+  return allowed.includes(
+    selected
+  )
+    ? selected
+    : "luna";
+
+}
+
+
+/* =========================================================
+   AUDIO CLEANUP
+========================================================= */
+
+function cleanupAudio(){
+
+  if(currentAudio){
+
+    try{
+
+      currentAudio.pause();
+
+    }catch(error){}
+
+    currentAudio =
+      null;
+
+  }
+
+  if(currentAudioURL){
+
+    try{
+
+      URL.revokeObjectURL(
+        currentAudioURL
+      );
+
+    }catch(error){}
+
+    currentAudioURL =
+      null;
+
+  }
+
+}
+
+
+/* =========================================================
+   STOP ALL VOICE
+========================================================= */
+
+function stopSpeaking(){
+
+  speechSession++;
+
+  neuralVoiceBusy =
+    false;
+
+  cleanupAudio();
+
+
+  if(
+    "speechSynthesis" in window
+  ){
+
+    try{
+
+      speechSynthesis.cancel();
+
+    }catch(error){
+
+      console.log(
+        "Speech cancel:",
+        error
+      );
+
+    }
+
+  }
+
+
+  speaking =
+    false;
+
+  voiceOrb.classList.remove(
+    "speaking"
+  );
+
+}
+
+
+/* =========================================================
+   NEURAL TTS
+========================================================= */
+
+async function speakNeural(
+  text,
+  session
+){
+
+  const chunks =
+    splitForSpeech(
+      text
+    );
+
+  if(!chunks.length){
+
+    finishSpeaking(
+      session
+    );
+
+    return;
+
+  }
+
+
+  neuralVoiceBusy =
+    true;
+
+  speaking =
+    true;
+
+  voiceOrb.classList.remove(
+    "listening"
+  );
+
+  voiceOrb.classList.add(
+    "speaking"
+  );
+
+  updateState(
+    "ALFA AI berbicara..."
+  );
+
+  updateVoiceState(
+    "🔊 Neural Voice • " +
+    getNeuralSpeaker()
+  );
+
+
+  for(
+    let i = 0;
+    i < chunks.length;
+    i++
+  ){
+
+    if(
+      session !==
+      speechSession ||
+      !speaking
+    ){
+
+      return;
+
+    }
+
+    const chunk =
+      chunks[i];
+
+    try{
+
+      const response =
+        await fetch(
+          TTS_URL,
+          {
+            method:"POST",
+            headers:{
+              "Content-Type":
+                "application/json"
+            },
+            body:
+              JSON.stringify({
+                text:chunk,
+                speaker:
+                  getNeuralSpeaker()
+              })
+          }
+        );
+
+
+      if(
+        !response.ok
+      ){
+
+        throw new Error(
+          "TTS HTTP " +
+          response.status
+        );
+
+      }
+
+
+      const contentType =
+        response.headers.get(
+          "content-type"
+        ) || "";
+
+
+      if(
+        !contentType.includes(
+          "audio"
+        )
+      ){
+
+        throw new Error(
+          "Response bukan audio."
+        );
+
+      }
+
+
+      const blob =
+        await response.blob();
+
+
+      if(
+        !blob.size
+      ){
+
+        throw new Error(
+          "Audio kosong."
+        );
+
+      }
+
+
+      if(
+        session !==
+        speechSession ||
+        !speaking
+      ){
+
+        return;
+
+      }
+
+
+      cleanupAudio();
+
+
+      currentAudioURL =
+        URL.createObjectURL(
+          blob
+        );
+
+
+      currentAudio =
+        new Audio(
+          currentAudioURL
+        );
+
+
+      currentAudio.preload =
+        "auto";
+
+
+      currentAudio.volume =
+        1;
+
+
+      await new Promise(
+        (resolve,reject) => {
+
+          let settled =
+            false;
+
+          const done = () => {
+
+            if(settled){
+              return;
+            }
+
+            settled =
+              true;
+
+            resolve();
+
+          };
+
+          const fail = error => {
+
+            if(settled){
+              return;
+            }
+
+            settled =
+              true;
+
+            reject(error);
+
+          };
+
+          currentAudio.onended =
+            done;
+
+          currentAudio.onerror =
+            () =>
+              fail(
+                new Error(
+                  "Audio playback gagal."
+                )
+              );
+
+          currentAudio.onabort =
+            done;
+
+          currentAudio.play()
+            .catch(
+              fail
+            );
+
+        }
+      );
+
+
+      if(
+        currentAudioURL
+      ){
+
+        try{
+
+          URL.revokeObjectURL(
+            currentAudioURL
+          );
+
+        }catch(error){}
+
+        currentAudioURL =
+          null;
+
+      }
+
+      currentAudio =
+        null;
+
+
+      if(
+        session !==
+        speechSession ||
+        !speaking
+      ){
+
+        return;
+
+      }
+
+
+      /*
+         Jeda kecil antar kalimat
+         supaya percakapan tidak terasa
+         seperti satu audio panjang.
+      */
+
+      if(
+        i <
+        chunks.length - 1
+      ){
+
+        await wait(
+          getNeuralPause(
+            chunk
+          )
+        );
+
+      }
+
+    }catch(error){
+
+      console.warn(
+        "Neural TTS gagal:",
+        error
+      );
+
+      /*
+         Fallback ke browser voice.
+         Hanya dipakai jika Neural TTS
+         benar-benar gagal.
+      */
+
+      neuralVoiceBusy =
+        false;
+
+      speakBrowserFallback(
+        text,
+        session
+      );
+
+      return;
+
+    }
+
+  }
+
+
+  if(
+    session ===
+    speechSession &&
+    speaking
+  ){
+
+    finishSpeaking(
+      session
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   WAIT
+========================================================= */
+
+function wait(ms){
+
+  return new Promise(
+    resolve =>
+      setTimeout(
+        resolve,
+        ms
+      )
+  );
+
+}
+
+
+/* =========================================================
+   NEURAL PAUSE
+========================================================= */
+
+function getNeuralPause(
   text
 ){
 
@@ -1930,25 +1661,15 @@ function getNaturalPause(
       text || ""
     );
 
-
-  /*
-     Pertanyaan / ekspresi.
-  */
-
   if(
     /[!?！？]$/.test(
       value
     )
   ){
 
-    return 520;
+    return 420;
 
   }
-
-
-  /*
-     Kalimat normal.
-  */
 
   if(
     /[.!。]$/.test(
@@ -1956,39 +1677,9 @@ function getNaturalPause(
     )
   ){
 
-    return 360;
+    return 300;
 
   }
-
-
-  /*
-     Kalimat dengan koma.
-  */
-
-  if(
-    /[,，]$/.test(
-      value
-    )
-  ){
-
-    return 220;
-
-  }
-
-
-  /*
-     Kalimat panjang.
-  */
-
-  if(
-    value.length >
-    80
-  ){
-
-    return 290;
-
-  }
-
 
   return 180;
 
@@ -1996,188 +1687,31 @@ function getNaturalPause(
 
 
 /* =========================================================
-   NATURAL RATE
+   BROWSER FALLBACK
 ========================================================= */
 
-function getSpeechRate(
-  text
+function speakBrowserFallback(
+  text,
+  session
 ){
 
-  const value =
-    String(
-      text || ""
-    );
-
-
-  let rate;
-
-
   if(
-    voiceMode ===
-    "slow"
+    session !==
+    speechSession
   ){
 
-    rate =
-      .84;
-
-  }else if(
-    voiceMode ===
-    "normal"
-  ){
-
-    rate =
-      .94;
-
-  }else{
-
-    /*
-       Natural dibuat sedikit
-       lebih santai daripada normal.
-    */
-
-    rate =
-      .91;
+    return;
 
   }
 
-
-  /*
-     Pertanyaan sedikit lebih
-     lambat agar terdengar jelas.
-  */
-
-  if(
-    /[!?！？]/.test(
-      value
-    )
-  ){
-
-    rate -=
-      .025;
-
-  }
-
-
-  /*
-     Kalimat panjang sedikit
-     diperlambat.
-  */
-
-  if(
-    value.length >
-    100
-  ){
-
-    rate -=
-      .035;
-
-  }
-
-
-  /*
-     Batasi agar tidak ekstrem.
-  */
-
-  return Math.max(
-    .75,
-    Math.min(
-      1.08,
-      rate
-    )
-  );
-
-}
-
-
-/* =========================================================
-   NATURAL PITCH
-========================================================= */
-
-function getSpeechPitch(
-  text
-){
-
-  const value =
-    String(
-      text || ""
-    );
-
-
-  if(
-    /[!?！？]$/.test(
-      value
-    )
-  ){
-
-    return 1.05;
-
-  }
-
-
-  if(
-    voiceMode ===
-    "slow"
-  ){
-
-    return 1.00;
-
-  }
-
-
-  return 1.02;
-
-}
-
-
-/* =========================================================
-   SPEECH VOLUME
-========================================================= */
-
-function getSpeechVolume(
-  text
-){
-
-  const value =
-    String(
-      text || ""
-    );
-
-
-  /*
-     Sedikit variasi volume.
-     Tidak terlalu agresif.
-  */
-
-  if(
-    /[!?！？]/.test(
-      value
-    )
-  ){
-
-    return .98;
-
-  }
-
-
-  return 1;
-
-}
-
-
-/* =========================================================
-   SPEAK NATURAL
-========================================================= */
-
-function speakNatural(
-  text
-){
 
   if(
     !("speechSynthesis" in window)
   ){
 
-    updateVoiceState(
-      "Browser tidak mendukung voice output."
+    finishSpeaking(
+      session,
+      true
     );
 
     return;
@@ -2193,49 +1727,24 @@ function speakNatural(
 
   if(!chunks.length){
 
-    speaking =
-      false;
+    finishSpeaking(
+      session
+    );
 
     return;
 
   }
 
 
-  /*
-     Hentikan voice lama.
-  */
-
-  stopSpeaking();
-
-
-  const session =
-    ++speechSession;
-
-
-  speaking =
-    true;
-
-
-  voiceOrb.classList.remove(
-    "listening"
-  );
-
-  voiceOrb.classList.add(
-    "speaking"
-  );
-
-
-  updateState(
-    "ALFA AI berbicara..."
-  );
-
-
   updateVoiceState(
-    "Sedang berbicara..."
+    "Browser Voice fallback aktif..."
   );
 
 
-  speakChunks(
+  speechSynthesis.cancel();
+
+
+  speakBrowserChunks(
     chunks,
     0,
     session
@@ -2245,19 +1754,19 @@ function speakNatural(
 
 
 /* =========================================================
-   SPEAK CHUNKS
+   BROWSER CHUNKS
 ========================================================= */
 
-function speakChunks(
+function speakBrowserChunks(
   chunks,
   index,
   session
 ){
 
   if(
-    !speaking ||
     session !==
-    speechSession
+    speechSession ||
+    !speaking
   ){
 
     return;
@@ -2279,13 +1788,9 @@ function speakChunks(
   }
 
 
-  const text =
-    chunks[index];
-
-
   const utterance =
     new SpeechSynthesisUtterance(
-      text
+      chunks[index]
     );
 
 
@@ -2293,8 +1798,33 @@ function speakChunks(
     getSpeechLanguage();
 
 
+  const voices =
+    speechSynthesis.getVoices();
+
+
+  const wanted =
+    getSpeechLanguage();
+
+
   const voice =
-    getSelectedVoice();
+    voices.find(
+      v =>
+        v.lang.toLowerCase() ===
+        wanted.toLowerCase()
+    ) ||
+    voices.find(
+      v =>
+        v.lang
+          .toLowerCase()
+          .startsWith(
+            wanted
+              .substring(
+                0,
+                2
+              )
+              .toLowerCase()
+          )
+    );
 
 
   if(voice){
@@ -2306,34 +1836,23 @@ function speakChunks(
 
 
   utterance.rate =
-    getSpeechRate(
-      text
-    );
+    voiceMode === "slow"
+      ? .84
+      : voiceMode === "normal"
+        ? .94
+        : .91;
 
 
   utterance.pitch =
-    getSpeechPitch(
-      text
-    );
+    1.02;
 
 
   utterance.volume =
-    getSpeechVolume(
-      text
-    );
+    1;
 
 
   utterance.onstart =
     () => {
-
-      if(
-        session !==
-        speechSession
-      ){
-
-        return;
-
-      }
 
       speaking =
         true;
@@ -2349,44 +1868,28 @@ function speakChunks(
     () => {
 
       if(
-        !speaking ||
         session !==
-        speechSession
+        speechSession ||
+        !speaking
       ){
 
         return;
 
       }
 
-
-      const pause =
-        getNaturalPause(
-          text
-        );
-
-
       setTimeout(
         () => {
 
-          if(
-            session !==
-            speechSession ||
-            !speaking
-          ){
-
-            return;
-
-          }
-
-
-          speakChunks(
+          speakBrowserChunks(
             chunks,
             index + 1,
             session
           );
 
         },
-        pause
+        getNeuralPause(
+          chunks[index]
+        )
       );
 
     };
@@ -2396,20 +1899,9 @@ function speakChunks(
     event => {
 
       console.log(
-        "Speech error:",
+        "Browser voice:",
         event
       );
-
-
-      if(
-        session !==
-        speechSession
-      ){
-
-        return;
-
-      }
-
 
       finishSpeaking(
         session,
@@ -2427,17 +1919,49 @@ function speakChunks(
 
   }catch(error){
 
-    console.error(
-      "Speech synthesis:",
-      error
-    );
-
     finishSpeaking(
       session,
       true
     );
 
   }
+
+}
+
+
+/* =========================================================
+   START SPEAKING
+========================================================= */
+
+function speakNatural(
+  text
+){
+
+  stopSpeaking();
+
+
+  const session =
+    ++speechSession;
+
+
+  speaking =
+    true;
+
+
+  updateState(
+    "ALFA AI berbicara..."
+  );
+
+
+  updateVoiceState(
+    "🔊 Menghubungkan Neural Voice..."
+  );
+
+
+  speakNeural(
+    text,
+    session
+  );
 
 }
 
@@ -2461,6 +1985,11 @@ function finishSpeaking(
   }
 
 
+  cleanupAudio();
+
+  neuralVoiceBusy =
+    false;
+
   speaking =
     false;
 
@@ -2477,7 +2006,7 @@ function finishSpeaking(
     );
 
     updateVoiceState(
-      "Voice selesai dengan gangguan."
+      "Neural Voice gagal. Voice siap dicoba lagi."
     );
 
   }else{
@@ -2489,7 +2018,7 @@ function finishSpeaking(
     updateVoiceState(
       autoListen
         ? "Silakan lanjut bicara..."
-        : "Voice Chat siap."
+        : "Neural Voice siap."
     );
 
   }
@@ -2497,52 +2026,13 @@ function finishSpeaking(
 
   if(
     autoListen &&
-    !processing
+    !processing &&
+    !error
   ){
 
     restartListening();
 
   }
-
-}
-
-
-/* =========================================================
-   STOP SPEAKING
-========================================================= */
-
-function stopSpeaking(){
-
-  speechSession++;
-
-
-  if(
-    "speechSynthesis" in window
-  ){
-
-    try{
-
-      speechSynthesis.cancel();
-
-    }catch(error){
-
-      console.log(
-        "Cancel speech:",
-        error
-      );
-
-    }
-
-  }
-
-
-  speaking =
-    false;
-
-
-  voiceOrb.classList.remove(
-    "speaking"
-  );
 
 }
 
@@ -2579,13 +2069,6 @@ function startListening(){
   );
 
 
-  /*
-     Barge-in:
-     kalau ALFA sedang bicara dan
-     user menekan microphone,
-     suara langsung dihentikan.
-  */
-
   if(speaking){
 
     stopSpeaking();
@@ -2602,18 +2085,6 @@ function startListening(){
     recognition.start();
 
   }catch(error){
-
-    console.log(
-      "Start recognition:",
-      error
-    );
-
-
-    /*
-       Chrome kadang melempar
-       InvalidStateError kalau start
-       terlalu cepat.
-    */
 
     restartTimer =
       setTimeout(
@@ -2660,22 +2131,13 @@ function stopListening(){
   );
 
 
-  if(
-    recognition
-  ){
+  if(recognition){
 
     try{
 
       recognition.stop();
 
-    }catch(error){
-
-      console.log(
-        "Stop recognition:",
-        error
-      );
-
-    }
+    }catch(error){}
 
   }
 
@@ -2739,7 +2201,7 @@ function restartListening(){
         }
 
       },
-      850
+      900
     );
 
 }
@@ -2843,7 +2305,7 @@ function getAIInstruction(){
 
     "Kamu adalah ALFA AI, teman ngobrol digital yang ramah dan natural.",
 
-    "Tujuan utama kamu adalah membuat percakapan terasa seperti ngobrol sungguhan, bukan membaca artikel.",
+    "Buat percakapan terasa seperti ngobrol sungguhan, bukan membaca artikel.",
 
     "Gunakan Bahasa Indonesia jika pengguna menggunakan Bahasa Indonesia.",
 
@@ -2851,39 +2313,35 @@ function getAIInstruction(){
 
     "Gunakan gaya santai, hangat, dan manusiawi.",
 
-    "Jangan terlalu formal kecuali pengguna meminta gaya formal.",
+    "Jangan terlalu formal kecuali diminta.",
 
-    "Untuk voice chat, gunakan kalimat yang pendek sampai sedang dan mudah diucapkan.",
+    "Untuk voice chat gunakan kalimat pendek sampai sedang yang mudah diucapkan.",
 
-    "Hindari paragraf panjang ketika percakapan sedang menggunakan suara.",
+    "Hindari paragraf panjang ketika percakapan menggunakan suara.",
 
     "Jangan membuat daftar panjang jika tidak diperlukan.",
 
-    "Jangan selalu menggunakan pembukaan seperti 'tentu', 'baik', atau 'berikut adalah'.",
+    "Jangan selalu membuka jawaban dengan kata tentu, baik, atau berikut adalah.",
 
     "Variasikan respons agar tidak terdengar seperti template.",
 
-    "Gunakan kata penghubung alami seperti 'nah', 'oke', 'iya', 'jadi', atau 'gini' hanya jika memang cocok dengan konteks.",
+    "Gunakan kata seperti nah, oke, iya, jadi, atau gini hanya jika cocok.",
 
-    "Jika pengguna menggunakan kata santai seperti bosss, gass, hehee, atau bercanda, kamu boleh membalas dengan nuansa santai yang sesuai tanpa berlebihan.",
-
-    "Jangan meniru setiap kata pengguna secara berlebihan.",
+    "Jika pengguna menggunakan kata bosss atau gass, boleh membalas santai secara natural.",
 
     "Jika pengguna bertanya singkat, jawab singkat.",
 
-    "Jika pengguna meminta penjelasan detail, barulah jelaskan lebih lengkap.",
+    "Jika pengguna meminta detail, jelaskan lebih lengkap.",
 
-    "Untuk percakapan suara, prioritaskan satu ide utama dalam satu respons.",
+    "Untuk percakapan suara prioritaskan satu ide utama dalam satu respons.",
 
     "Gunakan tanda baca yang membantu ritme bicara.",
 
-    "Jangan membaca simbol Markdown sebagai bagian dari percakapan.",
+    "Jangan membaca simbol Markdown sebagai bagian percakapan.",
 
-    "Jangan mengulang pertanyaan pengguna kecuali diperlukan untuk memperjelas.",
+    "Jangan mengulang pertanyaan pengguna kecuali diperlukan.",
 
-    "Jangan mengatakan bahwa kamu sedang membaca teks.",
-
-    "Buat respons terasa spontan, ramah, dan enak didengar."
+    "Buat respons spontan, ramah, dan enak didengar."
 
   ].join(" ");
 
@@ -2981,7 +2439,7 @@ async function sendMessage(
 
     const response =
       await fetch(
-        WORKER_URL,
+        CHAT_URL,
         {
 
           method:
@@ -3051,12 +2509,6 @@ async function sendMessage(
       false;
 
 
-    /*
-       Voice otomatis jika:
-       - pesan berasal dari microphone
-       - Auto Listen aktif
-    */
-
     if(
       fromVoice ||
       autoListen
@@ -3073,7 +2525,7 @@ async function sendMessage(
       );
 
       updateVoiceState(
-        "Voice Chat siap."
+        "Neural Voice siap."
       );
 
     }
@@ -3119,9 +2571,7 @@ async function sendMessage(
     );
 
 
-    if(
-      autoListen
-    ){
+    if(autoListen){
 
       restartListening();
 
@@ -3139,11 +2589,6 @@ async function sendMessage(
 micBtn.addEventListener(
   "click",
   () => {
-
-    /*
-       Kalau sedang mendengarkan:
-       hentikan microphone.
-    */
 
     if(listening){
 
@@ -3166,17 +2611,10 @@ micBtn.addEventListener(
         "Voice Chat dihentikan."
       );
 
-
       return;
 
     }
 
-
-    /*
-       Kalau sedang berbicara:
-       tombol microphone menjadi
-       BARGE-IN.
-    */
 
     if(speaking){
 
@@ -3208,7 +2646,6 @@ micBtn.addEventListener(
         },
         180
       );
-
 
       return;
 
@@ -3299,7 +2736,7 @@ sendBtn.addEventListener(
 
 
 /* =========================================================
-   ENTER SEND
+   ENTER
 ========================================================= */
 
 inputEl.addEventListener(
@@ -3374,9 +2811,6 @@ languageSelect.addEventListener(
   "change",
   () => {
 
-    loadVoices();
-
-
     if(recognition){
 
       recognition.lang =
@@ -3394,19 +2828,24 @@ languageSelect.addEventListener(
 
 
 /* =========================================================
-   VOICE SELECT
+   NEURAL VOICE SELECT
 ========================================================= */
 
 voiceSelect.addEventListener(
   "change",
   () => {
 
-    selectedVoiceIndex =
-      voiceSelect.value;
+    const speaker =
+      getNeuralSpeaker();
+
+    engineBadge.textContent =
+      "🔊 CLOUDFLARE NEURAL TTS • " +
+      speaker.toUpperCase();
 
 
     updateVoiceState(
-      "Voice engine dipilih."
+      "Neural Voice: " +
+      speaker
     );
 
   }
@@ -3462,7 +2901,7 @@ document
 
 
 /* =========================================================
-   TEST VOICE
+   TEST NEURAL VOICE
 ========================================================= */
 
 testVoiceBtn.addEventListener(
@@ -3483,19 +2922,15 @@ testVoiceBtn.addEventListener(
 
       "Halo Bosss... 😄 " +
 
-      "Nah, sekarang kita sedang mencoba " +
+      "Nah, sekarang ALFA AI sedang menggunakan " +
 
-      "ALFA AI Human Conversation Pro. " +
+      "Neural Voice Cloudflare. " +
 
-      "Saya akan mencoba berbicara lebih santai, " +
+      "Suara ini diproses melalui Aura Neural TTS. " +
 
-      "dengan jeda yang lebih natural, " +
+      "Kalau Bosss memilih voice lain, " +
 
-      "dan tidak terlalu cepat. " +
-
-      "Kalau Bosss mulai bicara saat saya sedang ngomong, " +
-
-      "suara saya juga bisa langsung dihentikan."
+      "mesinnya juga akan mengikuti pilihan tersebut."
 
     );
 
@@ -3513,10 +2948,9 @@ async function checkWorker(){
 
     const response =
       await fetch(
-        WORKER_URL,
+        WORKER_BASE,
         {
-          method:
-            "GET"
+          method:"GET"
         }
       );
 
@@ -3544,9 +2978,7 @@ document.addEventListener(
   "visibilitychange",
   () => {
 
-    if(
-      document.hidden
-    ){
+    if(document.hidden){
 
       stopSpeaking();
 
@@ -3586,8 +3018,6 @@ showWelcome();
 
 initRecognition();
 
-loadVoices();
-
 checkWorker();
 
 
@@ -3597,22 +3027,17 @@ updateState(
 
 
 updateVoiceState(
-  "Voice Chat siap digunakan."
+  "🔊 Neural Voice siap digunakan."
 );
 
 
 /* =========================================================
-   FIRST VOICE LOAD RETRY
+   INITIAL ENGINE BADGE
 ========================================================= */
 
-setTimeout(
-  () => {
+engineBadge.textContent =
+  "🔊 CLOUDFLARE NEURAL TTS • LUNA";
 
-    loadVoices();
-
-  },
-  1000
-);
 
 </script>
 
