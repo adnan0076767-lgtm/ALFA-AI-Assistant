@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#030712">
 
-<title>ALFA AI V5 | AI CHAT • VOICE • IMAGE</title>
+<title>ALFA AI V5.1 ULTRA | CHAT • VOICE • IMAGE</title>
 
 <meta name="description"
-content="ALFA AI V5 - AI Chat, Voice Chat, Image Generator dan Creative Design Studio">
+content="ALFA AI V5.1 ULTRA - AI Chat, Voice Chat, Creative Design dan Image Generator berbasis Cloudflare AI">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -141,7 +141,10 @@ border-radius:13px;
 transition:.2s
 }
 
-.mode-btn:hover{transform:translateY(-2px);color:#fff}
+.mode-btn:hover{
+transform:translateY(-2px);
+color:#fff
+}
 
 .mode-btn.active{
 color:#fff;
@@ -172,7 +175,12 @@ margin-bottom:14px
 }
 
 .card-title h3{font-size:16px}
-.card-title span{color:#64748b;font-size:10px;letter-spacing:.8px}
+
+.card-title span{
+color:#64748b;
+font-size:10px;
+letter-spacing:.8px
+}
 
 .chat-box{
 height:430px;
@@ -181,7 +189,11 @@ padding:5px 4px 12px
 }
 
 .chat-box::-webkit-scrollbar{width:5px}
-.chat-box::-webkit-scrollbar-thumb{background:#334155;border-radius:99px}
+
+.chat-box::-webkit-scrollbar-thumb{
+background:#334155;
+border-radius:99px
+}
 
 .message{
 max-width:90%;
@@ -214,17 +226,27 @@ letter-spacing:1px;
 margin-bottom:5px
 }
 
-.typing{display:inline-flex;gap:4px}
+.typing{
+display:inline-flex;
+gap:4px
+}
+
 .typing i{
-width:5px;height:5px;border-radius:50%;
+width:5px;
+height:5px;
+border-radius:50%;
 background:#67e8f9;
 animation:typing 1s infinite
 }
+
 .typing i:nth-child(2){animation-delay:.15s}
 .typing i:nth-child(3){animation-delay:.3s}
 
 @keyframes typing{
-50%{transform:translateY(-4px);opacity:.3}
+50%{
+transform:translateY(-4px);
+opacity:.3
+}
 }
 
 textarea{
@@ -266,19 +288,26 @@ border-color:rgba(0,229,255,.4);
 color:#fff
 }
 
-.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.btn:disabled{
+opacity:.45;
+cursor:not-allowed;
+transform:none
+}
 
 .btn.primary{
 border-color:transparent;
 background:linear-gradient(135deg,#0891b2,#2563eb);
-color:#fff;font-weight:700
+color:#fff;
+font-weight:700
 }
 
 .btn.voice{
 background:linear-gradient(135deg,rgba(124,58,237,.32),rgba(59,130,246,.18))
 }
 
-.btn.danger{background:rgba(127,29,29,.22)}
+.btn.danger{
+background:rgba(127,29,29,.22)
+}
 
 .voice-status{
 min-height:18px;
@@ -303,7 +332,10 @@ font-size:10px;
 color:#64748b
 }
 
-.voice-tools input{width:100%;accent-color:#06b6d4}
+.voice-tools input{
+width:100%;
+accent-color:#06b6d4
+}
 
 .design-panel{display:none}
 .design-panel.active{display:block}
@@ -331,7 +363,10 @@ border-radius:9px;
 font-size:10px
 }
 
-.quick:hover{color:#fff;border-color:rgba(0,229,255,.35)}
+.quick:hover{
+color:#fff;
+border-color:rgba(0,229,255,.35)
+}
 
 .options-grid{
 display:grid;
@@ -340,8 +375,16 @@ gap:9px;
 margin-top:10px
 }
 
-.field{display:flex;flex-direction:column;gap:5px}
-.field label{color:#94a3b8;font-size:10px}
+.field{
+display:flex;
+flex-direction:column;
+gap:5px
+}
+
+.field label{
+color:#94a3b8;
+font-size:10px
+}
 
 select{
 width:100%;
@@ -362,7 +405,9 @@ color:#94a3b8;
 font-size:11px
 }
 
-.checkbox input{accent-color:#06b6d4}
+.checkbox input{
+accent-color:#06b6d4
+}
 
 .speed-info{
 margin-top:10px;
@@ -375,7 +420,12 @@ font-size:10px;
 line-height:1.5
 }
 
-.generate-row{display:flex;gap:8px;margin-top:13px}
+.generate-row{
+display:flex;
+gap:8px;
+margin-top:13px
+}
+
 .generate-row .btn{flex:1}
 
 .image-stage{
@@ -387,7 +437,9 @@ padding:13px;
 overflow:hidden;
 border-radius:17px;
 border:1px dashed rgba(148,163,184,.15);
-background:radial-gradient(circle at center,rgba(0,229,255,.055),transparent 45%),rgba(2,6,23,.55)
+background:
+radial-gradient(circle at center,rgba(0,229,255,.055),transparent 45%),
+rgba(2,6,23,.55)
 }
 
 .empty-state{
@@ -396,9 +448,20 @@ text-align:center;
 color:#64748b
 }
 
-.empty-icon{font-size:50px;margin-bottom:10px}
-.empty-state h4{color:#cbd5e1;margin-bottom:7px}
-.empty-state p{font-size:11px;line-height:1.6}
+.empty-icon{
+font-size:50px;
+margin-bottom:10px
+}
+
+.empty-state h4{
+color:#cbd5e1;
+margin-bottom:7px
+}
+
+.empty-state p{
+font-size:11px;
+line-height:1.6
+}
 
 .result-grid{
 width:100%;
@@ -440,7 +503,8 @@ padding:20px
 }
 
 .spinner{
-width:42px;height:42px;
+width:42px;
+height:42px;
 margin-bottom:13px;
 border:3px solid rgba(103,232,249,.12);
 border-top-color:#67e8f9;
@@ -448,9 +512,14 @@ border-radius:50%;
 animation:spin .75s linear infinite
 }
 
-@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spin{
+to{transform:rotate(360deg)}
+}
 
-.loader small{color:#64748b;margin-top:6px}
+.loader small{
+color:#64748b;
+margin-top:6px
+}
 
 .error-box{
 min-height:300px;
@@ -487,7 +556,9 @@ color:#fff;
 border-color:rgba(0,229,255,.35)
 }
 
-.history-section{margin-top:18px}
+.history-section{
+margin-top:18px
+}
 
 .section-heading{
 display:flex;
@@ -496,7 +567,9 @@ align-items:center;
 margin-bottom:11px
 }
 
-.section-heading h3{font-size:15px}
+.section-heading h3{
+font-size:15px
+}
 
 .section-heading button{
 border:0;
@@ -505,7 +578,9 @@ color:#64748b;
 font-size:10px
 }
 
-.section-heading button:hover{color:#f87171}
+.section-heading button:hover{
+color:#f87171
+}
 
 .gallery{
 display:grid;
@@ -530,8 +605,14 @@ display:block;
 cursor:pointer
 }
 
-.gallery-info{padding:6px}
-.gallery-info small{color:#64748b;font-size:8px}
+.gallery-info{
+padding:6px
+}
+
+.gallery-info small{
+color:#64748b;
+font-size:8px
+}
 
 .toast{
 position:fixed;
@@ -563,24 +644,75 @@ font-size:10px
 }
 
 @media(max-width:950px){
-.dashboard{grid-template-columns:1fr}
-.gallery{grid-template-columns:repeat(4,1fr)}
+
+.dashboard{
+grid-template-columns:1fr
+}
+
+.gallery{
+grid-template-columns:repeat(4,1fr)
+}
+
 }
 
 @media(max-width:600px){
-.header-inner{min-height:63px}
-.status{display:none}
-.container{width:94%;margin-top:14px}
-.hero h2{font-size:34px}
-.hero p{font-size:12px}
-.card{padding:14px;border-radius:18px}
-.chat-box{height:390px}
-.options-grid{grid-template-columns:1fr}
-.generate-row{flex-direction:column}
-.result-grid{grid-template-columns:1fr}
-.gallery{grid-template-columns:repeat(3,1fr)}
-.mode-btn{flex:1 1 29%;padding:9px 7px;font-size:10px}
-.voice-tools{flex-wrap:wrap}
+
+.header-inner{
+min-height:63px
+}
+
+.status{
+display:none
+}
+
+.container{
+width:94%;
+margin-top:14px
+}
+
+.hero h2{
+font-size:34px
+}
+
+.hero p{
+font-size:12px
+}
+
+.card{
+padding:14px;
+border-radius:18px
+}
+
+.chat-box{
+height:390px
+}
+
+.options-grid{
+grid-template-columns:1fr
+}
+
+.generate-row{
+flex-direction:column
+}
+
+.result-grid{
+grid-template-columns:1fr
+}
+
+.gallery{
+grid-template-columns:repeat(3,1fr)
+}
+
+.mode-btn{
+flex:1 1 29%;
+padding:9px 7px;
+font-size:10px
+}
+
+.voice-tools{
+flex-wrap:wrap
+}
+
 }
 </style>
 </head>
@@ -588,14 +720,18 @@ font-size:10px
 <body>
 
 <header class="header">
+
 <div class="header-inner">
 
 <div class="brand">
+
 <div class="logo">AI</div>
+
 <div>
 <h1>ALFA AI</h1>
-<p>V5 ULTRA • CHAT • VOICE • IMAGE</p>
+<p>V5.1 ULTRA • CHAT • VOICE • IMAGE</p>
 </div>
+
 </div>
 
 <div class="status">
@@ -604,47 +740,78 @@ SYSTEM ONLINE
 </div>
 
 </div>
+
 </header>
 
 <main class="container">
 
 <section class="hero">
-<h2>ALFA AI V5 ULTRA</h2>
+
+<h2>ALFA AI V5.1 ULTRA</h2>
+
 <p>
 AI assistant futuristik untuk Chat, Voice Chat,
 Creative Design dan Image Generator berbasis Cloudflare AI.
 </p>
+
 </section>
 
 <div class="mode-bar">
 
-<button class="mode-btn active" data-mode="chat">💬 CHAT</button>
-<button class="mode-btn" data-mode="logo">✦ LOGO</button>
-<button class="mode-btn" data-mode="poster">🖼️ POSTER</button>
-<button class="mode-btn" data-mode="shirt">👕 T-SHIRT</button>
-<button class="mode-btn" data-mode="banner">🌐 BANNER</button>
-<button class="mode-btn" data-mode="creative">🚀 FREE DESIGN</button>
+<button class="mode-btn active" data-mode="chat">
+💬 CHAT
+</button>
+
+<button class="mode-btn" data-mode="logo">
+✦ LOGO
+</button>
+
+<button class="mode-btn" data-mode="poster">
+🖼️ POSTER
+</button>
+
+<button class="mode-btn" data-mode="shirt">
+👕 T-SHIRT
+</button>
+
+<button class="mode-btn" data-mode="banner">
+🌐 BANNER
+</button>
+
+<button class="mode-btn" data-mode="creative">
+🚀 FREE DESIGN
+</button>
 
 </div>
 
 <div class="dashboard">
 
-<!-- ================= CHAT ================= -->
+<!-- =====================================================
+CHAT
+===================================================== -->
 
 <section class="card">
 
 <div class="card-title">
+
 <h3>🧠 ALFA AI CHAT</h3>
-<span>V5 CONTEXT ENGINE</span>
+
+<span>V5.1 CONTEXT ENGINE</span>
+
 </div>
 
 <div id="chatBox" class="chat-box">
 
 <div class="message ai">
+
 <small>ALFA AI</small>
-Halo bosss! 🔥 Saya ALFA AI V5.
-Sekarang saya siap ngobrol, menerima Voice,
-membantu coding, dan membuat desain.
+
+Halo bosss! 🔥 Saya ALFA AI V5.1.
+
+Sekarang saya siap ngobrol lebih natural,
+menerima Voice, membantu coding,
+dan membuat desain.
+
 </div>
 
 </div>
@@ -667,6 +834,10 @@ placeholder="Tulis pesan... Enter untuk kirim, Shift+Enter untuk baris baru"></t
 🔊 Bacakan
 </button>
 
+<button class="btn danger" id="stopSpeakBtn">
+⏹️ Stop Voice
+</button>
+
 <button class="btn danger" id="clearChatBtn">
 🗑️ Clear
 </button>
@@ -677,7 +848,7 @@ placeholder="Tulis pesan... Enter untuk kirim, Shift+Enter untuk baris baru"></t
 
 <div class="voice-tools">
 
-<label>🔊 Kecepatan Voice</label>
+<label>🔊 Kecepatan</label>
 
 <input
 type="range"
@@ -691,20 +862,42 @@ value="1">
 
 </div>
 
+<div class="voice-tools">
+
+<label>🤖 Auto Voice</label>
+
+<input
+type="checkbox"
+id="autoSpeak"
+checked>
+
+<span>Jawaban AI dibacakan otomatis</span>
+
+</div>
+
 </section>
 
-<!-- ================= DESIGN ================= -->
+<!-- =====================================================
+DESIGN
+===================================================== -->
 
 <section class="card">
 
 <div class="card-title">
+
 <h3>🎨 DESIGN GENERATOR</h3>
-<span id="designModeLabel">CHAT MODE</span>
+
+<span id="designModeLabel">
+CHAT MODE
+</span>
+
 </div>
 
 <div class="design-panel active" id="panel-chat">
 
-<div class="empty-state" style="margin:auto;padding:70px 10px">
+<div
+class="empty-state"
+style="margin:auto;padding:70px 10px">
 
 <div class="empty-icon">🤖</div>
 
@@ -712,8 +905,8 @@ value="1">
 
 <p>
 Pilih mode desain di atas untuk membuat gambar.
-Image Generator sekarang menggunakan Worker ALFA AI,
-bukan direct Pollinations.
+Generator sekarang menggunakan
+Cloudflare Workers AI + FLUX.
 </p>
 
 </div>
@@ -734,60 +927,104 @@ Tulis nama brand, simbol dan gaya yang kamu inginkan.
 
 <div class="quick-prompts">
 
-<button class="quick" data-target="logoPrompt">Logo Tech</button>
-<button class="quick" data-target="logoPrompt">Logo Gaming</button>
-<button class="quick" data-target="logoPrompt">Logo UMKM</button>
-<button class="quick" data-target="logoPrompt">Logo Clothing</button>
-<button class="quick" data-target="logoPrompt">Logo Premium</button>
+<button class="quick" data-target="logoPrompt">
+Logo Tech
+</button>
+
+<button class="quick" data-target="logoPrompt">
+Logo Gaming
+</button>
+
+<button class="quick" data-target="logoPrompt">
+Logo UMKM
+</button>
+
+<button class="quick" data-target="logoPrompt">
+Logo Clothing
+</button>
+
+<button class="quick" data-target="logoPrompt">
+Logo Premium
+</button>
 
 </div>
 
 <div class="options-grid">
 
 <div class="field">
+
 <label>Style</label>
+
 <select id="logoStyle">
+
 <option>Modern Minimalist</option>
 <option>Futuristic Technology</option>
 <option>Luxury Premium</option>
 <option>Gaming Esports</option>
 <option>Streetwear</option>
 <option>Bold Professional</option>
+
 </select>
+
 </div>
 
 <div class="field">
+
 <label>Konsep</label>
+
 <select id="logoConcept">
+
 <option>Symbol + Wordmark</option>
 <option>Symbol Only</option>
 <option>Lettermark</option>
 <option>Monogram</option>
 <option>Mascot Logo</option>
+
 </select>
+
 </div>
 
 </div>
 
 <label class="checkbox">
-<input type="checkbox" id="logoEnhance" checked>
+
+<input
+type="checkbox"
+id="logoEnhance"
+checked>
+
 Auto Enhance Prompt
+
 </label>
 
 <div class="speed-info">
-⚡ V5 IMAGE ENGINE: Cloudflare Workers AI + FLUX.
+⚡ V5.1 IMAGE ENGINE: Cloudflare Workers AI + FLUX.
 </div>
 
 <div class="generate-row">
 
-<button class="btn" onclick="enhanceLogo()">✨ Enhance</button>
+<button
+class="btn"
+onclick="enhanceLogo()">
 
-<button class="btn primary" onclick="generateDesign('logo',1)">
-🎨 Generate 1
+✨ Enhance
+
 </button>
 
-<button class="btn" onclick="generateDesign('logo',2)">
+<button
+class="btn primary"
+onclick="generateDesign('logo',1)">
+
+🎨 Generate 1
+
+</button>
+
+<button
+class="btn"
+onclick="generateDesign('logo',2)">
+
 🔥 2 Concepts
+
 </button>
 
 </div>
@@ -798,49 +1035,84 @@ Auto Enhance Prompt
 
 <div class="design-panel" id="panel-poster">
 
-<textarea id="posterPrompt"
+<textarea
+id="posterPrompt"
 placeholder="Contoh: poster promo kopi premium, cinematic, elegan"></textarea>
 
 <div class="quick-prompts">
-<button class="quick" data-target="posterPrompt">Promo Produk</button>
-<button class="quick" data-target="posterPrompt">Event</button>
-<button class="quick" data-target="posterPrompt">Musik</button>
-<button class="quick" data-target="posterPrompt">Food</button>
-<button class="quick" data-target="posterPrompt">Gaming</button>
+
+<button class="quick" data-target="posterPrompt">
+Promo Produk
+</button>
+
+<button class="quick" data-target="posterPrompt">
+Event
+</button>
+
+<button class="quick" data-target="posterPrompt">
+Musik
+</button>
+
+<button class="quick" data-target="posterPrompt">
+Food
+</button>
+
+<button class="quick" data-target="posterPrompt">
+Gaming
+</button>
+
 </div>
 
 <div class="options-grid">
 
 <div class="field">
+
 <label>Style</label>
+
 <select id="posterStyle">
+
 <option>Modern Professional</option>
 <option>Cinematic</option>
 <option>Luxury</option>
 <option>Neon Cyberpunk</option>
 <option>Minimalist</option>
+
 </select>
+
 </div>
 
 <div class="field">
+
 <label>Format</label>
+
 <select id="posterFormat">
+
 <option>Portrait</option>
 <option>Square</option>
 <option>Landscape</option>
+
 </select>
+
 </div>
 
 </div>
 
 <div class="generate-row">
 
-<button class="btn primary" onclick="generateDesign('poster',1)">
+<button
+class="btn primary"
+onclick="generateDesign('poster',1)">
+
 🖼️ Generate Poster
+
 </button>
 
-<button class="btn" onclick="generateDesign('poster',2)">
+<button
+class="btn"
+onclick="generateDesign('poster',2)">
+
 🔥 2 Concepts
+
 </button>
 
 </div>
@@ -851,49 +1123,81 @@ placeholder="Contoh: poster promo kopi premium, cinematic, elegan"></textarea>
 
 <div class="design-panel" id="panel-shirt">
 
-<textarea id="shirtPrompt"
+<textarea
+id="shirtPrompt"
 placeholder="Contoh: desain kaos streetwear naga cyber, bold, cocok untuk sablon"></textarea>
 
 <div class="quick-prompts">
-<button class="quick" data-target="shirtPrompt">Streetwear</button>
-<button class="quick" data-target="shirtPrompt">Racing</button>
-<button class="quick" data-target="shirtPrompt">Gaming</button>
-<button class="quick" data-target="shirtPrompt">Motorcycle</button>
+
+<button class="quick" data-target="shirtPrompt">
+Streetwear
+</button>
+
+<button class="quick" data-target="shirtPrompt">
+Racing
+</button>
+
+<button class="quick" data-target="shirtPrompt">
+Gaming
+</button>
+
+<button class="quick" data-target="shirtPrompt">
+Motorcycle
+</button>
+
 </div>
 
 <div class="options-grid">
 
 <div class="field">
+
 <label>Style</label>
+
 <select id="shirtStyle">
+
 <option>Streetwear</option>
 <option>Vintage</option>
 <option>Graffiti</option>
 <option>Esports</option>
 <option>Illustration</option>
+
 </select>
+
 </div>
 
 <div class="field">
+
 <label>Komposisi</label>
+
 <select id="shirtComposition">
+
 <option>Centered Chest Graphic</option>
 <option>Large Front Graphic</option>
 <option>Small Chest Logo</option>
 <option>Back Print</option>
+
 </select>
+
 </div>
 
 </div>
 
 <div class="generate-row">
 
-<button class="btn primary" onclick="generateDesign('shirt',1)">
+<button
+class="btn primary"
+onclick="generateDesign('shirt',1)">
+
 👕 Generate
+
 </button>
 
-<button class="btn" onclick="generateDesign('shirt',2)">
+<button
+class="btn"
+onclick="generateDesign('shirt',2)">
+
 🔥 2 Concepts
+
 </button>
 
 </div>
@@ -904,49 +1208,81 @@ placeholder="Contoh: desain kaos streetwear naga cyber, bold, cocok untuk sablon
 
 <div class="design-panel" id="panel-banner">
 
-<textarea id="bannerPrompt"
+<textarea
+id="bannerPrompt"
 placeholder="Contoh: hero banner website AI futuristik cyan purple"></textarea>
 
 <div class="quick-prompts">
-<button class="quick" data-target="bannerPrompt">Website</button>
-<button class="quick" data-target="bannerPrompt">Business</button>
-<button class="quick" data-target="bannerPrompt">Technology</button>
-<button class="quick" data-target="bannerPrompt">Gaming</button>
+
+<button class="quick" data-target="bannerPrompt">
+Website
+</button>
+
+<button class="quick" data-target="bannerPrompt">
+Business
+</button>
+
+<button class="quick" data-target="bannerPrompt">
+Technology
+</button>
+
+<button class="quick" data-target="bannerPrompt">
+Gaming
+</button>
+
 </div>
 
 <div class="options-grid">
 
 <div class="field">
+
 <label>Style</label>
+
 <select id="bannerStyle">
+
 <option>Futuristic Technology</option>
 <option>Corporate Premium</option>
 <option>Gaming</option>
 <option>Luxury</option>
 <option>Dark Cinematic</option>
+
 </select>
+
 </div>
 
 <div class="field">
+
 <label>Layout</label>
+
 <select id="bannerLayout">
+
 <option>Wide Hero</option>
 <option>Centered</option>
 <option>Left Text Space</option>
 <option>Right Text Space</option>
+
 </select>
+
 </div>
 
 </div>
 
 <div class="generate-row">
 
-<button class="btn primary" onclick="generateDesign('banner',1)">
+<button
+class="btn primary"
+onclick="generateDesign('banner',1)">
+
 🌐 Generate
+
 </button>
 
-<button class="btn" onclick="generateDesign('banner',2)">
+<button
+class="btn"
+onclick="generateDesign('banner',2)">
+
 🔥 2 Concepts
+
 </button>
 
 </div>
@@ -957,42 +1293,61 @@ placeholder="Contoh: hero banner website AI futuristik cyan purple"></textarea>
 
 <div class="design-panel" id="panel-creative">
 
-<textarea id="creativePrompt"
+<textarea
+id="creativePrompt"
 placeholder="Tulis ide desain apa saja..."></textarea>
 
 <div class="options-grid">
 
 <div class="field">
+
 <label>Style</label>
+
 <select id="creativeStyle">
+
 <option>Ultra Detailed</option>
 <option>Cinematic</option>
 <option>Futuristic</option>
 <option>Realistic</option>
 <option>3D Render</option>
 <option>Digital Art</option>
+
 </select>
+
 </div>
 
 <div class="field">
+
 <label>Aspect</label>
+
 <select id="creativeAspect">
+
 <option>Square</option>
 <option>Portrait</option>
 <option>Landscape</option>
+
 </select>
+
 </div>
 
 </div>
 
 <div class="generate-row">
 
-<button class="btn primary" onclick="generateDesign('creative',1)">
+<button
+class="btn primary"
+onclick="generateDesign('creative',1)">
+
 🚀 Generate
+
 </button>
 
-<button class="btn" onclick="generateDesign('creative',2)">
+<button
+class="btn"
+onclick="generateDesign('creative',2)">
+
 🔥 2 Concepts
+
 </button>
 
 </div>
@@ -1000,6 +1355,7 @@ placeholder="Tulis ide desain apa saja..."></textarea>
 </div>
 
 </section>
+
 </div>
 
 <!-- RESULT -->
@@ -1007,8 +1363,13 @@ placeholder="Tulis ide desain apa saja..."></textarea>
 <section class="card history-section">
 
 <div class="section-heading">
+
 <h3>🖼️ GENERATION RESULT</h3>
-<button onclick="clearResults()">Clear Result</button>
+
+<button onclick="clearResults()">
+Clear Result
+</button>
+
 </div>
 
 <div id="imageStage" class="image-stage">
@@ -1019,7 +1380,9 @@ placeholder="Tulis ide desain apa saja..."></textarea>
 
 <h4>Canvas siap</h4>
 
-<p>Hasil desain akan muncul di sini.</p>
+<p>
+Hasil desain akan muncul di sini.
+</p>
 
 </div>
 
@@ -1032,8 +1395,13 @@ placeholder="Tulis ide desain apa saja..."></textarea>
 <section class="card history-section">
 
 <div class="section-heading">
+
 <h3>🗂️ DESIGN HISTORY</h3>
-<button onclick="clearHistory()">Hapus History</button>
+
+<button onclick="clearHistory()">
+Hapus History
+</button>
+
 </div>
 
 <div id="gallery" class="gallery"></div>
@@ -1043,7 +1411,9 @@ placeholder="Tulis ide desain apa saja..."></textarea>
 </main>
 
 <footer class="footer">
-ALFA AI V5 ULTRA • TEXT • VOICE • IMAGE
+
+ALFA AI V5.1 ULTRA • TEXT • VOICE • IMAGE
+
 </footer>
 
 <div id="toast" class="toast"></div>
@@ -1051,8 +1421,7 @@ ALFA AI V5 ULTRA • TEXT • VOICE • IMAGE
 <script>
 
 /* =========================================================
-   ALFA AI V5 ULTRA
-   CHAT + CONTEXT + VOICE + IMAGE
+   ALFA AI V5.1 ULTRA ENGINE
 ========================================================= */
 
 const WORKER_URL =
@@ -1065,31 +1434,74 @@ const IMAGE_ENDPOINT =
 WORKER_URL + "/image";
 
 const CHAT_HISTORY_KEY =
-"ALFA_AI_V5_CHAT_HISTORY";
+"ALFA_AI_V5_1_CHAT_HISTORY";
 
 const IMAGE_HISTORY_KEY =
-"ALFA_AI_V5_IMAGE_HISTORY";
+"ALFA_AI_V5_1_IMAGE_HISTORY";
 
-const chatBox=document.getElementById("chatBox");
-const chatInput=document.getElementById("chatInput");
-const sendBtn=document.getElementById("sendBtn");
-const voiceBtn=document.getElementById("voiceBtn");
-const speakLastBtn=document.getElementById("speakLastBtn");
-const clearChatBtn=document.getElementById("clearChatBtn");
-const voiceStatus=document.getElementById("voiceStatus");
-const voiceRate=document.getElementById("voiceRate");
-const voiceRateValue=document.getElementById("voiceRateValue");
-const imageStage=document.getElementById("imageStage");
-const gallery=document.getElementById("gallery");
-const toast=document.getElementById("toast");
 
-let lastAIResponse="";
-let recognition=null;
-let isListening=false;
-let isSending=false;
-let generationRunning=false;
+/* =========================================================
+   DOM
+========================================================= */
 
-let conversation=[];
+const chatBox =
+document.getElementById("chatBox");
+
+const chatInput =
+document.getElementById("chatInput");
+
+const sendBtn =
+document.getElementById("sendBtn");
+
+const voiceBtn =
+document.getElementById("voiceBtn");
+
+const speakLastBtn =
+document.getElementById("speakLastBtn");
+
+const stopSpeakBtn =
+document.getElementById("stopSpeakBtn");
+
+const clearChatBtn =
+document.getElementById("clearChatBtn");
+
+const voiceStatus =
+document.getElementById("voiceStatus");
+
+const voiceRate =
+document.getElementById("voiceRate");
+
+const voiceRateValue =
+document.getElementById("voiceRateValue");
+
+const autoSpeak =
+document.getElementById("autoSpeak");
+
+const imageStage =
+document.getElementById("imageStage");
+
+const gallery =
+document.getElementById("gallery");
+
+const toast =
+document.getElementById("toast");
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let lastAIResponse = "";
+
+let recognition = null;
+
+let isListening = false;
+
+let isSending = false;
+
+let generationRunning = false;
+
+let conversation = [];
 
 
 /* =========================================================
@@ -1098,12 +1510,14 @@ let conversation=[];
 
 function showToast(message){
 
-toast.textContent=message;
+toast.textContent = message;
+
 toast.classList.add("show");
 
 clearTimeout(window.toastTimer);
 
-window.toastTimer=setTimeout(()=>{
+window.toastTimer =
+setTimeout(()=>{
 toast.classList.remove("show");
 },2800);
 
@@ -1120,7 +1534,9 @@ try{
 
 localStorage.setItem(
 CHAT_HISTORY_KEY,
-JSON.stringify(conversation.slice(-20))
+JSON.stringify(
+conversation.slice(-20)
+)
 );
 
 }catch(e){}
@@ -1132,22 +1548,58 @@ function loadConversation(){
 
 try{
 
-const saved=
+const saved =
 JSON.parse(
-localStorage.getItem(CHAT_HISTORY_KEY)||"[]"
+localStorage.getItem(
+CHAT_HISTORY_KEY
+)||"[]"
 );
 
-if(Array.isArray(saved)){
+if(
+Array.isArray(saved)
+){
 
-conversation=saved;
+conversation = saved
+.filter(item =>
+item &&
+(
+item.role==="user" ||
+item.role==="assistant"
+) &&
+typeof item.content==="string"
+)
+.slice(-20);
 
-for(const item of conversation){
+for(
+const item of conversation
+){
 
-if(item.role==="user")
-addMessage("user",item.content,false);
+if(
+item.role==="user"
+){
 
-if(item.role==="assistant")
-addMessage("ai",item.content,false);
+addMessage(
+"user",
+item.content,
+false
+);
+
+}
+
+if(
+item.role==="assistant"
+){
+
+addMessage(
+"ai",
+item.content,
+false
+);
+
+lastAIResponse =
+item.content;
+
+}
 
 }
 
@@ -1162,24 +1614,44 @@ addMessage("ai",item.content,false);
    CHAT UI
 ========================================================= */
 
-function addMessage(type,text,scroll=true){
+function addMessage(
+type,
+text,
+scroll=true
+){
 
-const div=document.createElement("div");
-div.className="message "+type;
+const div =
+document.createElement("div");
 
-const label=document.createElement("small");
-label.textContent=type==="user"?"YOU":"ALFA AI";
+div.className =
+"message "+type;
 
-const content=document.createElement("div");
-content.textContent=text;
+const label =
+document.createElement("small");
+
+label.textContent =
+type==="user"
+?"YOU"
+:"ALFA AI";
+
+const content =
+document.createElement("div");
+
+content.textContent =
+text;
 
 div.appendChild(label);
+
 div.appendChild(content);
 
 chatBox.appendChild(div);
 
-if(scroll)
-chatBox.scrollTop=chatBox.scrollHeight;
+if(scroll){
+
+chatBox.scrollTop =
+chatBox.scrollHeight;
+
+}
 
 }
 
@@ -1188,12 +1660,16 @@ function showTyping(){
 
 removeTyping();
 
-const div=document.createElement("div");
+const div =
+document.createElement("div");
 
-div.id="typingMessage";
-div.className="message ai";
+div.id =
+"typingMessage";
 
-div.innerHTML=`
+div.className =
+"message ai";
+
+div.innerHTML = `
 <small>ALFA AI</small>
 <span class="typing">
 <i></i><i></i><i></i>
@@ -1201,14 +1677,19 @@ div.innerHTML=`
 `;
 
 chatBox.appendChild(div);
-chatBox.scrollTop=chatBox.scrollHeight;
+
+chatBox.scrollTop =
+chatBox.scrollHeight;
 
 }
 
 
 function removeTyping(){
 
-const el=document.getElementById("typingMessage");
+const el =
+document.getElementById(
+"typingMessage"
+);
 
 if(el)
 el.remove();
@@ -1222,12 +1703,20 @@ el.remove();
 
 function extractReply(data){
 
-if(typeof data==="string"){
+if(
+typeof data==="string"
+){
 
 try{
-return extractReply(JSON.parse(data));
+
+return extractReply(
+JSON.parse(data)
+);
+
 }catch{
+
 return data;
+
 }
 
 }
@@ -1235,26 +1724,40 @@ return data;
 if(!data)
 return "";
 
-if(typeof data.reply==="string")
+if(
+typeof data.reply==="string"
+)
 return data.reply;
 
-if(typeof data.response==="string")
+if(
+typeof data.response==="string"
+)
 return data.response;
 
-if(typeof data.message==="string")
+if(
+typeof data.message==="string"
+)
 return data.message;
 
-if(typeof data.text==="string")
+if(
+typeof data.text==="string"
+)
 return data.text;
 
-if(typeof data.result==="string")
+if(
+typeof data.result==="string"
+)
 return data.result;
 
-if(typeof data.output==="string")
+if(
+typeof data.output==="string"
+)
 return data.output;
 
 if(data.data)
-return extractReply(data.data);
+return extractReply(
+data.data
+);
 
 return "";
 
@@ -1262,7 +1765,7 @@ return "";
 
 
 /* =========================================================
-   CHAT
+   CHAT SEND
 ========================================================= */
 
 async function sendChat(){
@@ -1270,15 +1773,20 @@ async function sendChat(){
 if(isSending)
 return;
 
-const text=chatInput.value.trim();
+const text =
+chatInput.value.trim();
 
 if(!text)
 return;
 
-isSending=true;
-sendBtn.disabled=true;
+isSending = true;
 
-addMessage("user",text);
+sendBtn.disabled = true;
+
+addMessage(
+"user",
+text
+);
 
 conversation.push({
 role:"user",
@@ -1287,47 +1795,79 @@ content:text
 
 saveConversation();
 
-chatInput.value="";
+chatInput.value = "";
 
 showTyping();
 
 try{
 
-const messages=[
-...conversation.slice(-20)
-];
+/*
+  Kirim hanya konteks percakapan terbaru.
+  Worker tetap menerima "message"
+  untuk kompatibilitas.
+*/
 
-const response=await fetch(
+const messages =
+conversation
+.slice(-12)
+.map(item=>({
+role:item.role,
+content:item.content
+}));
+
+const controller =
+new AbortController();
+
+const timeout =
+setTimeout(
+()=>controller.abort(),
+60000
+);
+
+const response =
+await fetch(
 CHAT_ENDPOINT,
 {
 method:"POST",
 headers:{
-"Content-Type":"application/json"
+"Content-Type":
+"application/json"
 },
 body:JSON.stringify({
 message:text,
 messages:messages
-})
+}),
+signal:controller.signal
 }
 );
 
-const raw=await response.text();
+clearTimeout(timeout);
+
+const raw =
+await response.text();
 
 let data;
 
 try{
-data=JSON.parse(raw);
+
+data =
+JSON.parse(raw);
+
 }catch{
-data=raw;
+
+data = raw;
+
 }
 
 removeTyping();
 
-const reply=extractReply(data);
+const reply =
+extractReply(data);
 
 if(reply){
 
-lastAIResponse=reply;
+lastAIResponse =
+reply;
 
 conversation.push({
 role:"assistant",
@@ -1336,14 +1876,35 @@ content:reply
 
 saveConversation();
 
-addMessage("ai",reply);
+addMessage(
+"ai",
+reply
+);
+
+/*
+  Voice Chat upgrade:
+  jawaban otomatis dibacakan
+  jika Auto Voice aktif.
+*/
+
+if(
+autoSpeak.checked
+){
+
+setTimeout(
+()=>{
+speakText(reply);
+},
+150
+);
 
 }
 
-else{
+}else{
 
-const errorText=
+const errorText =
 data?.error ||
+data?.detail ||
 "Response Worker tidak dikenali.";
 
 addMessage(
@@ -1357,16 +1918,29 @@ addMessage(
 
 removeTyping();
 
+let message =
+error?.message ||
+"Unknown error.";
+
+if(
+error?.name==="AbortError"
+){
+
+message =
+"Request terlalu lama. Silakan coba lagi.";
+
+}
+
 addMessage(
 "ai",
-"⚠️ Gagal terhubung ke ALFA AI Worker.\n\n"+
-error.message
+"⚠️ "+message
 );
 
 }finally{
 
-isSending=false;
-sendBtn.disabled=false;
+isSending = false;
+
+sendBtn.disabled = false;
 
 }
 
@@ -1383,9 +1957,13 @@ chatInput.addEventListener(
 "keydown",
 e=>{
 
-if(e.key==="Enter"&&!e.shiftKey){
+if(
+e.key==="Enter" &&
+!e.shiftKey
+){
 
 e.preventDefault();
+
 sendChat();
 
 }
@@ -1398,33 +1976,48 @@ sendChat();
    VOICE INPUT
 ========================================================= */
 
-const SpeechRecognition=
-window.SpeechRecognition||
+const SpeechRecognition =
+window.SpeechRecognition ||
 window.webkitSpeechRecognition;
+
 
 if(SpeechRecognition){
 
-recognition=new SpeechRecognition();
+recognition =
+new SpeechRecognition();
 
-recognition.lang="id-ID";
-recognition.continuous=false;
-recognition.interimResults=true;
-recognition.maxAlternatives=1;
+recognition.lang =
+"id-ID";
 
-recognition.onstart=()=>{
+recognition.continuous =
+false;
 
-isListening=true;
+recognition.interimResults =
+true;
 
-voiceBtn.textContent="🛑 Stop Voice";
+recognition.maxAlternatives =
+3;
 
-voiceStatus.textContent=
-"🎙️ Mendengarkan... silakan bicara.";
+
+recognition.onstart =
+()=>{
+
+isListening =
+true;
+
+voiceBtn.textContent =
+"🛑 Stop Voice";
+
+voiceStatus.textContent =
+"🎙️ Mendengarkan...";
 
 };
 
-recognition.onresult=event=>{
 
-let transcript="";
+recognition.onresult =
+event=>{
+
+let transcript = "";
 
 for(
 let i=event.resultIndex;
@@ -1432,56 +2025,89 @@ i<event.results.length;
 i++
 ){
 
-transcript+=
+transcript +=
 event.results[i][0].transcript;
 
 }
 
-chatInput.value=transcript;
+chatInput.value =
+transcript;
 
-const latest=
-event.results[event.results.length-1];
+const latest =
+event.results[
+event.results.length-1
+];
 
-if(latest.isFinal){
+if(
+latest.isFinal
+){
 
-voiceStatus.textContent=
+voiceStatus.textContent =
 "✅ Suara diterima. Mengirim...";
 
 setTimeout(
 sendChat,
-300
+250
 );
 
 }else{
 
-voiceStatus.textContent=
+voiceStatus.textContent =
 "🎙️ "+transcript;
 
 }
 
 };
 
-recognition.onerror=event=>{
 
-voiceStatus.textContent=
-"⚠️ Voice: "+event.error;
+recognition.onerror =
+event=>{
+
+let errorText =
+event.error;
+
+if(
+event.error==="not-allowed"
+){
+
+errorText =
+"Izin mikrofon ditolak.";
+
+}
+
+if(
+event.error==="no-speech"
+){
+
+errorText =
+"Tidak terdengar suara.";
+
+}
+
+voiceStatus.textContent =
+"⚠️ Voice: "+errorText;
 
 };
 
-recognition.onend=()=>{
 
-isListening=false;
+recognition.onend =
+()=>{
 
-voiceBtn.textContent="🎙️ Voice Chat";
+isListening =
+false;
+
+voiceBtn.textContent =
+"🎙️ Voice Chat";
 
 };
 
 }else{
 
-voiceBtn.disabled=true;
+voiceBtn.disabled =
+true;
 
-voiceStatus.textContent=
-"Browser ini tidak mendukung Voice Recognition.";
+voiceStatus.textContent =
+"Browser tidak mendukung Voice Recognition.";
 
 }
 
@@ -1503,6 +2129,7 @@ return;
 if(isListening){
 
 recognition.stop();
+
 return;
 
 }
@@ -1513,7 +2140,7 @@ recognition.start();
 
 }catch(error){
 
-voiceStatus.textContent=
+voiceStatus.textContent =
 "⚠️ Voice sedang aktif.";
 
 }
@@ -1530,8 +2157,10 @@ voiceRate.addEventListener(
 "input",
 ()=>{
 
-voiceRateValue.textContent=
-Number(voiceRate.value).toFixed(2)+"x";
+voiceRateValue.textContent =
+Number(
+voiceRate.value
+).toFixed(2)+"x";
 
 }
 );
@@ -1539,7 +2168,9 @@ Number(voiceRate.value).toFixed(2)+"x";
 
 function speakText(text){
 
-if(!("speechSynthesis" in window)){
+if(
+!("speechSynthesis" in window)
+){
 
 showToast(
 "Voice Output tidak tersedia."
@@ -1554,27 +2185,56 @@ return;
 
 speechSynthesis.cancel();
 
-const utterance=
-new SpeechSynthesisUtterance(text);
+const utterance =
+new SpeechSynthesisUtterance(
+text
+);
 
-utterance.lang="id-ID";
-utterance.rate=Number(voiceRate.value);
-utterance.pitch=1;
-utterance.volume=1;
+utterance.lang =
+"id-ID";
 
-utterance.onstart=()=>{
-voiceStatus.textContent="🔊 ALFA AI sedang berbicara...";
+utterance.rate =
+Number(
+voiceRate.value
+);
+
+utterance.pitch =
+1;
+
+utterance.volume =
+1;
+
+
+utterance.onstart =
+()=>{
+
+voiceStatus.textContent =
+"🔊 ALFA AI sedang berbicara...";
+
 };
 
-utterance.onend=()=>{
-voiceStatus.textContent="✅ Voice selesai.";
+
+utterance.onend =
+()=>{
+
+voiceStatus.textContent =
+"✅ Voice selesai.";
+
 };
 
-utterance.onerror=()=>{
-voiceStatus.textContent="⚠️ Voice Output error.";
+
+utterance.onerror =
+()=>{
+
+voiceStatus.textContent =
+"⚠️ Voice Output error.";
+
 };
 
-speechSynthesis.speak(utterance);
+
+speechSynthesis.speak(
+utterance
+);
 
 }
 
@@ -1585,13 +2245,36 @@ speakLastBtn.addEventListener(
 
 if(!lastAIResponse){
 
-showToast("Belum ada jawaban AI.");
+showToast(
+"Belum ada jawaban AI."
+);
 
 return;
 
 }
 
-speakText(lastAIResponse);
+speakText(
+lastAIResponse
+);
+
+}
+);
+
+
+stopSpeakBtn.addEventListener(
+"click",
+()=>{
+
+if(
+"speechSynthesis" in window
+){
+
+speechSynthesis.cancel();
+
+voiceStatus.textContent =
+"⏹️ Voice dihentikan.";
+
+}
 
 }
 );
@@ -1605,17 +2288,23 @@ clearChatBtn.addEventListener(
 "click",
 ()=>{
 
+if(
+"speechSynthesis" in window
+){
+
 speechSynthesis.cancel();
 
-conversation=[];
+}
 
-lastAIResponse="";
+conversation = [];
+
+lastAIResponse = "";
 
 localStorage.removeItem(
 CHAT_HISTORY_KEY
 );
 
-chatBox.innerHTML=`
+chatBox.innerHTML = `
 <div class="message ai">
 <small>ALFA AI</small>
 Chat dibersihkan.
@@ -1623,9 +2312,11 @@ Saya siap ngobrol lagi bosss. 🔥
 </div>
 `;
 
-voiceStatus.textContent="";
+voiceStatus.textContent = "";
 
-showToast("Chat + context dibersihkan.");
+showToast(
+"Chat + context dibersihkan."
+);
 
 }
 );
@@ -1637,40 +2328,56 @@ showToast("Chat + context dibersihkan.");
 
 document
 .querySelectorAll(".mode-btn")
-.forEach(button=>{
+.forEach(
+button=>{
 
 button.addEventListener(
 "click",
 ()=>{
 
-const mode=button.dataset.mode;
+const mode =
+button.dataset.mode;
 
 document
 .querySelectorAll(".mode-btn")
-.forEach(btn=>
-btn.classList.remove("active")
+.forEach(
+btn=>
+btn.classList.remove(
+"active"
+)
 );
 
-button.classList.add("active");
+button.classList.add(
+"active"
+);
 
 document
 .querySelectorAll(".design-panel")
-.forEach(panel=>
-panel.classList.remove("active")
+.forEach(
+panel=>
+panel.classList.remove(
+"active"
+)
 );
 
-const panel=
+const panel =
 document.getElementById(
 "panel-"+mode
 );
 
-if(panel)
-panel.classList.add("active");
+if(panel){
+
+panel.classList.add(
+"active"
+);
+
+}
 
 document.getElementById(
 "designModeLabel"
-).textContent=
-mode.toUpperCase()+" MODE";
+).textContent =
+mode.toUpperCase()+
+" MODE";
 
 }
 );
@@ -1683,7 +2390,7 @@ mode.toUpperCase()+" MODE";
    QUICK PROMPTS
 ========================================================= */
 
-const quickExamples={
+const quickExamples = {
 
 "Logo Tech":
 "logo teknologi AI futuristik dengan simbol huruf A",
@@ -1738,13 +2445,14 @@ const quickExamples={
 
 document
 .querySelectorAll(".quick")
-.forEach(button=>{
+.forEach(
+button=>{
 
 button.addEventListener(
 "click",
 ()=>{
 
-const target=
+const target =
 document.getElementById(
 button.dataset.target
 );
@@ -1752,15 +2460,18 @@ button.dataset.target
 if(!target)
 return;
 
-const example=
+const example =
 quickExamples[
 button.textContent.trim()
-]||button.textContent.trim();
+] ||
+button.textContent.trim();
 
-target.value=
+target.value =
 target.value
-?target.value+", "+example
-:example;
+?
+target.value+", "+example
+:
+example;
 
 target.focus();
 
@@ -1777,10 +2488,13 @@ target.focus();
 
 function enhanceLogo(){
 
-const input=
-document.getElementById("logoPrompt");
+const input =
+document.getElementById(
+"logoPrompt"
+);
 
-const base=input.value.trim();
+const base =
+input.value.trim();
 
 if(!base){
 
@@ -1792,9 +2506,11 @@ return;
 
 }
 
-input.value=`
-Professional ${document.getElementById("logoStyle").value}
-${document.getElementById("logoConcept").value} logo.
+input.value = `
+Professional
+${document.getElementById("logoStyle").value}
+${document.getElementById("logoConcept").value}
+logo.
 
 Brand concept:
 ${base}
@@ -1814,7 +2530,9 @@ no clutter,
 no blurry details.
 `.trim();
 
-showToast("✨ Prompt logo berhasil di-enhance.");
+showToast(
+"✨ Prompt logo berhasil di-enhance."
+);
 
 }
 
@@ -1827,15 +2545,19 @@ function buildPrompt(type){
 
 if(type==="logo"){
 
-const base=
-document.getElementById("logoPrompt").value.trim();
+const base =
+document.getElementById(
+"logoPrompt"
+).value.trim();
 
 if(!base)
 return "";
 
 return `
-Professional ${document.getElementById("logoStyle").value}
-${document.getElementById("logoConcept").value} logo.
+Professional
+${document.getElementById("logoStyle").value}
+${document.getElementById("logoConcept").value}
+logo.
 
 ${base}
 
@@ -1859,8 +2581,10 @@ no blurry details.
 
 if(type==="poster"){
 
-const base=
-document.getElementById("posterPrompt").value.trim();
+const base =
+document.getElementById(
+"posterPrompt"
+).value.trim();
 
 if(!base)
 return "";
@@ -1872,6 +2596,9 @@ ${base}
 
 Style:
 ${document.getElementById("posterStyle").value}
+
+Format:
+${document.getElementById("posterFormat").value}
 
 Strong focal point,
 professional graphic design,
@@ -1889,8 +2616,10 @@ no blurry details.
 
 if(type==="shirt"){
 
-const base=
-document.getElementById("shirtPrompt").value.trim();
+const base =
+document.getElementById(
+"shirtPrompt"
+).value.trim();
 
 if(!base)
 return "";
@@ -1923,8 +2652,10 @@ no clutter.
 
 if(type==="banner"){
 
-const base=
-document.getElementById("bannerPrompt").value.trim();
+const base =
+document.getElementById(
+"bannerPrompt"
+).value.trim();
 
 if(!base)
 return "";
@@ -1955,8 +2686,10 @@ no distorted objects.
 }
 
 
-const base=
-document.getElementById("creativePrompt").value.trim();
+const base =
+document.getElementById(
+"creativePrompt"
+).value.trim();
 
 if(!base)
 return "";
@@ -1968,6 +2701,9 @@ ${base}
 
 Visual style:
 ${document.getElementById("creativeStyle").value}
+
+Aspect:
+${document.getElementById("creativeAspect").value}
 
 High detail,
 cinematic composition,
@@ -1986,7 +2722,9 @@ no visual clutter.
 
 
 /* =========================================================
-   GENERATE IMAGE THROUGH WORKER
+   IMAGE GENERATION
+   IMPORTANT:
+   TIDAK ADA SEED
 ========================================================= */
 
 async function generateOneImage(
@@ -1999,56 +2737,106 @@ img
 
 try{
 
-const response=
+const controller =
+new AbortController();
+
+const timeout =
+setTimeout(
+()=>controller.abort(),
+120000
+);
+
+
+/*
+  V5.1:
+  Hanya kirim prompt + steps.
+
+  TIDAK mengirim seed.
+*/
+
+const response =
 await fetch(
 IMAGE_ENDPOINT,
 {
 method:"POST",
 headers:{
-"Content-Type":"application/json"
+"Content-Type":
+"application/json"
 },
 body:JSON.stringify({
+
 prompt:prompt,
-seed:item.seed
-})
+
+steps:4
+
+}),
+signal:controller.signal
 }
 );
 
-const raw=
+clearTimeout(timeout);
+
+const raw =
 await response.text();
 
 let data;
 
 try{
-data=JSON.parse(raw);
+
+data =
+JSON.parse(raw);
+
 }catch{
-data=null;
+
+data = null;
+
 }
 
-if(!response.ok||!data?.success||!data?.image){
+if(
+!response.ok ||
+!data?.success ||
+!data?.image
+){
 
 throw new Error(
-data?.error||
+data?.detail ||
+data?.error ||
 "Worker Image Engine tidak mengembalikan gambar."
 );
 
 }
 
-const imageData=data.image;
+const imageData =
+data.image;
 
-img.onload=()=>{
+img.onload =
+()=>{
 
 loader.remove();
 
-img.style.display="block";
+img.style.display =
+"block";
 
-card.classList.remove("loading-card");
+card.classList.remove(
+"loading-card"
+);
 
-showToast("🎨 Desain selesai.");
+item.url =
+imageData;
+
+saveImageHistory(
+item
+);
+
+showToast(
+"🎨 Desain selesai."
+);
 
 };
 
-img.onerror=()=>{
+
+img.onerror =
+()=>{
 
 showImageError(
 item,
@@ -2059,19 +2847,30 @@ loader,
 
 };
 
-img.src=imageData;
 
-item.url=imageData;
-
-saveImageHistory(item);
+img.src =
+imageData;
 
 }catch(error){
+
+let message =
+error?.message ||
+"Image Engine gagal.";
+
+if(
+error?.name==="AbortError"
+){
+
+message =
+"Generator terlalu lama merespons.";
+
+}
 
 showImageError(
 item,
 card,
 loader,
-error.message
+message
 );
 
 }
@@ -2088,60 +2887,90 @@ item,
 grid
 ){
 
-const card=
+const card =
 document.createElement("div");
 
-card.className=
+card.className =
 "result-card loading-card";
 
-const wrap=
+const wrap =
 document.createElement("div");
 
-wrap.className=
+wrap.className =
 "result-image-wrap";
 
-const loader=
+const loader =
 document.createElement("div");
 
-loader.className="loader";
+loader.className =
+"loader";
 
-loader.innerHTML=`
+loader.innerHTML = `
 <div class="spinner"></div>
 <div>⚡ ALFA AI sedang membuat gambar...</div>
 <small>Cloudflare FLUX Image Engine</small>
 `;
 
-const img=
+const img =
 document.createElement("img");
 
-img.alt="ALFA AI generated design";
-img.style.display="none";
+img.alt =
+"ALFA AI generated design";
 
-img.onclick=()=>{
-window.open(item.url,"_blank");
+img.style.display =
+"none";
+
+img.onclick =
+()=>{
+
+if(item.url){
+
+window.open(
+item.url,
+"_blank"
+);
+
+}
+
 };
 
-const actions=
+
+const actions =
 document.createElement("div");
 
-actions.className="result-actions";
+actions.className =
+"result-actions";
 
-const openBtn=
+
+const openBtn =
 document.createElement("button");
 
-openBtn.textContent="↗ Buka";
+openBtn.textContent =
+"↗ Buka";
 
-openBtn.onclick=()=>{
-if(item.url)
-window.open(item.url,"_blank");
+openBtn.onclick =
+()=>{
+
+if(item.url){
+
+window.open(
+item.url,
+"_blank"
+);
+
+}
+
 };
 
-const copyBtn=
+
+const copyBtn =
 document.createElement("button");
 
-copyBtn.textContent="📋 Prompt";
+copyBtn.textContent =
+"📋 Prompt";
 
-copyBtn.onclick=async()=>{
+copyBtn.onclick =
+async()=>{
 
 try{
 
@@ -2149,32 +2978,41 @@ await navigator.clipboard.writeText(
 item.prompt
 );
 
-showToast("Prompt disalin.");
+showToast(
+"Prompt disalin."
+);
 
 }catch{
 
-showToast("Clipboard tidak tersedia.");
+showToast(
+"Clipboard tidak tersedia."
+);
 
 }
 
 };
 
-const retryBtn=
+
+const retryBtn =
 document.createElement("button");
 
-retryBtn.textContent="🔄 Retry";
+retryBtn.textContent =
+"🔄 Retry";
 
-retryBtn.onclick=()=>{
+retryBtn.onclick =
+()=>{
 
-loader.className="loader";
+loader.className =
+"loader";
 
-loader.innerHTML=`
+loader.innerHTML = `
 <div class="spinner"></div>
 <div>🔄 Mencoba kembali...</div>
 <small>ALFA AI Image Engine</small>
 `;
 
-img.style.display="none";
+img.style.display =
+"none";
 
 generateOneImage(
 item.prompt,
@@ -2186,17 +3024,38 @@ img
 
 };
 
-actions.appendChild(openBtn);
-actions.appendChild(copyBtn);
-actions.appendChild(retryBtn);
 
-wrap.appendChild(loader);
-wrap.appendChild(img);
+actions.appendChild(
+openBtn
+);
 
-card.appendChild(wrap);
-card.appendChild(actions);
+actions.appendChild(
+copyBtn
+);
 
-grid.appendChild(card);
+actions.appendChild(
+retryBtn
+);
+
+wrap.appendChild(
+loader
+);
+
+wrap.appendChild(
+img
+);
+
+card.appendChild(
+wrap
+);
+
+card.appendChild(
+actions
+);
+
+grid.appendChild(
+card
+);
 
 generateOneImage(
 item.prompt,
@@ -2220,15 +3079,23 @@ loader,
 message
 ){
 
-loader.className="error-box";
+loader.className =
+"error-box";
 
-loader.innerHTML=`
+loader.innerHTML = `
 <div style="font-size:32px">⚠️</div>
 <div>Image Engine mengalami masalah.</div>
-<small>${escapeHTML(message||"Silakan Retry.")}</small>
+<small>
+${escapeHTML(
+message ||
+"Silakan Retry."
+)}
+</small>
 `;
 
-showToast("⚠️ Gagal membuat gambar.");
+showToast(
+"⚠️ Gagal membuat gambar."
+);
 
 }
 
@@ -2252,7 +3119,7 @@ return;
 
 }
 
-const prompt=
+const prompt =
 buildPrompt(type);
 
 if(!prompt){
@@ -2265,32 +3132,40 @@ return;
 
 }
 
-generationRunning=true;
+generationRunning =
+true;
 
-imageStage.innerHTML="";
+imageStage.innerHTML =
+"";
 
-const grid=
+const grid =
 document.createElement("div");
 
-grid.className="result-grid";
+grid.className =
+"result-grid";
 
-imageStage.appendChild(grid);
+imageStage.appendChild(
+grid
+);
 
-for(let i=0;i<count;i++){
+for(
+let i=0;
+i<count;
+i++
+){
 
-const item={
+const item = {
 
 id:
-Date.now()+"-"+i+"-"+Math.random(),
+Date.now()+
+"-"+
+i+
+"-"+
+Math.random(),
 
 type:type,
 
 prompt:prompt,
-
-seed:
-Math.floor(
-Math.random()*999999999
-),
 
 url:""
 
@@ -2303,10 +3178,17 @@ grid
 
 }
 
-generationRunning=false;
+/*
+  Kita izinkan tombol generator
+  digunakan lagi setelah request
+  cards sudah dibuat.
+*/
+
+generationRunning =
+false;
 
 showToast(
-"⚡ ALFA AI Image Engine mulai bekerja."
+"⚡ FLUX Image Engine mulai bekerja."
 );
 
 }
@@ -2335,16 +3217,20 @@ return [];
 }
 
 
-function saveImageHistory(item){
+function saveImageHistory(
+item
+){
 
 if(!item.url)
 return;
 
-const history=
+const history =
 getImageHistory();
 
 if(
-history.some(x=>x.id===item.id)
+history.some(
+x=>x.id===item.id
+)
 )
 return;
 
@@ -2359,7 +3245,9 @@ prompt:item.prompt,
 type:item.type,
 
 time:
-new Date().toLocaleString("id-ID")
+new Date().toLocaleString(
+"id-ID"
+)
 
 });
 
@@ -2381,14 +3269,15 @@ renderHistory();
 
 function renderHistory(){
 
-const history=
+const history =
 getImageHistory();
 
-gallery.innerHTML="";
+gallery.innerHTML =
+"";
 
 if(!history.length){
 
-gallery.innerHTML=`
+gallery.innerHTML = `
 <div style="
 grid-column:1/-1;
 text-align:center;
@@ -2404,54 +3293,81 @@ return;
 
 }
 
-history.forEach(item=>{
+history.forEach(
+item=>{
 
-const box=
+const box =
 document.createElement("div");
 
-box.className="gallery-item";
+box.className =
+"gallery-item";
 
-const img=
+const img =
 document.createElement("img");
 
-img.src=item.url;
-img.alt="ALFA AI History";
-img.loading="lazy";
+img.src =
+item.url;
 
-img.onclick=()=>{
-window.open(item.url,"_blank");
+img.alt =
+"ALFA AI History";
+
+img.loading =
+"lazy";
+
+img.onclick =
+()=>{
+
+window.open(
+item.url,
+"_blank"
+);
+
 };
 
-const info=
+
+const info =
 document.createElement("div");
 
-info.className="gallery-info";
+info.className =
+"gallery-info";
 
-const small=
+const small =
 document.createElement("small");
 
-small.textContent=
+small.textContent =
 item.type.toUpperCase()+
 " • "+
 item.time;
 
-info.appendChild(small);
+info.appendChild(
+small
+);
 
-box.appendChild(img);
-box.appendChild(info);
+box.appendChild(
+img
+);
 
-gallery.appendChild(box);
+box.appendChild(
+info
+);
 
-});
+gallery.appendChild(
+box
+);
+
+}
+);
 
 }
 
 
 function clearHistory(){
 
-if(!confirm(
+if(
+!confirm(
 "Hapus semua history desain?"
-))
+)
+)
 return;
 
 localStorage.removeItem(
@@ -2473,11 +3389,13 @@ showToast(
 
 function clearResults(){
 
-imageStage.innerHTML=`
+imageStage.innerHTML = `
 <div class="empty-state">
 <div class="empty-icon">🎨</div>
 <h4>Canvas siap</h4>
-<p>Hasil desain akan muncul di sini.</p>
+<p>
+Hasil desain akan muncul di sini.
+</p>
 </div>
 `;
 
@@ -2485,17 +3403,34 @@ imageStage.innerHTML=`
 
 
 /* =========================================================
-   ESCAPE ERROR
+   ESCAPE HTML
 ========================================================= */
 
-function escapeHTML(text){
+function escapeHTML(
+text
+){
 
 return String(text)
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
+.replace(
+/&/g,
+"&amp;"
+)
+.replace(
+/</g,
+"&lt;"
+)
+.replace(
+/>/g,
+"&gt;"
+)
+.replace(
+/"/g,
+"&quot;"
+)
+.replace(
+/'/g,
+"&#039;"
+);
 
 }
 
@@ -2508,14 +3443,45 @@ loadConversation();
 
 renderHistory();
 
-console.log("================================");
-console.log("ALFA AI V5 ULTRA");
-console.log("CHAT : READY");
-console.log("CONTEXT : READY");
-console.log("VOICE INPUT : READY");
-console.log("VOICE OUTPUT : READY");
-console.log("IMAGE : WORKER /image");
-console.log("================================");
+console.log(
+"================================"
+);
+
+console.log(
+"ALFA AI V5.1 ULTRA"
+);
+
+console.log(
+"CHAT : READY"
+);
+
+console.log(
+"CONTEXT : READY"
+);
+
+console.log(
+"VOICE INPUT : READY"
+);
+
+console.log(
+"VOICE OUTPUT : READY"
+);
+
+console.log(
+"AUTO VOICE : READY"
+);
+
+console.log(
+"IMAGE : CLOUDFLARE FLUX"
+);
+
+console.log(
+"SEED : DISABLED"
+);
+
+console.log(
+"================================"
+);
 
 </script>
 
