@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -6,7 +7,7 @@
 <meta name="theme-color" content="#030712">
 <meta name="color-scheme" content="dark">
 
-<title>ALFA AI V7.3 | SMART VOICE • CHAT • IMAGE</title>
+<title>ALFA AI V7.3.1 | AI CHAT • VOICE • IMAGE</title>
 
 <style>
 *{
@@ -21,52 +22,73 @@ html{
 
 body{
   min-height:100vh;
-  font-family:Inter,Segoe UI,Arial,sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
   background:
-    radial-gradient(circle at 15% 15%,rgba(0,229,255,.12),transparent 30%),
-    radial-gradient(circle at 85% 20%,rgba(124,58,237,.14),transparent 30%),
-    linear-gradient(135deg,#020617,#030712 55%,#08051a);
-  color:#e5faff;
+    radial-gradient(circle at 20% 10%,rgba(0,229,255,.12),transparent 30%),
+    radial-gradient(circle at 80% 20%,rgba(124,58,237,.14),transparent 30%),
+    #030712;
+  color:#e5f7ff;
   overflow-x:hidden;
 }
 
-body:before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  background:
-    linear-gradient(rgba(0,229,255,.025) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,229,255,.025) 1px,transparent 1px);
-  background-size:45px 45px;
-  mask-image:linear-gradient(to bottom,black,transparent);
+button,
+textarea{
+  font:inherit;
 }
 
-header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  backdrop-filter:blur(18px);
-  background:rgba(2,6,23,.78);
-  border-bottom:1px solid rgba(0,229,255,.16);
+button{
+  cursor:pointer;
 }
 
-.nav{
-  max-width:1200px;
+.app{
+  width:min(1100px,94%);
   margin:auto;
-  padding:14px 18px;
+  padding:20px 0 40px;
+}
+
+/* HEADER */
+.header{
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   gap:15px;
+  padding:18px 20px;
+  margin-bottom:18px;
+  border:1px solid rgba(0,229,255,.22);
+  border-radius:22px;
+  background:rgba(3,7,18,.78);
+  backdrop-filter:blur(15px);
+  box-shadow:0 0 35px rgba(0,229,255,.08);
 }
 
 .logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logoIcon{
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border-radius:15px;
+  background:linear-gradient(135deg,#00e5ff,#7c3aed);
+  color:#fff;
+  font-size:24px;
   font-weight:900;
+  box-shadow:0 0 25px rgba(0,229,255,.25);
+}
+
+.logoText h1{
+  font-size:20px;
   letter-spacing:1px;
-  font-size:19px;
-  color:#67e8f9;
-  text-shadow:0 0 18px rgba(34,211,238,.65);
+}
+
+.logoText p{
+  margin-top:3px;
+  font-size:11px;
+  color:#8da9b8;
 }
 
 .status{
@@ -74,110 +96,121 @@ header{
   align-items:center;
   gap:7px;
   font-size:12px;
-  color:#86efac;
+  color:#7fffd4;
 }
 
-.dot{
-  width:8px;
-  height:8px;
+.statusDot{
+  width:9px;
+  height:9px;
   border-radius:50%;
-  background:#22c55e;
-  box-shadow:0 0 14px #22c55e;
-  animation:pulse 1.5s infinite;
+  background:#00ff95;
+  box-shadow:0 0 12px #00ff95;
 }
 
-@keyframes pulse{
-  50%{opacity:.35;transform:scale(.75)}
-}
-
-.container{
-  width:min(1100px,94%);
-  margin:28px auto 60px;
-}
-
+/* HERO */
 .hero{
   text-align:center;
-  padding:30px 10px 22px;
+  padding:24px 15px 18px;
 }
 
-.hero h1{
-  font-size:clamp(30px,6vw,62px);
-  line-height:1;
-  font-weight:1000;
-  letter-spacing:-2px;
-  background:linear-gradient(90deg,#67e8f9,#38bdf8,#a78bfa,#67e8f9);
-  background-size:250% auto;
+.hero h2{
+  font-size:clamp(28px,6vw,52px);
+  line-height:1.05;
+  background:linear-gradient(90deg,#00e5ff,#7c3aed,#00e5ff);
+  background-size:200%;
   -webkit-background-clip:text;
   background-clip:text;
   color:transparent;
-  animation:shine 6s linear infinite;
-}
-
-@keyframes shine{
-  to{background-position:250% center}
+  animation:gradientMove 5s linear infinite;
 }
 
 .hero p{
-  margin-top:15px;
-  color:#94a3b8;
+  margin-top:12px;
+  color:#8da9b8;
   font-size:14px;
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:1.25fr .75fr;
-  gap:18px;
+@keyframes gradientMove{
+  0%{background-position:0%}
+  100%{background-position:200%}
 }
 
-.card{
-  background:rgba(15,23,42,.72);
-  border:1px solid rgba(103,232,249,.16);
-  border-radius:22px;
-  box-shadow:
-    0 20px 70px rgba(0,0,0,.3),
-    inset 0 0 35px rgba(34,211,238,.025);
-  backdrop-filter:blur(18px);
+/* MAIN CARD */
+.panel{
+  border:1px solid rgba(0,229,255,.18);
+  border-radius:24px;
   overflow:hidden;
+  background:rgba(5,10,24,.82);
+  box-shadow:0 0 50px rgba(0,0,0,.3);
 }
 
-.card-head{
-  padding:18px 20px;
-  border-bottom:1px solid rgba(148,163,184,.1);
+/* TOOLBAR */
+.toolbar{
   display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
+  flex-wrap:wrap;
+  gap:8px;
+  padding:14px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  background:rgba(255,255,255,.02);
 }
 
-.card-title{
-  font-weight:800;
+.btn{
+  border:1px solid rgba(0,229,255,.25);
+  background:rgba(0,229,255,.06);
+  color:#dffaff;
+  border-radius:12px;
+  padding:10px 14px;
+  font-weight:700;
+  font-size:13px;
+  transition:.2s ease;
 }
 
-.badge{
-  font-size:10px;
-  padding:5px 9px;
-  border-radius:999px;
-  border:1px solid rgba(34,211,238,.25);
-  color:#67e8f9;
-  background:rgba(34,211,238,.07);
+.btn:hover{
+  transform:translateY(-1px);
+  border-color:#00e5ff;
+  box-shadow:0 0 18px rgba(0,229,255,.15);
 }
 
+.btn:active{
+  transform:scale(.97);
+}
+
+.btn.primary{
+  background:linear-gradient(135deg,#00b8d4,#2563eb);
+  border-color:transparent;
+  color:#fff;
+}
+
+.btn.voice{
+  background:linear-gradient(135deg,#7c3aed,#2563eb);
+  border-color:transparent;
+}
+
+.btn.stop{
+  background:rgba(239,68,68,.1);
+  border-color:rgba(239,68,68,.35);
+  color:#ff8f8f;
+}
+
+/* CHAT */
 .chat{
-  height:560px;
-  display:flex;
-  flex-direction:column;
+  height:480px;
+  overflow-y:auto;
+  padding:18px;
 }
 
-.messages{
-  flex:1;
-  overflow:auto;
-  padding:18px;
-  scroll-behavior:smooth;
+.chat::-webkit-scrollbar{
+  width:7px;
+}
+
+.chat::-webkit-scrollbar-thumb{
+  background:rgba(0,229,255,.25);
+  border-radius:10px;
 }
 
 .message{
   display:flex;
-  margin:10px 0;
+  margin-bottom:15px;
 }
 
 .message.user{
@@ -185,236 +218,233 @@ header{
 }
 
 .bubble{
-  max-width:84%;
-  padding:12px 15px;
-  border-radius:16px;
+  max-width:min(82%,760px);
+  padding:13px 15px;
+  border-radius:17px;
   line-height:1.55;
   white-space:pre-wrap;
+  word-break:break-word;
   font-size:14px;
 }
 
 .message.ai .bubble{
-  background:rgba(30,41,59,.75);
-  border:1px solid rgba(103,232,249,.1);
+  background:rgba(0,229,255,.055);
+  border:1px solid rgba(0,229,255,.14);
 }
 
 .message.user .bubble{
-  background:linear-gradient(135deg,rgba(8,145,178,.55),rgba(37,99,235,.45));
-  border:1px solid rgba(103,232,249,.18);
+  background:linear-gradient(135deg,rgba(37,99,235,.85),rgba(124,58,237,.85));
+  color:#fff;
 }
 
-.composer{
-  padding:14px;
-  border-top:1px solid rgba(148,163,184,.1);
-}
-
-textarea{
-  width:100%;
-  min-height:75px;
-  resize:none;
-  padding:13px;
-  border-radius:15px;
-  border:1px solid rgba(103,232,249,.18);
-  outline:none;
-  background:#020617;
-  color:#e0faff;
-  font:inherit;
-}
-
-textarea:focus{
-  border-color:#22d3ee;
-  box-shadow:0 0 0 3px rgba(34,211,238,.08);
-}
-
-.buttons{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:8px;
-  margin-top:10px;
-}
-
-button{
-  border:0;
-  cursor:pointer;
-  border-radius:12px;
-  padding:11px 10px;
-  color:white;
-  font-weight:750;
-  background:linear-gradient(135deg,#0891b2,#2563eb);
-  transition:.2s;
-}
-
-button:hover{
-  transform:translateY(-1px);
-  filter:brightness(1.12);
-}
-
-button:active{
-  transform:scale(.98);
-}
-
-button.secondary{
-  background:#172033;
-  border:1px solid rgba(148,163,184,.14);
-}
-
-button.danger{
-  background:linear-gradient(135deg,#991b1b,#dc2626);
-}
-
-button.voice{
-  background:linear-gradient(135deg,#7c3aed,#2563eb);
-}
-
-button.image{
-  background:linear-gradient(135deg,#db2777,#7c3aed);
-}
-
-.side{
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-}
-
-.voice-panel{
-  padding:18px;
-}
-
-.voice-state{
-  padding:14px;
-  border-radius:15px;
-  background:rgba(2,6,23,.65);
-  border:1px solid rgba(103,232,249,.12);
-  margin-bottom:12px;
-}
-
-.voice-main{
-  font-size:18px;
-  font-weight:900;
-  color:#67e8f9;
-}
-
-.voice-sub{
+.message.system .bubble{
+  margin:auto;
+  color:#8da9b8;
   font-size:12px;
-  color:#94a3b8;
-  margin-top:5px;
-}
-
-.voice-list{
-  margin-top:12px;
-  max-height:180px;
-  overflow:auto;
-}
-
-.voice-item{
-  display:flex;
-  justify-content:space-between;
-  gap:8px;
-  padding:8px 9px;
-  margin:5px 0;
-  border-radius:9px;
-  background:rgba(30,41,59,.55);
-  font-size:11px;
-  color:#cbd5e1;
-}
-
-.voice-item strong{
-  color:#67e8f9;
-}
-
-.test-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-  margin-top:10px;
-}
-
-.image-panel{
-  min-height:260px;
-}
-
-.image-box{
-  padding:18px;
-}
-
-#imagePrompt{
-  min-height:80px;
-  margin-bottom:10px;
-}
-
-#imageResult{
-  margin-top:14px;
-  display:none;
-}
-
-#imageResult img{
-  width:100%;
-  border-radius:15px;
-  border:1px solid rgba(103,232,249,.18);
-  display:block;
-}
-
-.loading{
-  display:none;
-  color:#67e8f9;
-  font-size:12px;
-  margin-top:10px;
-  animation:blink 1s infinite;
-}
-
-@keyframes blink{
-  50%{opacity:.4}
+  text-align:center;
+  border:1px dashed rgba(255,255,255,.12);
 }
 
 .typing{
   display:inline-flex;
   gap:4px;
-  align-items:center;
+  padding:3px;
 }
 
-.typing i{
-  width:5px;
-  height:5px;
+.typing span{
+  width:6px;
+  height:6px;
+  background:#00e5ff;
   border-radius:50%;
-  background:#67e8f9;
-  animation:bounce 1s infinite;
+  animation:typing 1s infinite;
 }
 
-.typing i:nth-child(2){animation-delay:.15s}
-.typing i:nth-child(3){animation-delay:.3s}
+.typing span:nth-child(2){animation-delay:.15s}
+.typing span:nth-child(3){animation-delay:.3s}
 
-@keyframes bounce{
-  50%{transform:translateY(-4px);opacity:.35}
+@keyframes typing{
+  0%,80%,100%{opacity:.25;transform:translateY(0)}
+  40%{opacity:1;transform:translateY(-4px)}
 }
 
-footer{
+/* INPUT */
+.inputArea{
+  padding:14px;
+  border-top:1px solid rgba(255,255,255,.07);
+}
+
+.inputRow{
+  display:flex;
+  gap:9px;
+  align-items:flex-end;
+}
+
+textarea{
+  flex:1;
+  min-height:58px;
+  max-height:180px;
+  resize:vertical;
+  border:1px solid rgba(0,229,255,.2);
+  outline:none;
+  border-radius:15px;
+  background:#050b18;
+  color:#e5f7ff;
+  padding:14px;
+}
+
+textarea:focus{
+  border-color:#00e5ff;
+  box-shadow:0 0 18px rgba(0,229,255,.08);
+}
+
+.sendBtn{
+  min-width:105px;
+  height:58px;
+}
+
+/* IMAGE */
+.imageBox{
+  display:none;
+  padding:15px;
+  border-top:1px solid rgba(255,255,255,.07);
+}
+
+.imageBox.show{
+  display:block;
+}
+
+.imagePrompt{
+  display:flex;
+  gap:8px;
+  margin-bottom:12px;
+}
+
+.imagePrompt input{
+  flex:1;
+  min-width:0;
+  border:1px solid rgba(0,229,255,.2);
+  background:#050b18;
+  color:#fff;
+  outline:none;
+  border-radius:12px;
+  padding:12px;
+}
+
+.imageResult{
+  min-height:100px;
+  display:grid;
+  place-items:center;
+  border-radius:18px;
+  overflow:hidden;
+  background:rgba(255,255,255,.02);
+  border:1px dashed rgba(255,255,255,.1);
+}
+
+.imageResult img{
+  display:block;
+  width:100%;
+  max-height:650px;
+  object-fit:contain;
+}
+
+/* VOICE STATUS */
+.voiceStatus{
+  padding:9px 14px;
+  font-size:12px;
+  color:#7f9aa8;
+  border-top:1px solid rgba(255,255,255,.05);
+}
+
+.voiceStatus.ok{
+  color:#7fffd4;
+}
+
+.voiceStatus.error{
+  color:#ff8f8f;
+}
+
+/* FOOTER */
+.footer{
   text-align:center;
-  margin-top:28px;
-  color:#64748b;
+  color:#607886;
   font-size:11px;
+  padding:20px 0 0;
 }
 
-@media(max-width:850px){
-  .grid{
-    grid-template-columns:1fr;
+/* MOBILE */
+@media(max-width:650px){
+  .app{
+    width:96%;
+    padding-top:10px;
+  }
+
+  .header{
+    padding:13px;
+    border-radius:18px;
+  }
+
+  .logoIcon{
+    width:42px;
+    height:42px;
+  }
+
+  .logoText h1{
+    font-size:17px;
+  }
+
+  .status{
+    font-size:10px;
+  }
+
+  .hero{
+    padding:18px 8px;
+  }
+
+  .hero h2{
+    font-size:31px;
+  }
+
+  .toolbar{
+    padding:10px;
+  }
+
+  .btn{
+    flex:1;
+    min-width:100px;
+    padding:10px 8px;
+    font-size:12px;
   }
 
   .chat{
-    height:620px;
-  }
-}
-
-@media(max-width:550px){
-  .buttons{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .hero h1{
-    font-size:35px;
+    height:55vh;
+    min-height:380px;
+    padding:12px;
   }
 
   .bubble{
-    max-width:92%;
+    max-width:90%;
+    font-size:13px;
+  }
+
+  .inputRow{
+    flex-direction:column;
+  }
+
+  textarea{
+    width:100%;
+    min-height:85px;
+  }
+
+  .sendBtn{
+    width:100%;
+  }
+
+  .imagePrompt{
+    flex-direction:column;
+  }
+
+  .imagePrompt .btn{
+    width:100%;
   }
 }
 </style>
@@ -422,119 +452,1127 @@ footer{
 
 <body>
 
-<header>
-  <div class="nav">
-    <div class="logo">⚡ ALFA AI</div>
+<div class="app">
+
+  <header class="header">
+    <div class="logo">
+      <div class="logoIcon">AI</div>
+      <div class="logoText">
+        <h1>ALFA AI</h1>
+        <p>V7.3.1 CLICK FIX • CHAT • VOICE • IMAGE</p>
+      </div>
+    </div>
+
     <div class="status">
-      <span class="dot"></span>
+      <span class="statusDot"></span>
       ONLINE
     </div>
-  </div>
-</header>
+  </header>
 
-<main class="container">
+  <section class="hero">
+    <h2>ALFA AI</h2>
+    <p>Asisten AI futuristik dengan Chat, Neural Voice & Image Generator.</p>
+  </section>
 
-<section class="hero">
-  <h1>ALFA AI</h1>
-  <p>SMART CHAT • NEURAL VOICE • IMAGE GENERATOR</p>
-</section>
+  <main class="panel">
 
-<div class="grid">
+    <div class="toolbar">
 
-<section class="card chat">
+      <button type="button"
+              class="btn"
+              id="newChatBtn">
+        🗑️ Chat Baru
+      </button>
 
-  <div class="card-head">
-    <div class="card-title">🤖 AI Assistant</div>
-    <span class="badge">V7.3 SMART PRO</span>
-  </div>
+      <button type="button"
+              class="btn voice"
+              id="voiceInputBtn">
+        🎤 Voice Input
+      </button>
 
-  <div id="messages" class="messages"></div>
+      <button type="button"
+              class="btn"
+              id="testIndonesiaBtn">
+        🇮🇩 Test Indonesia
+      </button>
 
-  <div class="composer">
+      <button type="button"
+              class="btn"
+              id="testEnglishBtn">
+        🇺🇸 Test English
+      </button>
 
-    <textarea
-      id="messageInput"
-      placeholder="Tulis pesan untuk ALFA AI..."
-      autocomplete="off"
-    ></textarea>
+      <button type="button"
+              class="btn"
+              id="testAuraBtn">
+        🔊 Test Aura
+      </button>
 
-    <div class="buttons">
-      <button id="sendBtn">🚀 Kirim</button>
-      <button id="micBtn" class="voice">🎙️ Voice</button>
-      <button id="speakBtn" class="secondary">🔊 Baca</button>
-      <button id="stopBtn" class="danger">⏹ Stop</button>
+      <button type="button"
+              class="btn stop"
+              id="stopVoiceBtn">
+        ⏹ Stop
+      </button>
+
+      <button type="button"
+              class="btn primary"
+              id="imageToggleBtn">
+        🖼️ Image Generator
+      </button>
+
     </div>
 
-  </div>
+    <section id="chat" class="chat"></section>
 
-</section>
+    <div id="imageBox" class="imageBox">
 
-<aside class="side">
+      <div class="imagePrompt">
+        <input
+          id="imagePrompt"
+          type="text"
+          placeholder="Contoh: futuristic cyber city, neon blue, cinematic..."
+          autocomplete="off"
+        >
 
-<section class="card voice-panel">
+        <button type="button"
+                class="btn primary"
+                id="generateImageBtn">
+          ✨ Generate
+        </button>
+      </div>
 
-  <div class="card-head" style="padding:0 0 14px;border:0">
-    <div class="card-title">🎙️ Smart Voice</div>
-    <span class="badge" id="voiceBadge">AUTO</span>
-  </div>
+      <div id="imageResult" class="imageResult">
+        <span style="color:#607886;font-size:12px">
+          Hasil gambar akan muncul di sini.
+        </span>
+      </div>
 
-  <div class="voice-state">
-    <div class="voice-main" id="voiceStatus">
-      Mendeteksi Voice...
-    </div>
-    <div class="voice-sub" id="voiceDetail">
-      Memeriksa voice yang tersedia di perangkat.
-    </div>
-  </div>
-
-  <div class="test-grid">
-    <button id="testIndonesia">🇮🇩 Test ID</button>
-    <button id="testEnglish" class="voice">🇺🇸 Test EN</button>
-  </div>
-
-  <button
-    id="testAura"
-    class="secondary"
-    style="width:100%;margin-top:8px"
-  >
-    🔊 Test Aura-1
-  </button>
-
-  <div class="voice-list" id="voiceList"></div>
-
-</section>
-
-<section class="card image-panel">
-
-  <div class="card-head">
-    <div class="card-title">🎨 Image Generator</div>
-    <span class="badge">FLUX</span>
-  </div>
-
-  <div class="image-box">
-
-    <textarea
-      id="imagePrompt"
-      placeholder="Contoh: futuristic Indonesian city at night, cinematic, ultra detailed..."
-    ></textarea>
-
-    <button
-      id="generateBtn"
-      class="image"
-      style="width:100%"
-    >
-      ✨ Generate Image
-    </button>
-
-    <div id="imageLoading" class="loading">
-      ⚡ ALFA AI sedang membuat gambar...
     </div>
 
-    <div id="imageResult"></div>
+    <div class="voiceStatus" id="voiceStatus">
+      Voice engine siap.
+    </div>
 
-  </div>
+    <div class="inputArea">
 
-</section>
+      <div class="inputRow">
 
-<
+        <textarea
+          id="messageInput"
+          placeholder="Tulis pesan untuk ALFA AI..."
+          spellcheck="true"
+        ></textarea>
+
+        <button type="button"
+                class="btn primary sendBtn"
+                id="sendBtn">
+          🚀 Kirim
+        </button>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    ALFA AI V7.3.1 • Worker tetap menggunakan endpoint ALFA AI yang aktif
+  </footer>
+
+</div>
+
+<script>
+/* =========================================================
+   ALFA AI V7.3.1 CLICK FIX
+   WORKER TIDAK DIUBAH
+========================================================= */
+
+(() => {
+  "use strict";
+
+  const WORKER_BASE =
+    "https://shrill-haze-a236.adnan0076767.workers.dev";
+
+  const CHAT_ENDPOINT = WORKER_BASE + "/chat";
+  const TTS_ENDPOINT = WORKER_BASE + "/tts";
+  const IMAGE_ENDPOINT = WORKER_BASE + "/image";
+
+  const STORAGE_KEY = "alfa_ai_v731_messages";
+
+  let messages = [];
+  let voices = [];
+  let currentAudio = null;
+  let recognition = null;
+  let isListening = false;
+
+  /* =========================================================
+     SAFE DOM
+  ========================================================= */
+
+  function $(id){
+    return document.getElementById(id);
+  }
+
+  const chat = $("chat");
+  const messageInput = $("messageInput");
+  const sendBtn = $("sendBtn");
+  const voiceInputBtn = $("voiceInputBtn");
+  const testIndonesiaBtn = $("testIndonesiaBtn");
+  const testEnglishBtn = $("testEnglishBtn");
+  const testAuraBtn = $("testAuraBtn");
+  const stopVoiceBtn = $("stopVoiceBtn");
+  const newChatBtn = $("newChatBtn");
+  const imageToggleBtn = $("imageToggleBtn");
+  const imageBox = $("imageBox");
+  const imagePrompt = $("imagePrompt");
+  const generateImageBtn = $("generateImageBtn");
+  const imageResult = $("imageResult");
+  const voiceStatus = $("voiceStatus");
+
+  /* =========================================================
+     STATUS
+  ========================================================= */
+
+  function setVoiceStatus(text, type = ""){
+    if(!voiceStatus) return;
+
+    voiceStatus.textContent = text;
+    voiceStatus.className = "voiceStatus";
+
+    if(type){
+      voiceStatus.classList.add(type);
+    }
+  }
+
+  /* =========================================================
+     HTML ESCAPE
+  ========================================================= */
+
+  function escapeHTML(value){
+    return String(value)
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+  }
+
+  /* =========================================================
+     CHAT STORAGE
+  ========================================================= */
+
+  function loadMessages(){
+    try{
+      const saved = localStorage.getItem(STORAGE_KEY);
+
+      if(saved){
+        const parsed = JSON.parse(saved);
+
+        if(Array.isArray(parsed)){
+          messages = parsed
+            .filter(x =>
+              x &&
+              (x.role === "user" || x.role === "assistant") &&
+              typeof x.content === "string"
+            )
+            .slice(-50);
+        }
+      }
+    }catch(error){
+      console.warn("Storage load error:", error);
+      messages = [];
+    }
+  }
+
+  function saveMessages(){
+    try{
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(messages.slice(-50))
+      );
+    }catch(error){
+      console.warn("Storage save error:", error);
+    }
+  }
+
+  /* =========================================================
+     RENDER
+  ========================================================= */
+
+  function addMessage(role, content, save = true){
+
+    if(!chat) return;
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "message " +
+      (role === "user" ? "user" : "ai");
+
+    const bubble = document.createElement("div");
+    bubble.className = "bubble";
+
+    bubble.textContent = content;
+
+    wrapper.appendChild(bubble);
+    chat.appendChild(wrapper);
+
+    chat.scrollTop = chat.scrollHeight;
+
+    if(save){
+      messages.push({
+        role,
+        content
+      });
+
+      saveMessages();
+    }
+  }
+
+  function renderMessages(){
+
+    if(!chat) return;
+
+    chat.innerHTML = "";
+
+    if(messages.length === 0){
+
+      addMessage(
+        "assistant",
+        "Halo bosss 👋 Saya ALFA AI. Silakan kirim pertanyaan atau gunakan Voice / Image Generator.",
+        false
+      );
+
+      return;
+    }
+
+    messages.forEach(item => {
+      addMessage(
+        item.role,
+        item.content,
+        false
+      );
+    });
+
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  function showTyping(){
+
+    const existing = $("typingMessage");
+
+    if(existing){
+      existing.remove();
+    }
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "message ai";
+    wrapper.id = "typingMessage";
+
+    wrapper.innerHTML = `
+      <div class="bubble">
+        <span class="typing">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+    `;
+
+    chat.appendChild(wrapper);
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  function removeTyping(){
+
+    const typing = $("typingMessage");
+
+    if(typing){
+      typing.remove();
+    }
+  }
+
+  /* =========================================================
+     CHAT
+  ========================================================= */
+
+  function extractReply(data){
+
+    if(!data) return "";
+
+    if(typeof data.reply === "string"){
+      return data.reply;
+    }
+
+    if(typeof data.response === "string"){
+      return data.response;
+    }
+
+    if(typeof data.text === "string"){
+      return data.text;
+    }
+
+    if(data.result){
+
+      if(typeof data.result.response === "string"){
+        return data.result.response;
+      }
+
+      if(typeof data.result.text === "string"){
+        return data.result.text;
+      }
+    }
+
+    return "";
+  }
+
+  async function sendMessage(){
+
+    const text = messageInput.value.trim();
+
+    if(!text) return;
+
+    messageInput.value = "";
+
+    addMessage("user", text);
+
+    showTyping();
+
+    sendBtn.disabled = true;
+    sendBtn.style.opacity = ".6";
+
+    try{
+
+      const response = await fetch(CHAT_ENDPOINT,{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          message:text,
+          messages:messages.slice(-12)
+        })
+      });
+
+      const data = await response.json();
+
+      if(!response.ok){
+        throw new Error(
+          data?.error ||
+          "HTTP " + response.status
+        );
+      }
+
+      const reply = extractReply(data);
+
+      if(!reply){
+        throw new Error(
+          "Response ALFA AI tidak berisi jawaban."
+        );
+      }
+
+      removeTyping();
+
+      addMessage("assistant",reply);
+
+      speakSmart(reply);
+
+    }catch(error){
+
+      console.error("CHAT ERROR:",error);
+
+      removeTyping();
+
+      addMessage(
+        "assistant",
+        "⚠️ ALFA AI mengalami masalah: " +
+        (error?.message || "Unknown error")
+      );
+
+    }finally{
+
+      sendBtn.disabled = false;
+      sendBtn.style.opacity = "1";
+
+      messageInput.focus();
+    }
+  }
+
+  /* =========================================================
+     KEYBOARD
+  ========================================================= */
+
+  function handleInputKeydown(event){
+
+    if(event.key === "Enter" && !event.shiftKey){
+
+      event.preventDefault();
+
+      sendMessage();
+    }
+  }
+
+  /* =========================================================
+     SPEECH SYNTHESIS
+  ========================================================= */
+
+  function refreshVoices(){
+
+    try{
+
+      if(
+        typeof window === "undefined" ||
+        !("speechSynthesis" in window)
+      ){
+        voices = [];
+        return;
+      }
+
+      voices = window.speechSynthesis.getVoices() || [];
+
+      console.log(
+        "ALFA AI voices:",
+        voices.map(v => ({
+          name:v.name,
+          lang:v.lang,
+          local:v.localService
+        }))
+      );
+
+    }catch(error){
+
+      console.warn(
+        "Voice list error:",
+        error
+      );
+
+      voices = [];
+    }
+  }
+
+  function getIndonesianVoice(){
+
+    if(!voices.length){
+      return null;
+    }
+
+    const idVoices = voices.filter(v =>
+      String(v.lang || "")
+        .toLowerCase()
+        .startsWith("id")
+    );
+
+    if(!idVoices.length){
+      return null;
+    }
+
+    const preferredNames = [
+      "google bahasa indonesia",
+      "google indonesian",
+      "microsoft gadis",
+      "microsoft ardi",
+      "gadis",
+      "ardi"
+    ];
+
+    for(const wanted of preferredNames){
+
+      const found = idVoices.find(v =>
+        String(v.name || "")
+          .toLowerCase()
+          .includes(wanted)
+      );
+
+      if(found){
+        return found;
+      }
+    }
+
+    return idVoices.find(v => v.localService) ||
+           idVoices[0] ||
+           null;
+  }
+
+  function getEnglishVoice(){
+
+    if(!voices.length){
+      return null;
+    }
+
+    const enVoices = voices.filter(v =>
+      String(v.lang || "")
+        .toLowerCase()
+        .startsWith("en")
+    );
+
+    if(!enVoices.length){
+      return null;
+    }
+
+    const preferred = [
+      "google us english",
+      "microsoft aria",
+      "microsoft jenny",
+      "microsoft guy",
+      "google uk english female",
+      "google uk english male"
+    ];
+
+    for(const wanted of preferred){
+
+      const found = enVoices.find(v =>
+        String(v.name || "")
+          .toLowerCase()
+          .includes(wanted)
+      );
+
+      if(found){
+        return found;
+      }
+    }
+
+    return enVoices.find(v => v.localService) ||
+           enVoices[0] ||
+           null;
+  }
+
+  function detectLanguage(text){
+
+    const value = String(text || "").trim();
+
+    if(!value){
+      return "id";
+    }
+
+    const englishWords = [
+      "the ",
+      "this ",
+      "that ",
+      "what ",
+      "how ",
+      "why ",
+      "where ",
+      "when ",
+      "please ",
+      "hello ",
+      "good ",
+      "can you ",
+      "could you ",
+      "thank you ",
+      "i need ",
+      "i want ",
+      "tell me "
+    ];
+
+    const lower = " " + value.toLowerCase();
+
+    let englishScore = 0;
+
+    englishWords.forEach(word => {
+      if(lower.includes(word)){
+        englishScore++;
+      }
+    });
+
+    return englishScore >= 2 ? "en" : "id";
+  }
+
+  function stopSpeech(){
+
+    try{
+
+      if(
+        "speechSynthesis" in window
+      ){
+        window.speechSynthesis.cancel();
+      }
+
+    }catch(error){
+      console.warn("Speech stop error:",error);
+    }
+
+    if(currentAudio){
+
+      try{
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }catch(error){}
+
+      currentAudio = null;
+    }
+
+    setVoiceStatus(
+      "Voice dihentikan.",
+      "ok"
+    );
+  }
+
+  async function speakAura(text){
+
+    try{
+
+      stopSpeech();
+
+      setVoiceStatus(
+        "🔊 ALFA Neural Voice sedang berbicara..."
+      );
+
+      const response = await fetch(
+        TTS_ENDPOINT,
+        {
+          method:"POST",
+          headers:{
+            "Content-Type":"application/json"
+          },
+          body:JSON.stringify({
+            text:String(text).slice(0,5000),
+            speaker:"luna"
+          })
+        }
+      );
+
+      if(!response.ok){
+
+        let detail = "";
+
+        try{
+          const data = await response.json();
+          detail = data?.error || "";
+        }catch(error){}
+
+        throw new Error(
+          detail ||
+          "TTS HTTP " + response.status
+        );
+      }
+
+      const blob = await response.blob();
+
+      if(!blob || blob.size === 0){
+        throw new Error("Audio kosong.");
+      }
+
+      const url = URL.createObjectURL(blob);
+
+      currentAudio = new Audio(url);
+
+      currentAudio.onended = () => {
+
+        URL.revokeObjectURL(url);
+
+        currentAudio = null;
+
+        setVoiceStatus(
+          "Neural Voice selesai.",
+          "ok"
+        );
+      };
+
+      currentAudio.onerror = () => {
+
+        URL.revokeObjectURL(url);
+
+        currentAudio = null;
+
+        setVoiceStatus(
+          "Audio gagal diputar.",
+          "error"
+        );
+      };
+
+      await currentAudio.play();
+
+      return true;
+
+    }catch(error){
+
+      console.error(
+        "AURA TTS ERROR:",
+        error
+      );
+
+      currentAudio = null;
+
+      setVoiceStatus(
+        "Neural Voice gagal: " +
+        (error?.message || "Unknown error"),
+        "error"
+      );
+
+      return false;
+    }
+  }
+
+  function speakBrowser(text, lang){
+
+    return new Promise(resolve => {
+
+      try{
+
+        if(
+          !("speechSynthesis" in window) ||
+          typeof SpeechSynthesisUtterance === "undefined"
+        ){
+          resolve(false);
+          return;
+        }
+
+        refreshVoices();
+
+        const synth = window.speechSynthesis;
+
+        synth.cancel();
+
+        const utterance =
+          new SpeechSynthesisUtterance(
+            String(text).slice(0,5000)
+          );
+
+        const voice =
+          lang === "id"
+            ? getIndonesianVoice()
+            : getEnglishVoice();
+
+        utterance.lang =
+          lang === "id"
+            ? "id-ID"
+            : "en-US";
+
+        if(voice){
+          utterance.voice = voice;
+        }
+
+        /*
+          Sedikit lebih natural.
+          Tidak memaksa voice yang tidak tersedia.
+        */
+        utterance.rate =
+          lang === "id"
+            ? 0.96
+            : 0.94;
+
+        utterance.pitch = 1;
+        utterance.volume = 1;
+
+        utterance.onstart = () => {
+
+          setVoiceStatus(
+            lang === "id"
+              ? "🇮🇩 Browser Indonesian Voice aktif."
+              : "🇺🇸 Browser English Voice aktif.",
+            "ok"
+          );
+        };
+
+        utterance.onend = () => {
+
+          setVoiceStatus(
+            "Browser Voice selesai.",
+            "ok"
+          );
+
+          resolve(true);
+        };
+
+        utterance.onerror = event => {
+
+          console.warn(
+            "BROWSER VOICE ERROR:",
+            event
+          );
+
+          setVoiceStatus(
+            "Browser Voice gagal.",
+            "error"
+          );
+
+          resolve(false);
+        };
+
+        synth.speak(utterance);
+
+        /*
+          Chrome kadang membutuhkan resume
+          jika speech synthesis masuk keadaan paused.
+        */
+        setTimeout(() => {
+
+          try{
+
+            if(synth.paused){
+              synth.resume();
+            }
+
+          }catch(error){}
+
+        },150);
+
+      }catch(error){
+
+        console.error(
+          "Browser speech error:",
+          error
+        );
+
+        resolve(false);
+      }
+
+    });
+  }
+
+  async function speakSmart(text){
+
+    const lang = detectLanguage(text);
+
+    /*
+      Indonesian:
+      browser voice dipakai jika voice id-ID tersedia.
+      Jika tidak ada, fallback ke Aura-1.
+    */
+
+    if(lang === "id"){
+
+      refreshVoices();
+
+      const idVoice =
+        getIndonesianVoice();
+
+      if(idVoice){
+
+        const success =
+          await speakBrowser(
+            text,
+            "id"
+          );
+
+        if(success){
+          return;
+        }
+      }
+
+      await speakAura(text);
+
+      return;
+    }
+
+    /*
+      English:
+      Aura-1 tetap diprioritaskan karena
+      sudah terbukti bekerja.
+    */
+
+    const auraSuccess =
+      await speakAura(text);
+
+    if(auraSuccess){
+      return;
+    }
+
+    await speakBrowser(
+      text,
+      "en"
+    );
+  }
+
+  /* =========================================================
+     TEST VOICE
+  ========================================================= */
+
+  async function testIndonesia(){
+
+    stopSpeech();
+
+    refreshVoices();
+
+    const voice =
+      getIndonesianVoice();
+
+    if(voice){
+
+      setVoiceStatus(
+        "🇮🇩 Menggunakan voice: " +
+        voice.name +
+        " (" +
+        voice.lang +
+        ")"
+      );
+
+      const success =
+        await speakBrowser(
+          "Halo bosss, ini suara bahasa Indonesia dari ALFA AI. Sistem voice sudah aktif.",
+          "id"
+        );
+
+      if(success){
+        return;
+      }
+    }
+
+    setVoiceStatus(
+      "🇮🇩 Voice Indonesia browser tidak tersedia. Menggunakan Neural Voice.",
+      "ok"
+    );
+
+    await speakAura(
+      "Halo bosss, ini ALFA AI. Neural Voice sudah aktif."
+    );
+  }
+
+  async function testEnglish(){
+
+    stopSpeech();
+
+    await speakAura(
+      "Hello boss. This is ALFA AI. English neural voice is active."
+    );
+  }
+
+  async function testAura(){
+
+    stopSpeech();
+
+    await speakAura(
+      "Halo bosss, ini ALFA AI. Neural Voice Aura sudah aktif dan siap digunakan."
+    );
+  }
+
+  /* =========================================================
+     VOICE INPUT
+  ========================================================= */
+
+  function setupRecognition(){
+
+    const Recognition =
+      window.SpeechRecognition ||
+      window.webkitSpeechRecognition;
+
+    if(!Recognition){
+
+      setVoiceStatus(
+        "Voice Input tidak didukung browser ini.",
+        "error"
+      );
+
+      return null;
+    }
+
+    try{
+
+      const r = new Recognition();
+
+      r.lang = "id-ID";
+      r.continuous = false;
+      r.interimResults = true;
+      r.maxAlternatives = 1;
+
+      r.onstart = () => {
+
+        isListening = true;
+
+        voiceInputBtn.textContent =
+          "🔴 Mendengarkan...";
+
+        setVoiceStatus(
+          "🎤 Silakan bicara..."
+        );
+      };
+
+      r.onresult = event => {
+
+        let finalText = "";
+        let interimText = "";
+
+        for(
+          let i = event.resultIndex;
+          i < event.results.length;
+          i++
+        ){
+
+          const transcript =
+            event.results[i][0].transcript;
+
+          if(event.results[i].isFinal){
+            finalText += transcript;
+          }else{
+            interimText += transcript;
+          }
+        }
+
+        if(finalText){
+
+          messageInput.value =
+            finalText.trim();
+
+        }else if(interimText){
+
+          messageInput.value =
+            interimText.trim();
+        }
+      };
+
+      r.onerror = event => {
+
+        console.warn(
+          "Recognition error:",
+          event
+        );
+
+        isListening = false;
+
+        voiceInputBtn.textContent =
+          "🎤 Voice Input";
+
+        setVoiceStatus(
+          "Voice Input: " +
+          (event.error || "gagal"),
+          "error"
+        );
+      };
+
+      r.onend = () => {
+
+        isListening = false;
+
+        voiceInputBtn.textContent =
+          "🎤 Voice Input";
+
+        setVoiceStatus(
+          "Voice Input selesai.",
+          "ok"
+        );
+      };
+
+      return r;
+
+    }catch(error){
+
+      console.error(
+        "Recognition setup error:",
+        error
+      );
+
+      return null;
+    }
+  }
+
+  function toggleRecognition(){
+
+    if(!recognition){
+      recognition = setupRecognition();
+    }
+
+    if(!recognition){
+      return;
+    }
+
+    try{
+
+      if(isListening){
+
+        recognition.stop();
+
+        return;
+      }
+
+      recognition.start();
+
+    }
 ```
