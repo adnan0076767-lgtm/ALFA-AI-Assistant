@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#030712">
-<meta name="color-scheme" content="dark">
+<meta name="description" content="ALFA AI V7.3.2 - Chat, Voice, Image Generator">
 
-<title>ALFA AI V7.3.1 | AI CHAT • VOICE • IMAGE</title>
+<title>ALFA AI V7.3.2 | CHAT • VOICE • IMAGE</title>
 
 <style>
 *{
@@ -22,189 +22,116 @@ html{
 body{
   min-height:100vh;
   font-family:Arial,Helvetica,sans-serif;
+  color:#fff;
   background:
-    radial-gradient(circle at 20% 10%,rgba(0,229,255,.12),transparent 30%),
-    radial-gradient(circle at 80% 20%,rgba(124,58,237,.14),transparent 30%),
+    radial-gradient(circle at top left,#111c3d 0%,transparent 35%),
+    radial-gradient(circle at bottom right,#24104a 0%,transparent 35%),
     #030712;
-  color:#e5f7ff;
-  overflow-x:hidden;
 }
 
 button,
+input,
 textarea{
   font:inherit;
 }
 
 button{
   cursor:pointer;
+  border:0;
 }
 
 .app{
-  width:min(1100px,94%);
+  width:100%;
+  max-width:1200px;
   margin:auto;
-  padding:20px 0 40px;
+  padding:20px;
 }
 
-/* HEADER */
 .header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  padding:18px 20px;
+  position:relative;
+  padding:22px;
   margin-bottom:18px;
-  border:1px solid rgba(0,229,255,.22);
+  border:1px solid rgba(0,220,255,.25);
   border-radius:22px;
-  background:rgba(3,7,18,.78);
+  background:rgba(3,7,18,.82);
+  box-shadow:0 0 35px rgba(0,200,255,.08);
   backdrop-filter:blur(15px);
-  box-shadow:0 0 35px rgba(0,229,255,.08);
 }
 
 .logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.logoIcon{
-  width:48px;
-  height:48px;
-  display:grid;
-  place-items:center;
-  border-radius:15px;
-  background:linear-gradient(135deg,#00e5ff,#7c3aed);
-  color:#fff;
-  font-size:24px;
+  font-size:30px;
   font-weight:900;
-  box-shadow:0 0 25px rgba(0,229,255,.25);
+  letter-spacing:2px;
 }
 
-.logoText h1{
-  font-size:20px;
-  letter-spacing:1px;
-}
-
-.logoText p{
-  margin-top:3px;
-  font-size:11px;
-  color:#8da9b8;
+.logo span{
+  color:#00e5ff;
 }
 
 .status{
-  display:flex;
-  align-items:center;
-  gap:7px;
-  font-size:12px;
-  color:#7fffd4;
+  margin-top:7px;
+  color:#9ca3af;
+  font-size:13px;
 }
 
-.statusDot{
-  width:9px;
-  height:9px;
-  border-radius:50%;
-  background:#00ff95;
-  box-shadow:0 0 12px #00ff95;
+.online{
+  color:#00ff99;
+  font-weight:700;
 }
 
-/* HERO */
-.hero{
-  text-align:center;
-  padding:24px 15px 18px;
-}
-
-.hero h2{
-  font-size:clamp(28px,6vw,52px);
-  line-height:1.05;
-  background:linear-gradient(90deg,#00e5ff,#7c3aed,#00e5ff);
-  background-size:200%;
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-  animation:gradientMove 5s linear infinite;
-}
-
-.hero p{
-  margin-top:12px;
-  color:#8da9b8;
-  font-size:14px;
-}
-
-@keyframes gradientMove{
-  0%{background-position:0%}
-  100%{background-position:200%}
-}
-
-/* MAIN CARD */
 .panel{
-  border:1px solid rgba(0,229,255,.18);
-  border-radius:24px;
+  border:1px solid rgba(0,220,255,.2);
+  border-radius:22px;
+  background:rgba(3,7,18,.82);
+  box-shadow:0 0 35px rgba(0,200,255,.07);
   overflow:hidden;
-  background:rgba(5,10,24,.82);
-  box-shadow:0 0 50px rgba(0,0,0,.3);
 }
 
-/* TOOLBAR */
 .toolbar{
   display:flex;
   flex-wrap:wrap;
-  gap:8px;
-  padding:14px;
-  border-bottom:1px solid rgba(255,255,255,.07);
-  background:rgba(255,255,255,.02);
+  gap:10px;
+  padding:15px;
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .btn{
-  border:1px solid rgba(0,229,255,.25);
-  background:rgba(0,229,255,.06);
-  color:#dffaff;
-  border-radius:12px;
-  padding:10px 14px;
-  font-weight:700;
-  font-size:13px;
-  transition:.2s ease;
+  min-height:44px;
+  padding:10px 15px;
+  border-radius:13px;
+  color:#fff;
+  background:#111827;
+  border:1px solid rgba(255,255,255,.1);
+  transition:.2s;
 }
 
 .btn:hover{
   transform:translateY(-1px);
   border-color:#00e5ff;
-  box-shadow:0 0 18px rgba(0,229,255,.15);
-}
-
-.btn:active{
-  transform:scale(.97);
+  box-shadow:0 0 15px rgba(0,229,255,.18);
 }
 
 .btn.primary{
-  background:linear-gradient(135deg,#00b8d4,#2563eb);
-  border-color:transparent;
-  color:#fff;
+  background:linear-gradient(135deg,#0066ff,#00b8ff);
 }
 
 .btn.voice{
-  background:linear-gradient(135deg,#7c3aed,#2563eb);
-  border-color:transparent;
+  background:linear-gradient(135deg,#5b21b6,#9333ea);
+}
+
+.btn.image{
+  background:linear-gradient(135deg,#be123c,#f43f5e);
 }
 
 .btn.stop{
-  background:rgba(239,68,68,.1);
-  border-color:rgba(239,68,68,.35);
-  color:#ff8f8f;
+  background:#7f1d1d;
 }
 
-/* CHAT */
 .chat{
-  height:480px;
+  height:55vh;
+  min-height:400px;
   overflow-y:auto;
-  padding:18px;
-}
-
-.chat::-webkit-scrollbar{
-  width:7px;
-}
-
-.chat::-webkit-scrollbar-thumb{
-  background:rgba(0,229,255,.25);
-  border-radius:10px;
+  padding:20px;
 }
 
 .message{
@@ -217,232 +144,149 @@ button{
 }
 
 .bubble{
-  max-width:min(82%,760px);
-  padding:13px 15px;
+  max-width:82%;
+  padding:13px 16px;
   border-radius:17px;
   line-height:1.55;
   white-space:pre-wrap;
   word-break:break-word;
-  font-size:14px;
-}
-
-.message.ai .bubble{
-  background:rgba(0,229,255,.055);
-  border:1px solid rgba(0,229,255,.14);
 }
 
 .message.user .bubble{
-  background:linear-gradient(135deg,rgba(37,99,235,.85),rgba(124,58,237,.85));
-  color:#fff;
+  background:linear-gradient(135deg,#075985,#0369a1);
+  border-bottom-right-radius:5px;
 }
 
-.message.system .bubble{
-  margin:auto;
-  color:#8da9b8;
-  font-size:12px;
+.message.ai .bubble{
+  background:#111827;
+  border:1px solid rgba(255,255,255,.08);
+  border-bottom-left-radius:5px;
+}
+
+.meta{
+  margin-bottom:5px;
+  font-size:11px;
+  opacity:.6;
+}
+
+.composer{
+  display:flex;
+  gap:10px;
+  padding:15px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+.input{
+  flex:1;
+  min-height:50px;
+  resize:none;
+  padding:14px;
+  color:#fff;
+  background:#050b18;
+  border:1px solid rgba(0,220,255,.2);
+  border-radius:14px;
+  outline:none;
+}
+
+.input:focus{
+  border-color:#00e5ff;
+  box-shadow:0 0 15px rgba(0,229,255,.1);
+}
+
+.imagePanel{
+  display:none;
+  padding:18px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+.imagePanel.active{
+  display:block;
+}
+
+.imageInput{
+  width:100%;
+  min-height:100px;
+  padding:14px;
+  resize:vertical;
+  color:#fff;
+  background:#050b18;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:14px;
+  outline:none;
+}
+
+.imageActions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.generated{
+  margin-top:18px;
   text-align:center;
-  border:1px dashed rgba(255,255,255,.12);
+}
+
+.generated img{
+  display:block;
+  width:100%;
+  max-width:900px;
+  margin:auto;
+  border-radius:18px;
+  border:1px solid rgba(0,229,255,.25);
+  box-shadow:0 0 35px rgba(0,229,255,.12);
 }
 
 .typing{
-  display:inline-flex;
-  gap:4px;
-  padding:3px;
+  color:#00e5ff;
+  font-size:13px;
+  padding:5px 0;
 }
 
-.typing span{
-  width:6px;
-  height:6px;
-  background:#00e5ff;
-  border-radius:50%;
-  animation:typing 1s infinite;
-}
-
-.typing span:nth-child(2){animation-delay:.15s}
-.typing span:nth-child(3){animation-delay:.3s}
-
-@keyframes typing{
-  0%,80%,100%{opacity:.25;transform:translateY(0)}
-  40%{opacity:1;transform:translateY(-4px)}
-}
-
-/* INPUT */
-.inputArea{
-  padding:14px;
-  border-top:1px solid rgba(255,255,255,.07);
-}
-
-.inputRow{
-  display:flex;
-  gap:9px;
-  align-items:flex-end;
-}
-
-textarea{
-  flex:1;
-  min-height:58px;
-  max-height:180px;
-  resize:vertical;
-  border:1px solid rgba(0,229,255,.2);
-  outline:none;
-  border-radius:15px;
-  background:#050b18;
-  color:#e5f7ff;
-  padding:14px;
-}
-
-textarea:focus{
-  border-color:#00e5ff;
-  box-shadow:0 0 18px rgba(0,229,255,.08);
-}
-
-.sendBtn{
-  min-width:105px;
-  height:58px;
-}
-
-/* IMAGE */
-.imageBox{
-  display:none;
-  padding:15px;
-  border-top:1px solid rgba(255,255,255,.07);
-}
-
-.imageBox.show{
-  display:block;
-}
-
-.imagePrompt{
-  display:flex;
-  gap:8px;
-  margin-bottom:12px;
-}
-
-.imagePrompt input{
-  flex:1;
-  min-width:0;
-  border:1px solid rgba(0,229,255,.2);
-  background:#050b18;
-  color:#fff;
-  outline:none;
-  border-radius:12px;
-  padding:12px;
-}
-
-.imageResult{
-  min-height:100px;
-  display:grid;
-  place-items:center;
-  border-radius:18px;
-  overflow:hidden;
-  background:rgba(255,255,255,.02);
-  border:1px dashed rgba(255,255,255,.1);
-}
-
-.imageResult img{
-  display:block;
-  width:100%;
-  max-height:650px;
-  object-fit:contain;
-}
-
-/* VOICE STATUS */
-.voiceStatus{
-  padding:9px 14px;
-  font-size:12px;
-  color:#7f9aa8;
-  border-top:1px solid rgba(255,255,255,.05);
-}
-
-.voiceStatus.ok{
-  color:#7fffd4;
-}
-
-.voiceStatus.error{
-  color:#ff8f8f;
-}
-
-/* FOOTER */
 .footer{
+  padding:15px;
   text-align:center;
-  color:#607886;
-  font-size:11px;
-  padding:20px 0 0;
+  color:#64748b;
+  font-size:12px;
 }
 
-/* MOBILE */
-@media(max-width:650px){
+.hidden{
+  display:none!important;
+}
+
+@media(max-width:700px){
   .app{
-    width:96%;
-    padding-top:10px;
-  }
-
-  .header{
-    padding:13px;
-    border-radius:18px;
-  }
-
-  .logoIcon{
-    width:42px;
-    height:42px;
-  }
-
-  .logoText h1{
-    font-size:17px;
-  }
-
-  .status{
-    font-size:10px;
-  }
-
-  .hero{
-    padding:18px 8px;
-  }
-
-  .hero h2{
-    font-size:31px;
-  }
-
-  .toolbar{
     padding:10px;
   }
 
+  .logo{
+    font-size:24px;
+  }
+
+  .toolbar{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+
   .btn{
-    flex:1;
-    min-width:100px;
-    padding:10px 8px;
-    font-size:12px;
+    width:100%;
   }
 
   .chat{
-    height:55vh;
-    min-height:380px;
+    height:58vh;
+    min-height:350px;
     padding:12px;
   }
 
   .bubble{
     max-width:90%;
-    font-size:13px;
   }
 
-  .inputRow{
+  .composer{
     flex-direction:column;
   }
 
-  textarea{
-    width:100%;
-    min-height:85px;
-  }
-
-  .sendBtn{
-    width:100%;
-  }
-
-  .imagePrompt{
-    flex-direction:column;
-  }
-
-  .imagePrompt .btn{
+  #sendBtn{
     width:100%;
   }
 }
@@ -455,280 +299,252 @@ textarea:focus{
 
   <header class="header">
     <div class="logo">
-      <div class="logoIcon">AI</div>
-      <div class="logoText">
-        <h1>ALFA AI</h1>
-        <p>V7.3.1 CLICK FIX • CHAT • VOICE • IMAGE</p>
-      </div>
+      ALFA <span>AI</span>
     </div>
 
     <div class="status">
-      <span class="statusDot"></span>
-      ONLINE
+      V7.3.2 CLICK FIX •
+      <span class="online">● ONLINE</span>
+      • CHAT • VOICE • IMAGE
     </div>
   </header>
-
-  <section class="hero">
-    <h2>ALFA AI</h2>
-    <p>Asisten AI futuristik dengan Chat, Neural Voice & Image Generator.</p>
-  </section>
 
   <main class="panel">
 
     <div class="toolbar">
 
-      <button type="button"
-              class="btn"
-              id="newChatBtn">
-        🗑️ Chat Baru
+      <button
+        type="button"
+        class="btn"
+        id="newChatBtn">
+        🆕 New Chat
       </button>
 
-      <button type="button"
-              class="btn voice"
-              id="voiceInputBtn">
+      <button
+        type="button"
+        class="btn voice"
+        id="voiceInputBtn">
         🎤 Voice Input
       </button>
 
-      <button type="button"
-              class="btn"
-              id="testIndonesiaBtn">
+      <button
+        type="button"
+        class="btn"
+        id="testIndonesiaBtn">
         🇮🇩 Test Indonesia
       </button>
 
-      <button type="button"
-              class="btn"
-              id="testEnglishBtn">
+      <button
+        type="button"
+        class="btn"
+        id="testEnglishBtn">
         🇺🇸 Test English
       </button>
 
-      <button type="button"
-              class="btn"
-              id="testAuraBtn">
+      <button
+        type="button"
+        class="btn"
+        id="testAuraBtn">
         🔊 Test Aura
       </button>
 
-      <button type="button"
-              class="btn stop"
-              id="stopVoiceBtn">
-        ⏹ Stop
+      <button
+        type="button"
+        class="btn stop"
+        id="stopVoiceBtn">
+        ⛔ Stop Voice
       </button>
 
-      <button type="button"
-              class="btn primary"
-              id="imageToggleBtn">
+      <button
+        type="button"
+        class="btn image"
+        id="imageToggleBtn">
         🖼️ Image Generator
       </button>
 
     </div>
 
-    <section id="chat" class="chat"></section>
+    <section
+      class="chat"
+      id="chat">
+    </section>
 
-    <div id="imageBox" class="imageBox">
+    <div
+      class="typing hidden"
+      id="typing">
+      ALFA AI sedang berpikir...
+    </div>
 
-      <div class="imagePrompt">
-        <input
-          id="imagePrompt"
-          type="text"
-          placeholder="Contoh: futuristic cyber city, neon blue, cinematic..."
-          autocomplete="off"
-        >
+    <div class="composer">
 
-        <button type="button"
-                class="btn primary"
-                id="generateImageBtn">
-          ✨ Generate
+      <textarea
+        id="messageInput"
+        class="input"
+        placeholder="Ketik pesan untuk ALFA AI..."
+        rows="2"></textarea>
+
+      <button
+        type="button"
+        class="btn primary"
+        id="sendBtn">
+        🚀 KIRIM
+      </button>
+
+    </div>
+
+    <section
+      class="imagePanel"
+      id="imagePanel">
+
+      <textarea
+        id="imagePrompt"
+        class="imageInput"
+        placeholder="Contoh: futuristic cyberpunk city at night, cinematic, ultra detailed"></textarea>
+
+      <div class="imageActions">
+
+        <button
+          type="button"
+          class="btn image"
+          id="generateImageBtn">
+          🎨 GENERATE IMAGE
         </button>
-      </div>
-
-      <div id="imageResult" class="imageResult">
-        <span style="color:#607886;font-size:12px">
-          Hasil gambar akan muncul di sini.
-        </span>
-      </div>
-
-    </div>
-
-    <div class="voiceStatus" id="voiceStatus">
-      Voice engine siap.
-    </div>
-
-    <div class="inputArea">
-
-      <div class="inputRow">
-
-        <textarea
-          id="messageInput"
-          placeholder="Tulis pesan untuk ALFA AI..."
-          spellcheck="true"
-        ></textarea>
-
-        <button type="button"
-                class="btn primary sendBtn"
-                id="sendBtn">
-          🚀 Kirim
-        </button>
 
       </div>
 
-    </div>
+      <div
+        class="generated"
+        id="generatedImage">
+      </div>
+
+    </section>
 
   </main>
 
   <footer class="footer">
-    ALFA AI V7.3.1 • Worker tetap menggunakan endpoint ALFA AI yang aktif
+    ALFA AI V7.3.2 • Neural AI Assistant
   </footer>
 
 </div>
 
 <script>
-/* =========================================================
-   ALFA AI V7.3.1 CLICK FIX
-   WORKER TIDAK DIUBAH
-========================================================= */
+"use strict";
 
-(() => {
-  "use strict";
+(function(){
 
   const WORKER_BASE =
     "https://shrill-haze-a236.adnan0076767.workers.dev";
 
-  const CHAT_ENDPOINT = WORKER_BASE + "/chat";
-  const TTS_ENDPOINT = WORKER_BASE + "/tts";
-  const IMAGE_ENDPOINT = WORKER_BASE + "/image";
-
-  const STORAGE_KEY = "alfa_ai_v731_messages";
+  const STORAGE_KEY =
+    "alfa_ai_v732_messages";
 
   let messages = [];
-  let voices = [];
-  let currentAudio = null;
-  let recognition = null;
-  let isListening = false;
 
-  /* =========================================================
-     SAFE DOM
-  ========================================================= */
+  let currentAudio = null;
+
+  let recognition = null;
+
+  let voices = [];
+
+  let busy = false;
+
+
+  /* =========================
+     DOM
+  ========================= */
 
   function $(id){
     return document.getElementById(id);
   }
 
-  const chat = $("chat");
-  const messageInput = $("messageInput");
-  const sendBtn = $("sendBtn");
-  const voiceInputBtn = $("voiceInputBtn");
-  const testIndonesiaBtn = $("testIndonesiaBtn");
-  const testEnglishBtn = $("testEnglishBtn");
-  const testAuraBtn = $("testAuraBtn");
-  const stopVoiceBtn = $("stopVoiceBtn");
-  const newChatBtn = $("newChatBtn");
-  const imageToggleBtn = $("imageToggleBtn");
-  const imageBox = $("imageBox");
-  const imagePrompt = $("imagePrompt");
-  const generateImageBtn = $("generateImageBtn");
-  const imageResult = $("imageResult");
-  const voiceStatus = $("voiceStatus");
 
-  /* =========================================================
-     STATUS
-  ========================================================= */
-
-  function setVoiceStatus(text, type = ""){
-    if(!voiceStatus) return;
-
-    voiceStatus.textContent = text;
-    voiceStatus.className = "voiceStatus";
-
-    if(type){
-      voiceStatus.classList.add(type);
-    }
-  }
-
-  /* =========================================================
-     HTML ESCAPE
-  ========================================================= */
+  /* =========================
+     SAFE TEXT
+  ========================= */
 
   function escapeHTML(value){
-    return String(value)
-      .replaceAll("&","&amp;")
-      .replaceAll("<","&lt;")
-      .replaceAll(">","&gt;")
-      .replaceAll('"',"&quot;")
-      .replaceAll("'","&#039;");
+
+    return String(value ?? "")
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
+
   }
 
-  /* =========================================================
-     CHAT STORAGE
-  ========================================================= */
+
+  /* =========================
+     STORAGE
+  ========================= */
 
   function loadMessages(){
+
     try{
-      const saved = localStorage.getItem(STORAGE_KEY);
 
-      if(saved){
-        const parsed = JSON.parse(saved);
+      const raw =
+        localStorage.getItem(STORAGE_KEY);
 
-        if(Array.isArray(parsed)){
-          messages = parsed
-            .filter(x =>
-              x &&
-              (x.role === "user" || x.role === "assistant") &&
-              typeof x.content === "string"
-            )
-            .slice(-50);
-        }
+      if(!raw){
+        messages = [];
+        return;
       }
+
+      const parsed =
+        JSON.parse(raw);
+
+      if(Array.isArray(parsed)){
+        messages = parsed;
+      }else{
+        messages = [];
+      }
+
     }catch(error){
-      console.warn("Storage load error:", error);
+
+      console.warn(
+        "Storage load error:",
+        error
+      );
+
       messages = [];
+
     }
+
   }
+
 
   function saveMessages(){
+
     try{
+
       localStorage.setItem(
         STORAGE_KEY,
-        JSON.stringify(messages.slice(-50))
+        JSON.stringify(messages)
       );
+
     }catch(error){
-      console.warn("Storage save error:", error);
+
+      console.warn(
+        "Storage save error:",
+        error
+      );
+
     }
+
   }
 
-  /* =========================================================
-     RENDER
-  ========================================================= */
 
-  function addMessage(role, content, save = true){
-
-    if(!chat) return;
-
-    const wrapper = document.createElement("div");
-    wrapper.className = "message " +
-      (role === "user" ? "user" : "ai");
-
-    const bubble = document.createElement("div");
-    bubble.className = "bubble";
-
-    bubble.textContent = content;
-
-    wrapper.appendChild(bubble);
-    chat.appendChild(wrapper);
-
-    chat.scrollTop = chat.scrollHeight;
-
-    if(save){
-      messages.push({
-        role,
-        content
-      });
-
-      saveMessages();
-    }
-  }
+  /* =========================
+     CHAT RENDER
+  ========================= */
 
   function renderMessages(){
 
-    if(!chat) return;
+    const chat = $("chat");
+
+    if(!chat){
+      return;
+    }
 
     chat.innerHTML = "";
 
@@ -736,345 +552,276 @@ textarea:focus{
 
       addMessage(
         "assistant",
-        "Halo bosss 👋 Saya ALFA AI. Silakan kirim pertanyaan atau gunakan Voice / Image Generator.",
-        false
+        "Halo bosss! 🔥\nSaya ALFA AI. Silakan kirim pesan."
       );
 
       return;
+
     }
 
-    messages.forEach(item => {
+    messages.forEach(function(item){
+
       addMessage(
         item.role,
-        item.content,
-        false
+        item.content
       );
+
     });
 
-    chat.scrollTop = chat.scrollHeight;
+    chat.scrollTop =
+      chat.scrollHeight;
+
   }
 
-  function showTyping(){
 
-    const existing = $("typingMessage");
+  function addMessage(role,text){
 
-    if(existing){
-      existing.remove();
+    const chat = $("chat");
+
+    if(!chat){
+      return;
     }
 
-    const wrapper = document.createElement("div");
-    wrapper.className = "message ai";
-    wrapper.id = "typingMessage";
+    const wrapper =
+      document.createElement("div");
 
-    wrapper.innerHTML = `
-      <div class="bubble">
-        <span class="typing">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-      </div>
-    `;
+    wrapper.className =
+      "message " +
+      (role === "user" ? "user" : "ai");
+
+    const bubble =
+      document.createElement("div");
+
+    bubble.className = "bubble";
+
+    const meta =
+      document.createElement("div");
+
+    meta.className = "meta";
+
+    meta.textContent =
+      role === "user"
+        ? "YOU"
+        : "ALFA AI";
+
+    const content =
+      document.createElement("div");
+
+    content.textContent = text;
+
+    bubble.appendChild(meta);
+    bubble.appendChild(content);
+
+    wrapper.appendChild(bubble);
 
     chat.appendChild(wrapper);
-    chat.scrollTop = chat.scrollHeight;
+
   }
 
-  function removeTyping(){
 
-    const typing = $("typingMessage");
-
-    if(typing){
-      typing.remove();
-    }
-  }
-
-  /* =========================================================
+  /* =========================
      CHAT
-  ========================================================= */
-
-  function extractReply(data){
-
-    if(!data) return "";
-
-    if(typeof data.reply === "string"){
-      return data.reply;
-    }
-
-    if(typeof data.response === "string"){
-      return data.response;
-    }
-
-    if(typeof data.text === "string"){
-      return data.text;
-    }
-
-    if(data.result){
-
-      if(typeof data.result.response === "string"){
-        return data.result.response;
-      }
-
-      if(typeof data.result.text === "string"){
-        return data.result.text;
-      }
-    }
-
-    return "";
-  }
+  ========================= */
 
   async function sendMessage(){
 
-    const text = messageInput.value.trim();
+    if(busy){
+      return;
+    }
 
-    if(!text) return;
+    const input =
+      $("messageInput");
 
-    messageInput.value = "";
+    if(!input){
+      return;
+    }
 
-    addMessage("user", text);
+    const text =
+      input.value.trim();
 
-    showTyping();
+    if(!text){
+      return;
+    }
 
-    sendBtn.disabled = true;
-    sendBtn.style.opacity = ".6";
+    busy = true;
+
+    input.value = "";
+
+    messages.push({
+      role:"user",
+      content:text
+    });
+
+    saveMessages();
+
+    renderMessages();
+
+    $("typing")?.classList.remove("hidden");
 
     try{
 
-      const response = await fetch(CHAT_ENDPOINT,{
-        method:"POST",
-        headers:{
-          "Content-Type":"application/json"
-        },
-        body:JSON.stringify({
-          message:text,
-          messages:messages.slice(-12)
-        })
-      });
+      const response =
+        await fetch(
+          WORKER_BASE + "/chat",
+          {
+            method:"POST",
 
-      const data = await response.json();
+            headers:{
+              "Content-Type":
+                "application/json"
+            },
 
-      if(!response.ok){
-        throw new Error(
-          data?.error ||
-          "HTTP " + response.status
+            body:JSON.stringify({
+              message:text,
+              messages:messages
+            })
+          }
         );
+
+      const data =
+        await response.json();
+
+      if(!response.ok ||
+         !data.success){
+
+        throw new Error(
+          data.error ||
+          "Chat request gagal."
+        );
+
       }
 
-      const reply = extractReply(data);
+      const reply =
+        String(data.reply || "").trim();
 
       if(!reply){
+
         throw new Error(
-          "Response ALFA AI tidak berisi jawaban."
+          "AI tidak mengembalikan jawaban."
         );
+
       }
 
-      removeTyping();
+      messages.push({
+        role:"assistant",
+        content:reply
+      });
 
-      addMessage("assistant",reply);
+      saveMessages();
+
+      renderMessages();
 
       speakSmart(reply);
 
     }catch(error){
 
-      console.error("CHAT ERROR:",error);
-
-      removeTyping();
-
-      addMessage(
-        "assistant",
-        "⚠️ ALFA AI mengalami masalah: " +
-        (error?.message || "Unknown error")
-      );
-
-    }finally{
-
-      sendBtn.disabled = false;
-      sendBtn.style.opacity = "1";
-
-      messageInput.focus();
-    }
-  }
-
-  /* =========================================================
-     KEYBOARD
-  ========================================================= */
-
-  function handleInputKeydown(event){
-
-    if(event.key === "Enter" && !event.shiftKey){
-
-      event.preventDefault();
-
-      sendMessage();
-    }
-  }
-
-  /* =========================================================
-     SPEECH SYNTHESIS
-  ========================================================= */
-
-  function refreshVoices(){
-
-    try{
-
-      if(
-        typeof window === "undefined" ||
-        !("speechSynthesis" in window)
-      ){
-        voices = [];
-        return;
-      }
-
-      voices = window.speechSynthesis.getVoices() || [];
-
-      console.log(
-        "ALFA AI voices:",
-        voices.map(v => ({
-          name:v.name,
-          lang:v.lang,
-          local:v.localService
-        }))
-      );
-
-    }catch(error){
-
-      console.warn(
-        "Voice list error:",
+      console.error(
+        "CHAT ERROR:",
         error
       );
 
+      const errorText =
+        "Maaf bosss, Chat Engine mengalami masalah.\n\n" +
+        (error.message || error);
+
+      messages.push({
+        role:"assistant",
+        content:errorText
+      });
+
+      saveMessages();
+
+      renderMessages();
+
+    }finally{
+
+      busy = false;
+
+      $("typing")?.classList.add(
+        "hidden"
+      );
+
+    }
+
+  }
+
+
+  /* =========================
+     VOICE
+  ========================= */
+
+  function loadVoices(){
+
+    if(
+      !("speechSynthesis" in window)
+    ){
       voices = [];
+      return;
     }
+
+    voices =
+      window.speechSynthesis
+        .getVoices() || [];
+
   }
 
-  function getIndonesianVoice(){
 
-    if(!voices.length){
-      return null;
-    }
+  function findIndonesianVoice(){
 
-    const idVoices = voices.filter(v =>
-      String(v.lang || "")
-        .toLowerCase()
-        .startsWith("id")
-    );
+    loadVoices();
 
-    if(!idVoices.length){
-      return null;
-    }
+    const idVoices =
+      voices.filter(function(v){
 
-    const preferredNames = [
-      "google bahasa indonesia",
-      "google indonesian",
-      "microsoft gadis",
-      "microsoft ardi",
-      "gadis",
-      "ardi"
-    ];
+        const lang =
+          String(v.lang || "")
+            .toLowerCase();
 
-    for(const wanted of preferredNames){
+        const name =
+          String(v.name || "")
+            .toLowerCase();
 
-      const found = idVoices.find(v =>
-        String(v.name || "")
-          .toLowerCase()
-          .includes(wanted)
-      );
+        return (
+          lang === "id-id" ||
+          lang.startsWith("id-") ||
+          name.includes("indonesia") ||
+          name.includes("bahasa indonesia") ||
+          name.includes("gadis") ||
+          name.includes("ardi")
+        );
 
-      if(found){
-        return found;
-      }
-    }
+      });
 
-    return idVoices.find(v => v.localService) ||
-           idVoices[0] ||
-           null;
+    return idVoices[0] || null;
+
   }
 
-  function getEnglishVoice(){
 
-    if(!voices.length){
-      return null;
-    }
+  function findEnglishVoice(){
 
-    const enVoices = voices.filter(v =>
-      String(v.lang || "")
-        .toLowerCase()
-        .startsWith("en")
-    );
+    loadVoices();
 
-    if(!enVoices.length){
-      return null;
-    }
+    const enVoices =
+      voices.filter(function(v){
 
-    const preferred = [
-      "google us english",
-      "microsoft aria",
-      "microsoft jenny",
-      "microsoft guy",
-      "google uk english female",
-      "google uk english male"
-    ];
+        const lang =
+          String(v.lang || "")
+            .toLowerCase();
 
-    for(const wanted of preferred){
+        return (
+          lang === "en-us" ||
+          lang === "en-gb" ||
+          lang.startsWith("en-")
+        );
 
-      const found = enVoices.find(v =>
-        String(v.name || "")
-          .toLowerCase()
-          .includes(wanted)
-      );
+      });
 
-      if(found){
-        return found;
-      }
-    }
+    return enVoices[0] || null;
 
-    return enVoices.find(v => v.localService) ||
-           enVoices[0] ||
-           null;
   }
 
-  function detectLanguage(text){
 
-    const value = String(text || "").trim();
-
-    if(!value){
-      return "id";
-    }
-
-    const englishWords = [
-      "the ",
-      "this ",
-      "that ",
-      "what ",
-      "how ",
-      "why ",
-      "where ",
-      "when ",
-      "please ",
-      "hello ",
-      "good ",
-      "can you ",
-      "could you ",
-      "thank you ",
-      "i need ",
-      "i want ",
-      "tell me "
-    ];
-
-    const lower = " " + value.toLowerCase();
-
-    let englishScore = 0;
-
-    englishWords.forEach(word => {
-      if(lower.includes(word)){
-        englishScore++;
-      }
-    });
-
-    return englishScore >= 2 ? "en" : "id";
-  }
-
-  function stopSpeech(){
+  function stopVoice(){
 
     try{
 
@@ -1085,7 +832,12 @@ textarea:focus{
       }
 
     }catch(error){
-      console.warn("Speech stop error:",error);
+
+      console.warn(
+        "Speech stop error:",
+        error
+      );
+
     }
 
     if(currentAudio){
@@ -1096,482 +848,925 @@ textarea:focus{
       }catch(error){}
 
       currentAudio = null;
+
     }
 
-    setVoiceStatus(
-      "Voice dihentikan.",
-      "ok"
-    );
   }
 
-  async function speakAura(text){
 
-    try{
+  function detectLanguage(text){
 
-      stopSpeech();
+    const value =
+      String(text || "")
+        .toLowerCase();
 
-      setVoiceStatus(
-        "🔊 ALFA Neural Voice sedang berbicara..."
-      );
+    const englishWords = [
+      "the",
+      "you",
+      "your",
+      "what",
+      "how",
+      "why",
+      "please",
+      "hello",
+      "good",
+      "morning",
+      "today",
+      "can",
+      "could",
+      "would",
+      "help"
+    ];
 
-      const response = await fetch(
-        TTS_ENDPOINT,
+    let score = 0;
+
+    englishWords.forEach(function(word){
+
+      if(
+        value.includes(
+          " " + word + " "
+        )
+      ){
+        score++;
+      }
+
+    });
+
+    return score >= 2
+      ? "en"
+      : "id";
+
+  }
+
+
+  async function auraSpeak(
+    text,
+    speaker="luna"
+  ){
+
+    stopVoice();
+
+    const response =
+      await fetch(
+        WORKER_BASE + "/tts",
         {
           method:"POST",
+
           headers:{
-            "Content-Type":"application/json"
+            "Content-Type":
+              "application/json"
           },
+
           body:JSON.stringify({
-            text:String(text).slice(0,5000),
-            speaker:"luna"
+            text:text,
+            speaker:speaker
           })
         }
       );
 
-      if(!response.ok){
+    if(!response.ok){
 
-        let detail = "";
+      throw new Error(
+        "Aura TTS HTTP " +
+        response.status
+      );
 
-        try{
-          const data = await response.json();
-          detail = data?.error || "";
-        }catch(error){}
+    }
 
-        throw new Error(
-          detail ||
-          "TTS HTTP " + response.status
-        );
-      }
+    const blob =
+      await response.blob();
 
-      const blob = await response.blob();
+    if(
+      !blob ||
+      !blob.size
+    ){
 
-      if(!blob || blob.size === 0){
-        throw new Error("Audio kosong.");
-      }
+      throw new Error(
+        "Audio kosong."
+      );
 
-      const url = URL.createObjectURL(blob);
+    }
 
-      currentAudio = new Audio(url);
+    const url =
+      URL.createObjectURL(blob);
 
-      currentAudio.onended = () => {
+    currentAudio =
+      new Audio(url);
+
+    currentAudio.onended =
+      function(){
 
         URL.revokeObjectURL(url);
 
         currentAudio = null;
 
-        setVoiceStatus(
-          "Neural Voice selesai.",
-          "ok"
-        );
       };
 
-      currentAudio.onerror = () => {
+    await currentAudio.play();
 
-        URL.revokeObjectURL(url);
+  }
 
-        currentAudio = null;
 
-        setVoiceStatus(
-          "Audio gagal diputar.",
-          "error"
-        );
-      };
+  function browserSpeak(
+    text,
+    lang
+  ){
 
-      await currentAudio.play();
-
-      return true;
-
-    }catch(error){
-
-      console.error(
-        "AURA TTS ERROR:",
-        error
-      );
-
-      currentAudio = null;
-
-      setVoiceStatus(
-        "Neural Voice gagal: " +
-        (error?.message || "Unknown error"),
-        "error"
-      );
-
+    if(
+      !("speechSynthesis" in window)
+    ){
       return false;
     }
+
+    stopVoice();
+
+    const utterance =
+      new SpeechSynthesisUtterance(
+        text
+      );
+
+    let voice = null;
+
+    if(lang === "id"){
+      voice =
+        findIndonesianVoice();
+    }else{
+      voice =
+        findEnglishVoice();
+    }
+
+    if(voice){
+
+      utterance.voice =
+        voice;
+
+      utterance.lang =
+        voice.lang;
+
+    }else{
+
+      utterance.lang =
+        lang === "id"
+          ? "id-ID"
+          : "en-US";
+
+    }
+
+    utterance.rate = 1;
+    utterance.pitch = 1;
+
+    window.speechSynthesis.speak(
+      utterance
+    );
+
+    return true;
+
   }
 
-  function speakBrowser(text, lang){
-
-    return new Promise(resolve => {
-
-      try{
-
-        if(
-          !("speechSynthesis" in window) ||
-          typeof SpeechSynthesisUtterance === "undefined"
-        ){
-          resolve(false);
-          return;
-        }
-
-        refreshVoices();
-
-        const synth = window.speechSynthesis;
-
-        synth.cancel();
-
-        const utterance =
-          new SpeechSynthesisUtterance(
-            String(text).slice(0,5000)
-          );
-
-        const voice =
-          lang === "id"
-            ? getIndonesianVoice()
-            : getEnglishVoice();
-
-        utterance.lang =
-          lang === "id"
-            ? "id-ID"
-            : "en-US";
-
-        if(voice){
-          utterance.voice = voice;
-        }
-
-        /*
-          Sedikit lebih natural.
-          Tidak memaksa voice yang tidak tersedia.
-        */
-        utterance.rate =
-          lang === "id"
-            ? 0.96
-            : 0.94;
-
-        utterance.pitch = 1;
-        utterance.volume = 1;
-
-        utterance.onstart = () => {
-
-          setVoiceStatus(
-            lang === "id"
-              ? "🇮🇩 Browser Indonesian Voice aktif."
-              : "🇺🇸 Browser English Voice aktif.",
-            "ok"
-          );
-        };
-
-        utterance.onend = () => {
-
-          setVoiceStatus(
-            "Browser Voice selesai.",
-            "ok"
-          );
-
-          resolve(true);
-        };
-
-        utterance.onerror = event => {
-
-          console.warn(
-            "BROWSER VOICE ERROR:",
-            event
-          );
-
-          setVoiceStatus(
-            "Browser Voice gagal.",
-            "error"
-          );
-
-          resolve(false);
-        };
-
-        synth.speak(utterance);
-
-        /*
-          Chrome kadang membutuhkan resume
-          jika speech synthesis masuk keadaan paused.
-        */
-        setTimeout(() => {
-
-          try{
-
-            if(synth.paused){
-              synth.resume();
-            }
-
-          }catch(error){}
-
-        },150);
-
-      }catch(error){
-
-        console.error(
-          "Browser speech error:",
-          error
-        );
-
-        resolve(false);
-      }
-
-    });
-  }
 
   async function speakSmart(text){
 
-    const lang = detectLanguage(text);
+    const lang =
+      detectLanguage(text);
 
-    /*
-      Indonesian:
-      browser voice dipakai jika voice id-ID tersedia.
-      Jika tidak ada, fallback ke Aura-1.
-    */
+    try{
 
-    if(lang === "id"){
+      /*
+       * Indonesia:
+       * browser voice diprioritaskan jika
+       * voice id-ID tersedia.
+       */
+      if(lang === "id"){
 
-      refreshVoices();
+        const idVoice =
+          findIndonesianVoice();
 
-      const idVoice =
-        getIndonesianVoice();
+        if(idVoice){
 
-      if(idVoice){
-
-        const success =
-          await speakBrowser(
+          browserSpeak(
             text,
             "id"
           );
 
-        if(success){
           return;
+
         }
-      }
 
-      await speakAura(text);
-
-      return;
-    }
-
-    /*
-      English:
-      Aura-1 tetap diprioritaskan karena
-      sudah terbukti bekerja.
-    */
-
-    const auraSuccess =
-      await speakAura(text);
-
-    if(auraSuccess){
-      return;
-    }
-
-    await speakBrowser(
-      text,
-      "en"
-    );
-  }
-
-  /* =========================================================
-     TEST VOICE
-  ========================================================= */
-
-  async function testIndonesia(){
-
-    stopSpeech();
-
-    refreshVoices();
-
-    const voice =
-      getIndonesianVoice();
-
-    if(voice){
-
-      setVoiceStatus(
-        "🇮🇩 Menggunakan voice: " +
-        voice.name +
-        " (" +
-        voice.lang +
-        ")"
-      );
-
-      const success =
-        await speakBrowser(
-          "Halo bosss, ini suara bahasa Indonesia dari ALFA AI. Sistem voice sudah aktif.",
-          "id"
+        await auraSpeak(
+          text,
+          "luna"
         );
 
-      if(success){
         return;
+
       }
-    }
 
-    setVoiceStatus(
-      "🇮🇩 Voice Indonesia browser tidak tersedia. Menggunakan Neural Voice.",
-      "ok"
-    );
+      /*
+       * English:
+       * Aura-1 diprioritaskan.
+       */
+      if(lang === "en"){
 
-    await speakAura(
-      "Halo bosss, ini ALFA AI. Neural Voice sudah aktif."
-    );
-  }
+        await auraSpeak(
+          text,
+          "luna"
+        );
 
-  async function testEnglish(){
+        return;
 
-    stopSpeech();
+      }
 
-    await speakAura(
-      "Hello boss. This is ALFA AI. English neural voice is active."
-    );
-  }
+    }catch(error){
 
-  async function testAura(){
-
-    stopSpeech();
-
-    await speakAura(
-      "Halo bosss, ini ALFA AI. Neural Voice Aura sudah aktif dan siap digunakan."
-    );
-  }
-
-  /* =========================================================
-     VOICE INPUT
-  ========================================================= */
-
-  function setupRecognition(){
-
-    const Recognition =
-      window.SpeechRecognition ||
-      window.webkitSpeechRecognition;
-
-    if(!Recognition){
-
-      setVoiceStatus(
-        "Voice Input tidak didukung browser ini.",
-        "error"
+      console.warn(
+        "Primary voice failed:",
+        error
       );
 
-      return null;
     }
 
     try{
 
-      const r = new Recognition();
+      browserSpeak(
+        text,
+        lang
+      );
 
-      r.lang = "id-ID";
-      r.continuous = false;
-      r.interimResults = true;
-      r.maxAlternatives = 1;
+    }catch(error){
 
-      r.onstart = () => {
+      console.warn(
+        "Browser voice failed:",
+        error
+      );
 
-        isListening = true;
+    }
 
-        voiceInputBtn.textContent =
-          "🔴 Mendengarkan...";
+  }
 
-        setVoiceStatus(
-          "🎤 Silakan bicara..."
-        );
-      };
 
-      r.onresult = event => {
+  async function testIndonesia(){
 
-        let finalText = "";
-        let interimText = "";
+    const text =
+      "Halo bosss, ini ALFA AI. Bahasa Indonesia sedang diuji.";
 
-        for(
-          let i = event.resultIndex;
-          i < event.results.length;
-          i++
-        ){
+    try{
 
-          const transcript =
-            event.results[i][0].transcript;
+      const idVoice =
+        findIndonesianVoice();
 
-          if(event.results[i].isFinal){
-            finalText += transcript;
-          }else{
-            interimText += transcript;
-          }
-        }
+      if(idVoice){
 
-        if(finalText){
-
-          messageInput.value =
-            finalText.trim();
-
-        }else if(interimText){
-
-          messageInput.value =
-            interimText.trim();
-        }
-      };
-
-      r.onerror = event => {
-
-        console.warn(
-          "Recognition error:",
-          event
+        browserSpeak(
+          text,
+          "id"
         );
 
-        isListening = false;
+      }else{
 
-        voiceInputBtn.textContent =
-          "🎤 Voice Input";
-
-        setVoiceStatus(
-          "Voice Input: " +
-          (event.error || "gagal"),
-          "error"
+        await auraSpeak(
+          text,
+          "luna"
         );
-      };
 
-      r.onend = () => {
-
-        isListening = false;
-
-        voiceInputBtn.textContent =
-          "🎤 Voice Input";
-
-        setVoiceStatus(
-          "Voice Input selesai.",
-          "ok"
-        );
-      };
-
-      return r;
+      }
 
     }catch(error){
 
       console.error(
-        "Recognition setup error:",
+        "Indonesia voice error:",
         error
       );
 
-      return null;
+      alert(
+        "Voice Indonesia gagal:\n" +
+        error.message
+      );
+
     }
+
   }
 
-  function toggleRecognition(){
 
-    if(!recognition){
-      recognition = setupRecognition();
+  async function testEnglish(){
+
+    const text =
+      "Hello boss, this is ALFA AI. English neural voice is working.";
+
+    try{
+
+      await auraSpeak(
+        text,
+        "luna"
+      );
+
+    }catch(error){
+
+      console.error(
+        "English voice error:",
+        error
+      );
+
+      alert(
+        "English voice gagal:\n" +
+        error.message
+      );
+
     }
 
-    if(!recognition){
+  }
+
+
+  async function testAura(){
+
+    const text =
+      "Halo bosss, Neural Voice ALFA AI Aura satu sedang aktif.";
+
+    try{
+
+      await auraSpeak(
+        text,
+        "luna"
+      );
+
+    }catch(error){
+
+      console.error(
+        "Aura error:",
+        error
+      );
+
+      alert(
+        "Aura-1 gagal:\n" +
+        error.message
+      );
+
+    }
+
+  }
+
+
+  /* =========================
+     VOICE INPUT
+  ========================= */
+
+  function setupRecognition(){
+
+    const SpeechRecognition =
+      window.SpeechRecognition ||
+      window.webkitSpeechRecognition;
+
+    if(!SpeechRecognition){
+
+      recognition = null;
       return;
+
+    }
+
+    recognition =
+      new SpeechRecognition();
+
+    recognition.lang =
+      "id-ID";
+
+    recognition.continuous =
+      false;
+
+    recognition.interimResults =
+      false;
+
+    recognition.onstart =
+      function(){
+
+        const btn =
+          $("voiceInputBtn");
+
+        if(btn){
+          btn.textContent =
+            "🎙️ Mendengarkan...";
+        }
+
+      };
+
+    recognition.onresult =
+      function(event){
+
+        const result =
+          event.results?.[0]?.[0]?.transcript ||
+          "";
+
+        const input =
+          $("messageInput");
+
+        if(input){
+
+          input.value =
+            result;
+
+          input.focus();
+
+        }
+
+      };
+
+    recognition.onerror =
+      function(event){
+
+        console.warn(
+          "Voice input:",
+          event.error
+        );
+
+      };
+
+    recognition.onend =
+      function(){
+
+        const btn =
+          $("voiceInputBtn");
+
+        if(btn){
+
+          btn.textContent =
+            "🎤 Voice Input";
+
+        }
+
+      };
+
+  }
+
+
+  function startVoiceInput(){
+
+    if(!recognition){
+
+      alert(
+        "Browser ini belum mendukung Voice Input."
+      );
+
+      return;
+
     }
 
     try{
 
-      if(isListening){
-
-        recognition.stop();
-
-        return;
-      }
-
       recognition.start();
 
+    }catch(error){
+
+      console.warn(
+        "Recognition start:",
+        error
+      );
+
     }
-```
+
+  }
+
+
+  /* =========================
+     IMAGE
+  ========================= */
+
+  async function generateImage(){
+
+    const prompt =
+      $("imagePrompt")?.value.trim();
+
+    if(!prompt){
+
+      alert(
+        "Masukkan prompt gambar dulu bosss."
+      );
+
+      return;
+
+    }
+
+    const btn =
+      $("generateImageBtn");
+
+    if(btn){
+
+      btn.disabled = true;
+
+      btn.textContent =
+        "⏳ GENERATING...";
+
+    }
+
+    const output =
+      $("generatedImage");
+
+    if(output){
+
+      output.innerHTML =
+        '<div class="typing">🎨 ALFA AI sedang membuat gambar...</div>';
+
+    }
+
+    try{
+
+      const response =
+        await fetch(
+          WORKER_BASE + "/image",
+          {
+            method:"POST",
+
+            headers:{
+              "Content-Type":
+                "application/json"
+            },
+
+            body:JSON.stringify({
+              prompt:prompt
+            })
+          }
+        );
+
+      const data =
+        await response.json();
+
+      if(!response.ok ||
+         !data.success){
+
+        throw new Error(
+          data.error ||
+          "Image Generator gagal."
+        );
+
+      }
+
+      if(!data.image){
+
+        throw new Error(
+          "Gambar tidak diterima."
+        );
+
+      }
+
+      if(output){
+
+        output.innerHTML = "";
+
+        const img =
+          document.createElement("img");
+
+        img.src =
+          data.image;
+
+        img.alt =
+          prompt;
+
+        output.appendChild(img);
+
+      }
+
+    }catch(error){
+
+      console.error(
+        "IMAGE ERROR:",
+        error
+      );
+
+      if(output){
+
+        output.innerHTML =
+          '<div class="typing">❌ ' +
+          escapeHTML(error.message) +
+          '</div>';
+
+      }
+
+    }finally{
+
+      if(btn){
+
+        btn.disabled = false;
+
+        btn.textContent =
+          "🎨 GENERATE IMAGE";
+
+      }
+
+    }
+
+  }
+
+
+  /* =========================
+     NEW CHAT
+  ========================= */
+
+  function newChat(){
+
+    stopVoice();
+
+    messages = [];
+
+    saveMessages();
+
+    renderMessages();
+
+    const input =
+      $("messageInput");
+
+    if(input){
+
+      input.value = "";
+
+      input.focus();
+
+    }
+
+  }
+
+
+  /* =========================
+     IMAGE TOGGLE
+  ========================= */
+
+  function toggleImage(){
+
+    const panel =
+      $("imagePanel");
+
+    if(!panel){
+      return;
+    }
+
+    panel.classList.toggle(
+      "active"
+    );
+
+  }
+
+
+  /* =========================
+     EVENTS
+  ========================= */
+
+  function initEvents(){
+
+    /*
+     * Semua tombol dipasang di satu tempat.
+     * Tidak ada dependency ke voice/image
+     * yang boleh menghentikan event lainnya.
+     */
+
+    const send =
+      $("sendBtn");
+
+    if(send){
+
+      send.addEventListener(
+        "click",
+        function(event){
+
+          event.preventDefault();
+
+          sendMessage();
+
+        }
+      );
+
+    }
+
+
+    const input =
+      $("messageInput");
+
+    if(input){
+
+      input.addEventListener(
+        "keydown",
+        function(event){
+
+          if(
+            event.key === "Enter" &&
+            !event.shiftKey
+          ){
+
+            event.preventDefault();
+
+            sendMessage();
+
+          }
+
+        }
+      );
+
+    }
+
+
+    const newChat =
+      $("newChatBtn");
+
+    if(newChat){
+
+      newChat.addEventListener(
+        "click",
+        function(){
+
+          newChat();
+
+        }
+      );
+
+    }
+
+
+    const voiceInput =
+      $("voiceInputBtn");
+
+    if(voiceInput){
+
+      voiceInput.addEventListener(
+        "click",
+        function(){
+
+          startVoiceInput();
+
+        }
+      );
+
+    }
+
+
+    const testID =
+      $("testIndonesiaBtn");
+
+    if(testID){
+
+      testID.addEventListener(
+        "click",
+        function(){
+
+          testIndonesia();
+
+        }
+      );
+
+    }
+
+
+    const testEN =
+      $("testEnglishBtn");
+
+    if(testEN){
+
+      testEN.addEventListener(
+        "click",
+        function(){
+
+          testEnglish();
+
+        }
+      );
+
+    }
+
+
+    const testAuraBtn =
+      $("testAuraBtn");
+
+    if(testAuraBtn){
+
+      testAuraBtn.addEventListener(
+        "click",
+        function(){
+
+          testAura();
+
+        }
+      );
+
+    }
+
+
+    const stopBtn =
+      $("stopVoiceBtn");
+
+    if(stopBtn){
+
+      stopBtn.addEventListener(
+        "click",
+        function(){
+
+          stopVoice();
+
+        }
+      );
+
+    }
+
+
+    const imageToggle =
+      $("imageToggleBtn");
+
+    if(imageToggle){
+
+      imageToggle.addEventListener(
+        "click",
+        function(){
+
+          toggleImage();
+
+        }
+      );
+
+    }
+
+
+    const generate =
+      $("generateImageBtn");
+
+    if(generate){
+
+      generate.addEventListener(
+        "click",
+        function(){
+
+          generateImage();
+
+        }
+      );
+
+    }
+
+  }
+
+
+  /* =========================
+     INITIALIZATION
+  ========================= */
+
+  function boot(){
+
+    try{
+
+      loadMessages();
+
+      renderMessages();
+
+      setupRecognition();
+
+      loadVoices();
+
+      initEvents();
+
+      console.log(
+        "🔥 ALFA AI V7.3.2 READY"
+      );
+
+      console.log(
+        "✅ Click events initialized"
+      );
+
+    }catch(error){
+
+      console.error(
+        "ALFA BOOT ERROR:",
+        error
+      );
+
+    }
+
+  }
+
+
+  if(
+    document.readyState === "loading"
+  ){
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      boot,
+      {once:true}
+    );
+
+  }else{
+
+    boot();
+
+  }
+
+
+  if(
+    "speechSynthesis" in window
+  ){
+
+    window.speechSynthesis.onvoiceschanged =
+      function(){
+
+        loadVoices();
+
+      };
+
+  }
+
+})();
+</script>
+
+</body>
+</html>
